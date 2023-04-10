@@ -1,11 +1,25 @@
 import './App.css'
-import { RouterProvider } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import router from './Routes/Routes/Router'
+import MainLayout from './Layout/MainLayout';
+import Home from './Pages/Home/Home/Home';
 
 function App() {
-
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainLayout></MainLayout>,
+      children: [
+        {
+          path: "/",
+          element: <Home></Home>,
+        },
+      ],
+    },
+   
+  ]);
   return (
-    <div className="App">
+    <div className="mx-auto">
       <RouterProvider router={ router }></RouterProvider>
     </div>
   )

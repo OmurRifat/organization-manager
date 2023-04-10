@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import About from '../../About/About';
+import HeroSection from '../HeroSection/HeroSection';
 
 const Home = () => {
     return (
-        <div>
-            {/* <h4>This is home components.</h4> */}
-            <About></About>
+        <div className='mx-2'>
+            <HeroSection/>
         </div>
     );
 };
