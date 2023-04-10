@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css'
+
 
 const About = () => {
 
@@ -34,20 +34,20 @@ const About = () => {
   
   {/* <------------------------------> */}
   
-  <div className=" text-center bg-white m-5 sm:p-8 ">
+  <div className=" text-center bg-white sm:p-8 m-5">
   
       <div className="justify-between p-5 space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-            <div className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+            <div className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  ">
               <div className="text-left">
-              <img style={styleObject.size} className="" src="https://i.ibb.co/hcrYTBs/Untitled-3.png" alt="" />
+              <img className="" src="https://i.ibb.co/DMWcZ3y/1-5sp-W5-L8-CWMwm0-P7-Wr-TUXpg-removebg-preview.png" alt="" />
                   
               </div>
             </div>
   
-          <div className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center p-5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+          <div className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center p-5 ">
               <div className="text-left">
               <p style={styleObject.textcolor} className="text-gray-900 font-semibold pb-2">Managing Organization</p>
-                      <h1  className="text-4xl font-semibold text-gray-600 dark:text-white">We Commit To Manage <br></br> Your Organization </h1>
+                      <h1  className="text-4xl font-semibold text-gray-700">We Commit To Manage <br></br> Your Organization </h1>
                       <br></br>
                       <p className="text-base font-normal text-gray-500 dark:text-gray-400">BERTUMBUH - Adalah organisasi non-profit yang mempunyai   <br></br> Melindungi, menjaga, merawat, dan melestarikan pohon-  <br></br> bumi yang kita pijak sekarang. BERTUMBUH - Adalah  <br></br> non-profit yang mempunyai tujuan Melindungi, menjaga, <br></br> dan melestarikan pohon-pohon yang </p>
                       <br></br>
@@ -62,17 +62,17 @@ const About = () => {
 
 
       {/* <------------------------------> */}
-      <div className="text-center bg-white m-5 sm:p-8 ">
-        <div className="m-5 justify-between space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-          <div class="sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center p-5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-            <div className="text-left">
+      <div className="text-between bg-white  sm:p-8 ">
+        <div className="m-5 justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+          <div class="sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  mr-5 ml-5 ">
+            <div className="text-left ml-5">
               <p
                 style={styleObject.textcolor}
                 className="text-gray-900 font-semibold "
               >
                 Managing Man-Power
               </p>
-              <h1 class="text-4xl font-semibold text-gray-600 dark:text-white mr-5">
+              <h1 class="text-4xl font-semibold text-gray-700  mr-5">
               We Will Manage Your <br></br> Man-Power Carefully!{" "}
               </h1>
               <br></br>
@@ -106,12 +106,12 @@ const About = () => {
               </button>
             </div>
           </div>
-          <div className="sm:w-auto bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+          <div className="sm:w-auto bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 ">
             <div className="text-left">
               <img
-                style={styleObject.size}
+                // style={styleObject.size}
                 class=""
-                src="https://i.ibb.co/DpydcPf/Untitledujnjikuu-copy.jpg"
+                src="https://i.ibb.co/V3VK7kk/Untitled-1erwtt.png"
                 alt=""
               />
             </div>
