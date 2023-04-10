@@ -29,7 +29,7 @@ a system for your organization, by which we can
 Dream together.
           </p>
           <div className='flex '>
-            <Link>
+            <Link to='signup'>
               <button
                 style={styleObject.button}
                 className="flex mt-2 text-white rounded p-1 items-center justify-center"
