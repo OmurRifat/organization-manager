@@ -23,12 +23,12 @@ const HeroSection = () => {
           Have A Dream?
           Let’s Dream Together!
           </h1>
-          <p className='font-sans'>
+          <p className='font-sans mt-5'>
           We are organization manager. We dream to Build
 a system for your organization, by which we can
 Dream together.
           </p>
-          <div className='flex justify-center'>
+          <div className='flex '>
             <Link>
               <button
                 style={styleObject.button}
@@ -44,13 +44,9 @@ Dream together.
             <RxVideo className=" mx-1"></RxVideo> Explore Our Vision 
             </button>
           </div>
+          
         </div>
-        <div className="hidden mt-72 -z-30">
-          <p>Vision</p>
-          <p>Vision</p>
-          <p>Vision</p>
-          <p>Vision</p>
-        </div>
+        
         <div >
           <img
             src="https://i.ibb.co/RzzH2KN/Rectangle-137.png"
@@ -59,6 +55,7 @@ Dream together.
           />
         </div>
       </div>
+      
     </div>
     );
 };
