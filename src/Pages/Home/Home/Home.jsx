@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import HeroSection from '../HeroSection/HeroSection';
-import About from '../../About/About'
+import About from './../../About/About';
 
 const Home = () => {
     return (
