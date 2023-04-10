@@ -1,41 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Login.css'
-const LogIn = () => {
+
+const FoundationForm = () => {
   return (
     <div className="signup-container mx-5">
+      <h1 className="text-5xl text-[green] text-center">
+        Organizational Manager
+      </h1>
+      
       <div className="grid grid-cols-2 gap-5 ">
+        <div className="flex items-center justify-right">
+          <img
+            src="https://i.ibb.co/r7fbRrq/willowy-man-delivers-a-large-box-with-an-order-to-the-house-1-result-result-1.png"
+            alt="Family-logo-template-removebg-preview"
+          />
+        </div>
         <div className="border p-10">
-          <h1 className="text-5xl text-[green] ">Sign In</h1>
-          <div className="flex  items-center m-5 mt-10">
-            <div className="bg-[black] h-1 w-24 me-5"></div>
-            <p>Sign up with</p>
-          </div>
-          <div className="grid grid-cols-2  mx-10">
-            <div className="flex justify-around items-center border p-2 rounded mx-5">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjzC2JyZDZ_RaWf0qp11K0lcvB6b6kYNMoqtZAQ9hiPZ4cTIOB"
-                alt=""
-                width="36px"
-              ></img>
-              <p className="mx-1">Continue with Google</p>
-            </div>
-            <div className="flex justify-around items-center border p-2 rounded">
-              <img
-                src="https://www.citypng.com/public/uploads/preview/-11595349592mdhzsfgakx.png"
-                alt=""
-                width="36px"
-              ></img>
-              <p className="mx-1 ">Continue with Facebook</p>
-            </div>
-          </div>
-          <p className="flex justify-center text-3xl font-bold my-10">or</p>
+          <h1 className="text-2xl  ">Register For A Foundation</h1>
+          <p>MAKE YOUR DREAM COMES TRUE!</p>
           <div className="mx-10">
             <form>
               <div className="grid grid-cols-1 gap-2">
                 <div class="mb-6">
                   <label
-                    for="email"
+                    for=""
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Email
@@ -96,22 +84,12 @@ const LogIn = () => {
                 {' '}
                 Sign Up
               </Link>
-              <Link to="/foundation-form" className="text-[#2A9D8F] underline">
-                {' '}
-                Foundation
-              </Link>
             </p>
           </div>
-        </div>
-        <div className="flex items-center justify-right">
-          <img
-            src="https://i.ibb.co/F0Tkjwt/Layer-13.png"
-            alt="Family-logo-template-removebg-preview"
-          />
         </div>
       </div>
     </div>
   )
 }
 
-export default LogIn
+export default FoundationForm
