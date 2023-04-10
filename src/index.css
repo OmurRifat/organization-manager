@@ -20,7 +20,7 @@
 
 a {
   font-weight: 500;
-  color: #14b09d;
+  color: #348379;
   text-decoration: inherit;
 }
 
@@ -28,8 +28,16 @@ a:hover {
   color: #2A9D8F;
 }
 
+#clipping{
+  clip-path: polygon(100% 0, 100% 100%, 59% 100%, 50% 87%, 0 87%, 0 0);
 
 
+}
+body {
+  margin: 0;
+  
+  
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
