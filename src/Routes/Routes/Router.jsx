@@ -5,6 +5,7 @@ import LogOut from "../../Pages/LogOut/LogOut";
 import LogIn from "../../Pages/LogIn/LogIn";
 import FoundationForm from './../../Pages/FoundationForm/FoundationForm';
 import Signup from "../../Pages/Signup/Signup";
+import MemberDashboard from "../../Pages/Dashboard/Member/MemberDashboard";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/logout',
                 element: <LogOut></LogOut>
+            },
+            {
+                path: '/dashboard',
+                element: <MemberDashboard></MemberDashboard>
             }
         ]
     }
