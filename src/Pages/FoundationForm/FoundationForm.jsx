@@ -7,7 +7,7 @@ const FoundationForm = () => {
       <h1 className="text-5xl text-[green] text-center">
         Organizational Manager
       </h1>
-      
+
       <div className="grid grid-cols-2 gap-5 ">
         <div className="flex items-center justify-right">
           <img
@@ -128,9 +128,9 @@ const FoundationForm = () => {
                 </button> */}
             </form>
             <p>
-              Do not have any account ?{' '}
+              Do not have any account ?{ ' ' }
               <Link to="/signup" className="text-[#2A9D8F] underline">
-                {' '}
+                { ' ' }
                 Sign Up
               </Link>
             </p>
