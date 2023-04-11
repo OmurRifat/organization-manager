@@ -1,6 +1,8 @@
 import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './Routes/Routes/Router'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function App() {
   return (
