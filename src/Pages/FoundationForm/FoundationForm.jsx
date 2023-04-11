@@ -7,7 +7,7 @@ const FoundationForm = () => {
       <h1 className="text-5xl text-[green] text-center">
         Organizational Manager
       </h1>
-      
+
       <div className="grid grid-cols-2 gap-5 ">
         <div className="flex items-center justify-right">
           <img
