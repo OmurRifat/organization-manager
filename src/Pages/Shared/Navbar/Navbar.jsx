@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Transition } from "@headlessui/react";
 import { BiDonateHeart } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
-// import { Link } from 'react-router-dom';
-import {Link} from 'react-scroll'
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const styleObject = {
@@ -28,7 +27,7 @@ const Navbar = () => {
           <div className="flex items-center h-20 w-full">
             <div className="flex items-center  md:mx-20  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
-                <Link href="/">
+                <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <img
                       className="md:w-12 w-14"
@@ -159,25 +158,25 @@ const Navbar = () => {
                   Home
                 </Link>
                 <Link
-                  to="organization" spy={true} smooth={true} offset={50} duration={1500}
+                  to="organization" spy={ true } smooth={ true } offset={ 50 } duration={ 1500 }
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Organization
                 </Link>
 
                 <Link
-                  to ="vision"
-                  spy={true} smooth={true} offset={-100} duration={1500}
+                  to="vision"
+                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
                   className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Vision
                 </Link>
                 <Link
-                 to='contact'
-                 spy={true} smooth={true} offset={-100} duration={1500}
+                  to='contact'
+                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
-                 Contact
+                  Contact
                 </Link>
 
                 <Link
@@ -196,21 +195,21 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
-                 to='/'
+                  to='/'
                   className="cursor-pointer text-black font-semibold px-3 py-2 text-md "
                 >
                   Home
                 </Link>
                 <Link
-                 to="organization"
-                 spy={true} smooth={true} offset={50} duration={1500}
+                  to="organization"
+                  spy={ true } smooth={ true } offset={ 50 } duration={ 1500 }
                   className="cursor-pointer text-black  px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Organization
                 </Link>
                 <Link
-                   to ="vision"
-                   spy={true} smooth={true} offset={-100} duration={1500}
+                  to="vision"
+                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
                   className="cursor-pointer text-black   px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Vision
@@ -218,7 +217,7 @@ const Navbar = () => {
 
                 <Link
                   to='contact'
-                  spy={true} smooth={true} offset={-100} duration={1500}
+                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
                   className="cursor-pointer text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Contact

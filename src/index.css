@@ -26,16 +26,18 @@ a:hover {
   color: #2A9D8F;
 }
 
-#clipping{
+#clipping {
   clip-path: polygon(100% 0, 100% 100%, 59% 100%, 50% 87%, 0 87%, 0 0);
 
 
 }
+
 body {
   margin: 0;
-  
-  
+
+
 }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -62,7 +64,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
   /* Rectangle 571 */
-background: radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 
@@ -78,7 +80,8 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-/* 
+
+  /* 
   a:hover {
     color: #2A9D8F;
   }
