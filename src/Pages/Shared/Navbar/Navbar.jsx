@@ -17,11 +17,11 @@ const Navbar = () => {
     },
   };
   return (
-    <div>
+    <div style={ { zIndex: '999' } } className=' sticky top-0 backdrop-filter backdrop-blur'>
       {/* firstblock */ }
       <nav
         style={ styleObject.pColor }
-        className="md:block z-20 top-0 backdrop-filter backdrop-blur hidden  shadow-sm w-full "
+        className="md:block z-50 hidden  shadow-sm w-full "
       >
         <div className="w-full">
           <div className="flex items-center h-20 w-full">
