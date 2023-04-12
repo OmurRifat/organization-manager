@@ -5,6 +5,7 @@ import Testimonial from '../Testimonial/Testimonial'
 import Blog from '../Blog/Blog';
 import Newsletter from '../Newsletter/Newsletter';
 import OurPartners from '../OurPartners/OurPartners';
+import FrequentQuestion from '../FrequentQuestion/FrequentQuestion';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <Testimonial/>
             <Blog/>
             <OurPartners/>
+            <FrequentQuestion/>
             <Newsletter/>
         </div>
     );

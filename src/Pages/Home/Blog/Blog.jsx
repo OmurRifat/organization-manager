@@ -4,8 +4,14 @@ import tree1 from '../../../assets/tree1.png'
 import tree2 from '../../../assets/tree2.png'
 import tree3 from '../../../assets/tree3.png'
 import tree4 from '../../../assets/tree4.png'
-
+import { Link } from "react-router-dom";
+import './Blog.css'
 const Blog = () => {
+
+ 
+
+
+
   const styles = {
     primary: {
       color: "#2A9D8F",
@@ -23,7 +29,7 @@ const Blog = () => {
         <h3 style={styles.primary} className="text-2xl mb-4 font-medium">
         Explore the Events
         </h3>
-        <h2 style={styles.secondary} className="font-medium mb-5 text-5xl">
+        <h2 style={styles.secondary} className="font-semibold mb-5 text-4xl">
           Latest News, Articles & Events
         </h2>
         <p style={styles.paraColor} className="font-normal text-xl">
@@ -80,7 +86,7 @@ const Blog = () => {
       </div>
       </div>
       <div className="w-60 mx-auto text-center mt-20 pb-20">
-        <button className="px-8 py-3 font-medium rounded-lg  border-0" style={{backgroundColor:'#2A9D8F'}}>Explore More News</button>
+        <Link  to='/allnews' className="px-8 py-3 explore-btn  font-normal rounded-lg border  border-green-600 outline-none focus:border-none focus:outline-none">Explore More News</Link>
       </div>
     </>
   );

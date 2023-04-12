@@ -19,7 +19,7 @@ const OurPartners = () => {
       };
 
     return (
-        <div>
+        <div className='p-8'> 
             <div className="p-5 mx-auto items-center justify-center grid grid-cols-1 lg:grid-cols-2">
             <div className="p-5 sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center">
             <div className="text-left p-8">
@@ -55,7 +55,7 @@ const OurPartners = () => {
         
     </div>
 
-</div>
+</div> <br />
         </div>
     );
 };
