@@ -3,8 +3,13 @@ import "./FrequentQuestion.css";
 import { Accordion } from "flowbite-react";
 
 const FrequentQuestion = () => {
+  const styles = {
+    bg:{
+      backgroundColor: '#EAF5F4'
+    }
+  }
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 px-8 md:px-14 gap-y-10 md:gap-y-0 my-16">
+    <div style={styles.bg}  className="grid grid-cols-1 py-10 md:grid-cols-2 px-8 md:px-14 gap-y-10 md:gap-y-0 my-16">
       <div>
         <h2 style={{ color: "#282938" }} className="font-semibold text-3xl mb-3">
           Frequently Asked Questions
