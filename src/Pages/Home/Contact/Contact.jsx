@@ -40,6 +40,9 @@ const Contact = () => {
     h2: {
       color: "#4D4D4D",
       marginBottom: "20px",
+    },
+    bg:{
+      backgroundColor : '#2A9D8F'
     }
   };
 
@@ -59,7 +62,7 @@ const Contact = () => {
           consequuntur.
           <div className="flex flex-col mt-6">
             <div className="flex pb-8">
-              <div className="bg-green-600 w-12 py-2 rounded-sm h-12 mr-4">
+              <div style={styleObject.bg} className="w-12 py-2 rounded-sm h-12 mr-4">
                 <BsHouseDoor className="text-center text-2xl text-white mx-auto"></BsHouseDoor>
               </div>
               <div>
@@ -68,7 +71,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex pb-8">
-              <div className="bg-green-600 w-12 py-2 rounded-sm h-12 mr-4">
+              <div style={styleObject.bg} className="w-12 py-2 rounded-sm h-12 mr-4">
                 <BsTelephone className="text-center text-2xl text-white mx-auto"></BsTelephone>
               </div>
               <div>
@@ -77,7 +80,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex pb-8 md:pb-0">
-              <div className="bg-green-600 w-12 py-2 rounded-sm h-12 mr-4">
+              <div style={styleObject.bg} className="w-12 py-2 rounded-sm h-12 mr-4">
                 <FiMail className="text-center text-2xl text-white mx-auto"></FiMail>
               </div>
               <div>
@@ -89,7 +92,7 @@ const Contact = () => {
         </p>
       </div>
       
-        <div className="w-full max-w-sm p-4 bg-green-600 border h-[370px] border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div style={styleObject.bg} className="w-full max-w-sm p-4 border h-[370px] border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form className="space-y-6" ref={form} onSubmit={sendEmail}>
             <div className="">
               <input

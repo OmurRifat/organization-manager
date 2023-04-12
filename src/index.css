@@ -16,15 +16,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
+/* a {
   font-weight: 500;
-  color: #348379;
+  color: white;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #2A9D8F;
-}
+  color: white;
+} */
 
 #clipping{
   clip-path: polygon(100% 0, 100% 100%, 59% 100%, 50% 87%, 0 87%, 0 0);
@@ -67,7 +67,7 @@ background: radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255
 
 
 
-button:focus,
+/* button:focus, */
 /* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

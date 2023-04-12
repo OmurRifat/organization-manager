@@ -32,7 +32,7 @@ const OurPartners = () => {
                     <br></br>
                     <p className=" text-base font-normal text-gray-500 dark:text-gray-400 txt">GROW - Is a non-profit organization whose goal is to <br></br> protect, maintain, care for, and preserve the trees on <br></br> the earth that we stand on now</p>
                     <br></br>
-                    <button style={styleObject.button} type="button" className="btn text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">   See More</button>
+                    <button style={styleObject.button} type="button" className="btn text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 ">   See More</button>
 
             </div>
             <br></br>
