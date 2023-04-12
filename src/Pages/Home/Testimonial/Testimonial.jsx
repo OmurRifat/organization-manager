@@ -53,11 +53,11 @@ const Review = () => {
   };
   return (
     <>
-      <div className="text-center pt-20 pb-16">
+      <div className="text-center px-3 md:px-0 pt-20 pb-16">
         <h3 style={styleObject.h3} className="2xl font-medium">
         Talk with our happy client
         </h3>
-        <h2 style={styleObject.h2} className="text-6xl max-w-2xl mx-auto">
+        <h2 style={styleObject.h2} className="text-4xl font-semibold max-w-2xl mx-auto">
         Lets Learn What Our Client Says
         </h2>
         <p
