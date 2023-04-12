@@ -27,7 +27,7 @@ const Navbar = () => {
             <div className="flex items-center h-20 w-full">
               <div className="flex items-center  md:mx-20  justify-between w-full">
                 <div className="flex justify-center items-center flex-shrink-0 ">
-                  <Link href="/">
+                  <Link to="/">
                     <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                       <img
                         className="md:w-12 w-14"
@@ -55,8 +55,8 @@ const Navbar = () => {
                   <div>
                     <Link
                       style={styleObject.button}
-                      href="/"
-                      className="cursor-pointer flex items-center text-white px-3 py-2 rounded-md text-sm  font-medium "
+                      to="/login"
+                      className="cursor-pointer flex text-white hover:text-white items-center px-3 py-2 rounded-md text-sm  font-medium "
                     >
                       <BiDonateHeart /> Donate
                     </Link>
@@ -117,14 +117,14 @@ const Navbar = () => {
                       )}
                     </button>
                   </div>
-                  <Link href="/">
+                  <Link to="/">
                     <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                       <p className="text-black">Organization Manager</p>
                     </h1>
                   </Link>
                 </div>
                 <div>
-                  <Link href="/" className="cursor-pointer flex items-center ">
+                  <Link to="/" className="cursor-pointer flex items-center ">
                     <img
                       className="md:w-12 w-14"
                       src="https://i.ibb.co/Bw1TVQS/project-logo.png"
@@ -152,34 +152,33 @@ const Navbar = () => {
               <div style={styleObject.pColor} className="md:hidden flex justify-center items-center" id="mobile-menu">
                 <div ref={ref} className=" px-2 pt-2 pb-3 space-y-1 sm:px-3">
                   <Link
-                    href="/"
+                    to="/"
                     className="cursor-pointer text-black  block px-3 py-2 rounded-md text-base font-medium"
                   >
                     Home
                   </Link>
                   <Link
-                    href="/Organization"
+                    to="/Organization"
                     className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                   >
                     Organization
                   </Link>
   
                   <Link
-                    href="/Vision"
+                    to="/Vision"
                     className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
                   >
                     Vision
                   </Link>
                   <Link
-                    href="/Contract"
+                    to="/Contract"
                     className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                   >
                     Contract
                   </Link>
-  
                   <Link
                     style={styleObject.button}
-                    href="/"
+                    to="/"
                     className="cursor-pointer flex items-center text-white text-center ml-4 w-24 px-3 py-2 rounded-md text-sm  font-medium "
                   >
                     <BiDonateHeart /> Donate
@@ -193,26 +192,26 @@ const Navbar = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link
-                    href="/"
+                    to="/"
                     className="cursor-pointer text-black font-semibold px-3 py-2 text-md "
                   >
                     Home
                   </Link>
                   <Link
-                    href="/Organization"
+                    to="/Organization"
                     className="cursor-pointer text-black  px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Organization
                   </Link>
                   <Link
-                    href="/Vision"
+                    to="/Vision"
                     className="cursor-pointer text-black   px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Vision
                   </Link>
   
                   <Link
-                    href="/Contract"
+                    to="/Contract"
                     className="cursor-pointer text-black px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Contract

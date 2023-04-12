@@ -1,8 +1,43 @@
-import React from "react";
+import React , { useContext }from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AuthContext } from '../../context/AuthProvider';
+import { useForm } from 'react-hook-form';
+import { toast } from "react-hot-toast";
 const Signup = () => {
+  const { createUsersEmail, updateUser, googleRegister } =
+    useContext(AuthContext);
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  // const navigate = useNavigate();
+  // const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = data => {
+    console.log(data);
+    createUsersEmail(data.email, data.password).then(res => 
+      {
+        const user = res.user
+        console.log(user);
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo).then((res) => {
+          const user = res.user;
+          console.log(user);
+        })
+      }).catch((error) => {
+        const errorMessage = error.message;
+        toast.error(errorMessage)
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    googleRegister().then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
+  };
   return (
-    <div className="signup-container">
+    <div className="signup-container text-black mt-4">
       <div className="grid grid-cols-2 gap-5 ">
         <div className="border p-10">
           <h1 className="text-5xl text-[green] m-5 ">Sign Up</h1>
@@ -11,45 +46,42 @@ const Signup = () => {
             <p>Sign up with</p>
           </div>
           <div className="grid grid-cols-2  mx-10">
-            <div className="flex justify-around items-center border p-2 rounded mx-5">
+            <button onClick={handleGoogleSignUp} className="flex cursor-pointer justify-around items-center border p-2 rounded mx-5">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjzC2JyZDZ_RaWf0qp11K0lcvB6b6kYNMoqtZAQ9hiPZ4cTIOB"
                 alt=""
                 width="36px"
               ></img>
-              <p className="mx-1">Continue with Google</p>
-            </div>
+              <p className="mx-1  font-semibold">Continue with Google</p>
+            </button>
             <div className="flex justify-around items-center border p-2 rounded">
               <img
                 src="https://www.citypng.com/public/uploads/preview/-11595349592mdhzsfgakx.png"
                 alt=""
                 width="36px"
               ></img>
-              <p className="mx-1 ">Continue with Facebook</p>
+              <p className="mx-1  font-semibold">Continue with Facebook</p>
             </div>
           </div>
           <p className="flex justify-center text-3xl font-bold my-10">or</p>
           <div className="mx-10">
-            <form>
-            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-<select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>Choose a country</option>
-  <option value="US">United States</option>
-  <option value="CA">Canada</option>
-  <option value="FR">France</option>
-  <option value="DE">Germany</option>
-</select>
+            <form onSubmit={handleSubmit(onSubmit)}>
+            <label for="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
+            <select {...register("organization")} id="organization" class=" border  text-black text-sm rounded-lg  block w-full p-2.5  ">
+              <option >Ekhlaf Foundation</option>
+            </select>
               <div className="grid grid-cols-2 gap-2">
                 <div class="mb-6">
                   <label
-                    for="email"
+                    for="name"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Name
                   </label>
                   <input
-                    type="email"
-                    id="email"
+                  {...register("name")}
+                    type="text"
+                    id="name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Full Name"
                     required
@@ -58,14 +90,15 @@ const Signup = () => {
                 <div class="mb-6">
                   <label
                     for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Email
                   </label>
                   <input
+                  {...register("email")}
                     type="email"
                     id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Email address"
                     required
                   />
@@ -74,15 +107,16 @@ const Signup = () => {
               <div class="mb-6">
                 <label
                   for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
                 </label>
                 <input
+                {...register("password")}
                   placeholder="Enter Password"
                   type="password"
                   id="password"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
@@ -92,7 +126,7 @@ const Signup = () => {
                     id="remember"
                     type="checkbox"
                     value=""
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
                     required
                   />
                 </div>
@@ -104,16 +138,11 @@ const Signup = () => {
                   policy
                 </label>
               </div>
-              <img src="https://i.ibb.co/kMsmfmk/Group-15.png" alt="" />
-
-              {/* <button
-                type="submit"
-                class="my-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Submit
-              </button> */}
+              <button className='bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none' type="submit">
+                <AiOutlineArrowRight/>
+              </button>
             </form>
-            <p>
+            <p className="text-black mt-3">
               Already have an account ?{" "}
               <Link to="/login" className="text-[#2A9D8F] underline">
                 {" "}
