@@ -23,7 +23,7 @@ const Navbar = () => {
           style={styleObject.pColor}
           className="md:block z-20 top-0 backdrop-filter backdrop-blur hidden  shadow-sm w-full "
         >
-          <div className="w-full mx-3">
+          <div className="w-full">
             <div className="flex items-center h-20 w-full">
               <div className="flex items-center  md:mx-20  justify-between w-full">
                 <div className="flex justify-center items-center flex-shrink-0 ">
@@ -70,14 +70,14 @@ const Navbar = () => {
         <nav className="md:hidden shadow-sm w-full z-10">
           <div className="w-full">
             <div className="flex items-center h-20 w-full">
-              <div className="flex bg-opacity-60 z-20 top-0 backdrop-filter backdrop-blur  shadow-sm w-full fixed items-center md:mx-20 justify-between">
+              <div style={styleObject.pColor} className="flex bg-opacity-60 z-20 top-0 backdrop-filter backdrop-blur  shadow-sm w-full fixed items-center md:mx-20 justify-between">
                 <div className="flex justify-center items-center flex-shrink-0">
                   <div className="mr-10 flex md:hidden ">
                     <button
                       onClick={() => setIsOpen(!isOpen)}
                       type="button"
-                      style={styleObject.button}
-                      className=" inline-flex items-center justify-center p-2 rounded-md text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-800 focus:ring-white"
+                      
+                      className=" inline-flex items-center justify-center p-2 rounded-md text-black  focus:outline-none  "
                       aria-controls="mobile-menu"
                       aria-expanded="false"
                     >
@@ -149,7 +149,7 @@ const Navbar = () => {
             leaveTo="opacity-0 scale-95"
           >
             {(ref) => (
-              <div className="md:hidden flex justify-center items-center" id="mobile-menu">
+              <div style={styleObject.pColor} className="md:hidden flex justify-center items-center" id="mobile-menu">
                 <div ref={ref} className=" px-2 pt-2 pb-3 space-y-1 sm:px-3">
                   <Link
                     href="/"
@@ -188,7 +188,7 @@ const Navbar = () => {
               </div>
             )}
           </Transition>
-          <div className="flex mt-10 justify-start">
+          <div style={styleObject.pColor} className="flex mt-3 justify-start">
             <div className="text-black mx-10">
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">

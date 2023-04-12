@@ -6,6 +6,7 @@ import LogIn from '../../Pages/LogIn/LogIn'
 import FoundationForm from './../../Pages/FoundationForm/FoundationForm'
 import Signup from '../../Pages/Signup/Signup'
 import MemberDashboard from '../../Pages/Dashboard/Member/MemberDashboard'
+import AllNews from "../../Pages/Home/Blog/AllNews"
 import Settings from '../../Pages/Dashboard/Settings/Settings'
 import DashboardLayout from '../../Layout/DashboardLayout'
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/logout',
         element: <LogOut></LogOut>,
+      },
+      {
+        path:'/allnews',
+        element:<AllNews></AllNews>
       },
     ],
   },
