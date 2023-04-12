@@ -31,17 +31,18 @@ const Navbar = () => {
     },
   };
   return (
-    <div>
+    <div style={ { zIndex: '999' } } className=' sticky top-0 backdrop-filter backdrop-blur'>
       {/* firstblock */ }
       <nav
         style={ styleObject.pColor }
-        className="md:block z-20 top-0 backdrop-filter backdrop-blur hidden  shadow-sm w-full "
+        className="md:block z-50 hidden  shadow-sm w-full "
       >
         <div className="w-full">
           <div className="flex items-center h-20 w-full">
             <div className="flex items-center  md:mx-20  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
-                <Link t0= '/'>
+                
+                <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <img
                       className="md:w-12 w-14"
@@ -209,7 +210,7 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
-                 to='/'
+                  to='/'
                   className="cursor-pointer text-black font-semibold px-3 py-2 text-md "
                 >
                   Home

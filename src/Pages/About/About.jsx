@@ -38,6 +38,9 @@ const About = () => {
 {/* <------------------------------> */}
 {/* m-5 mb-10 */}
 <div className=" text-center bg-white sm:p-8 ">
+{/* <---------------------------------> */}
+
+<div className=" text-center bg-white sm:p-8 m-5">
 
     <div className="justify-between p-5 space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
           <div className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center p-5  ">
@@ -132,6 +135,7 @@ const About = () => {
         </div>
       </div>
     </div>
+  </div>
   </div>
 );
 };
