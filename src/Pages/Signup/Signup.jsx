@@ -1,5 +1,5 @@
 import React , { useContext }from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthProvider';
 import { useForm } from 'react-hook-form';
@@ -8,7 +8,7 @@ const Signup = () => {
   const { createUsersEmail, updateUser, googleRegister } =
     useContext(AuthContext);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const from = location.state?.from?.pathname || "/";
 
   const onSubmit = data => {
@@ -22,6 +22,10 @@ const Signup = () => {
         };
         updateUser(userInfo).then((res) => {
           const user = res.user;
+          if(user.uid){
+            navigate("/");
+            toast.success("You Have Successfully Sign Up")
+          }
           console.log(user);
         })
       }).catch((error) => {

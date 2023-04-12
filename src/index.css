@@ -62,31 +62,28 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
   /* Rectangle 571 */
-
-
-
 background: radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%);
-
 }
 
 
 
 button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
-
+/* 
   a:hover {
     color: #2A9D8F;
   }
 
   button {
     background-color: #f9f9f9;
-  }
+  } */
 }

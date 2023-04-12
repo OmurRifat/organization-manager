@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@headlessui/react": "^1.7.13",
     "@tanstack/react-query": "^4.29.1",
     "firebase": "^9.19.1",

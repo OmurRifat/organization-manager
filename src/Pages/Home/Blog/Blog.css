@@ -1,0 +1,10 @@
+.explore-btn{
+   color: #2A9D8F;
+   transition: all 0.3s linear;
+}
+.explore-btn:hover{
+   background-color: #2A9D8F;
+   color: white;
+   border: none;
+}
+

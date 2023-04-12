@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthProvider';
@@ -9,13 +9,17 @@ import { toast } from 'react-hot-toast';
 const LogIn = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { loginUser } = useContext(AuthContext);
-// const navigate = useNavigate();
+const navigate = useNavigate();
 // const from = location?.state?.from?.pathname || "/";
   const onSubmit = data => {
     loginUser(data.email,data.password).then(res => {
       const user = res.user;
         // navigate(from, { replace: true });
       console.log(user);
+      if(user.uid){
+        navigate("/");
+        toast.success("You Have Successfully Sign Up")
+      }
     }).catch((error) => {
       const errorMessage = error.message;
       toast.error(errorMessage)
