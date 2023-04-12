@@ -38,7 +38,7 @@ const OurPartners = () => {
             <br></br>
         </div>
 
-        {/* ---------------Logo Section--------------- */}
+        {/* ---------------Logo Section desktop--------------- */}
     <div className="hidden lg:block font-medium text-gray-800">
         <div className='grid grid-cols-1 lg:grid-cols-2 '>
             <img className='partnerlogo1 pl-12' src="https://i.ibb.co/b21gsKt/6.png" alt="" />
@@ -49,6 +49,7 @@ const OurPartners = () => {
         
     </div>
     <br></br>
+    {/* ---------------Logo Section Mobile--------------- */}
     <div className="lg:hidden font-medium text-gray-200">
         <div className='grid grid-cols-1 lg:grid-cols-2 '>
             <img className='partnerlogo ' src="https://i.ibb.co/b21gsKt/6.png" alt="" />
