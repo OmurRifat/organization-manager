@@ -49,16 +49,7 @@ const router = createBrowserRouter([
             element: <Settings></Settings>,
           },
     ],
-    // children: [
-    //   {
-    //     path: '/dashboard',
-    //     element: <MemberDashboard></MemberDashboard>,
-    //   },
-    //   {
-    //     path: '/settings',
-    //     element: <Settings></Settings>,
-    //   },
-    // ],
+   
   },
 ])
 
