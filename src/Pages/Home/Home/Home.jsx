@@ -6,17 +6,19 @@ import Blog from '../Blog/Blog';
 import Newsletter from '../Newsletter/Newsletter';
 import OurPartners from '../OurPartners/OurPartners';
 import FrequentQuestion from '../FrequentQuestion/FrequentQuestion';
+import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 
 const Home = () => {
     return (
         <div className='mx-2'>
             <HeroSection />
             <About />
-            <Testimonial />
-            <Blog />
-            <OurPartners />
-            <FrequentQuestion />
-            <Newsletter />
+            <Testimonial/>
+            <Blog/>
+            <OurPartners/>
+            <UpcommingEvents/>
+            <FrequentQuestion/>
+            <Newsletter/>
         </div>
     );
 };
