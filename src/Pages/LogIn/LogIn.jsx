@@ -1,46 +1,61 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AuthContext } from '../../context/AuthProvider';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+
 const LogIn = () => {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { loginUser } = useContext(AuthContext);
+const navigate = useNavigate();
+// const from = location?.state?.from?.pathname || "/";
+  const onSubmit = data => {
+    loginUser(data.email,data.password).then(res => {
+      const user = res.user;
+        // navigate(from, { replace: true });
+      console.log(user);
+      if(user.uid){
+        navigate("/");
+        toast.success("You Have Successfully Sign Up")
+      }
+    }).catch((error) => {
+      const errorMessage = error.message;
+      toast.error(errorMessage)
+    });
+  };
   return (
-    <div className="signup-container mx-5">
+    <div className="signup-container text-black mt-4">
       <div className="grid grid-cols-2 gap-5 ">
         <div className="border p-10">
           <h1 className="text-5xl text-[green] ">Sign In</h1>
           <div className="flex  items-center m-5 mt-10">
             <div className="bg-[black] h-1 w-24 me-5"></div>
-            <p>Sign up with</p>
+            <p className='font-bold'>Sign up with</p>
           </div>
-          <div className="grid grid-cols-2  mx-10">
-            <div className="flex justify-around items-center border p-2 rounded mx-5">
+          <div className="grid grid-cols-2  md:mx-10">
+            <div className="flex cursor-pointer justify-around items-center border p-2 rounded mx-5">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjzC2JyZDZ_RaWf0qp11K0lcvB6b6kYNMoqtZAQ9hiPZ4cTIOB"
                 alt=""
                 width="36px"
               ></img>
-              <p className="mx-1">Continue with Google</p>
+              <p className=" text-black font-semibold">Continue with Google</p>
             </div>
-            <div className="flex justify-around items-center border p-2 rounded">
+            <div className="flex cursor-pointer justify-around items-center border p-2 rounded">
               <img
                 src="https://www.citypng.com/public/uploads/preview/-11595349592mdhzsfgakx.png"
                 alt=""
                 width="36px"
               ></img>
-              <p className="mx-1 ">Continue with Facebook</p>
+              <p className=" text-black font-semibold">Continue with Facebook</p>
             </div>
           </div>
           <p className="flex justify-center text-3xl font-bold my-10">or</p>
           <div className="mx-10">
-            <form>
-            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-<select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>Choose a country</option>
-  <option value="US">United States</option>
-  <option value="CA">Canada</option>
-  <option value="FR">France</option>
-  <option value="DE">Germany</option>
-</select>
-              <div className="grid grid-cols-1 gap-2">
+            <form onSubmit={handleSubmit(onSubmit)}>
+               <div className="grid grid-cols-1 gap-2">
                 <div class="mb-6">
                   <label
                     for="email"
@@ -51,6 +66,7 @@ const LogIn = () => {
                   <input
                     type="email"
                     id="email"
+                    {...register("email")}
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Email address"
                     required
@@ -66,6 +82,7 @@ const LogIn = () => {
                 </label>
                 <input
                   placeholder="Enter Password"
+                  {...register("password")}
                   type="password"
                   id="password"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -90,24 +107,18 @@ const LogIn = () => {
                   policy
                 </label>
               </div>
-              <img src="https://i.ibb.co/kMsmfmk/Group-15.png" alt="" />
-              {/* <button
-                  type="submit"
-                  class="my-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  
-                </button> */}
+              <button className='bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none' type="submit">
+                <AiOutlineArrowRight/>
+              </button>
+              
             </form>
-            <p>
+            <p className='text-black mt-3'>
               Do not have any account ?{' '}
               <Link to="/signup" className="text-[#2A9D8F] underline">
                 {' '}
                 Sign Up
               </Link>
-              <Link to="/foundation-form" className="text-[#2A9D8F] underline">
-                {' '}
-                Foundation
-              </Link>
+              
             </p>
           </div>
         </div>
