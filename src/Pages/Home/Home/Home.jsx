@@ -13,20 +13,12 @@ const Home = () => {
         <div className='mx-2'>
             <HeroSection />
             <About />
-<<<<<<< HEAD
             <Testimonial/>
             <Blog/>
             <OurPartners/>
             <UpcommingEvents/>
             <FrequentQuestion/>
             <Newsletter/>
-=======
-            <Testimonial />
-            <Blog />
-            <OurPartners />
-            <FrequentQuestion />
-            <Newsletter />
->>>>>>> f5b03420d6054f6c91de84e69f1a08723dbf89cf
         </div>
     );
 };
