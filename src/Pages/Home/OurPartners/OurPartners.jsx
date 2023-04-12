@@ -17,12 +17,15 @@ const OurPartners = () => {
         video: {
           width: '320px',
         },
+        bgcolor: {
+            background: '#EAF5F4',
+        },
       };
 
     return (
-        <div className='p-8'> 
-            <div className="p-5 mx-auto items-center justify-center grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-5 sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center">
+        <div style={styleObject.bgcolor} className=' bg pt-10 mb-10'> <br />
+            <div className=" mx-auto items-center justify-center grid grid-cols-1 lg:grid-cols-2">
+            <div style={styleObject.bgcolor} className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center">
             <div className="text-left p-8">
             <p style={styleObject.textcolor} className="text-gray-900 font-semibold pb-2 txt">Our Partners</p>
                     <h1  className="text-4xl font-semibold text-gray-700 txt">We Work With The  <br></br> Best Partners </h1>
@@ -55,8 +58,8 @@ const OurPartners = () => {
         </div>
         
     </div>
-
-</div> <br />
+    </div>
+    <br />
         </div>
     );
 };

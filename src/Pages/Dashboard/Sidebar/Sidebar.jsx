@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -11,7 +12,8 @@ const Sidebar = () => {
         <div class="h-full px-3 py-8 overflow-y-auto dark:bg-gray-800">
           <ul class="space-y-2 font-medium">
             <li>
-              <button
+            <Link to="/dashboard">
+            <button
                 type="button"
                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                 aria-controls="dropdown-example"
@@ -46,6 +48,7 @@ const Sidebar = () => {
                   ></path>
                 </svg>
               </button>
+            </Link>
               <ul id="dropdown-example" class="hidden py-2 space-y-2">
                 <li>
                   <a
@@ -74,8 +77,8 @@ const Sidebar = () => {
               </ul>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/dashboard/settings"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <img
@@ -84,7 +87,7 @@ const Sidebar = () => {
                   alt=""
                 />
                 <span class="flex-1 ml-3 whitespace-nowrap">Settings</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

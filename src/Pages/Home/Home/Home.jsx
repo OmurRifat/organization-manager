@@ -7,6 +7,7 @@ import OurPartners from '../OurPartners/OurPartners';
 import FrequentQuestion from '../FrequentQuestion/FrequentQuestion';
 import Vision from '../Vision/Vision';
 import Contact from '../Contact/Contact';
+import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 
 const Home = () => {
     return (
@@ -16,10 +17,10 @@ const Home = () => {
             <Testimonial/>
             <Blog/>
             <OurPartners/>
+            <UpcommingEvents/>
             <FrequentQuestion/>
             <Vision></Vision>
             <Contact/>
-            
         </div>
     );
 };
