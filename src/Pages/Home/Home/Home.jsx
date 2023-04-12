@@ -19,6 +19,7 @@ const Home = () => {
             <FrequentQuestion/>
             <Vision></Vision>
             <Contact/>
+            
         </div>
     );
 };
