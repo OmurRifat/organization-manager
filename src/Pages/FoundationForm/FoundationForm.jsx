@@ -7,7 +7,7 @@ const FoundationForm = () => {
       <h1 className="text-5xl text-[green] text-center">
         Organizational Manager
       </h1>
-      
+
       <div className="grid grid-cols-2 gap-5 ">
         <div className="flex items-center justify-right">
           <img
@@ -15,10 +15,10 @@ const FoundationForm = () => {
             alt="Family-logo-template-removebg-preview"
           />
         </div>
-        <div className="border p-10">
-          <h1 className="text-2xl  ">Register For A Foundation</h1>
-          <p>MAKE YOUR DREAM COMES TRUE!</p>
-          <div className="mx-10">
+        <div className="-ms-16  p-10">
+          <h1 className="text-2xl my-2">Register For A Foundation</h1>
+          <p className="">MAKE YOUR DREAM COMES TRUE!</p>
+          <div className=" me-10">
             <form>
               <div className="grid grid-cols-1 gap-2">
                 <div class="mb-6">
@@ -43,13 +43,13 @@ const FoundationForm = () => {
                     for="email"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Name
+                    Founder Name
                   </label>
                   <input
                     type="email"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Full Name"
+                    placeholder="Founder Name"
                     required
                   />
                 </div>
@@ -58,7 +58,7 @@ const FoundationForm = () => {
                     for="email"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Email
+                   Organization Email
                   </label>
                   <input
                     type="email"
@@ -75,10 +75,10 @@ const FoundationForm = () => {
                     for="email"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Name
+                    Founding Time
                   </label>
                   <input
-                    type="email"
+                    type="date"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Full Name"
@@ -90,13 +90,13 @@ const FoundationForm = () => {
                     for="email"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Email
+                    Location
                   </label>
                   <input
                     type="email"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Email address"
+                    placeholder="Select your location"
                     required
                   />
                 </div>
@@ -128,12 +128,13 @@ const FoundationForm = () => {
                 </button> */}
             </form>
             <p>
-              Do not have any account ?{' '}
+              Already Registered ?{' '}
               <Link to="/signup" className="text-[#2A9D8F] underline">
                 {' '}
-                Sign Up
+                Back to Home
               </Link>
             </p>
+            <p className="mt-24">By Register you agree with terms and conditions</p>
           </div>
         </div>
       </div>
