@@ -73,7 +73,7 @@ const Review = () => {
 
       <div
         style={styleObject.gradient}
-        className="pt-16 pb-16 px-6 text-center"
+        className="pt-16 pb-16 pl-6 text-center"
       >
         <Carousel
           responsive={responsive}

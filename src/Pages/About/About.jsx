@@ -1,5 +1,6 @@
 import React from 'react';
 import './About.css'
+import { Link } from 'react-router-dom';
 
 const About = () => {
 
@@ -21,7 +22,7 @@ const About = () => {
   return (
     
 
-<div> 
+<div id='organization'> 
 
   {/* <---------------About Part-------------> */}
 <div className="mx-auto flex justify-center items-center bg-white p-5 sm:flex">
@@ -58,7 +59,7 @@ const About = () => {
                     <br></br>
                     <p className=" text-base font-normal text-gray-500 dark:text-gray-400">GROW - Is a non-profit organization whose goal is to <br></br> protect, maintain, care for, and preserve the trees on <br></br> the earth that we stand on now</p>
                     <br></br>
-                    <button style={styleObject.button} type="button" className="text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">   Start A Free Trail</button>
+                    <Link to='/foundation-form' style={styleObject.button} type="button" className="text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">   Start A Free Trail</Link>
 
             </div>
             <br></br>
@@ -71,7 +72,7 @@ const About = () => {
     {/* <------------------------------> */}
     <div className="bg-white sm:p-8 manPowerTxt">
       <div className="justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-        <div class="sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  manPowerTxt">
+        <div className="sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  manPowerTxt">
           <div className="text-left pr-5">
             <p
               style={styleObject.textcolor}
@@ -79,7 +80,7 @@ const About = () => {
             >
               Managing Man-Power
             </p>
-            <h1 class="text-4xl font-semibold text-gray-700 ">
+            <h1 className="text-4xl font-semibold text-gray-700 ">
             We Will Manage Your <br /> {' '} Man-Power Carefully
             </h1>
             <br></br>
@@ -95,21 +96,22 @@ const About = () => {
               <br></br>
             </div>
             <br></br>
-            <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+            <p className="text-base font-normal text-gray-500 dark:text-gray-400">
             15.3 billion trees are cut down every year in the {" "}
               <br></br>world and 14.7 hectares of forest land is lost in {" "}
               <br></br>Indonesia. This causes the earth to become  {" "}
               <br></br> unstable and we invite you to join us and achieve a common goal{" "}
             </p>
             <br></br>
-            <button
+            <Link
+            to='/foundation-form'
               style={styleObject.button}
               type="button"
-              class="text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
+              className="text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
             >
               Manage Your Power
             
-            </button>
+            </Link>
           </div>
         </div>
         <div className="sm:w-auto bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center p-5">
@@ -122,7 +124,7 @@ const About = () => {
 
             <img
               // style={styleObject.size}
-              class="bottom-0 right-0 relative manPowerImg"
+              className="bottom-0 right-0 relative manPowerImg"
               src="https://i.ibb.co/Ld5NWHF/Manpower-shortage-Pyjama-HR-removebg-preview.png"
               alt=""
             />

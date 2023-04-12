@@ -1,5 +1,6 @@
 import React from 'react';
 import './OurPartners.css'
+import { Link } from 'react-router-dom';
 
 const OurPartners = () => {
 
@@ -28,7 +29,7 @@ const OurPartners = () => {
                     <br></br>
                     <p className=" text-base font-normal text-gray-500 dark:text-gray-400 txt">GROW - Is a non-profit organization whose goal is to <br></br> protect, maintain, care for, and preserve the trees on <br></br> the earth that we stand on now</p>
                     <br></br>
-                    <button style={styleObject.button} type="button" className="text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">   Start A Free Trail</button>
+                    <Link to='/foundation-form' style={styleObject.button} type="button" className="text-white bg-gray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">   Start A Free Trail</Link>
 
             </div>
             <br></br>
