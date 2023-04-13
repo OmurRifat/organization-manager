@@ -11,6 +11,8 @@ import { FaFacebook } from "react-icons/fa"
 
 const Signup = () => {
   const [foundation,setFoundation] = useState([]);
+  const [error, setError]= useState(null)
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({mode: "onTouched"});
   useEffect (() => {
     fetch('http://localhost:5000/organizations')
     .then(res => res.json())
@@ -23,7 +25,7 @@ const Signup = () => {
   }
   const { createUsersEmail, updateUser, googleRegister } =
     useContext(AuthContext);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({mode: "onTouched"});
+  
   const navigate = useNavigate();
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = data => {    
@@ -53,20 +55,18 @@ const Signup = () => {
           const user = res.user;
           console.log(user);
         })
-      }).catch((error) => {
+      })
+      }) .catch((error) => {
         const errorMessage = error.message;
-        
-        toast.error(errorMessage)
+        toast.error(`${errorMessage}`)
       });
-      }) 
   };
-
-  const handleGoogleSignUp = () => {
-    googleRegister().then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
-  };
+  // const handleGoogleSignUp = () => {
+  //   googleRegister().then((result) => {
+  //     const user = result.user;
+  //     console.log(user);
+  //   });
+  // };
 
   const [photoName, setPhotoName] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
@@ -79,8 +79,6 @@ const Signup = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
-
-
   return (
     <div style={styles.bg} className="signup-container text-black mt-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
@@ -90,7 +88,7 @@ const Signup = () => {
             <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
-            <button onClick={handleGoogleSignUp} className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
+            <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
             <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
               <span className="py-3 md:py-1  font-semibold">Continue with Google</span>
             </button>
@@ -102,7 +100,7 @@ const Signup = () => {
           <p className="flex justify-center text-3xl font-bold mt-10 mb-7">or</p>
           <div className="px-2 md:px-0">
             <form onSubmit={handleSubmit(onSubmit)}>
-            <label for="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
+            <label htmlFor="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
             <select {...register("organization")} id="organization" class=" border  text-black text-sm rounded-lg mb-3  block w-full p-2.5  ">
               {foundation.map(f => <option key={f.id}>{f.name}</option>)}
             </select>
@@ -115,12 +113,12 @@ const Signup = () => {
            <div className="" style={{ display: !photoPreview ? "block" : "none" }}>
              <img
                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
-               className="w-16 h-16 m-auto rounded-full shadow"
+               className="md:w-16 w-16 h-10 md:h-16 m-auto rounded-full shadow"
              />
            </div>
            <div className="" style={{ display: photoPreview ? "block" : "none" }}>
              <span
-               className="block w-16 h-16 rounded-full m-auto shadow"
+               className="block md:w-16 w-16 h-10 md:h-16 rounded-full m-auto shadow"
                style={{
                  backgroundSize: "cover",
                  backgroundRepeat: "no-repeat",
@@ -145,7 +143,7 @@ const Signup = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div class="mb-4 md:mb-6">
                   <label
-                    for="name"
+                    htmlFor="name"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Name
@@ -166,7 +164,7 @@ const Signup = () => {
                    
                 <div class="mb-6 md:mb-3">
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Email
@@ -174,7 +172,7 @@ const Signup = () => {
                   <input
                    {...register("email", {
                     required: "Please Enter Your Email!",
-                   
+
                   })}
                     type="email"
                     id="email"
@@ -182,13 +180,12 @@ const Signup = () => {
                     placeholder="Email address"
                     required
                   />
-                      <p className=' error-message text-red-600'>{errors.email?.message}</p>
-
+                  <p className=' error-message text-red-600'>{error}</p>
                 </div>
               </div>
               <div class="mb-6">
                 <label
-                  for="password"
+                  htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
@@ -201,7 +198,7 @@ const Signup = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
-           <p className='alerts text-red-600'>{errors.password?.message}</p>
+              <p className='alerts text-red-600'>{errors.password?.message}</p>
               </div>
               <div class="flex items-start mb-6">
                 <div class="flex items-center h-5">
@@ -214,7 +211,7 @@ const Signup = () => {
                   />
                 </div>
                 <label
-                  for="remember"
+                  htmlFor="remember"
                   class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   I have read and agree with terms of service and our privacy
