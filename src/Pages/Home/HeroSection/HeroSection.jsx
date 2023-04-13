@@ -38,9 +38,9 @@ const HeroSection = () => {
             </Link>
             <button
              
-              className="flex border font-medium border-[#2A9D8F] mt-2 px-4 py-[8px] text-[#515151] rounded p-1 items-center justify-center"
+              className="flex border font-medium border-[#2A9D8F] mt-2 md:px-4 py-[8px] text-[#515151] rounded p-1 items-center justify-center"
             >
-              <BsFillPlayFill className="mr-2 text-xl text-[#2A9D8F]"></BsFillPlayFill> Explore Our Vision
+              <BsFillPlayFill className="md:mr-2 text-xl text-[#2A9D8F]"></BsFillPlayFill> Explore Our Vision
             </button>
           </div>
         </div>
