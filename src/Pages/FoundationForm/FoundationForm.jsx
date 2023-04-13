@@ -1,24 +1,36 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import foundation from '../../assets/foundationform.png'
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const FoundationForm = () => {
+  const styles = {
+    colr:{
+      color: "#2A9D8F",
+    },paraColr:{
+      color: "#8D8D8D"
+    },bg:{
+      background: "radial-gradient(50% 127.87% at 50% 50%, #65C4B8 0%, rgba(217, 217, 217, 0) 100%)"
+    }
+  }
   return (
-    <div className="signup-container mx-5">
-      <h1 className="text-5xl text-[green] text-center">
+    <div style={styles.bg} className="signup-container px-2 md:px-6">
+      <h1 className=" text-3xl  md:text-5xl text-black pt-6 text-center">
         Organizational Manager
       </h1>
 
-      <div className="grid grid-cols-2 gap-5 ">
-        <div className="flex items-center justify-right">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
+        <div className='max-w-3xl'>
           <img
-            src="https://i.ibb.co/r7fbRrq/willowy-man-delivers-a-large-box-with-an-order-to-the-house-1-result-result-1.png"
-            alt="Family-logo-template-removebg-preview"
+           
+            src={foundation}
+            alt="foundation form image"
           />
         </div>
-        <div className="-ms-16  p-10">
-          <h1 className="text-2xl my-2">Register For A Foundation</h1>
-          <p className="">MAKE YOUR DREAM COMES TRUE!</p>
-          <div className=" me-10">
+        <div className="px-10 md:px-0 md:p-4 pt-10">
+          <h1 className=" text-2xl md:text-3xl my-2 mt-10 text-black font-semibold">Register For A Foundation</h1>
+          <p style={styles.paraColr} className="mb-8">MAKE YOUR DREAM COMES TRUE!</p>
+          <div className="">
             <form>
               <div className="grid grid-cols-1 gap-2">
                 <div class="mb-6">
@@ -37,7 +49,7 @@ const FoundationForm = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div class="mb-6">
                   <label
                     for="email"
@@ -69,7 +81,7 @@ const FoundationForm = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div class="mb-6">
                   <label
                     for="email"
@@ -119,22 +131,22 @@ const FoundationForm = () => {
                   policy
                 </label>
               </div>
-              <img src="https://i.ibb.co/kMsmfmk/Group-15.png" alt="" />
-              {/* <button
+             
+              <button style={{backgroundColor : '#2A9D8F'}}
                   type="submit"
-                  class="my-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  class="my-5 w-16 h-16 text-white text-xl drop-shadow-xl   font-medium rounded-full px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  
-                </button> */}
+                  <AiOutlineArrowRight className='text-center mx-auto'></AiOutlineArrowRight>
+                </button>
             </form>
-            <p>
+            <p className='text-black'>
               Already Registered ?{' '}
-              <Link to="/signup" className="text-[#2A9D8F] underline">
-                {' '}
+              <Link to="/" className="text-[#2A9D8F] underline">
+                
                 Back to Home
               </Link>
             </p>
-            <p className="mt-24">By Register you agree with terms and conditions</p>
+            <p className="mt-24 text-[#8D8D8D] mb-8">By Register you agree with <span style={styles.colr}>terms and conditions</span> and <span style={styles.colr}>privacy policy</span></p>
           </div>
         </div>
       </div>

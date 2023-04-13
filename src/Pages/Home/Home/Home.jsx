@@ -3,22 +3,24 @@ import HeroSection from '../HeroSection/HeroSection';
 import About from './../../About/About';
 import Testimonial from '../Testimonial/Testimonial'
 import Blog from '../Blog/Blog';
-import Newsletter from '../Newsletter/Newsletter';
 import OurPartners from '../OurPartners/OurPartners';
 import FrequentQuestion from '../FrequentQuestion/FrequentQuestion';
-import Footer from '../../Shared/Footer/Footer';
+import Vision from '../Vision/Vision';
+import Contact from '../Contact/Contact';
+import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 
 const Home = () => {
     return (
-        <div className='mx-2'>
+        <div className='mx-2 mt-4'>
             <HeroSection />
             <About />
-            <Testimonial/>
-            <Blog/>
-            <OurPartners/>
-            <FrequentQuestion/>
-            <Newsletter/>
-            <Footer/>
+            <Testimonial />
+            <Blog />
+            <OurPartners />
+            <UpcommingEvents />
+            <FrequentQuestion />
+            <Vision></Vision>
+            <Contact />
         </div>
     );
 };

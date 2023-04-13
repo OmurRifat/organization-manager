@@ -3,7 +3,21 @@ import { Transition } from "@headlessui/react";
 import { BiDonateHeart } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { HashLink} from 'react-router-hash-link';
+
 const Navbar = () => {
+
+
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -100; 
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+} 
+  
+
+
+
+
   const [isOpen, setIsOpen] = useState(false);
   const styleObject = {
     button: {
@@ -17,17 +31,18 @@ const Navbar = () => {
     },
   };
   return (
-    <div>
+    <div style={ { zIndex: '999' } } className=' sticky top-0 backdrop-filter backdrop-blur'>
       {/* firstblock */ }
       <nav
         style={ styleObject.pColor }
-        className="md:block z-20 top-0 backdrop-filter backdrop-blur hidden  shadow-sm w-full "
+        className="md:block z-50 hidden  shadow-sm w-full "
       >
         <div className="w-full">
           <div className="flex items-center h-20 w-full">
             <div className="flex items-center  md:mx-20  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
-                <Link href="/">
+                
+                <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <img
                       className="md:w-12 w-14"
@@ -55,10 +70,10 @@ const Navbar = () => {
                 <div>
                   <Link
                     style={ styleObject.button }
-                    href="/"
-                    className="cursor-pointer flex items-center text-white px-3 py-2 rounded-md text-sm  font-medium "
+                    to='/foundation-form'
+                    className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm  font-medium "
                   >
-                    <BiDonateHeart /> Donate
+                    <BiDonateHeart className='mr-1' /> Donate
                   </Link>
                 </div>
               </div>
@@ -117,14 +132,14 @@ const Navbar = () => {
                     ) }
                   </button>
                 </div>
-                <Link href="/">
+                <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <p className="text-black">Organization Manager</p>
                   </h1>
                 </Link>
               </div>
               <div>
-                <Link href="/" className="cursor-pointer flex items-center ">
+                <Link to='/' className="cursor-pointer flex items-center ">
                   <img
                     className="md:w-12 w-14"
                     src="https://i.ibb.co/Bw1TVQS/project-logo.png"
@@ -152,34 +167,36 @@ const Navbar = () => {
             <div style={ styleObject.pColor } className="md:hidden flex justify-center items-center" id="mobile-menu">
               <div ref={ ref } className=" px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <Link
-                  href="/"
+                  to='/'
                   className="cursor-pointer text-black  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Home
                 </Link>
-                <Link
-                  href="/Organization"
+                <HashLink smooth
+                  to="/#organization"  scroll={el => scrollWithOffset(el)}
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Organization
-                </Link>
+                </HashLink>
 
-                <Link
-                  href="/Vision"
+                <HashLink smooth
+                  to ="/#vision" scroll={el => scrollWithOffset(el)}
+                  
                   className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Vision
-                </Link>
-                <Link
-                  href="/Contract"
+                </HashLink>
+                <HashLink smooth
+                 to='/#contact' scroll={el => scrollWithOffset(el)}
+                 
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Contract
-                </Link>
+                 Contact
+                </HashLink>
 
                 <Link
                   style={ styleObject.button }
-                  href="/"
+                  to='/foundation-form'
                   className="cursor-pointer flex items-center text-white text-center ml-4 w-24 px-3 py-2 rounded-md text-sm  font-medium hover:text-white hover:text-bold"
                 >
                   <BiDonateHeart /> Donate
@@ -193,30 +210,31 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
-                  href="/"
+                  to='/'
                   className="cursor-pointer text-black font-semibold px-3 py-2 text-md "
                 >
                   Home
                 </Link>
-                <Link
-                  href="/Organization"
+                <HashLink smooth
+                 to="/#organization" scroll={el => scrollWithOffset(el)}
                   className="cursor-pointer text-black  px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Organization
-                </Link>
-                <Link
-                  href="/Vision"
+                </HashLink>
+                <HashLink smooth
+                   to ="/#vision" scroll={el => scrollWithOffset(el)}
+                  
                   className="cursor-pointer text-black   px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Vision
-                </Link>
+                </HashLink>
 
-                <Link
-                  href="/Contract"
+                <HashLink smooth
+                  to='/#contact' scroll={el => scrollWithOffset(el)}
                   className="cursor-pointer text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Contract
-                </Link>
+                  Contact
+                </HashLink>
               </div>
             </div>
           </div>
@@ -224,6 +242,6 @@ const Navbar = () => {
       </nav>
     </div>
   );
-};
+}
 
 export default Navbar;
