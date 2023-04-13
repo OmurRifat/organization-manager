@@ -1,88 +1,85 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div class="bg-[#2A9D8F]   dark:bg-gray-900">
-      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0">
-            <a  href="https://flowbite.com/" class="flex items-center">
+    <div className="bg-[#2A9D8F]   dark:bg-gray-900">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div className="md:flex md:justify-between">
+          <div className="mb-6 md:mb-0">
+            <a  href="https://flowbite.com/" className="flex items-center">
             <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" alt="project-logo" width="100px" border="0"/>
-              <span class="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">
                 Organizational Manager
               </span>
             </a>
           </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                 Posts
               </h2>
-              <ul class="text-white dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                  <a  href="https://flowbite.com/" class="text-white hover:underline">
+              <ul className="text-white font-medium">
+                <li className="mb-4">
+                  <Link>
                   Brighter Tomorrow
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://tailwindcss.com/" class="hover:underline">
+                  <Link>
                     Tailwind CSS
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                 Programs
               </h2>
-              <ul class="text-white dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                  <a
-                    href="https://github.com/themesberg/flowbite"
-                    class="hover:underline "
+              <ul className="text-white dark:text-gray-400 font-medium">
+                <li className="mb-4">
+                  <Link
                   >
                     Github
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://discord.gg/4eeurUVvTy"
-                    class="hover:underline"
+                  <Link
                   >
                     Discord
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                 Address
               </h2>
-              <ul class="text-white dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">
+              <ul className="text-white dark:text-gray-400 font-medium">
+                <li className="mb-4">
+                  <Link>
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" class="hover:underline">
+                  <Link>
                     Terms &amp; Conditions
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
+        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <div className="sm:flex sm:items-center sm:justify-between">
          
-          <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a
               href="#"
-              class="text-white hover:text-white dark:hover:text-white"
+              className="text-white hover:text-white dark:hover:text-white"
             >
               <svg
-                class="w-5 h-5"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -93,14 +90,14 @@ const Footer = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">Facebook page</span>
+              <span className="sr-only">Facebook page</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-white dark:hover:text-white"
+              className="text-white hover:text-white dark:hover:text-white"
             >
               <svg
-                class="w-5 h-5"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -111,28 +108,28 @@ const Footer = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">Instagram page</span>
+              <span className="sr-only">Instagram page</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-white dark:hover:text-white"
+              className="text-white hover:text-white dark:hover:text-white"
             >
               <svg
-                class="w-5 h-5"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
-              <span class="sr-only">Twitter page</span>
+              <span className="sr-only">Twitter page</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-white dark:hover:text-white"
+              className="text-white hover:text-white dark:hover:text-white"
             >
               <svg
-                class="w-5 h-5"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -143,14 +140,14 @@ const Footer = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">GitHub account</span>
+              <span className="sr-only">GitHub account</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-white dark:hover:text-white"
+              className="text-white hover:text-white dark:hover:text-white"
             >
               <svg
-                class="w-5 h-5"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -161,14 +158,14 @@ const Footer = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">Dribbble account</span>
+              <span className="sr-only">Dribbble account</span>
             </a>
           </div>
-          <span class="text-sm text-white sm:text-center dark:text-gray-400">
+          <span className="text-sm text-white">
             © 2023{" "}
-            <a href="https://flowbite.com/" class="hover:underline">
-            Brighter Tomorrow™
-            </a>
+            <span>
+            Organization Manager™
+            </span>
             . All Rights Reserved.
           </span>
         </div>

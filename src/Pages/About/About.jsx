@@ -25,7 +25,7 @@ const About = () => {
 <div id='organization'> 
 
   {/* <---------------About Part-------------> */}
-<div className="mx-auto flex justify-center items-center bg-white p-5 sm:flex">
+<div className="mx-auto flex justify-center items-center pb-4 md:pb-0 bg-white  sm:flex ">
     <img className="h-36" src="https://i.ibb.co/QHjcc5v/Screenshot-2023-03-31-100804-removebg-preview.png" alt="" />
     <div className="font-medium text-gray-800">
         <div className="text-2xl">1000+</div>
@@ -35,6 +35,9 @@ const About = () => {
 
 </div>
 
+{/* <------------------------------> */}
+{/* m-5 mb-10 */}
+<div className=" text-center bg-white sm:p-8 ">
 {/* <---------------------------------> */}
 
 <div className=" text-center bg-white sm:p-8 m-5">
@@ -45,7 +48,7 @@ const About = () => {
 
             <div className='relative' >
             <img  className="pr-16 pb-5 absolute left-0 top-0 size1" src="https://i.ibb.co/hLpd8gk/Rectangle-564.png" alt="" />
-            <img className="pr-20 pb-5 absolute left-0 top-0 size2 pl-1 pb-5" src="https://i.ibb.co/pz1PX8s/Ellipse-1.png" alt="" />
+            <img className="pr-20 absolute left-0 top-0 size2 pl-1 pb-5" src="https://i.ibb.co/pz1PX8s/Ellipse-1.png" alt="" />
             </div>
 
             <img style={styleObject.size} className="" src="https://i.ibb.co/DMWcZ3y/1-5sp-W5-L8-CWMwm0-P7-Wr-TUXpg-removebg-preview.png" alt="" /> 
@@ -59,7 +62,7 @@ const About = () => {
                     <br></br>
                     <p className=" text-base font-normal text-gray-500 dark:text-gray-400">GROW - Is a non-profit organization whose goal is to <br></br> protect, maintain, care for, and preserve the trees on <br></br> the earth that we stand on now</p>
                     <br></br>
-                    <Link to='/foundation-form' style={styleObject.button} type="button" className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">   Start A Free Trail</Link>
+                    <Link to='/foundation-form' style={styleObject.button} type="button" className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 ">   Start A Free Trail</Link>
 
             </div>
             <br></br>
@@ -72,7 +75,7 @@ const About = () => {
     {/* <------------------------------> */}
     <div className="bg-white sm:p-8 manPowerTxt">
       <div className="justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-        <div className="sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  manPowerTxt">
+        <div className="sm:w-auto pl-8  bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  manPowerTxt">
           <div className="text-left pr-5">
             <p
               style={styleObject.textcolor}
@@ -107,7 +110,7 @@ const About = () => {
             to='/foundation-form'
               style={styleObject.button}
               type="button"
-              className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
+              className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 "
             >
               Manage Your Power
             
@@ -132,6 +135,7 @@ const About = () => {
         </div>
       </div>
     </div>
+  </div>
   </div>
 );
 };

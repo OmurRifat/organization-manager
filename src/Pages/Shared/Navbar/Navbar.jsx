@@ -3,7 +3,21 @@ import { Transition } from "@headlessui/react";
 import { BiDonateHeart } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { HashLink} from 'react-router-hash-link';
+
 const Navbar = () => {
+
+
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -100; 
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+} 
+  
+
+
+
+
   const [isOpen, setIsOpen] = useState(false);
   const styleObject = {
     button: {
@@ -27,6 +41,7 @@ const Navbar = () => {
           <div className="flex items-center h-20 w-full">
             <div className="flex items-center  md:mx-20  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
+                
                 <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <img
@@ -55,10 +70,10 @@ const Navbar = () => {
                 <div>
                   <Link
                     style={ styleObject.button }
-                    href="/"
-                    className="cursor-pointer flex items-center text-white px-3 py-2 rounded-md text-sm  font-medium "
+                    to='/foundation-form'
+                    className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm  font-medium "
                   >
-                    <BiDonateHeart /> Donate
+                    <BiDonateHeart className='mr-1' /> Donate
                   </Link>
                 </div>
               </div>
@@ -124,7 +139,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div>
-                <Link href="/" className="cursor-pointer flex items-center ">
+                <Link to='/' className="cursor-pointer flex items-center ">
                   <img
                     className="md:w-12 w-14"
                     src="https://i.ibb.co/Bw1TVQS/project-logo.png"
@@ -157,31 +172,31 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-                <Link
-                  to="organization" spy={ true } smooth={ true } offset={ 50 } duration={ 1500 }
+                <HashLink smooth
+                  to="/#organization"  scroll={el => scrollWithOffset(el)}
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Organization
-                </Link>
+                </HashLink>
 
-                <Link
-                  to="vision"
-                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
+                <HashLink smooth
+                  to ="/#vision" scroll={el => scrollWithOffset(el)}
+                  
                   className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Vision
-                </Link>
-                <Link
-                  to='contact'
-                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
+                </HashLink>
+                <HashLink smooth
+                 to='/#contact' scroll={el => scrollWithOffset(el)}
+                 
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Contact
-                </Link>
+                 Contact
+                </HashLink>
 
                 <Link
                   style={ styleObject.button }
-                  href="/"
+                  to='/foundation-form'
                   className="cursor-pointer flex items-center text-white text-center ml-4 w-24 px-3 py-2 rounded-md text-sm  font-medium hover:text-white hover:text-bold"
                 >
                   <BiDonateHeart /> Donate
@@ -200,28 +215,26 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-                <Link
-                  to="organization"
-                  spy={ true } smooth={ true } offset={ 50 } duration={ 1500 }
+                <HashLink smooth
+                 to="/#organization" scroll={el => scrollWithOffset(el)}
                   className="cursor-pointer text-black  px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Organization
-                </Link>
-                <Link
-                  to="vision"
-                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
+                </HashLink>
+                <HashLink smooth
+                   to ="/#vision" scroll={el => scrollWithOffset(el)}
+                  
                   className="cursor-pointer text-black   px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Vision
-                </Link>
+                </HashLink>
 
-                <Link
-                  to='contact'
-                  spy={ true } smooth={ true } offset={ -100 } duration={ 1500 }
+                <HashLink smooth
+                  to='/#contact' scroll={el => scrollWithOffset(el)}
                   className="cursor-pointer text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Contact
-                </Link>
+                </HashLink>
               </div>
             </div>
           </div>
@@ -229,6 +242,6 @@ const Navbar = () => {
       </nav>
     </div>
   );
-};
+}
 
 export default Navbar;
