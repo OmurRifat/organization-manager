@@ -38,7 +38,7 @@ const Services = () => {
 
                 {/*------services-2------*/}
                     <div className="m-1 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <img className="rounded" src="https://i.ibb.co/nPJcTTB/Screenshot-2023-04-13-141806-removebg-preview.png" alt="" />
+                            <img className="rounded" src="https://i.ibb.co/1skXr2r/Screenshot-2023-04-13-141806-removebg-preview-removebg-preview.png" alt="" />
                         <div className="text-center p-4">
                             <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
                             Health & Medical
