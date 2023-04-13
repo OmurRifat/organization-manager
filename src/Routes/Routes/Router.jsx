@@ -9,7 +9,7 @@ import MemberDashboard from '../../Pages/Dashboard/Member/MemberDashboard'
 import AllNews from '../../Pages/Home/Blog/AllNews'
 import Settings from '../../Pages/Dashboard/Settings/Settings'
 import DashboardLayout from '../../Layout/DashboardLayout'
-import FormModal from '../../Pages/Dashboard/Modal/FormModal'
+import LoanApply from '../../Pages/Dashboard/LoanApply/LoanApply'
 
 const router = createBrowserRouter([
   {
@@ -54,7 +54,10 @@ const router = createBrowserRouter([
         path: '/dashboard/settings',
         element: <Settings></Settings>,
       },
-     
+      {
+        path: '/dashboard/apply-loan',
+        element: <LoanApply></LoanApply>,
+      },
     ],
   },
 ])
