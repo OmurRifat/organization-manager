@@ -5,7 +5,7 @@ const MemberDashboard = () => {
   return (
     // bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover
     <div>
-      <p className="font-bold text-2xl">All Data</p>
+      <p className="font-bold text-2xl text-black mb-2">All Data</p>
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover flex justify-between items-center">
         <div className="text-center  flex-col border-r justify-center p-10 items-center w-1/3">
           <img
@@ -65,16 +65,16 @@ const MemberDashboard = () => {
 
       <div class="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          <p>Donation History</p>
+          <p className='text-black'>Donation History</p>
           <div className="flex justify-between items-center">
-            <p className="mx-2">Show</p>
+            <p className="mx-2 text-black">Show</p>
             <button
               id="dropdownActionButton"
               data-dropdown-toggle="dropdownAction"
               class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button"
             >
-              <span class="sr-only">Action button</span>
+              <span class="sr-only text-black">Action button</span>
               10
               <svg
                 class="w-3 h-3 ml-2"
@@ -111,7 +111,7 @@ const MemberDashboard = () => {
                 </li>
               </ul>
             </div>
-            <p className="mx-2">List</p>
+            <p className="mx-2 text-black">List</p>
           </div>
         </div>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
