@@ -5,16 +5,16 @@ const Footer = () => {
   return (
     <div className="bg-[#2A9D8F]   dark:bg-gray-900">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div className="md:flex md:justify-between">
+        <div className=" md:flex flex-col md:flex-row md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a  href="https://flowbite.com/" className="flex items-center">
+            <a  href="https://flowbite.com/" className="flex flex-col md:flex-row items-center">
             <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" alt="project-logo" width="100px" border="0"/>
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">
                 Organizational Manager
               </span>
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div className="grid md:grid-cols-3 px-4 md:px-0 md:gap-8 gap-6 grid-cols-2">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                 Posts
@@ -71,9 +71,9 @@ const Footer = () => {
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="flex flex-col md:flex-row pt-2 pb-5 md:pt-0 md:pb-0 items-center md:justify-between">
          
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+          <div className="flex mb-5 md:mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a
               href="#"
               className="text-white hover:text-white dark:hover:text-white"
