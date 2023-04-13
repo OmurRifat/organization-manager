@@ -30,102 +30,102 @@ const FoundationForm = () => {
         <div className="px-10 md:px-0 md:p-4 pt-10">
           <h1 className=" text-2xl md:text-3xl my-2 mt-10 text-black font-semibold">Register For A Foundation</h1>
           <p style={styles.paraColr} className="mb-8">MAKE YOUR DREAM COMES TRUE!</p>
-          <div className="">
+          <div>
             <form>
               <div className="grid grid-cols-1 gap-2">
-                <div class="mb-6">
+                <div className="mb-6">
                   <label
-                    for="organization-name"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                   
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Organization Name
                   </label>
                   <input
                     type="text"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name='name' id='name'
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Your Organization Name"
                     required
                   />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div class="mb-6">
+                <div className="mb-6">
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Founder Name
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    type="text"
+                    name='fname'
+                    id="fname"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Founder Name"
                     required
                   />
                 </div>
-                <div class="mb-6">
+                <div className="mb-6">
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                    Organization Email
                   </label>
                   <input
                     type="email"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    id="email" name='email'
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Email address"
                     required
                   />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div class="mb-6">
+                <div className="mb-6">
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Founding Time
                   </label>
                   <input
                     type="date"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Full Name"
+                    id='date' name='date'
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="time"
                     required
                   />
                 </div>
-                <div class="mb-6">
+                <div className="mb-6">
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                   
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Location
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    type="text"
+                    name='location'
+                    id="location"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select your location"
                     required
                   />
                 </div>
               </div>
-              <div class="flex items-start mb-6">
-                <div class="flex items-center h-5">
+              <div className="flex items-start mb-6">
+                <div className="flex items-center h-5">
                   <input
                     id="remember"
                     type="checkbox"
                     value=""
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
                     required
                   />
                 </div>
                 <label
                   for="remember"
-                  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   I have read and agree with terms of service and our privacy
                   policy
@@ -134,14 +134,14 @@ const FoundationForm = () => {
              
               <button style={{backgroundColor : '#2A9D8F'}}
                   type="submit"
-                  class="my-5 w-16 h-16 text-white text-xl drop-shadow-xl   font-medium rounded-full px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="my-5 w-16 h-16 text-white text-xl drop-shadow-xl   font-medium rounded-full px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   <AiOutlineArrowRight className='text-center mx-auto'></AiOutlineArrowRight>
                 </button>
             </form>
             <p className='text-black'>
               Already Registered ?{' '}
-              <Link to="/" className="text-[#2A9D8F] underline">
+              <Link to="/" className="text-[#2A9D8F]">
                 
                 Back to Home
               </Link>
