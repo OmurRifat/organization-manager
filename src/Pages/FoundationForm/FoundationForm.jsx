@@ -2,8 +2,25 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import foundation from '../../assets/foundationform.png'
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+
 
 const FoundationForm = () => {
+
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+    axios.post('http://localhost:5000/organizations',data)
+    .then(res=>{
+       if(res.data.insertedId){
+        console.log(data)
+           alert('Added Successfully');
+           reset();
+       }
+    })
+};
+
   const styles = {
     colr:{
       color: "#2A9D8F",
@@ -31,7 +48,8 @@ const FoundationForm = () => {
           <h1 className=" text-2xl md:text-3xl my-2 mt-10 text-black font-semibold">Register For A Foundation</h1>
           <p style={styles.paraColr} className="mb-8">MAKE YOUR DREAM COMES TRUE!</p>
           <div className="">
-            <form>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 gap-2">
                 <div class="mb-6">
                   <label
@@ -41,6 +59,7 @@ const FoundationForm = () => {
                     Organization Name
                   </label>
                   <input
+                    {...register("name",)}
                     type="text"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -58,7 +77,8 @@ const FoundationForm = () => {
                     Founder Name
                   </label>
                   <input
-                    type="email"
+                  {...register("founder",)}
+                    type="text"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Founder Name"
@@ -73,6 +93,7 @@ const FoundationForm = () => {
                    Organization Email
                   </label>
                   <input
+                  {...register("email",)}
                     type="email"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -90,6 +111,7 @@ const FoundationForm = () => {
                     Founding Time
                   </label>
                   <input
+                  {...register("founding-time",)}
                     type="date"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -105,7 +127,8 @@ const FoundationForm = () => {
                     Location
                   </label>
                   <input
-                    type="email"
+                  {...register("address",)}
+                    type="text"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select your location"
@@ -116,6 +139,7 @@ const FoundationForm = () => {
               <div class="flex items-start mb-6">
                 <div class="flex items-center h-5">
                   <input
+                  {...register("agree",)}
                     id="remember"
                     type="checkbox"
                     value=""
@@ -139,6 +163,7 @@ const FoundationForm = () => {
                   <AiOutlineArrowRight className='text-center mx-auto'></AiOutlineArrowRight>
                 </button>
             </form>
+  
             <p className='text-black'>
               Already Registered ?{' '}
               <Link to="/" className="text-[#2A9D8F] underline">
