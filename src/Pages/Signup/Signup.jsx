@@ -1,4 +1,4 @@
-import React , { useContext }from "react";
+import React , { useContext, useEffect, useState }from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthProvider';
@@ -11,6 +11,14 @@ import { FaFacebook } from "react-icons/fa"
 
 
 const Signup = () => {
+  const [foundation,setFoundation] = useState([]);
+
+
+  useEffect (() => {
+    fetch('http://localhost:5000/organizations')
+    .then(res => res.json())
+    .then(data => setFoundation(data))
+  },[])
 
 
   const styles = {
@@ -79,7 +87,7 @@ const Signup = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
             <label for="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
             <select {...register("organization")} id="organization" class=" border  text-black text-sm rounded-lg mb-3  block w-full p-2.5  ">
-              <option >Ekhlaf Foundation</option>
+              {foundation.map(f => <option key={f.id}>{f.name}</option>)}
             </select>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div class="mb-4 md:mb-6">
