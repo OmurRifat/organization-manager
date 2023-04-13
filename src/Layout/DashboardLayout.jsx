@@ -40,7 +40,7 @@ const DashboardLayout = () => {
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
           <div className="flex justify-center items-center m-5 ">
             <img src="https://i.ibb.co/TgYFrJM/logo-bertumbuh.png" alt="" />
-            <p className="text-3xl m-2 text-center">Organizational Manager</p>
+            <p className="text-3xl m-2 text-[black] text-center">Organizational Manager</p>
           </div>
           <ul class="space-y-2 font-medium mx-5 ">
             <li>
@@ -83,9 +83,11 @@ const DashboardLayout = () => {
         </div>
       </aside>
 
-      <div class="sm:ml-64">
+      <div class=" sm:ml-64">
         <Header></Header>
+        <div className="mb-5">
         <Outlet></Outlet>
+        </div>
       </div>
     </div>
   )

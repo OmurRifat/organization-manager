@@ -10,7 +10,7 @@ const Header = () => {
           alt="" className="mx-2"
         />
         <img src="https://i.ibb.co/6YwPgtL/Ellipse-897.png" width="30px" height="30px"alt="" />
-        <p className="mx-2">Hello Daniel</p>
+        <p className="mx-2 text-[#185448ec]">Hello Daniel</p>
       </div>
     </div>
   )
