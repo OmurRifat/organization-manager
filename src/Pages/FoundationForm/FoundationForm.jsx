@@ -2,8 +2,25 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import foundation from '../../assets/foundationform.png'
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+
 
 const FoundationForm = () => {
+
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+    axios.post('http://localhost:5000/organizations',data)
+    .then(res=>{
+       if(res.data.insertedId){
+        console.log(data)
+           alert('Added Successfully');
+           reset();
+       }
+    })
+};
+
   const styles = {
     colr:{
       color: "#2A9D8F",
@@ -31,7 +48,10 @@ const FoundationForm = () => {
           <h1 className=" text-2xl md:text-3xl my-2 mt-10 text-black font-semibold">Register For A Foundation</h1>
           <p style={styles.paraColr} className="mb-8">MAKE YOUR DREAM COMES TRUE!</p>
           <div>
-            <form>
+            
+          <div className="">
+
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 gap-2">
                 <div className="mb-6">
                   <label
@@ -41,6 +61,7 @@ const FoundationForm = () => {
                     Organization Name
                   </label>
                   <input
+                    {...register("name",)}
                     type="text"
                     name='name' id='name'
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -58,10 +79,14 @@ const FoundationForm = () => {
                     Founder Name
                   </label>
                   <input
-                    type="text"
+                    
                     name='fname'
-                    id="fname"
+                   
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...register("founder",)}
+                    type="text"
+                    id="email"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Founder Name"
                     required
                   />
@@ -73,6 +98,7 @@ const FoundationForm = () => {
                    Organization Email
                   </label>
                   <input
+                  {...register("email",)}
                     type="email"
                     id="email" name='email'
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -89,6 +115,7 @@ const FoundationForm = () => {
                     Founding Time
                   </label>
                   <input
+                  {...register("founding-time",)}
                     type="date"
                     id='date' name='date'
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -106,8 +133,12 @@ const FoundationForm = () => {
                   <input
                     type="text"
                     name='location'
-                    id="location"
+                    
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...register("address",)}
+                    
+                    id="email"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select your location"
                     required
                   />
@@ -116,6 +147,7 @@ const FoundationForm = () => {
               <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
                   <input
+                  {...register("agree",)}
                     id="remember"
                     type="checkbox"
                     value=""
@@ -139,6 +171,7 @@ const FoundationForm = () => {
                   <AiOutlineArrowRight className='text-center mx-auto'></AiOutlineArrowRight>
                 </button>
             </form>
+  
             <p className='text-black'>
               Already Registered ?{' '}
               <Link to="/" className="text-[#2A9D8F]">
@@ -150,6 +183,7 @@ const FoundationForm = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
