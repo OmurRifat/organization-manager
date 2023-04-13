@@ -1,4 +1,5 @@
-import React , { useContext, useState }from "react";
+
+import React , { useContext, useEffect, useState }from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthProvider';
@@ -9,6 +10,12 @@ import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"  
 
 const Signup = () => {
+  const [foundation,setFoundation] = useState([]);
+  useEffect (() => {
+    fetch('http://localhost:5000/organizations')
+    .then(res => res.json())
+    .then(data => setFoundation(data))
+  },[])
   const styles = {
     bg:{
       background: "radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%)"
@@ -95,18 +102,13 @@ const Signup = () => {
           <p className="flex justify-center text-3xl font-bold mt-10 mb-7">or</p>
           <div className="px-2 md:px-0">
             <form onSubmit={handleSubmit(onSubmit)}>
-         
             <label for="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
             <select {...register("organization")} id="organization" class=" border  text-black text-sm rounded-lg mb-3  block w-full p-2.5  ">
-              <option >Ekhlaf Foundation</option>
-              <option >Jaago Foundation</option>
-              <option >Tarunno Foundation</option>
+              {foundation.map(f => <option key={f.id}>{f.name}</option>)}
             </select>
-
                   {/* photo set */}
-                  <div>
-                <p>Profile Picture</p>
-
+          <div>
+          <p>Profile Picture</p>
          <div className='flex items-center bg-gray-50 my-4 rounded-lg'>
           
           <div className="text-center ">
