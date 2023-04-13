@@ -19,6 +19,10 @@ margin-right: 10%;
     margin-left: 6%;
 }
 .manPowerTxt{
-    margin-left: 2%;
+    margin-left: 5%;
     padding-right: 4%;
+}
+.angle{
+    margin-left: -40px;
+    margin-right: -40px;
 }

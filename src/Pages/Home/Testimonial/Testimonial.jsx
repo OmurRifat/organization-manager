@@ -58,7 +58,7 @@ const Review = () => {
         </h3>
         <h2
           style={styleObject.h2}
-          className="text-4xl font-semibold max-w-2xl mx-auto"
+          className=" text-3xl md:text-4xl font-semibold max-w-2xl mx-auto"
         >
           Lets Learn What Our Client Says
         </h2>

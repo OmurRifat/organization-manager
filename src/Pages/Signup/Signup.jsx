@@ -1,128 +1,204 @@
-import React , { useContext }from "react";
+
+import React , { useContext, useEffect, useState }from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { toast } from "react-hot-toast";
+import signup from '../../assets/signup.png'
+import { FcGoogle } from "react-icons/fc"
+import { FaFacebook } from "react-icons/fa"  
+
 const Signup = () => {
+  const [foundation,setFoundation] = useState([]);
+  const [error, setError]= useState(null)
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({mode: "onTouched"});
+  useEffect (() => {
+    fetch('http://localhost:5000/organizations')
+    .then(res => res.json())
+    .then(data => setFoundation(data))
+  },[])
+  const styles = {
+    bg:{
+      background: "radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%)"
+    }
+  }
   const { createUsersEmail, updateUser, googleRegister } =
     useContext(AuthContext);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  
   const navigate = useNavigate();
   // const from = location.state?.from?.pathname || "/";
-
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = data => {    
     createUsersEmail(data.email, data.password).then(res => 
       {
-        const user = res.user
-        console.log(user);
+      const user = res.user
+       if(user.uid){
+       navigate("/dashboard");
+       toast.success("You Have Successfully Sign Up")
+       }
+       const PPicture =  data.profilePicture[0];   
+       const formData = new FormData();
+       formData.append("image", PPicture);
+       const url = `https://api.imgbb.com/1/upload?key=a9092fb79f783fc4527950882d60d253`;
+       fetch(url, {
+       method: "POST",
+       body: formData,
+       })
+      .then((res) => res.json())
+      .then((imageData) => {
+        const PPhoto = imageData.data.display_url
         const userInfo = {
           displayName: data.name,
+          photoURL:PPhoto
         };
         updateUser(userInfo).then((res) => {
           const user = res.user;
-          if(user.uid){
-            navigate("/");
-            toast.success("You Have Successfully Sign Up")
-          }
           console.log(user);
         })
-      }).catch((error) => {
+      })
+      }) .catch((error) => {
         const errorMessage = error.message;
-        toast.error(errorMessage)
+        toast.error(`${errorMessage}`)
       });
   };
+  // const handleGoogleSignUp = () => {
+  //   googleRegister().then((result) => {
+  //     const user = result.user;
+  //     console.log(user);
+  //   });
+  // };
 
-  const handleGoogleSignUp = () => {
-    googleRegister().then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+  const [photoName, setPhotoName] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+
+  const handleFileChange = (e) => {
+    setPhotoName(e.target.files[0].name);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setPhotoPreview(e.target.result);
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
   return (
-    <div className="signup-container text-black mt-4">
-      <div className="grid grid-cols-2 gap-5 ">
+    <div style={styles.bg} className="signup-container text-black mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
         <div className="border p-10">
-          <h1 className="text-5xl text-[green] m-5 ">Sign Up</h1>
+          <h1 className="md:text-5xl text-3xl font-bold m-5 ">Sign Up</h1>
           <div className="flex  items-center m-5 mt-10">
-            <div className="bg-[black] h-1 w-24 me-5"></div>
-            <p>Sign up with</p>
+            <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
           </div>
-          <div className="grid grid-cols-2  mx-10">
-            <button onClick={handleGoogleSignUp} className="flex cursor-pointer justify-around items-center border p-2 rounded mx-5">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjzC2JyZDZ_RaWf0qp11K0lcvB6b6kYNMoqtZAQ9hiPZ4cTIOB"
-                alt=""
-                width="36px"
-              ></img>
-              <p className="mx-1  font-semibold">Continue with Google</p>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
+            <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
+            <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
+              <span className="py-3 md:py-1  font-semibold">Continue with Google</span>
             </button>
-            <div className="flex justify-around items-center border p-2 rounded">
-              <img
-                src="https://www.citypng.com/public/uploads/preview/-11595349592mdhzsfgakx.png"
-                alt=""
-                width="36px"
-              ></img>
-              <p className="mx-1  font-semibold">Continue with Facebook</p>
-            </div>
+            <button className="flex w-full mx-auto md:w-72  pl-4 md:pl-2 justify-center items-center border py-2 rounded-lg">
+              <FaFacebook className="text-2xl mr-5 md:mr-3 text-[#45619D]"></FaFacebook>
+              <span className="py-3 md:py-1 font-semibold">Continue with Facebook</span>
+            </button>
           </div>
-          <p className="flex justify-center text-3xl font-bold my-10">or</p>
-          <div className="mx-10">
+          <p className="flex justify-center text-3xl font-bold mt-10 mb-7">or</p>
+          <div className="px-2 md:px-0">
             <form onSubmit={handleSubmit(onSubmit)}>
-            <label for="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
-            <select {...register("organization")} id="organization" class=" border  text-black text-sm rounded-lg  block w-full p-2.5  ">
-              <option >Ekhlaf Foundation</option>
+            <label htmlFor="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
+            <select {...register("organization")} id="organization" class=" border  text-black text-sm rounded-lg mb-3  block w-full p-2.5  ">
+              {foundation.map(f => <option key={f.id}>{f.name}</option>)}
             </select>
-              <div className="grid grid-cols-2 gap-2">
-                <div class="mb-6">
+                  {/* photo set */}
+          <div>
+          <p>Profile Picture</p>
+         <div className='flex items-center bg-gray-50 my-4 rounded-lg'>
+          
+          <div className="text-center ">
+           <div className="" style={{ display: !photoPreview ? "block" : "none" }}>
+             <img
+               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
+               className="md:w-16 w-16 h-10 md:h-16 m-auto rounded-full shadow"
+             />
+           </div>
+           <div className="" style={{ display: photoPreview ? "block" : "none" }}>
+             <span
+               className="block md:w-16 w-16 h-10 md:h-16 rounded-full m-auto shadow"
+               style={{
+                 backgroundSize: "cover",
+                 backgroundRepeat: "no-repeat",
+                 backgroundPosition: "center center",
+                 backgroundImage: `url(${photoPreview})`,
+               }}
+             ></span>
+           </div>
+         </div>
+           <div className="col-span-6  sm:col-span-4">
+           <input
+               type="file"
+               {...register("profilePicture")}
+               className='rounded-e-full w-full ml-4'
+               onChange={handleFileChange}
+           />
+           </div>
+           </div>
+       </div>            
+       {/* photo set */}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div class="mb-4 md:mb-6">
                   <label
-                    for="name"
+                    htmlFor="name"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Name
                   </label>
                   <input
-                  {...register("name")}
+                  {...register("name", {
+                    required: "Please Enter Your Full Name",
+                   
+                  })}
                     type="text"
                     id="name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Full Name"
-                    required
+                   
                   />
-                </div>
-                <div class="mb-6">
+                  <p className=' error-message text-red-600'>{errors.name?.message}</p>
+                </div>    
+                   
+                <div class="mb-6 md:mb-3">
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Email
                   </label>
                   <input
-                  {...register("email")}
+                   {...register("email", {
+                    required: "Please Enter Your Email!",
+
+                  })}
                     type="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Email address"
                     required
                   />
+                  <p className=' error-message text-red-600'>{error}</p>
                 </div>
               </div>
               <div class="mb-6">
                 <label
-                  for="password"
+                  htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
                 </label>
                 <input
-                {...register("password")}
+                {...register("password", { required: "Password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 12, message: "Password cannot exceed more than 12 characters" }})}
                   placeholder="Enter Password"
                   type="password"
                   id="password"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
+              <p className='alerts text-red-600'>{errors.password?.message}</p>
               </div>
               <div class="flex items-start mb-6">
                 <div class="flex items-center h-5">
@@ -135,7 +211,7 @@ const Signup = () => {
                   />
                 </div>
                 <label
-                  for="remember"
+                  htmlFor="remember"
                   class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   I have read and agree with terms of service and our privacy
@@ -146,7 +222,7 @@ const Signup = () => {
                 <AiOutlineArrowRight/>
               </button>
             </form>
-            <p className="text-black mt-3">
+            <p className="text-black mt-8">
               Already have an account ?{" "}
               <Link to="/login" className="text-[#2A9D8F] underline">
                 {" "}
@@ -155,10 +231,10 @@ const Signup = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-right">
+        <div className='max-w-3xl px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14'>
           <img
-            src="https://i.ibb.co/mhDL5Rb/signup.png"
-            alt="Family-logo-template-removebg-preview"
+            src={signup}
+            alt="signup page image"
           />
         </div>
       </div>

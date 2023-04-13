@@ -29,7 +29,7 @@ const Blog = () => {
         <h3 style={styles.primary} className="text-2xl mb-4 font-medium">
         Explore the Events
         </h3>
-        <h2 style={styles.secondary} className="font-semibold mb-5 text-4xl">
+        <h2 style={styles.secondary} className="font-semibold mb-5 text-3xl md:text-4xl">
           Latest News, Articles & Events
         </h2>
         <p style={styles.paraColor} className="font-normal text-xl">
