@@ -25,7 +25,7 @@ const Services = () => {
             <div className='grid lg:grid-cols-4 px-4 md:grid-cols-2 grid-cols-1 p-9 m-9'>
 
                 {/* ------services-1------ */}
-                    <div className="m-1 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="m-1 bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
                             <img className="rounded" src="https://i.ibb.co/wrV74zj/Screenshot-2023-04-13-141749-removebg-preview.png" alt="" />
                         <div className="text-center p-4">
                             <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
@@ -38,7 +38,7 @@ const Services = () => {
                     </div>
 
                 {/*------services-2------*/}
-                    <div className="m-1 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="m-1 bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
                             <img className="rounded" src="https://i.ibb.co/1skXr2r/Screenshot-2023-04-13-141806-removebg-preview-removebg-preview.png" alt="" />
                         <div className="text-center p-4">
                             <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
@@ -51,7 +51,7 @@ const Services = () => {
                     </div>
 
                 {/*------services-3------*/}
-                    <div className="m-1 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="m-1 bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
                             <img className="rounded" src="https://i.ibb.co/V9fkdbX/Screenshot-2023-04-13-141833-removebg-preview.png" alt="" />
                         <div className="text-center p-4">
                             <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
@@ -64,7 +64,7 @@ const Services = () => {
                     </div>
 
                 {/*------services-4------*/}
-                    <div className="m-1 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="m-1 bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
                             <img className="rounded" src="https://i.ibb.co/zFdnhHC/Screenshot-2023-04-13-141850-removebg-preview.png" alt="" />
                         <div className="text-center p-4">
                             <h5 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
