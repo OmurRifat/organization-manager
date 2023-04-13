@@ -65,7 +65,7 @@ const Navbar = () => {
                 <div>
                   <Link
                     style={ styleObject.button }
-                    to='/login'
+                    to='/dashboard'
                     className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm  font-medium "
                   >
                     <BiDonateHeart className='mr-1' /> Donate
@@ -191,7 +191,7 @@ const Navbar = () => {
 
                 <Link
                   style={ styleObject.button }
-                  to='/foundation-form'
+                  to='/dashboard'
                   className="cursor-pointer flex items-center text-white text-center ml-4 w-24 px-3 py-2 rounded-md text-sm  font-medium hover:text-white hover:text-bold"
                 >
                   <BiDonateHeart /> Donate
