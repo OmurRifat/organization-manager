@@ -22,9 +22,9 @@ const Signup = () => {
   const onSubmit = data => {    
     createUsersEmail(data.email, data.password).then(res => 
       {
-       const user = res.user
+      const user = res.user
        if(user.uid){
-      //  navigate("/dashboard");
+       navigate("/dashboard");
        toast.success("You Have Successfully Sign Up")
        }
        const PPicture =  data.profilePicture[0];   
@@ -37,20 +37,22 @@ const Signup = () => {
        })
       .then((res) => res.json())
       .then((imageData) => {
-       const PPhoto = imageData.data.display_url
-       const userInfo = {
-       displayName: data.name,
-       photoURL:PPhoto
-       };
-       updateUser(userInfo).then((res) => {
+        const PPhoto = imageData.data.display_url
+        const userInfo = {
+          displayName: data.name,
+          photoURL:PPhoto
+        };
+        updateUser(userInfo).then((res) => {
           const user = res.user;
+          console.log(user);
         })
       }).catch((error) => {
         const errorMessage = error.message;
+        
         toast.error(errorMessage)
       });
       }) 
-     };
+  };
 
   const handleGoogleSignUp = () => {
     googleRegister().then((result) => {

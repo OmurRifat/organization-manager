@@ -168,21 +168,21 @@ const Navbar = () => {
                   Home
                 </Link>
                 <HashLink smooth
-                  to="/#organization" scroll={ el => scrollWithOffset(el) }
+                  to="/foundation-form" scroll={ el => scrollWithOffset(el) }
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Organization
                 </HashLink>
 
                 <HashLink smooth
-                  to="/#vision" scroll={ el => scrollWithOffset(el) }
+                  to="/vision" scroll={ el => scrollWithOffset(el) }
 
                   className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Vision
                 </HashLink>
                 <HashLink smooth
-                  to='/#contact' scroll={ el => scrollWithOffset(el) }
+                  to='/contact' scroll={ el => scrollWithOffset(el) }
 
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
@@ -211,7 +211,7 @@ const Navbar = () => {
                   Home
                 </Link>
                 <HashLink smooth
-                  to="/#organization" scroll={ el => scrollWithOffset(el) }
+                  to="/foundation-form" scroll={ el => scrollWithOffset(el) }
                   className="cursor-pointer text-black  px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Organization
