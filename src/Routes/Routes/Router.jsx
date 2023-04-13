@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Signup></Signup>,
       },
       {
-        path: '/foundation-form',
+        path: '/Organization',
         element: <FoundationForm></FoundationForm>,
       },
       {

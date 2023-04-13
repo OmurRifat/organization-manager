@@ -7,10 +7,9 @@ import { toast } from "react-hot-toast";
 const Signup = () => {
   const { createUsersEmail, updateUser, googleRegister } =
     useContext(AuthContext);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({mode: "onTouched"});
   const navigate = useNavigate();
   // const from = location.state?.from?.pathname || "/";
-
   const onSubmit = data => {
     console.log(data);
     createUsersEmail(data.email, data.password).then(res => 
@@ -83,13 +82,17 @@ const Signup = () => {
                     Name
                   </label>
                   <input
-                  {...register("name")}
+                  {...register("name", {
+                    required: "Please Enter Your Full Name",
+                   
+                  })}
                     type="text"
                     id="name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Full Name"
-                    required
+                   
                   />
+                  <p className=' error-message text-red-600'>{errors.name?.message}</p>
                 </div>
                 <div class="mb-6">
                   <label
@@ -99,13 +102,18 @@ const Signup = () => {
                     Email
                   </label>
                   <input
-                  {...register("email")}
+                   {...register("email", {
+                    required: "Please Enter Your Email!",
+                   
+                  })}
                     type="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Email address"
                     required
                   />
+                      <p className=' error-message text-red-600'>{errors.email?.message}</p>
+
                 </div>
               </div>
               <div class="mb-6">
@@ -116,13 +124,14 @@ const Signup = () => {
                   Password
                 </label>
                 <input
-                {...register("password")}
+                {...register("password", { required: "Password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 12, message: "Password cannot exceed more than 12 characters" }})}
                   placeholder="Enter Password"
                   type="password"
                   id="password"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
+    <p className='alerts text-red-600'>{errors.password?.message}</p>
               </div>
               <div class="flex items-start mb-6">
                 <div class="flex items-center h-5">
