@@ -8,12 +8,14 @@ import FrequentQuestion from '../FrequentQuestion/FrequentQuestion';
 import Vision from '../Vision/Vision';
 import Contact from '../Contact/Contact';
 import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
+import Services from './../Services/Services';
 
 const Home = () => {
     return (
         <div className='mx-2 mt-4'>
             <HeroSection />
             <About />
+            <Services/>
             <Testimonial />
             <Blog />
             <OurPartners />
