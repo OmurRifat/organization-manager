@@ -14,10 +14,6 @@ const Navbar = () => {
     window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
   }
 
-
-
-
-
   const [isOpen, setIsOpen] = useState(false);
   const styleObject = {
     button: {
@@ -41,7 +37,6 @@ const Navbar = () => {
           <div className="flex items-center h-20 w-full">
             <div className="flex items-center  md:mx-20  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
-
                 <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <img
