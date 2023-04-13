@@ -11,16 +11,16 @@ import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 
 const Home = () => {
     return (
-        <div className='mx-2'>
+        <div className='mx-2 mt-4'>
             <HeroSection />
             <About />
-            <Testimonial/>
-            <Blog/>
-            <OurPartners/>
-            <UpcommingEvents/>
-            <FrequentQuestion/>
+            <Testimonial />
+            <Blog />
+            <OurPartners />
+            <UpcommingEvents />
+            <FrequentQuestion />
             <Vision></Vision>
-            <Contact/>
+            <Contact />
         </div>
     );
 };
