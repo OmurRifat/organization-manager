@@ -21,7 +21,7 @@ const HeroSection = () => {
       <div className="md:flex p-5 mb-24 justify-between items-center ">
         <div className="px-3 md:px-0">
           <h1 className="font-semibold mb-10 text-4xl">
-            Have A Dream? <br /> Let's Dream Together!
+            Have A Dream?<br />Let's Dream Together!
           </h1>
           <p className="font-sans mt-5 max-w-sm mb-8">
             We are organization manager. We dream to Build a system for your
