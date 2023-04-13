@@ -24,7 +24,7 @@ const OurPartners = () => {
 
     return (
         <div style={styleObject.bgcolor} className=' bg pt-10 mb-10'> <br />
-            <div className=" mx-auto items-center justify-center grid grid-cols-1 lg:grid-cols-2">
+            <div className="p-5 mx-auto items-center justify-center grid grid-cols-1 lg:grid-cols-2">
             <div style={styleObject.bgcolor} className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center">
             <div className="text-left p-8">
             <p style={styleObject.textcolor} className="text-gray-900 font-semibold pb-2 txt">Our Partners</p>
