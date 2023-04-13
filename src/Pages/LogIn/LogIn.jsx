@@ -41,14 +41,14 @@ const LogIn = () => {
             <div className="bg-[black] h-1 w-24 me-5"></div>
             <p className='font-bold'>Sign up with</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2  md:mx-10">
-            <div className="flex cursor-pointer justify-around items-center border p-2 rounded mx-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 px-5">
+            <div className="flex cursor-pointer w-[220px] items-center border p-2 rounded mx-5">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjzC2JyZDZ_RaWf0qp11K0lcvB6b6kYNMoqtZAQ9hiPZ4cTIOB"
                 alt=""
-                width="36px"
+                width="25px"
               ></img>
-              <p className=" text-black font-semibold">Continue with Google</p>
+              <p className="pl-2 text-black font-semibold">Continue with Google</p>
             </div>
             <div className="flex cursor-pointer justify-around items-center border p-2 rounded">
               <img
