@@ -7,7 +7,7 @@ const Vision = () => {
     <div id='vision' className="md:px-10 px-3 flex flex-col py-6 md:flex-row  my-24 md:pb-24 justify-around items-center ">
       <img
         className=" w-[500px] rounded-t-lg md:rounded-none md:rounded-l-lg"
-        src={vision}
+        src={ vision }
         alt="vision-image"
       />
       <div className="flex flex-col mt-3 px-4 md:px-0 md:mt-0">
@@ -21,7 +21,7 @@ const Vision = () => {
           their organizational activity, which will make the organization much
           more active.
         </p>
-        <Link  to='/signup' className="border w-36 font-normal py-3 px-6 explore-btn rounded-lg  border-green-600 outline-none focus:border-none focus:outline-none">Get Started</Link>
+        <Link to='/foundation-form' className="border w-36 font-normal py-3 px-6 explore-btn rounded-lg  border-green-600 outline-none focus:border-none focus:outline-none">Get Started</Link>
 
       </div>
     </div>
