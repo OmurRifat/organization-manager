@@ -14,10 +14,6 @@ const Navbar = () => {
     window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
   }
 
-
-
-
-
   const [isOpen, setIsOpen] = useState(false);
   const styleObject = {
     button: {
@@ -41,7 +37,6 @@ const Navbar = () => {
           <div className="flex items-center h-20 w-full">
             <div className="flex items-center  md:mx-20  justify-between w-full">
               <div className="flex justify-center items-center flex-shrink-0 ">
-
                 <Link to="/">
                   <h1 className="flex items-center button font-bold text-xl cursor-pointer">
                     <img
@@ -173,21 +168,21 @@ const Navbar = () => {
                   Home
                 </Link>
                 <HashLink smooth
-                  to="/#organization" scroll={ el => scrollWithOffset(el) }
+                  to="/foundation-form" scroll={ el => scrollWithOffset(el) }
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Organization
                 </HashLink>
 
                 <HashLink smooth
-                  to="/#vision" scroll={ el => scrollWithOffset(el) }
+                  to="/vision" scroll={ el => scrollWithOffset(el) }
 
                   className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Vision
                 </HashLink>
                 <HashLink smooth
-                  to='/#contact' scroll={ el => scrollWithOffset(el) }
+                  to='/contact' scroll={ el => scrollWithOffset(el) }
 
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
                 >
@@ -216,7 +211,7 @@ const Navbar = () => {
                   Home
                 </Link>
                 <HashLink smooth
-                  to="/#organization" scroll={ el => scrollWithOffset(el) }
+                  to="/foundation-form" scroll={ el => scrollWithOffset(el) }
                   className="cursor-pointer text-black  px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Organization
