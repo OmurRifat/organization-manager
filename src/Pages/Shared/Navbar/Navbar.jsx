@@ -65,7 +65,7 @@ const Navbar = () => {
                 <div>
                   <Link
                     style={ styleObject.button }
-                    to='/login'
+                    to='/dashboard'
                     className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm  font-medium "
                   >
                     <BiDonateHeart className='mr-1' /> Donate

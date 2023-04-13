@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
-import Navbar from '../Pages/Shared/Navbar/Navbar'
+import { Link,  Outlet } from 'react-router-dom'
 import Header from '../Pages/Dashboard/Header/Header'
-import Footer from '../Pages/Shared/Footer/Footer'
-import MemberDashboard from '../Pages/Dashboard/Member/MemberDashboard'
-import Sidebar from '../Pages/Dashboard/Sidebar/Sidebar'
+
 
 const DashboardLayout = () => {
+
   return (
     <div className="mx-10 ">
       <button
@@ -38,10 +36,12 @@ const DashboardLayout = () => {
         aria-label="Sidebar"
       >
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
+          <Link to="/">
           <div className="flex justify-center items-center m-5 ">
             <img src="https://i.ibb.co/TgYFrJM/logo-bertumbuh.png" alt="" />
             <p className="text-3xl m-2 text-[black] text-center">Organizational Manager</p>
           </div>
+          </Link>
           <ul class="space-y-2 font-medium mx-5 ">
             <li>
               <Link
