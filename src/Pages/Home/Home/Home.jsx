@@ -10,6 +10,7 @@ import Contact from '../Contact/Contact';
 import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 import Services from './../Services/Services';
 import CounterUp from '../CounterUp/CounterUp';
+import GoToTop from '../GoToTop/GoToTop';
 
 const Home = () => {
     return (
@@ -25,6 +26,7 @@ const Home = () => {
             <Vision></Vision>
             <CounterUp/>
             <Contact />
+            <GoToTop/>
         </div>
     );
 };
