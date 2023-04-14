@@ -57,7 +57,7 @@ const Header = () => {
         </div>
         <ul className=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
           <li>
-            <Link to="/dashboard/settings" className="flex items-center px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-black">
+            <Link to="/dashboard" className="flex items-center px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-black">
              <RiDashboardFill className='text-xl mx-2' /> Dashboard
             </Link>
           </li>
