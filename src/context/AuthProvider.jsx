@@ -30,10 +30,10 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
-  const googleRegister = () => {
-    setLoading(true);
-    return signInWithPopup(auth, provider);
-  };
+  // const googleRegister = () => {
+  //   setLoading(true);
+  //   return signInWithPopup(auth, provider);
+  // };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -52,14 +52,13 @@ const AuthProvider = ({ children }) => {
     createUsersEmail,
     loginUser,
     updateUser,
-    googleRegister,
     loading,
     logOut,
     user,
   };
   return (
     <AuthContext.Provider value={ authInfo }>
-      { children }
+      {children}
     </AuthContext.Provider>
   );
 };

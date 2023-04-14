@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { BsFillPlayFill } from "react-icons/bs";
 import hero from '../../../assets/hero.png'
+import { AuthContext } from "../../../context/AuthProvider";
 
 const HeroSection = () => {
+  const {user}= useContext(AuthContext);
   const styleObject = {
     background: {
       background: "rgba(42, 157, 143, 0.1)",
@@ -28,23 +30,31 @@ const HeroSection = () => {
             organization, by which we can Dream together.
           </p>
           <div className="flex ">
-            <Link to="signup">
+            {
+              user?.uid ? <Link to="/dashboard">
               <button
                 style={styleObject.button}
                 className="flex mt-2 mr-4 px-3 py-3 md:px-8 md:py-[8px] text-white rounded p-1 items-center justify-center"
               >
-                Sign Up
+                Dashboard
               </button>
-            </Link>
+            </Link>: 
+            <Link to="/signup">
             <button
-             
+              style={styleObject.button}
+              className="flex mt-2 mr-4 px-3 py-3 md:px-8 md:py-[8px] text-white rounded p-1 items-center justify-center"
+            >
+              Sign Up
+            </button>
+          </Link>
+            }
+            <button
               className="flex border font-medium border-[#2A9D8F] mt-2 md:px-4 py-[8px] text-[#515151] rounded p-1 items-center justify-center"
             >
               <BsFillPlayFill className="md:mr-2 text-xl text-[#2A9D8F]"></BsFillPlayFill> Explore Our Vision
             </button>
           </div>
         </div>
-
         <div className="max-w-lg">
           <img 
             src={hero}

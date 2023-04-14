@@ -6,7 +6,7 @@ const Sidebar = () => {
     <div className="w-72  flex-col justify-center bg-[#D7E9E7]">
       <div className="flex-col">
         <div className="flex justify-center items-center m-5">
-          <img src="https://i.ibb.co/TgYFrJM/logo-bertumbuh.png" alt="" />
+          <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" alt="" />
           <p className="text-3xl m-2 text-center">Organizational Manager</p>
         </div>
         <div class="h-full px-3 py-8 overflow-y-auto dark:bg-gray-800">
