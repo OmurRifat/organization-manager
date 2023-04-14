@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Header from '../Pages/Dashboard/Header/Header'
-import Footer from '../Pages/Shared/Footer/Footer'
-import MemberDashboard from '../Pages/Dashboard/Member/MemberDashboard'
-import Sidebar from '../Pages/Dashboard/Sidebar/Sidebar'
+
 import { AuthContext } from '../context/AuthProvider'
-import { NavLink } from 'react-router-dom'
 import useAdmin from '../hooks/useAdmin'
 import useCustomer from '../hooks/useCustomer'
 
@@ -46,8 +43,8 @@ const DashboardLayout = () => {
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
           <Link to="/">
             <div className="flex justify-center items-center m-5 ">
-              <img src="https://i.ibb.co/TgYFrJM/logo-bertumbuh.png" alt="" />
-              <p className="text-3xl m-2 text-[black] text-center">
+              <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" className='w-20' alt="" />
+              <p className="text-2xl m-2 font-semibold text-[black] text-center">
                 Organizational Manager
               </p>
             </div>

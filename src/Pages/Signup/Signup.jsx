@@ -14,7 +14,7 @@ const Signup = () => {
   const [error, setError] = useState(null)
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
   useEffect(() => {
-    fetch('http://localhost:5000/organizations')
+    fetch('https://organization-manager-server.onrender.com/organizations')
       .then(res => res.json())
       .then(data => setFoundation(data))
   }, [])
@@ -32,7 +32,7 @@ const Signup = () => {
     createUsersEmail(data.email, data.password).then(res => {
       const user = res.user
       if (user.uid) {
-        navigate("/dashboard");
+        navigate("/");
         toast.success("You Have Successfully Sign Up")
       }
       const PPicture = data.profilePicture[0];

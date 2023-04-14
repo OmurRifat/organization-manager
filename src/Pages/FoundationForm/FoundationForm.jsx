@@ -7,7 +7,6 @@ import axios from 'axios';
 
 
 const FoundationForm = () => {
-
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = data => {
     console.log(data);
