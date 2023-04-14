@@ -10,6 +10,7 @@ import AllNews from '../../Pages/Home/Blog/AllNews'
 import Settings from '../../Pages/Dashboard/Settings/Settings'
 import DashboardLayout from '../../Layout/DashboardLayout'
 import LoanApply from '../../Pages/Dashboard/LoanApply/LoanApply'
+import PaymentSuccess from '../../Pages/Dashboard/PaymentSuccess/PaymentSuccess'
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/apply-loan',
         element: <LoanApply></LoanApply>,
+      },
+      {
+        path: '/dashboard/payment/success',
+        element: <PaymentSuccess></PaymentSuccess>,
       },
     ],
   },
