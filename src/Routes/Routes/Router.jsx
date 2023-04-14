@@ -12,6 +12,8 @@ import DashboardLayout from '../../Layout/DashboardLayout'
 import LoanApply from '../../Pages/Dashboard/LoanApply/LoanApply'
 import PaymentSuccess from '../../Pages/Dashboard/PaymentSuccess/PaymentSuccess'
 import PrivetRoute from '../../PrivetRoute/PrivetRoute'
+import AdminDashboard from '../../Pages/Dashboard/Admin/AdminDashboard/AdminDashBoard'
+import Verification from '../../Pages/Dashboard/Admin/Verification/Verification'
 
 const router = createBrowserRouter([
   {
@@ -50,7 +52,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <MemberDashboard></MemberDashboard>,
+        element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: '/dashboard/verification',
+        element: <Verification></Verification>,
       },
       {
         path: '/dashboard/settings',

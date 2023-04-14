@@ -19,7 +19,7 @@ const SingleNews = ({singleNews}) => {
             </h5>
           
            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        {description.length > 80 ? description.slice(0,80) : description}
+        {description.length > 75 ? description.slice(0,75) : description}
           </p>
          
         </div>
