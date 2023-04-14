@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link,  Outlet } from 'react-router-dom'
 import Header from '../Pages/Dashboard/Header/Header'
-
+import Footer from '../Pages/Shared/Footer/Footer'
+import MemberDashboard from '../Pages/Dashboard/Member/MemberDashboard'
+import Sidebar from '../Pages/Dashboard/Sidebar/Sidebar'
 
 const DashboardLayout = () => {
 
   return (
     <div className="mx-10 ">
       <button
+        
         data-drawer-target="cta-button-sidebar"
         data-drawer-toggle="cta-button-sidebar"
         aria-controls="cta-button-sidebar"
@@ -29,7 +32,7 @@ const DashboardLayout = () => {
           ></path>
         </svg>
       </button>
-
+    
       <aside
         id="cta-button-sidebar"
         class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0"
@@ -39,7 +42,9 @@ const DashboardLayout = () => {
           <Link to="/">
           <div className="flex justify-center items-center m-5 ">
             <img src="https://i.ibb.co/TgYFrJM/logo-bertumbuh.png" alt="" />
-            <p className="text-3xl m-2 text-[black] text-center">Organizational Manager</p>
+            <p className="text-3xl m-2 text-[black] text-center">
+              Organizational Manager
+            </p>
           </div>
           </Link>
           <ul class="space-y-2 font-medium mx-5 ">
@@ -76,7 +81,6 @@ const DashboardLayout = () => {
                   <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">Settings</span>
-                
               </Link>
             </li>
           </ul>
@@ -86,7 +90,7 @@ const DashboardLayout = () => {
       <div class=" sm:ml-64">
         <Header></Header>
         <div className="mb-5">
-        <Outlet></Outlet>
+          <Outlet></Outlet>
         </div>
       </div>
     </div>
