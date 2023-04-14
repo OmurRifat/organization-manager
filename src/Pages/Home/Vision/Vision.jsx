@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Vision = () => {
   return (
-    <div id='vision' className="md:px-10 px-3 flex flex-col py-6 md:flex-row  my-24 md:pb-24 justify-around items-center ">
+    <div id='vision' className="md:px-10 px-3 flex flex-col py-6 md:flex-row  my-20 md:pb-24 justify-around items-center ">
       <img
         className=" w-[500px] rounded-t-lg md:rounded-none md:rounded-l-lg"
         src={ vision }
