@@ -101,7 +101,7 @@ const Signup = () => {
             <form onSubmit={ handleSubmit(onSubmit) }>
               <label htmlFor="organization" class="block mb-2 text-sm font-medium text-black">Select Your Organization</label>
               <select { ...register("organization") } id="organization" class=" border  text-black text-sm rounded-lg mb-3  block w-full p-2.5  ">
-                { foundation.map(f => <option key={ f.id }>{ f.name }</option>) }
+                { foundation.map(f => <option className="text-black" key={ f.id }>{ f.name }</option>) }
               </select>
               {/* photo set */ }
               <div>
