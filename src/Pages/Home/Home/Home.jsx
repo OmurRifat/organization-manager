@@ -9,6 +9,7 @@ import Vision from '../Vision/Vision';
 import Contact from '../Contact/Contact';
 import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 import Services from './../Services/Services';
+import CounterUp from '../CounterUp/CounterUp';
 
 const Home = () => {
     return (
@@ -22,6 +23,7 @@ const Home = () => {
             <UpcommingEvents />
             <FrequentQuestion />
             <Vision></Vision>
+            <CounterUp/>
             <Contact />
         </div>
     );

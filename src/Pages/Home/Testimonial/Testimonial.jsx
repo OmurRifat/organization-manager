@@ -18,11 +18,11 @@ const responsive = {
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 568 },
+    breakpoint: { max: 1024, min: 464 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 568, min: 0 },
+    breakpoint: { max: 464, min: 0 },
     items: 1,
   },
 };
@@ -73,7 +73,7 @@ const Review = () => {
 
       <div
         style={styleObject.gradient}
-        className="pt-16 pb-16 pl-6 text-center"
+        className="pt-16 pb-16 pl-3 text-center"
       >
         <Carousel
           responsive={responsive}
@@ -82,13 +82,13 @@ const Review = () => {
           arrows={false}
           swipeable={false}
           autoPlaySpeed={2000}
-          containerClass="carousel-container"
+          // containerClass="carousel-container"
           autoPlay={true}
-          removeArrowOnDeviceType={["tablet", "mobile"]}
+         
           className="mb-10 pb-12 mx-auto"
         >
           {/* card----->1 */}
-          <div className="max-w-sm  p-6 h-80 bg-white border border-gray-200 rounded-lg shadow ">
+          <div className=" pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
             <div
               style={styleObject.secondary}
               className="w-16 mb-5 h-16 flex justify-center items-center "
@@ -101,13 +101,13 @@ const Review = () => {
               />
             </div>
 
-            <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
+            <p className=" font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
               You can help by donating for planting, maintenance, seeds and
               other operational
             </p>
           </div>
           {/* card----->2 */}
-          <div className="max-w-sm p-6 h-80   bg-white border border-gray-200 rounded-lg shadow ">
+          <div className="pl-4 mr-4 pt-4 h-72   bg-white border border-gray-200 rounded-lg shadow ">
             <div
               style={{ backgroundColor: "#2A9D8F", marginBottom: "20px" }}
               className="w-16 h-16 flex justify-center items-center "
@@ -120,14 +120,14 @@ const Review = () => {
               />
             </div>
 
-            <p className="mb-3  font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
+            <p className="  font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
               You can help grow by becoming our volunteer. You can directly
               plant trees, help with gardening, do outreach and other
               interesting programs
             </p>
           </div>
           {/* card----->3 */}
-          <div className="max-w-sm p-6 h-80 bg-white border border-gray-200 rounded-lg shadow ">
+          <div className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
             <div
               style={{ backgroundColor: "#2A9D8F", marginBottom: "20px" }}
               className="w-16 h-16 flex justify-center items-center "
@@ -140,7 +140,7 @@ const Review = () => {
               />
             </div>
 
-            <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
+            <p className="font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
               You will learn about how to plant trees, care for trees and other
               things by joining as a farmer
             </p>
