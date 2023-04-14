@@ -14,7 +14,7 @@ const Signup = () => {
   const [error, setError] = useState(null)
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
   useEffect(() => {
-    fetch('http://localhost:5000/organizations')
+    fetch('https://organization-manager-server.onrender.com/organizations')
       .then(res => res.json())
       .then(data => setFoundation(data))
   }, [])
