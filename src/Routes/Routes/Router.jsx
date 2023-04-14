@@ -13,6 +13,7 @@ import LoanApply from '../../Pages/Dashboard/LoanApply/LoanApply'
 import PaymentSuccess from '../../Pages/Dashboard/PaymentSuccess/PaymentSuccess'
 import AdminDashboard from '../../Pages/Dashboard/Admin/AdminDashboard/AdminDashBoard'
 import Verification from '../../Pages/Dashboard/Admin/Verification/Verification'
+import DashboardContainer from '../../Pages/Dashboard/DashboardContainer/DashboardContainer'
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <AdminDashboard></AdminDashboard>,
+        element: <MemberDashboard></MemberDashboard>,
       },
       {
         path: '/dashboard/verification',

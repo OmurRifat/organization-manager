@@ -53,7 +53,7 @@ const DashboardLayout = () => {
             </div>
           </Link>
           <ul class="space-y-2 font-medium mx-5 ">
-            {!isAdmin && (
+            {isAdmin && (
               <>
                 <li>
                   <Link
@@ -109,7 +109,7 @@ const DashboardLayout = () => {
                 </li>
               </>
             )}
-            {isCustomer && (
+            {!isCustomer && (
               <>
                 <li>
                   <Link
