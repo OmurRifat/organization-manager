@@ -41,7 +41,7 @@ const DashboardLayout = () => {
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
           <Link to="/">
           <div className="flex justify-center items-center m-5 ">
-            <img src="https://i.ibb.co/TgYFrJM/logo-bertumbuh.png" alt="" />
+            <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" className='w-16' alt="" />
             <p className="text-3xl m-2 text-[black] text-center">
               Organizational Manager
             </p>

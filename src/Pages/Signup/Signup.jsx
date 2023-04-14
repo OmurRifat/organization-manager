@@ -32,7 +32,7 @@ const Signup = () => {
     createUsersEmail(data.email, data.password).then(res => {
       const user = res.user
       if (user.uid) {
-        navigate("/dashboard");
+        navigate("/");
         toast.success("You Have Successfully Sign Up")
       }
       const PPicture = data.profilePicture[0];

@@ -17,14 +17,13 @@ const LogIn = () => {
   }
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  // const from = location?.state?.from?.pathname || "/";
+  const from = location?.state?.from?.pathname || "/";
   const onSubmit = data => {
     loginUser(data.email, data.password).then(res => {
       const user = res.user;
-      // navigate(from, { replace: true });
       console.log(user);
       if (user.uid) {
-        navigate("/dashboard");
+        navigate(from, { replace: true });
         toast.success("You Have Successfully Sign Up")
       }
     }).catch((error) => {

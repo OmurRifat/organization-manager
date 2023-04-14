@@ -11,6 +11,7 @@ import Settings from '../../Pages/Dashboard/Settings/Settings'
 import DashboardLayout from '../../Layout/DashboardLayout'
 import LoanApply from '../../Pages/Dashboard/LoanApply/LoanApply'
 import PaymentSuccess from '../../Pages/Dashboard/PaymentSuccess/PaymentSuccess'
+import PrivetRoute from '../../PrivetRoute/PrivetRoute'
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
     children: [
       {
         path: '/dashboard',
