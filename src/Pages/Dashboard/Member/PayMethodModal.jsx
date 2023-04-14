@@ -10,7 +10,7 @@ const PayMethodModal = ({ payModal, setPayModal }) => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server.onrender.com/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
