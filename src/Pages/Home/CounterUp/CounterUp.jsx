@@ -1,41 +1,48 @@
 import React, { useState } from "react";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
+import bgimage from '../../../assets/bgimage.png'
 
 const CounterUp = () => {
-    const [countOn,setCountOn] = useState(false);
+  const [countOn, setCountOn] = useState(false);
 
-
+  
   return (
-    <div className="py-24 my-14 text-center bg-[#2A9D8F]">
-     <ScrollTrigger onEnter={()=>setCountOn(true)} onExit={()=>setCountOn(false) }>
-     <div className="container grid grid-cols-4 ">
-        <div>
-          <h2 className="text-4xl font-semibold mb-1">
-           {countOn && <CountUp start={0} end={2000} duration={2} delay={0}/>}+
-          </h2>
-          <p className="capitalize">project completed</p>
+    <div style={{backgroundImage :`url(${bgimage})`}} className="py-24 mb-32 text-center  bg-cover">
+      <ScrollTrigger
+        onEnter={() => setCountOn(true)}
+        onExit={() => setCountOn(false)}
+      >
+        <div className="grid grid-cols-3 text-[#2A9D8F]">
+          <div>
+            <h2 className="text-4xl font-semibold mb-1">
+              {countOn && (
+                <CountUp start={0} end={100} duration={2} delay={0} />
+              )}
+              +
+            </h2>
+            <p className="capitalize">total organizations</p>
+          </div>
+          <div>
+            <h2 className="text-4xl font-semibold mb-1">
+              {countOn && (
+                <CountUp start={0} end={2000} duration={2} delay={0} />
+              )}
+              +
+            </h2>
+            <p className="capitalize">total volunter</p>
+          </div>
+          <div>
+            <h2 className="text-4xl font-semibold mb-1">
+              {countOn && (
+                <CountUp start={0} end={50000} duration={2} delay={0} />
+              )}
+              +
+            </h2>
+            <p className="capitalize">total donation</p>
+          </div>
         </div>
-        <div>
-          <h2 className="text-4xl font-semibold mb-1">
-          {countOn && <CountUp start={0} end={3000} duration={2} delay={0}/>}+
-          </h2>
-          <p className="capitalize">Happy clients</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-semibold mb-1">
-          {countOn && <CountUp start={0} end={5000} duration={2} delay={0}/>}+
-          </h2>
-          <p className="capitalize">cups of coffee</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-semibold mb-1">
-          {countOn && <CountUp start={0} end={4000} duration={2} delay={0}/>}+
-          </h2>
-          <p className="capitalize">real professionals</p>
-        </div>
-      </div>
-     </ScrollTrigger>
+      </ScrollTrigger>
     </div>
   );
 };
