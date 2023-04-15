@@ -13,7 +13,7 @@ const MemberDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server.onrender.com/due-payment', {
+    fetch('http://localhost:5000/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -65,8 +65,6 @@ const MemberDashboard = () => {
           >
             1000 BDT
           </button>
-
-          
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
           <img
@@ -175,7 +173,8 @@ const MemberDashboard = () => {
               <td class="px-6 ">sjkUgd678sdhjks</td>
               <td class="px-6  text-[orange]">On going</td>
               <td class="px-6 ">
-                <button onClick={()=>handlePayment()} 
+                <button
+                  onClick={() => handlePayment()}
                   type="button"
                   class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
@@ -424,7 +423,12 @@ const MemberDashboard = () => {
           </div>
         </div>
       </div>
-      {payModal && <PayMethodModal payModal={payModal} setPayModal={setPayModal}></PayMethodModal>}
+      {payModal && (
+        <PayMethodModal
+          payModal={payModal}
+          setPayModal={setPayModal}
+        ></PayMethodModal>
+      )}
     </div>
   )
 }

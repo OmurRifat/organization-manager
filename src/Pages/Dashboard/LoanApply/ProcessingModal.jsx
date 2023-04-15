@@ -5,17 +5,17 @@ const ProcessingModal = ({ Processing, setProcessing }) => {
   const navigate = useNavigate()
   const handleProcessing = () => {
     setProcessing(false)
-    navigate('/dashboard')
+    navigate('/dashboard/member')
   }
   return (
     <div
       id="defaultModal"
       tabindex="-1"
       aria-hidden="true"
-      class="fixed flex justify-center opacity-2 items-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      class="fixed bg-black bg-opacity-50 backdrop-blur-sm flex justify-center  items-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div class="relative w-full max-w-2xl max-h-full">
-        <div class="relative text-white p-24 text-center bg-[#9b968c] rounded-lg shadow  dark:bg-gray-700">
+        <div class="relative text-white p-24 text-center bg-[#50887f] rounded-lg shadow  dark:bg-gray-700">
           <div className="flex justify-center items-center text-center  ">
             <FcProcess className="text-6xl"></FcProcess>{' '}
           </div>
