@@ -59,30 +59,7 @@ const Signup = () => {
             photoURL: imgData.data.url,
             position: 'member',
             donation: [
-              {
-                month: 'January-2023',
-                amount: '30',
-                donationName: 'Regular Donation',
-                status: false,
-              },
-              {
-                month: 'February-2023',
-                amount: '30',
-                donationName: 'Regular Donation',
-                status: false,
-              },
-              {
-                month: 'March-2023',
-                amount: '30',
-                donationName: 'Regular Donation',
-                status: false,
-              },
-              {
-                month: 'April-2023',
-                amount: '30',
-                donationName: 'Regular Donation',
-                status: false,
-              },
+              
             ],
           }
 

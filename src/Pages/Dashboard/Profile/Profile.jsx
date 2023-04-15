@@ -14,8 +14,8 @@ const Profile = () => {
   return (
     <div className="flex justify-center m-3">
       <div className="rounded-3xl overflow-hidden  shadow-2xl w-2/3  my-15 ">
-        <img src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png" className="w-full h-48" alt="" />
-        <div className="flex justify-center -mt-8">
+        <img src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png" className="w-full h-40" alt="" />
+        <div className="flex justify-center -mt-32">
           <img
             src={user.photoURL}
             className="rounded-full border-solid w-1/5 border-primary border-2 -mt-3"
@@ -23,7 +23,8 @@ const Profile = () => {
           />
         </div>
         <div className="text-right">
-          <button className="btn btn-sm m-3 -mt-10">Edit Profile</button>
+        <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</button>
+
         </div>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <tbody>
@@ -35,7 +36,7 @@ const Profile = () => {
                 Full Name:
               </th>
 
-              <td class="px-8 py-4"> {user.displayName}</td>
+              <td class="px-8 py-4"> {user?.displayName}</td>
             </tr>
             <tr class="border-b border-gray-200 dark:border-gray-700">
               <th
@@ -45,7 +46,7 @@ const Profile = () => {
                 Email:
               </th>
 
-              <td class="px-8 py-4">{user.email}</td>
+              <td class="px-8 py-4">{user?.email}</td>
             </tr>
             <tr class="border-b border-gray-200 dark:border-gray-700">
               <th
@@ -55,7 +56,7 @@ const Profile = () => {
                 Mobile No:
               </th>
 
-              <td class="px-8 py-4">{userInfo.phone ? userInfo.phone : "N/A"}</td>
+              <td class="px-8 py-4">{userInfo?.phone ? userInfo.phone : "N/A"}</td>
             </tr>
             <tr class="border-b border-gray-200 dark:border-gray-700">
               <th
@@ -66,7 +67,7 @@ const Profile = () => {
               </th>
 
               <td class="px-8 py-4">
-               {userInfo.organization}
+               {userInfo?.organization}
               </td>
             </tr>
             <tr class="border-b border-gray-200 dark:border-gray-700">
@@ -78,7 +79,7 @@ const Profile = () => {
               </th>
 
               <td class="px-8 py-4">
-               {userInfo.position}
+               {userInfo?.position}
               </td>
             </tr>
           </tbody>
