@@ -17,6 +17,7 @@ import Verification from '../../Pages/Dashboard/Admin/Verification/Verification'
 import Profile from '../../Pages/Dashboard/Profile/Profile'
 import AllMember from '../../Pages/Dashboard/Admin/AllMember/AllMember'
 import AdminRoute from '../AdminRoute/AdminRoute'
+import AllTransaction from '../../Pages/Dashboard/Admin/AllTransaction/AllTransaction'
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,12 @@ const router = createBrowserRouter([
         path: '/dashboard/admin/verification',
         element: <AdminRoute>
         <Verification></Verification>
+      </AdminRoute>,
+      },
+      {
+        path: '/dashboard/admin/transactions',
+        element: <AdminRoute>
+        <AllTransaction></AllTransaction>
       </AdminRoute>,
       },
       {
