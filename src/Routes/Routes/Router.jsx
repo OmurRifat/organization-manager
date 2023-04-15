@@ -15,6 +15,8 @@ import PrivetRoute from '../../PrivetRoute/PrivetRoute'
 import AdminDashboard from '../../Pages/Dashboard/Admin/AdminDashboard/AdminDashBoard'
 import Verification from '../../Pages/Dashboard/Admin/Verification/Verification'
 import Profile from '../../Pages/Dashboard/Profile/Profile'
+import AllMember from '../../Pages/Dashboard/Admin/AllMember/AllMember'
+import AdminRoute from '../AdminRoute/AdminRoute'
 
 const router = createBrowserRouter([
   {
@@ -61,15 +63,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/admin',
-        element: <AdminDashboard></AdminDashboard>,
+        element: <AdminRoute>
+        <AdminDashboard></AdminDashboard>
+      </AdminRoute>,
       },
       {
         path: '/dashboard/member',
         element: <MemberDashboard></MemberDashboard>,
       },
       {
-        path: '/dashboard/verification',
-        element: <Verification></Verification>,
+        path: '/dashboard/admin/verification',
+        element: <AdminRoute>
+        <Verification></Verification>
+      </AdminRoute>,
       },
       {
         path: '/dashboard/member/settings',
@@ -77,7 +83,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/admin/settings',
-        element: <Settings></Settings>,
+        element: <AdminRoute>
+        <Settings></Settings>
+      </AdminRoute>,
+      },
+      {
+        path: '/dashboard/admin/all-member',
+        element: <AdminRoute>
+          <AllMember></AllMember>
+        </AdminRoute>,
       },
       {
         path: '/dashboard/apply-loan',

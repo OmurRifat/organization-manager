@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from './PayMethodModal'
-
+import { useQuery } from '@tanstack/react-query'
 const MemberDashboard = () => {
   const [payModal, setPayModal] = useState(false)
+
+  
+
+
   const handlePayment = () => {
     console.log('click')
 

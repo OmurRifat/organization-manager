@@ -58,6 +58,8 @@ const Signup = () => {
             phone: data.phone,
             photoURL: imgData.data.url,
             position: 'member',
+            verified: false,
+            joiningDate: new Date(),
             donation: [
               
             ],
