@@ -9,7 +9,7 @@ const FoundationForm = () => {
   const { register, handleSubmit, reset } = useForm()
   const onSubmit = (data) => {
     console.log(data)
-    axios.post('http://localhost:5000/organizations', data).then((res) => {
+    axios.post('https://organization-manager-server.onrender.com/organizations', data).then((res) => {
       if (res.data.insertedId) {
         console.log(data)
         alert('Added Successfully')
