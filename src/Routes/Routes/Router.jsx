@@ -14,6 +14,7 @@ import PaymentSuccess from '../../Pages/Dashboard/PaymentSuccess/PaymentSuccess'
 import PrivetRoute from '../../PrivetRoute/PrivetRoute'
 import AdminDashboard from '../../Pages/Dashboard/Admin/AdminDashboard/AdminDashBoard'
 import Verification from '../../Pages/Dashboard/Admin/Verification/Verification'
+import Profile from '../../Pages/Dashboard/Profile/Profile'
 
 const router = createBrowserRouter([
   {
@@ -48,18 +49,34 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+    element: (
+      <PrivetRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRoute>
+    ),
     children: [
       {
         path: '/dashboard',
+        element: <Profile></Profile>,
+      },
+      {
+        path: '/dashboard/admin',
         element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: '/dashboard/member',
+        element: <MemberDashboard></MemberDashboard>,
       },
       {
         path: '/dashboard/verification',
         element: <Verification></Verification>,
       },
       {
-        path: '/dashboard/settings',
+        path: '/dashboard/member/settings',
+        element: <Settings></Settings>,
+      },
+      {
+        path: '/dashboard/admin/settings',
         element: <Settings></Settings>,
       },
       {
