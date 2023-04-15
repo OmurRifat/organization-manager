@@ -27,11 +27,10 @@ const Navbar = () => {
     },
   };
   return (
-    <div style={ { zIndex: '999' } } className=' sticky top-0 backdrop-filter backdrop-blur'>
+    <div style={ { zIndex: '999' } } className='bg-nav bg-opacity-50 backdrop-filter sticky top-0 backdrop-blur-xl'>
       {/* firstblock */ }
       <nav
-        style={ styleObject.pColor }
-        className="md:block z-50 hidden  shadow-sm w-full "
+        className="md:block z-50 hidden shadow-sm w-full "
       >
         <div className="w-full">
           <div className="flex items-center h-20 w-full">
@@ -80,7 +79,7 @@ const Navbar = () => {
       <nav className="md:hidden shadow-sm w-full z-10">
         <div className="w-full">
           <div className="flex items-center h-20 w-full">
-            <div style={ styleObject.pColor } className="flex bg-opacity-60 z-20 top-0 backdrop-filter backdrop-blur  shadow-sm w-full fixed items-center md:mx-20 justify-between">
+            <div className="flex bg-nav bg-opacity-60 z-20 top-0 backdrop-filter backdrop-blur-lg shadow-sm w-full fixed items-center md:mx-20 justify-between">
               <div className="flex justify-center items-center flex-shrink-0">
                 <div className="mr-10 flex md:hidden ">
                   <button
@@ -148,7 +147,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <nav className="shadow-sm bg-opacity-60 z-20 top-0 backdrop-filter backdrop-blur  w-full ">
+      <nav className="shadow-sm w-full ">
         <Transition
           show={ isOpen }
           enter="transition ease-out duration-100 transform"
@@ -159,7 +158,7 @@ const Navbar = () => {
           leaveTo="opacity-0 scale-95"
         >
           { (ref) => (
-            <div style={ styleObject.pColor } className="md:hidden flex justify-center items-center" id="mobile-menu">
+            <div className="md:hidden flex justify-center items-center" id="mobile-menu">
               <div ref={ ref } className=" px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <Link
                   to='/'
@@ -200,7 +199,7 @@ const Navbar = () => {
             </div>
           ) }
         </Transition>
-        <div style={ styleObject.pColor } className="flex mt-3 justify-start">
+        <div className="flex justify-start">
           <div className="text-black mx-10">
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
