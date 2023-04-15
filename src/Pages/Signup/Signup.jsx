@@ -20,7 +20,7 @@ const Signup = () => {
     formState: { errors },
   } = useForm({ mode: 'onTouched' })
   useEffect(() => {
-    fetch('http://localhost:5000/organizations')
+    fetch('https://organization-manager-server.onrender.com/organizations')
       .then((res) => res.json())
       .then((data) => setFoundation(data))
   }, [])
@@ -75,7 +75,7 @@ const Signup = () => {
 
               updateUser(updateUserInfo)
                 .then(() => {
-                  fetch('http://localhost:5000/users', {
+                  fetch('https://organization-manager-server.onrender.com/users', {
                     method: 'POST',
                     headers: {
                       'content-type': 'application/json',
