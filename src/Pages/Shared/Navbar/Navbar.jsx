@@ -27,7 +27,7 @@ const Navbar = () => {
     },
   };
   return (
-    <div style={ { zIndex: '999' } } className='bg-nav bg-opacity-60 backdrop-filter sticky top-0 backdrop-blur-lg'>
+    <div style={ { zIndex: '999' } } className='bg-nav bg-opacity-50 backdrop-filter sticky top-0 backdrop-blur-xl'>
       {/* firstblock */ }
       <nav
         className="md:block z-50 hidden shadow-sm w-full "
