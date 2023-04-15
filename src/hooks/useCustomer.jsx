@@ -5,7 +5,7 @@ const useCustomer = (email) => {
   const [isCustomerLoading, setIsCustomerLoading] = useState(true)
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/user/customer/${email}`)
+      fetch(`https://organization-manager-server.onrender.com/user/customer/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
