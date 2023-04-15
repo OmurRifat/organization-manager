@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Transition } from "@headlessui/react";
 import { BiDonateHeart } from "react-icons/bi";
+import { GoSignOut } from "react-icons/go";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
-
-
+const {user, logOut}= useContext(AuthContext)
+const handleLogOut =()=> {
+  logOut().then(res => {
+  const user = res.user;
+  })}
   const scrollWithOffset = (el) => {
     const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
     const yOffset = -100;
@@ -63,13 +68,21 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div>
-                  <Link
+                  {
+                    user?.uid ? 
+                    <button
+                    onClick={handleLogOut}
+                    className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm bg-red-600  font-medium "
+                  >
+                    <GoSignOut className='mr-1 text-xl' /> LogOut
+                  </button> :  <Link
                     style={ styleObject.button }
                     to='/dashboard'
                     className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm  font-medium "
                   >
                     <BiDonateHeart className='mr-1' /> Donate
                   </Link>
+                  }
                 </div>
               </div>
             </div>
@@ -147,7 +160,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-
       <nav className="shadow-sm bg-opacity-60 z-20 top-0 backdrop-filter backdrop-blur  w-full ">
         <Transition
           show={ isOpen }
