@@ -1,23 +1,33 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from './PayMethodModal'
 import { useQuery } from '@tanstack/react-query'
+import { AuthContext } from '../../../context/AuthProvider'
+import axios from 'axios'
 const MemberDashboard = () => {
   const [payModal, setPayModal] = useState(false)
 
+  const [userInfo, setUserInfo] = useState({});
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/users/${user.email}`)
+      .then((data) => setUserInfo(data.data[0]));
+  }, [user.email]);
   
-
-
-  const handlePayment = () => {
-    console.log('click')
-
+console.log(userInfo)
+  const handlePayment = (item) => {
     const paymentInfo = {
-      amount: '10000',
-      userName: 'Likhon',
-      userEmail: 'mdabdurrouf.likhon@mail.com',
-      phone: '01743586381',
+      amount: item?.amount,
+      userName: userInfo?.name,
+      userEmail: userInfo?.email,
+      phone: userInfo?.phone,
+      organization: userInfo?.organization,
+      donationName: item?.donationName,
+      month:item?.month
     }
-    fetch('https://organization-manager-server.onrender.com/due-payment', {
+    console.log(paymentInfo)
+    fetch('http://localhost:5000/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -165,86 +175,29 @@ const MemberDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">24-3-2023</td>
+            {userInfo && userInfo?.donation?.map(item => <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td class="px-6 ">{item?.month}</td>
               <th
                 scope="row"
                 class="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Emeka Warhouse
+                {item?.donationName}
               </th>
-              <td class="px-6 ">20,200.00</td>
-              <td class="px-6 ">sjkUgd678sdhjks</td>
+              <td class="px-6 ">{item?.amount}</td>
+              <td class="px-6 ">{item?.status ? item?.transactionId : "-due-"}</td>
               <td class="px-6  text-[orange]">On going</td>
               <td class="px-6 ">
                 <button
-                  onClick={() => handlePayment()}
+                  onClick={() => handlePayment(item)}
                   type="button"
                   class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   Pay
                 </button>
               </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">24-3-2023</td>
-              <th
-                scope="row"
-                class="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-              <td class="px-6 ">20,200.00</td>
-              <td class="px-6 ">sjkUgd678sdhjks</td>
-              <td class="px-6  text-[red]">Pending</td>
-              <td class="px-6 ">
-                <button
-                  type="button"
-                  class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Pay
-                </button>
-              </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">24-3-2023</td>
-              <th
-                scope="row"
-                class="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-              <td class="px-6 ">20,200.00</td>
-              <td class="px-6 ">sjkUgd678sdhjks</td>
-              <td class="px-6 ">On going</td>
-              <td class="px-6 "></td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">24-3-2023</td>
-              <th
-                scope="row"
-                class="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-              <td class="px-6 ">20,200.00</td>
-              <td class="px-6 ">sjkUgd678sdhjks</td>
-              <td class="px-6 ">On going</td>
-              <td class="px-6 "></td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">24-3-2023</td>
-              <th
-                scope="row"
-                class="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-              <td class="px-6 ">20,200.00</td>
-              <td class="px-6 ">sjkUgd678sdhjks</td>
-              <td class="px-6 ">On going</td>
-              <td class="px-6 "></td>
-            </tr>
+            </tr>)}
+           
+           
           </tbody>
         </table>
       </div>
