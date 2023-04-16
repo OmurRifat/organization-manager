@@ -52,15 +52,17 @@ const Signup = () => {
           console.log(imgData.data.url)
           setUserImg(imgData.data.url)
           const userInfo = {
-            organization: data.organization,
+            organization: data.organization
+              ? data.organization
+              : 'Iklab Foundation',
             name: data.name,
             email: data.email,
             phone: data.phone,
             photoURL: imgData.data.url,
             position: 'member',
-            donation: [
-              
-            ],
+            verified: false,
+            joiningDate: new Date(),
+            donation: [],
           }
 
           setError('')
@@ -75,13 +77,16 @@ const Signup = () => {
 
               updateUser(updateUserInfo)
                 .then(() => {
-                  fetch('https://organization-manager-server.onrender.com/users', {
-                    method: 'POST',
-                    headers: {
-                      'content-type': 'application/json',
+                  fetch(
+                    'https://organization-manager-server.onrender.com/users',
+                    {
+                      method: 'POST',
+                      headers: {
+                        'content-type': 'application/json',
+                      },
+                      body: JSON.stringify(userInfo),
                     },
-                    body: JSON.stringify(userInfo),
-                  })
+                  )
                     .then((res) => res.json())
                     .then((data) => {
                       console.log('save', data)
