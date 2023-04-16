@@ -10,7 +10,7 @@ const MemberDashboard = () => {
   useEffect(()=>{
     fetch(`http://localhost:5000/users/${user?.email}`)
     .then(res => res.json())
-    .then(data => setUserData(data.donation))
+    .then(data => setUserData(data[0].donation))
   },[])
  
   
@@ -187,6 +187,7 @@ const MemberDashboard = () => {
               <td className="px-6 ">{donation.amount}</td>
                <td className="px-6 "></td>
               <td className="px-6  text-[red]">{!donation.status ? 'pending' : 'paid'  }</td>
+            
               <td className="px-6 ">
                 <button
                   type="button"
