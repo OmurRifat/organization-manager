@@ -5,16 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
-  const {user} = useContext(AuthContext)
-  const [userData,setUserData] = useState([])
- 
-
-  useEffect(()=>{
-    fetch(`http://localhost:5000/users/${user?.email}`)
-    .then(res => res.json())
-    .then(data => setUserData(data.donation))
-  },[])
- 
+  
   
   const [payModal, setPayModal] = useState(false)
 
