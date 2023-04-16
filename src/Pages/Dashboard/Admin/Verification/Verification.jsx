@@ -39,24 +39,24 @@ const Verification = () => {
   return (
     <div>
       <p className="text-xl font-bold text-[#ff8000] py-3">Member Request</p>
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         {organizationMembers.length > 0 ? (
-          <thead class="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Member ID
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Photo
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Name
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Email
               </th>
 
-              <th scope="col" class="px-6 py-3"></th>
+              <th scope="col" className="px-6 py-3"></th>
             </tr>
           </thead>
         ) : (
@@ -75,12 +75,12 @@ const Verification = () => {
             organizationMembers.map((member, i) => (
               <tr
                 key={member._id}
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <td class="px-6 ">
+                <td className="px-6 ">
                   OM-{userInfo.organization.slice(0, 1)}F#{i + 1}
                 </td>
-                <td class="px-6 ">
+                <td className="px-6 ">
                   <img
                     src={member?.photoURL}
                     alt=""
@@ -91,16 +91,16 @@ const Verification = () => {
                 </td>
                 <td
                   scope="row"
-                  class="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+                  className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   {member?.name}
                 </td>
-                <td class="px-6 ">{member?.email}</td>
-                <td class="px-6 ">
+                <td className="px-6 ">{member?.email}</td>
+                <td className="px-6 ">
                   <button
                     onClick={() => handleShowDetails(member)}
                     type="button"
-                    class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
                     View Details
                   </button>

@@ -76,9 +76,7 @@ const FoundationForm = () => {
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       {...register('founder')}
                       type="text"
-                      id="email"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Founder Name"
+                      id="email"                      placeholder="Founder Name"
                       required
                     />
                   </div>
@@ -121,9 +119,7 @@ const FoundationForm = () => {
                       name="location"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       {...register('address')}
-                      id="email"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Select your location"
+                      id="email"                      placeholder="Select your location"
                       required
                     />
                   </div>
@@ -140,7 +136,7 @@ const FoundationForm = () => {
                     />
                   </div>
                   <label
-                    for="remember"
+                    htmlFor="remember"
                     className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     I have read and agree with terms of service and our privacy

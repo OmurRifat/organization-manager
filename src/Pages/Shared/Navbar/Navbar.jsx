@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Transition } from "@headlessui/react";
 import { BiDonateHeart } from "react-icons/bi";
+import { GoSignOut } from "react-icons/go";
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
-
-
+const {user, logOut}= useContext(AuthContext)
+const handleLogOut =()=> {
+  logOut().then(res => {
+  const user = res.user;
+  })}
   const scrollWithOffset = (el) => {
     const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
     const yOffset = -100;
@@ -49,26 +54,34 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex items-center">
-                <div class="relative  flex justify-end items-center md:mr-6 my-2">
+                <div className="relative  flex justify-end items-center md:mr-6 my-2">
                   <input
                     type="search"
-                    class=" p-2 bg-white text-black rounded-md"
+                    className=" p-2 bg-white text-black rounded-md"
                     placeholder="Organization Search"
                   />
-                  <div class="absolute text-black  pin-r pin-t mt-3 mr-4 ">
+                  <div className="absolute text-black  pin-r pin-t mt-3 mr-4 ">
                     <p className="cursor-pointer mb-2">
                       <BsSearch />
                     </p>
                   </div>
                 </div>
                 <div>
-                  <Link
+                  {
+                    user?.uid ? 
+                    <button
+                    onClick={handleLogOut}
+                    className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm bg-red-600  font-medium "
+                  >
+                    <GoSignOut className='mr-1 text-xl' /> LogOut
+                  </button> :  <Link
                     style={ styleObject.button }
                     to='/dashboard'
                     className="cursor-pointer flex items-center text-white px-4 py-3 rounded-md text-sm  font-medium "
                   >
                     <BiDonateHeart className='mr-1' /> Donate
                   </Link>
+                  }
                 </div>
               </div>
             </div>
