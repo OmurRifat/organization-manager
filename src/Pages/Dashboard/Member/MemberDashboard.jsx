@@ -43,7 +43,7 @@ console.log(userInfo)
   }
   return (
     <div>
-      <p className="font-bold text-2xl">All Data</p>
+      <p className="font-bold text-black mb-4 pl-4 text-2xl">All Data</p>
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
           <img
