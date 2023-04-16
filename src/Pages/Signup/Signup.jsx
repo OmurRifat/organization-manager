@@ -35,6 +35,23 @@ const Signup = () => {
   )
 
   const navigate = useNavigate()
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  const d = new Date()
+  console.log()
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -62,7 +79,14 @@ const Signup = () => {
             position: 'member',
             verified: false,
             joiningDate: new Date(),
-            donation: [],
+            donation: [
+              {
+                month: `${monthNames[d.getMonth()]} - ${d.getFullYear()}`,
+                amount: '30',
+                status: false,
+                donationName: 'Regular Donation',
+              },
+            ],
           }
 
           setError('')
