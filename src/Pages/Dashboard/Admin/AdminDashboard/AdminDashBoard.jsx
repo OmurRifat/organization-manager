@@ -72,7 +72,7 @@ const AdminDashboard = () => {
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
               type="button"
-              class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             >
               10000 BDT
             </button>
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
             type="button"
-            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             1000 BDT
           </button>
@@ -105,7 +105,7 @@ const AdminDashboard = () => {
           <p className="text-xl text-white py-2">Total Members</p>
           <button
             type="button"
-            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             100
           </button>
@@ -117,21 +117,21 @@ const AdminDashboard = () => {
         alt=""
       /> */}
 
-      <div class="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
-        <div class="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
+      <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <p>Donation History</p>
           <div className="flex justify-between items-center">
             <p className="mx-2 text-black">Show</p>
             <button
               id="dropdownActionButton"
               data-dropdown-toggle="dropdownAction"
-              class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button"
             >
-              <span class="sr-only text-black">Action button</span>
+              <span className="sr-only text-black">Action button</span>
               10
               <svg
-                class="w-3 h-3 ml-2"
+                className="w-3 h-3 ml-2"
                 aria-hidden="true"
                 fill="none"
                 stroke="currentColor"
@@ -139,9 +139,9 @@ const AdminDashboard = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M19 9l-7 7-7-7"
                 ></path>
               </svg>
@@ -149,16 +149,16 @@ const AdminDashboard = () => {
 
             <div
               id="dropdownAction"
-              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+              className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul
-                class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                className="py-1 text-sm text-gray-700 dark:text-gray-200"
                 aria-labelledby="dropdownActionButton"
               >
                 <li>
                   <a
                     href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Reward
                   </a>
@@ -168,116 +168,116 @@ const AdminDashboard = () => {
             <p className="mx-2 text-black">List</p>
           </div>
         </div>
-        <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Member Name
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Mobile Number
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total Due
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Status
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
-                class=" px-6 py-6 text-center text-gray-900 whitespace-nowrap dark:text-white"
+                className=" px-6 py-6 text-center text-gray-900 whitespace-nowrap dark:text-white"
               >
                 Emeka Warhouse
               </th>
 
-              <td class="px-6  text-green-500">01743586381</td>
-              <td class="px-6  text-[red]">1000 Tk</td>
-              <td class="px-6 ">
-              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
+              <td className="px-6  text-green-500">01743586381</td>
+              <td className="px-6  text-[red]">1000 Tk</td>
+              <td className="px-6 ">
+              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
-                class=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 Emeka Warhouse
               </th>
 
-              <td class="px-6  text-green-500">01743586381</td>
-              <td class="px-6  text-[red]">1000 Tk</td>
-              <td class="px-6 ">
-              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
+              <td className="px-6  text-green-500">01743586381</td>
+              <td className="px-6  text-[red]">1000 Tk</td>
+              <td className="px-6 ">
+              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
-                class=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 Emeka Warhouse
               </th>
 
-              <td class="px-6  text-green-500">01743586381</td>
-              <td class="px-6  text-[red]">1000 Tk</td>
-              <td class="px-6 ">
+              <td className="px-6  text-green-500">01743586381</td>
+              <td className="px-6  text-[red]">1000 Tk</td>
+              <td className="px-6 ">
                 <button
                   type="button"
-                  class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                  className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                 >
                   Send Successfully
                 </button>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
-                class=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 Emeka Warhouse
               </th>
 
-              <td class="px-6  text-green-500">01743586381</td>
-              <td class="px-6  text-[red]">1000 Tk</td>
-              <td class="px-6 ">
-              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
+              <td className="px-6  text-green-500">01743586381</td>
+              <td className="px-6  text-[red]">1000 Tk</td>
+              <td className="px-6 ">
+              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
 
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
-                class=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 Emeka Warhouse
               </th>
 
-              <td class="px-6  text-green-500">01743586381</td>
-              <td class="px-6  text-[red]">1000 Tk</td>
-              <td class="px-6 ">
-              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
+              <td className="px-6  text-green-500">01743586381</td>
+              <td className="px-6  text-[red]">1000 Tk</td>
+              <td className="px-6 ">
+              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="flex justify-between items-center  mx-5">
-        <span class="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
+      <div className="flex justify-between items-center  mx-5">
+        <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
           Showing{' '}
-          <span class="font-semibold text-gray-900 dark:text-white">1</span> -{' '}
-          <span class="font-semibold text-gray-900 dark:text-white">30</span> of
+          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{' '}
+          <span className="font-semibold text-gray-900 dark:text-white">30</span> of
           List
         </span>
         <nav aria-label="Page navigation sm:mt-5 example">
-          <ul class="inline-flex -space-x-px">
+          <ul className="inline-flex -space-x-px">
             <li>
               <a
                 href="#"
-                class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Previous
               </a>
@@ -285,7 +285,7 @@ const AdminDashboard = () => {
             <li>
               <a
                 href="#"
-                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 1
               </a>
@@ -293,7 +293,7 @@ const AdminDashboard = () => {
             <li>
               <a
                 href="#"
-                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 2
               </a>
@@ -302,7 +302,7 @@ const AdminDashboard = () => {
               <a
                 href="#"
                 aria-current="page"
-                class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                className="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >
                 3
               </a>
@@ -310,7 +310,7 @@ const AdminDashboard = () => {
             <li>
               <a
                 href="#"
-                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 4
               </a>
@@ -318,7 +318,7 @@ const AdminDashboard = () => {
             <li>
               <a
                 href="#"
-                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 5
               </a>
@@ -326,7 +326,7 @@ const AdminDashboard = () => {
             <li>
               <a
                 href="#"
-                class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
               </a>

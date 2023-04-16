@@ -22,21 +22,21 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
   return (
     <div
       id="authentication-modal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-hidden="true"
-      class="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 bg-black bg-opacity-50 backdrop-blur-sm  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 bg-black bg-opacity-50 backdrop-blur-sm  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
-      <div class="relative w-full max-w-md max-h-full">
-        <div class="relative bg-[#80bfb8] rounded-lg shadow dark:bg-gray-700">
+      <div className="relative w-full max-w-md max-h-full">
+        <div className="relative bg-[#80bfb8] rounded-lg shadow dark:bg-gray-700">
           <button
             onClick={() => setShowModal(false)}
             type="button"
-            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
             data-modal-hide="authentication-modal"
           >
             <svg
               aria-hidden="true"
-              class="w-5 h-5"
+              className="w-5 h-5"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -47,9 +47,9 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
                 clip-rule="evenodd"
               ></path>
             </svg>
-            <span class="sr-only">Close modal</span>
+            <span className="sr-only">Close modal</span>
           </button>
-          <div class="px-6 py-6 lg:px-8">
+          <div className="px-6 py-6 lg:px-8">
             <div className="text-center text-white p-10">
               <p className="text-3xl m-5">Review and apply</p>
               <p>
@@ -61,7 +61,7 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
                 <button
                   onClick={() => setShowModal(false)}
                   type="button"
-                  class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                 >
                   Back
                 </button>
@@ -69,7 +69,7 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
                   onClick={() => setProcessing(true)}
                   data-modal-target="defaultModal"
                   data-modal-toggle="defaultModal"
-                  class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                   type="button"
                 >
                   Confirm

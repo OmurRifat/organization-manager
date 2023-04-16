@@ -49,13 +49,13 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex items-center">
-                <div class="relative  flex justify-end items-center md:mr-6 my-2">
+                <div className="relative  flex justify-end items-center md:mr-6 my-2">
                   <input
                     type="search"
-                    class=" p-2 bg-white text-black rounded-md"
+                    className=" p-2 bg-white text-black rounded-md"
                     placeholder="Organization Search"
                   />
-                  <div class="absolute text-black  pin-r pin-t mt-3 mr-4 ">
+                  <div className="absolute text-black  pin-r pin-t mt-3 mr-4 ">
                     <p className="cursor-pointer mb-2">
                       <BsSearch />
                     </p>

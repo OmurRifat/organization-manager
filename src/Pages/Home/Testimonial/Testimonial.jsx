@@ -82,7 +82,6 @@ const Review = () => {
           arrows={false}
           swipeable={false}
           autoPlaySpeed={2000}
-          // containerClass="carousel-container"
           autoPlay={true}
          
           className="mb-10 pb-12 mx-auto"
