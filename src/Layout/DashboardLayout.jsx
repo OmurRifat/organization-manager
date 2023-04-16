@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Header from '../Pages/Dashboard/Header/Header'
 
@@ -10,9 +10,12 @@ const DashboardLayout = () => {
   const { user } = useContext(AuthContext)
   const [isAdmin] = useAdmin(user?.email)
   const [isCustomer] = useCustomer(user?.email)
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleSideNav = () => setIsOpen((prevState) => !prevState)
   return (
     <div className="mx-10 ">
       <button
+        onClick={toggleSideNav}
         data-drawer-target="cta-button-sidebar"
         data-drawer-toggle="cta-button-sidebar"
         aria-controls="cta-button-sidebar"
@@ -37,24 +40,28 @@ const DashboardLayout = () => {
 
       <aside
         id="cta-button-sidebar"
-        class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full  sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div class="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
           <Link to="/">
             <div className="flex justify-center items-center m-5 ">
-              <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" className='w-20' alt="" />
+              <img
+                src="https://i.ibb.co/Bw1TVQS/project-logo.png"
+                className="w-20"
+                alt=""
+              />
               <p className="text-2xl m-2 font-semibold text-[black] text-center">
                 Organizational Manager
               </p>
             </div>
           </Link>
           <ul class="space-y-2 font-medium mx-5 ">
-            {!isAdmin && (
+            {isAdmin && (
               <>
                 <li>
                   <Link
-                    to="/dashboard"
+                    to="/dashboard/admin"
                     class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -72,7 +79,7 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/verification"
+                    to="/dashboard/admin/all-member"
                     class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -84,12 +91,52 @@ const DashboardLayout = () => {
                     >
                       <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Verification</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">
+                      All Members
+                    </span>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/settings"
+                    to="/dashboard/admin/verification"
+                    class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">
+                      Verification
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/admin/transactions"
+                    class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">
+                      All Transaction
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/admin/settings"
                     class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -110,7 +157,7 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <Link
-                    to="/dashboard"
+                    to="/dashboard/member"
                     class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -128,7 +175,7 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/settings"
+                    to="/dashboard/member/settings"
                     class="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -146,10 +193,7 @@ const DashboardLayout = () => {
               </>
             )}
           </ul>
-          <div className="">
-
-            
-          </div>
+          <div className=""></div>
         </div>
       </aside>
 

@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    colors: {
+      nav: "#DFF0EE",
+    }
   },
   plugins: [require('flowbite/plugin')],
 };

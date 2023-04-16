@@ -24,10 +24,10 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
       id="authentication-modal"
       tabindex="-1"
       aria-hidden="true"
-      class="fixed flex justify-center opacity-2 items-center  top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      class="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 bg-black bg-opacity-50 backdrop-blur-sm  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div class="relative w-full max-w-md max-h-full">
-        <div class="relative bg-[#384240] rounded-lg shadow dark:bg-gray-700">
+        <div class="relative bg-[#80bfb8] rounded-lg shadow dark:bg-gray-700">
           <button
             onClick={() => setShowModal(false)}
             type="button"
