@@ -4,12 +4,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../../context/AuthProvider'
 import axios from 'axios'
-import ProfileModal from './ProfileModal'
 
-const Verification = () => {
+const AllMember = () => {
   const [userInfo, setUserInfo] = useState({})
-  const [profile, setProfile] = useState(null)
-  const [profileModal, setProfileModal] = useState(false)
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
@@ -17,6 +14,7 @@ const Verification = () => {
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
+  console.log(userInfo)
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
     queryFn: async () => {
@@ -26,19 +24,9 @@ const Verification = () => {
     },
   })
 
-  const organizationMembers = members.filter(
-    (member) =>
-      member.organization === userInfo.organization && member.verified !== true,
-  )
-
-  const handleShowDetails = (selectedProfile) => {
-    setProfileModal(true)
-    setProfile(selectedProfile)
-  }
-
+  const organizationMembers = members.filter(member => member.organization === userInfo.organization && member.verified === true)
   return (
     <div>
-      <p className="text-xl font-bold text-[#ff8000] py-3">Member Request</p>
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         {organizationMembers.length > 0 ? (
           <thead class="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
@@ -53,9 +41,11 @@ const Verification = () => {
                 Name
               </th>
               <th scope="col" class="px-6 py-3">
-                Email
+                Phone
               </th>
-
+              <th scope="col" class="px-6 py-3">
+                Joining Date
+              </th>
               <th scope="col" class="px-6 py-3"></th>
             </tr>
           </thead>
@@ -77,9 +67,7 @@ const Verification = () => {
                 key={member._id}
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <td class="px-6 ">
-                  OM-{userInfo.organization.slice(0, 1)}F#{i + 1}
-                </td>
+                <td class="px-6 ">OM-{userInfo.organization.slice(0,1)}F#{i + 1}</td>
                 <td class="px-6 ">
                   <img
                     src={member?.photoURL}
@@ -95,10 +83,10 @@ const Verification = () => {
                 >
                   {member?.name}
                 </td>
-                <td class="px-6 ">{member?.email}</td>
+                <td class="px-6 ">{member?.phone}</td>
+                <td class="px-6  text-[orange]">{member?.joiningDate}</td>
                 <td class="px-6 ">
                   <button
-                    onClick={() => handleShowDetails(member)}
                     type="button"
                     class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
@@ -109,15 +97,8 @@ const Verification = () => {
             ))}
         </tbody>
       </table>
-      {profileModal && (
-        <ProfileModal
-        profile={profile}
-          profileModal={profileModal}
-          setProfileModal={setProfileModal}
-        ></ProfileModal>
-      )}
     </div>
   )
 }
 
-export default Verification
+export default AllMember

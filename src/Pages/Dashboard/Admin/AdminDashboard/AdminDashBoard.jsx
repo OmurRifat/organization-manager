@@ -4,6 +4,9 @@ import PayMethodModal from '../../Member/PayMethodModal'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
 const AdminDashboard = () => {
+  
+
+
   const sendEmail = () => {
     const templateParams = {
       to_name: 'Dibbo Dash',
@@ -54,7 +57,7 @@ const AdminDashboard = () => {
   }
   return (
     <div>
-      <p className="font-bold text-2xl">All Data</p>
+      {/* <p className="font-bold text-2xl">All Data</p> */}
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
         <div className="text-center  flex-col lg:border-r border-b just-2y-center p-5 items-center ">
           <img
@@ -194,13 +197,7 @@ const AdminDashboard = () => {
               <td class="px-6  text-green-500">01743586381</td>
               <td class="px-6  text-[red]">1000 Tk</td>
               <td class="px-6 ">
-                <button
-                  onClick={() => sendEmail()}
-                  type="button"
-                  class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  Send Remainder
-                </button>
+              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
               </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -214,13 +211,7 @@ const AdminDashboard = () => {
               <td class="px-6  text-green-500">01743586381</td>
               <td class="px-6  text-[red]">1000 Tk</td>
               <td class="px-6 ">
-                <button
-                  type="button"
-                  onClick={() => sendEmail()}
-                  class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  Send Remainder
-                </button>
+              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
               </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -253,12 +244,8 @@ const AdminDashboard = () => {
               <td class="px-6  text-green-500">01743586381</td>
               <td class="px-6  text-[red]">1000 Tk</td>
               <td class="px-6 ">
-                <button
-                  type="button"
-                  class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  Send Remainder
-                </button>
+              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
+
               </td>
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -272,12 +259,7 @@ const AdminDashboard = () => {
               <td class="px-6  text-green-500">01743586381</td>
               <td class="px-6  text-[red]">1000 Tk</td>
               <td class="px-6 ">
-                <button
-                  type="button"
-                  class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  Send Remainder
-                </button>
+              <button type="button" onClick={() => sendEmail()} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
               </td>
             </tr>
           </tbody>
