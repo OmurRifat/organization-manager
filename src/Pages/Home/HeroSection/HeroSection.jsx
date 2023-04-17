@@ -5,6 +5,7 @@ import hero from '../../../assets/hero.png'
 import { AuthContext } from "../../../context/AuthProvider";
 
 const HeroSection = () => {
+  
   const { user } = useContext(AuthContext);
   const styleObject = {
     background: {
