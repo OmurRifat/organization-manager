@@ -30,27 +30,27 @@ const AllTransaction = () => {
   return (
     <div>
       <p className="text-xl font-bold text-[#ff8000] py-3">All Transaction</p>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-10 py-3">
+            <th scope="col" className="px-6 py-3">
               Email
             </th>
-            <th scope="col" className="ps-24 py-3">
+            <th scope="col" className="px-6 py-3">
               Member Name
             </th>
 
-            <th scope="col" className=" py-3">
+            <th scope="col"className="px-6 py-3">
               Transaction ID
             </th>
-            <th scope="col" className=" py-3">
+            <th scope="col" className="px-6 py-3">
               Amount
             </th>
-            <th scope="col" className=" py-3">
+            <th scope="col" className="px-6 py-3">
               Payment Method
             </th>
 
-            <th scope="col" className="px-10 py-3"></th>
+            <th scope="col" className="px-6 py-3"></th>
           </tr>
         </thead>
       </table>
