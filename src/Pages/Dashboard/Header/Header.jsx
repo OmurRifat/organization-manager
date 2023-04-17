@@ -12,7 +12,10 @@ const Header = () => {
     logOut().then(res => {
     const user = res.user;
     })}
-  const toggleDropdown = () => setIsOpen(prevState => !prevState);
+  const toggleDropdown = () => {
+    
+    setIsOpen(!isOpen)
+  };
   return (
     <div className="flex justify-end">
       <div className="flex  justify-end items-center lg:m-4 w-100">
@@ -58,7 +61,7 @@ const Header = () => {
         <ul className=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
           <li>
             <Link to="/dashboard/member" className="flex items-center px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-black">
-             <RiDashboardFill className='text-xl mx-2' /> Dashboard
+             <RiDashboardFill className='text-xl mx-2' />My Dashboard
             </Link>
           </li>
           <li>

@@ -18,6 +18,7 @@ import Profile from '../../Pages/Dashboard/Profile/Profile'
 import AllMember from '../../Pages/Dashboard/Admin/AllMember/AllMember'
 import AdminRoute from '../AdminRoute/AdminRoute'
 import AllTransaction from '../../Pages/Dashboard/Admin/AllTransaction/AllTransaction'
+import MemberRoute from '../MemberRoute/MemberRoute'
 
 const router = createBrowserRouter([
   {
@@ -60,39 +61,43 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <Profile></Profile>,
+        element: <PrivetRoute>
+          <Profile></Profile>
+        </PrivetRoute>,
       },
       {
         path: '/dashboard/admin',
         element: <AdminRoute>
-        <AdminDashboard></AdminDashboard>
-      </AdminRoute>,
+          <AdminDashboard></AdminDashboard>
+        </AdminRoute>,
       },
       {
         path: '/dashboard/member',
-        element: <MemberDashboard></MemberDashboard>,
+        element: <MemberDashboard></MemberDashboard>
       },
       {
         path: '/dashboard/admin/verification',
         element: <AdminRoute>
-        <Verification></Verification>
-      </AdminRoute>,
+          <Verification></Verification>
+        </AdminRoute>,
       },
       {
         path: '/dashboard/admin/transactions',
         element: <AdminRoute>
-        <AllTransaction></AllTransaction>
-      </AdminRoute>,
+          <AllTransaction></AllTransaction>
+        </AdminRoute>,
       },
       {
         path: '/dashboard/member/settings',
-        element: <Settings></Settings>,
+        element: <MemberRoute>
+          <Settings></Settings>
+        </MemberRoute>,
       },
       {
         path: '/dashboard/admin/settings',
         element: <AdminRoute>
-        <Settings></Settings>
-      </AdminRoute>,
+          <Settings></Settings>
+        </AdminRoute>,
       },
       {
         path: '/dashboard/admin/all-member',

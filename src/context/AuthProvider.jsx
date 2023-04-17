@@ -43,6 +43,12 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
+  //     .then((data) => setLoadingDataStatus(true));
+  // }, [user?.email]);
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -53,12 +59,13 @@ const AuthProvider = ({ children }) => {
     loginUser,
     updateUser,
     loading,
+    setLoading,
     logOut,
     user,
   };
   return (
     <AuthContext.Provider value={ authInfo }>
-      {children}
+      { children }
     </AuthContext.Provider>
   );
 };
