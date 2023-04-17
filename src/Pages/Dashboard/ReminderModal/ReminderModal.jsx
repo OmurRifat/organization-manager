@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const ReminderModal = ({setModal,modal}) => {
     const [close,setClose] = useState(true)
+    
     return (
         <div
         id="authentication-modal"
