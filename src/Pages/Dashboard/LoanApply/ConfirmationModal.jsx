@@ -79,7 +79,6 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
           </div>
         </div>
       </div>
-
       {processing && (
         <ProcessingModal
           setProcessing={setProcessing}

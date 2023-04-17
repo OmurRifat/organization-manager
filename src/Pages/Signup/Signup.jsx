@@ -18,7 +18,7 @@ const Signup = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ mode: 'onTouched' })
+  } = useForm()
   useEffect(() => {
     fetch('https://organization-manager-server.onrender.com/organizations')
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const Signup = () => {
     const image = data.profilePicture[0]
     const formData = new FormData()
     formData.append('image', image)
-    const url = `https://api.imgbb.com/1/upload?key=89cc63ae1dbb327bb7cace69ee36c9c1`
+    const url = `https://api.imgbb.com/1/upload?key=86fadc190ecd3694fb9e2164676b3ced`
     fetch(url, {
       method: 'POST',
       body: formData,
@@ -105,12 +105,7 @@ const Signup = () => {
       })
   }
 
-  // const handleGoogleSignUp = () => {
-  //   googleRegister().then((result) => {
-  //     const user = result.user;
-  //     console.log(user);
-  //   });
-  // };
+
 
   const [photoName, setPhotoName] = useState(null)
   const [photoPreview, setPhotoPreview] = useState(null)
@@ -131,7 +126,7 @@ const Signup = () => {
           <div className="flex  items-center m-5 mt-10">
             <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
           </div>
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
+          {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
             <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
               <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
               <span className="py-3 md:py-1  font-semibold">
@@ -144,7 +139,7 @@ const Signup = () => {
                 Continue with Facebook
               </span>
             </button>
-          </div>
+          </div> */}
           <p className="flex justify-center text-3xl font-bold mt-10 mb-7">
             or
           </p>
