@@ -4,18 +4,18 @@ import Header from '../Pages/Dashboard/Header/Header'
 
 import { AuthContext } from '../context/AuthProvider'
 import useAdmin from '../hooks/useAdmin'
-import useCustomer from '../hooks/useCustomer'
+import useMember from '../hooks/useMember'
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext)
   const [isAdmin] = useAdmin(user?.email)
-  const [isCustomer] = useCustomer(user?.email)
+  const [isMember] = useMember(user?.email)
   const [isOpen, setIsOpen] = useState(false)
   const toggleSideNav = () => setIsOpen((prevState) => !prevState)
   return (
     <div className="mx-10 ">
       <button
-        onClick={toggleSideNav}
+        onClick={ toggleSideNav }
         data-drawer-target="cta-button-sidebar"
         data-drawer-toggle="cta-button-sidebar"
         aria-controls="cta-button-sidebar"
@@ -52,12 +52,12 @@ const DashboardLayout = () => {
                 alt=""
               />
               <p className="text-2xl m-2 font-semibold text-[black] text-center">
-                Organizational Manager
+                Organization Manager
               </p>
             </div>
           </Link>
           <ul className="space-y-2 font-medium mx-5 ">
-            {isAdmin && (
+            { isAdmin && (
               <>
                 <li>
                   <Link
@@ -152,8 +152,8 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
               </>
-            )}
-            {isCustomer && (
+            ) }
+            { isMember && (
               <>
                 <li>
                   <Link
@@ -191,7 +191,7 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
               </>
-            )}
+            ) }
           </ul>
           <div className=""></div>
         </div>
