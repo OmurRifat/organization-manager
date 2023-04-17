@@ -35,6 +35,23 @@ const Signup = () => {
   )
 
   const navigate = useNavigate()
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  const d = new Date()
+  console.log()
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -62,7 +79,14 @@ const Signup = () => {
             position: 'member',
             verified: false,
             joiningDate: new Date(),
-            donation: [],
+            donation: [
+              {
+                month: `${monthNames[d.getMonth()]} - ${d.getFullYear()}`,
+                amount: '30',
+                status: false,
+                donationName: 'Regular Donation',
+              },
+            ],
           }
 
           setError('')
@@ -89,8 +113,6 @@ const Signup = () => {
                   )
                     .then((res) => res.json())
                     .then((data) => {
-                      console.log('save', data)
-
                       navigate('/dashboard')
                     })
                 })
@@ -119,7 +141,7 @@ const Signup = () => {
     reader.readAsDataURL(e.target.files[0])
   }
   return (
-    <div style={styles.bg} className="signup-container text-black mt-4">
+    <div style={ styles.bg } className="signup-container text-black mt-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
         <div className="border p-10">
           <h1 className="md:text-5xl text-3xl font-bold m-5 ">Sign Up</h1>
@@ -144,7 +166,7 @@ const Signup = () => {
             or
           </p>
           <div className="px-2 md:px-0">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={ handleSubmit(onSubmit) }>
               <label
                 htmlFor="organization"
                 className="block mb-2 text-sm font-medium text-black"
@@ -152,24 +174,24 @@ const Signup = () => {
                 Select Your Organization
               </label>
               <select
-                {...register('organization')}
+                { ...register('organization') }
                 id="organization"
                 className=" border  text-black text-sm rounded-lg mb-3  block w-full p-2.5  "
               >
-                {foundation.map((f) => (
-                  <option value={f.name} className="text-black" key={f._id}>
-                    {f.name}
+                { foundation.map((f) => (
+                  <option value={ f.name } className="text-black" key={ f._id }>
+                    { f.name }
                   </option>
-                ))}
+                )) }
               </select>
-              {/* photo set */}
+              {/* photo set */ }
               <div>
                 <p>Profile Picture</p>
                 <div className="flex items-center bg-gray-50 my-4 rounded-lg">
                   <div className="text-center ">
                     <div
                       className=""
-                      style={{ display: !photoPreview ? 'block' : 'none' }}
+                      style={ { display: !photoPreview ? 'block' : 'none' } }
                     >
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
@@ -178,30 +200,30 @@ const Signup = () => {
                     </div>
                     <div
                       className=""
-                      style={{ display: photoPreview ? 'block' : 'none' }}
+                      style={ { display: photoPreview ? 'block' : 'none' } }
                     >
                       <span
                         className="block md:w-16 w-16 h-10 md:h-16 rounded-full m-auto shadow"
-                        style={{
+                        style={ {
                           backgroundSize: 'cover',
                           backgroundRepeat: 'no-repeat',
                           backgroundPosition: 'center center',
                           backgroundImage: `url(${photoPreview})`,
-                        }}
+                        } }
                       ></span>
                     </div>
                   </div>
                   <div className="col-span-6  sm:col-span-4">
                     <input
                       type="file"
-                      {...register('profilePicture')}
+                      { ...register('profilePicture') }
                       className="rounded-e-full w-full ml-4"
-                      onChange={handleFileChange}
+                      onChange={ handleFileChange }
                     />
                   </div>
                 </div>
               </div>
-              {/* photo set */}
+              {/* photo set */ }
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div className="mb-4 md:mb-6">
@@ -212,16 +234,16 @@ const Signup = () => {
                     Name
                   </label>
                   <input
-                    {...register('name', {
+                    { ...register('name', {
                       required: 'Please Enter Your Full Name',
-                    })}
+                    }) }
                     type="text"
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Full Name"
                   />
                   <p className=" error-message text-red-600">
-                    {errors.name?.message}
+                    { errors.name?.message }
                   </p>
                 </div>
 
@@ -233,16 +255,16 @@ const Signup = () => {
                     Email
                   </label>
                   <input
-                    {...register('email', {
+                    { ...register('email', {
                       required: 'Please Enter Your Email!',
-                    })}
+                    }) }
                     type="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Email address"
                     required
                   />
-                  <p className=" error-message text-red-600">{error}</p>
+                  <p className=" error-message text-red-600">{ error }</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -254,16 +276,16 @@ const Signup = () => {
                     Phone
                   </label>
                   <input
-                    {...register('phone', {
+                    { ...register('phone', {
                       required: 'Please Enter Your Phone Number!',
-                    })}
+                    }) }
                     type="text"
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Mobile Number"
                     required
                   />
-                  <p className=" error-message text-red-600">{error}</p>
+                  <p className=" error-message text-red-600">{ error }</p>
                 </div>
                 <div className="mb-6">
                   <label
@@ -273,7 +295,7 @@ const Signup = () => {
                     Password
                   </label>
                   <input
-                    {...register('password', {
+                    { ...register('password', {
                       required: 'Password is required',
                       minLength: {
                         value: 8,
@@ -284,7 +306,7 @@ const Signup = () => {
                         message:
                           'Password cannot exceed more than 12 characters',
                       },
-                    })}
+                    }) }
                     placeholder="Enter Password"
                     type="password"
                     id="password"
@@ -292,7 +314,7 @@ const Signup = () => {
                     required
                   />
                   <p className="alerts text-red-600">
-                    {errors.password?.message}
+                    { errors.password?.message }
                   </p>
                 </div>
               </div>
@@ -322,16 +344,16 @@ const Signup = () => {
               </button>
             </form>
             <p className="text-black mt-8">
-              Already have an account ?{' '}
+              Already have an account ?{ ' ' }
               <Link to="/login" className="text-[#2A9D8F] underline">
-                {' '}
+                { ' ' }
                 Sign In
               </Link>
             </p>
           </div>
         </div>
         <div className="max-w-3xl px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
-          <img src={signup} alt="signup page image" />
+          <img src={ signup } alt="signup page image" />
         </div>
       </div>
     </div>

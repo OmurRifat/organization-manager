@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const ProfileModal = ({ profile, setProfileModal }) => {
   const navigate = useNavigate()
   const handleApproval = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://organization-manager-server.onrender.com/users/${id}`, {
       method: 'PUT',
     })
       .then((res) => res.json())
@@ -26,7 +26,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
       <div className="relative w-full max-w-md max-h-full">
         <div className="relative bg-[#80bfb8] rounded-lg shadow dark:bg-gray-700">
           <button
-            onClick={() => setProfileModal(false)}
+            onClick={ () => setProfileModal(false) }
             type="button"
             className="absolute top-3  right-2.5 text-[red] bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
             data-modal-hide="authentication-modal"
@@ -55,7 +55,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
               />
               <div className="flex justify-center -mt-32">
                 <img
-                  src={profile.photoURL}
+                  src={ profile.photoURL }
                   className="rounded-full w-48 border-red-3 h-48 -mt-3"
                   alt=""
                 />
@@ -71,7 +71,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
                       Full Name:
                     </th>
 
-                    <td className="px-8 py-4 "> {profile?.name}</td>
+                    <td className="px-8 py-4 "> { profile?.name }</td>
                   </tr>
                   <tr className="border-b border-gray-200 dark:border-gray-700">
                     <th
@@ -81,7 +81,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
                       Email:
                     </th>
 
-                    <td className="px-8 py-4 ">{profile?.email}</td>
+                    <td className="px-8 py-4 ">{ profile?.email }</td>
                   </tr>
                   <tr className="border-b  dark:border-gray-700">
                     <th
@@ -92,7 +92,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
                     </th>
 
                     <td className="px-8 py-4 ">
-                      {profile?.phone ? profile.phone : 'N/A'}
+                      { profile?.phone ? profile.phone : 'N/A' }
                     </td>
                   </tr>
                   <tr className="border-b border-gray-200 dark:border-gray-700">
@@ -103,7 +103,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
                       Foundation
                     </th>
 
-                    <td className="px-8 py-4 ">{profile?.organization}</td>
+                    <td className="px-8 py-4 ">{ profile?.organization }</td>
                   </tr>
                 </tbody>
               </table>
@@ -117,7 +117,7 @@ const ProfileModal = ({ profile, setProfileModal }) => {
                 </button>
 
                 <button
-                  onClick={() => handleApproval(profile._id)}
+                  onClick={ () => handleApproval(profile._id) }
                   type="button"
                   className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >

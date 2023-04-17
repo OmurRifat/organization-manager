@@ -26,7 +26,7 @@ a:hover {
   color: white;
 } */
 
-#clipping {
+#home {
   clip-path: polygon(100% 0, 100% 100%, 59% 100%, 50% 87%, 0 87%, 0 0);
 
 
