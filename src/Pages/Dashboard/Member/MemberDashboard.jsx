@@ -177,18 +177,18 @@ const MemberDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            { userInfo && userInfo?.donation?.map(item => <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">{ item?.month }</td>
+            { userInfo && userInfo?.donation?.map(item => <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td className="px-6 ">{ item?.month }</td>
               <th
                 scope="row"
                 className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 { item?.donationName }
               </th>
-              <td class="px-6 ">{ item?.amount }</td>
-              <td class="px-6 ">{ item?.status ? item?.transactionId : "-due-" }</td>
-              <td class="px-6  text-[orange]">On going</td>
-              <td class="px-6 ">
+              <td className="px-6 ">{ item?.amount }</td>
+              <td className="px-6 ">{ item?.status ? item?.transactionId : "-due-" }</td>
+              <td className="px-6  text-[orange]">On going</td>
+              <td className="px-6 ">
                 <button
                   onClick={ () => handlePayment(item) }
                   type="button"

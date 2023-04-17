@@ -12,7 +12,10 @@ const Header = () => {
     logOut().then(res => {
     const user = res.user;
     })}
-  const toggleDropdown = () => setIsOpen(prevState => !prevState);
+  const toggleDropdown = () => {
+    
+    setIsOpen(!isOpen)
+  };
   return (
     <div className="flex justify-end">
       <div className="flex  justify-end items-center lg:m-4 w-100">

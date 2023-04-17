@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PayMethodModal from '../../Member/PayMethodModal'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-hot-toast'
+import ConfirmationModal from '../../ConfirmationModal/ConfirmationModal'
 const AdminDashboard = () => {
   
 
@@ -225,8 +226,8 @@ const AdminDashboard = () => {
               <td className="px-6  text-green-500">01743586381</td>
               <td className="px-6  text-[red]">1000 Tk</td>
               <td className="px-6 ">
-                <button
-                  type="button"
+                <button data-modal-target="confirmModal" data-modal-toggle="confirmModal"
+                  type="button" 
                   className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                 >
                   Send Successfully
@@ -334,6 +335,7 @@ const AdminDashboard = () => {
           </ul>
         </nav>
       </div>
+      
     </div>
   )
 }
