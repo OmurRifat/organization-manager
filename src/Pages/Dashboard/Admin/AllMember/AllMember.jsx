@@ -10,7 +10,7 @@ const AllMember = () => {
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
@@ -18,7 +18,7 @@ const AllMember = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
+      const res = await fetch('https://organization-manager-server.onrender.com/users')
       const data = await res.json()
       return data
     },
@@ -28,7 +28,7 @@ const AllMember = () => {
   return (
     <div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        {organizationMembers.length > 0 ? (
+        { organizationMembers.length > 0 ? (
           <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
@@ -51,26 +51,26 @@ const AllMember = () => {
           </thead>
         ) : (
           <div className="flex justify-center items-center h-[200px] bg-slate-200">
-            No Members Founded Please{' '}
+            No Members Founded Please{ ' ' }
             <Link to="/">
               <span className="underline text-blue-700 ms-2">
-                {' '}
+                { ' ' }
                 Back to Home
               </span>
             </Link>
           </div>
-        )}
+        ) }
         <tbody>
-          {organizationMembers &&
+          { organizationMembers &&
             organizationMembers.map((member, i) => (
               <tr
-                key={member._id}
+                key={ member._id }
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <td className="px-6 ">OM-{userInfo.organization.slice(0,1)}F#{i + 1}</td>
+                <td className="px-6 ">OM-{ userInfo.organization.slice(0, 1) }F#{ i + 1 }</td>
                 <td className="px-6 ">
                   <img
-                    src={member?.photoURL}
+                    src={ member?.photoURL }
                     alt=""
                     width="50px"
                     height=""
@@ -81,10 +81,10 @@ const AllMember = () => {
                   scope="row"
                   className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {member?.name}
+                  { member?.name }
                 </td>
-                <td className="px-6 ">{member?.phone}</td>
-                <td className="px-6  text-[orange]">{member?.joiningDate}</td>
+                <td className="px-6 ">{ member?.phone }</td>
+                <td className="px-6  text-[orange]">{ member?.joiningDate }</td>
                 <td className="px-6 ">
                   <button
                     type="button"
@@ -94,7 +94,7 @@ const AllMember = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            )) }
         </tbody>
       </table>
     </div>

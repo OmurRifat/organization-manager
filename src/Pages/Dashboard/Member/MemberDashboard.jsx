@@ -5,19 +5,19 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
-  
-  
+
+
   const [payModal, setPayModal] = useState(false)
 
   const [userInfo, setUserInfo] = useState({});
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]));
   }, [user.email]);
-  
-console.log(userInfo)
+
+  console.log(userInfo)
   const handlePayment = (item) => {
     const paymentInfo = {
       amount: item?.amount,
@@ -26,10 +26,10 @@ console.log(userInfo)
       phone: userInfo?.phone,
       organization: userInfo?.organization,
       donationName: item?.donationName,
-      month:item?.month
+      month: item?.month
     }
     console.log(paymentInfo)
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server.onrender.com/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -75,7 +75,7 @@ console.log(userInfo)
           <button
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
-            onClick={() => setPayModal(true)}
+            onClick={ () => setPayModal(true) }
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
@@ -159,7 +159,7 @@ console.log(userInfo)
           <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-               Month
+                Month
               </th>
               <th scope="col" className="px-6 py-3">
                 Donation Name
@@ -177,36 +177,36 @@ console.log(userInfo)
             </tr>
           </thead>
           <tbody>
-            {userInfo && userInfo?.donation?.map(item => <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 ">{item?.month}</td>
+            { userInfo && userInfo?.donation?.map(item => <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td className="px-6 ">{ item?.month }</td>
               <th
                 scope="row"
                 className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
-                {item?.donationName}
+                { item?.donationName }
               </th>
-              <td class="px-6 ">{item?.amount}</td>
-              <td class="px-6 ">{item?.status ? item?.transactionId : "-due-"}</td>
-              <td class="px-6  text-[orange]">On going</td>
-              <td class="px-6 ">
+              <td className="px-6 ">{ item?.amount }</td>
+              <td className="px-6 ">{ item?.status ? item?.transactionId : "-due-" }</td>
+              <td className="px-6  text-[orange]">On going</td>
+              <td className="px-6 ">
                 <button
-                  onClick={() => handlePayment(item)}
+                  onClick={ () => handlePayment(item) }
                   type="button"
                   className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   Pay
                 </button>
               </td>
-            </tr>)}
-           
-           
+            </tr>) }
+
+
           </tbody>
         </table>
       </div>
       <div className="flex justify-between items-center  mx-5">
         <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
-          Showing{' '}
-          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{' '}
+          Showing{ ' ' }
+          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">30</span> of
           List
         </span>
@@ -369,7 +369,7 @@ console.log(userInfo)
                   Login to your account
                 </button>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                  Not registered?{' '}
+                  Not registered?{ ' ' }
                   <a
                     href="#"
                     className="text-blue-700 hover:underline dark:text-blue-500"
@@ -382,12 +382,12 @@ console.log(userInfo)
           </div>
         </div>
       </div>
-      {payModal && (
+      { payModal && (
         <PayMethodModal
-          payModal={payModal}
-          setPayModal={setPayModal}
+          payModal={ payModal }
+          setPayModal={ setPayModal }
         ></PayMethodModal>
-      )}
+      ) }
     </div>
   )
 }

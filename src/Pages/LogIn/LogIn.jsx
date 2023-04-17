@@ -24,7 +24,7 @@ const LogIn = () => {
       console.log(user);
       if (user.uid) {
         navigate(from, { replace: true });
-        toast.success("You Have Successfully Sign Up")
+        toast.success("You Have Successfully Signed In!")
       }
     }).catch((error) => {
       const errorMessage = error.message;
@@ -39,7 +39,7 @@ const LogIn = () => {
             <h1 className="text-5xl text-black ">Sign In</h1>
             <div className="flex  items-center m-5 mt-10">
               <div className="bg-[black] h-1 w-24 me-5"></div>
-             
+
             </div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
               <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
