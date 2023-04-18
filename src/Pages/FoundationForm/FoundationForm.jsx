@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 import foundation from '../../assets/foundationform.png'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
@@ -12,7 +13,7 @@ const FoundationForm = () => {
     axios.post('https://organization-manager-server.onrender.com/organizations', data).then((res) => {
       if (res.data.insertedId) {
         console.log(data)
-        alert('Added Successfully')
+        toast('Added Successfully')
         reset()
       }
     })
