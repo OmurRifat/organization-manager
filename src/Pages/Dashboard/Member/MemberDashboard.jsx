@@ -35,7 +35,8 @@ const MemberDashboard = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        fetch(`https://organization-manager-server.onrender.com/update-donation?email=${user.email}&month=${item.month}`,
+        fetch(
+          `https://organization-manager-server.onrender.com/update-donation?email=${user.email}&month=${item.month}`,
           {
             method: 'PUT',
           },
@@ -59,18 +60,7 @@ const MemberDashboard = () => {
       .then((data) => setAllTransaction(data.data))
   }, [])
 
-  let totalDonations = 0
-  const calculateDonation = () => {
-    const myDonation = allTransaction?.filter(
-      (transaction) => (transaction.userEmail = user.email),
-    )
-    myDonation?.map((donation) => {
-      const amount = donation.amount
-      const value = parseInt(amount)
-      totalDonations = totalDonations + value
-    })
-  }
-  calculateDonation()
+  
 
   let totalDue = 0
   const [donation, setDonation] = useState([])
@@ -89,6 +79,17 @@ const MemberDashboard = () => {
       }
     })
   }
+  let totalDonations = 0
+  const calculateDonation = () => {
+    donation?.map((d) => {
+      if (d.status === true) {
+        const amountString = d.amount
+        const amount = parseInt(amountString)
+        totalDonations += amount
+      }
+    })
+  }
+  calculateDonation()
   dueCalculation()
   return (
     <div>
@@ -239,7 +240,7 @@ const MemberDashboard = () => {
                   >
                     { item?.donationName }
                   </th>
-                  <td className="px-6 ">{ item?.amount }</td>
+                  <td className="px-6 ">{item?.amount} Tk</td>
                   <td className="px-6 ">
                     { item?.status ? item?.transactionId : '-due-' }
                   </td>
@@ -262,9 +263,15 @@ const MemberDashboard = () => {
                         Pay
                       </button>
                     </td>
-                  ) : (
-                    ''
-                  ) }
+                  ) : <td className="px-6 ">
+                  <button
+                   
+                    type="button"
+                    className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  >
+                    Invoice
+                  </button>
+                </td>}
                 </tr>
               )) }
           </tbody>
