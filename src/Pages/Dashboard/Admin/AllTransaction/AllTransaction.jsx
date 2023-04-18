@@ -57,14 +57,14 @@ const AllTransaction = () => {
         </thead>
       </table>
       <tbody>
-        {organizationTransactions &&
+        { organizationTransactions &&
           organizationTransactions?.map((transaction, i) => (
             <TransactionInfo
-              i={i}
-              key={transaction._id}
-              transaction={transaction}
+              i={ i }
+              key={ transaction._id }
+              transaction={ transaction }
             ></TransactionInfo>
-          ))}
+          )) }
       </tbody>
     </div>
   )

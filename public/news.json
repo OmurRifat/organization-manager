@@ -1,60 +1,50 @@
 [
     {
-        "id": 1,
         "name": "Save the Children",
         "image": "https://images.unsplash.com/photo-1597266623053-4798dd1d8266?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
         "description": "A global non-profit organization dedicated to improving the lives of children in need."
       },
       {
-        "id": 2,
         "name": "Doctors Without Borders",
         "image": "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
         "description": "An international medical humanitarian organization that provides emergency assistance to people affected by conflict, epidemics, disasters, or exclusion from healthcare."
       },
       {
-        "id": 3,
         "name": "Greenpeace",
         "image": "https://plus.unsplash.com/premium_photo-1664304143184-3bfc1a069a1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
         "description": "An independent global campaigning organization that acts to change attitudes and behavior, to protect and conserve the environment and to promote peace."
       },
       {
-        "id": 4,
         "name": "Amnesty International",
         "image": "https://images.unsplash.com/photo-1617056442878-f07e2376b617?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
         "description": "A global movement of people fighting for human rights, campaigning for justice, and standing in solidarity with those whose rights are denied."
       },
       {
-        "id": 5,
         "name": "World Wildlife Fund",
         "image": "https://images.unsplash.com/photo-1500479694472-551d1fb6258d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
         "description": "A conservation organization working to reduce the most pressing threats to the diversity of life on Earth."
       },
       {
-        "id": 6,
         "name": "The Nature Conservancy",
         "image": "https://images.unsplash.com/photo-1535078016039-9c10b96ba218?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=863&q=80",
         "description": "A global environmental organization working to conserve the lands and waters on which all life depends."
       },
       {
-        "id": 7,
         "name": "Feeding America",
         "image": "https://images.unsplash.com/photo-1590251920192-0fd7b3a37fda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
         "description": "A hunger relief organization working to end hunger in the United States through a nationwide network of food banks."
       },
       {
-        "id": 8,
         "name": "American Cancer Society",
         "image": "https://images.unsplash.com/photo-1577896851557-9eaf4fd0b3ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
         "description": "A non-profit organization dedicated to eliminating cancer as a major health problem by preventing cancer, saving lives, and diminishing suffering from cancer."
       },
       {
-        "id": 9,
         "name": "Habitat for Humanity",
         "image": "https://images.unsplash.com/photo-1584592487914-a29c64f25887?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
         "description": "A non-profit organization that helps families build and improve places to call home."
       },
       {
-        "id": 10,
         "name": "St. Jude Children's Research Hospital",
         "image": "https://plus.unsplash.com/premium_photo-1661642106854-2126cdf400af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
         "description": "A pediatric treatment and research facility focused on children's catastrophic diseases, particularly leukemia and other cancers."
