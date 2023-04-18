@@ -3,7 +3,9 @@ import axios from "axios";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Profile = () => {
+
   const [userInfo, setUserInfo] = useState({});
+  
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
@@ -64,7 +66,6 @@ const Profile = () => {
               >
                 Foundation
               </th>
-
               <td className="px-8 py-4">
                 { userInfo?.organization }
               </td>

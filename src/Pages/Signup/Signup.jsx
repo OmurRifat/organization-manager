@@ -55,9 +55,9 @@ const Signup = () => {
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
-    const image = data.profilePicture[0]
-    const formData = new FormData()
-    formData.append('image', image)
+    const image = data.profilePicture[0];
+    const formData = new FormData();
+    formData.append('image', image);
     const url = `https://api.imgbb.com/1/upload?key=86fadc190ecd3694fb9e2164676b3ced`
     fetch(url, {
       method: 'POST',

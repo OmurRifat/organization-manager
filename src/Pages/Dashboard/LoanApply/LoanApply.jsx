@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ConfirmationModal from './ConfirmationModal'
 import { useForm } from 'react-hook-form'
+import { AuthContext } from '../../../context/AuthProvider'
+import axios from 'axios'
 
 
 const LoanApply = () => {
@@ -41,25 +43,81 @@ const LoanApply = () => {
         dragstart,
       };
     }
+    const [selectedMonth, setSelectedMonth] = useState('');
+    const [selectedBdt, setSelectedBdt] = useState('');
+    const [successs, setSuccesss]= useState(false)
 
-    const onSubmit = (data) => {}
-
-
-
+    // const onSubmit = (data) => {}
+    const handleDuration = (event) => {
+      setSelectedMonth(event.target.value);
+    };
+    const handleBdt = (event) => {
+      const e = document.getElementById("states").value
+      setSelectedBdt(event.target.value)
+      console.log( e);
+    }
+    const [userInfo, setUserInfo] = useState({});
+    const { user } = useContext(AuthContext);
+    useEffect(() => {
+      axios
+        .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
+        .then((data) => {
+          setUserInfo(data.data[0])
+        });
+    }, [user.email]);
+    const onSubmit = (data) => {
+      const durationMonth = selectedMonth;
+      const LoanAmount = data.amount;
+      const NidPhoto = data.nidPhoto[0];
+      const userInfos = userInfo;
+      const Organizations = userInfo.organization;
+      const formData = new FormData();
+      formData.append('image', NidPhoto);
+      const url = `https://api.imgbb.com/1/upload?key=86fadc190ecd3694fb9e2164676b3ced`
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((imgData) => {
+          const NidPhoto = imgData.data.url
+          const allLoanInformation = {NidPhoto,LoanAmount,Organizations, durationMonth,userInfos}
+          console.log(allLoanInformation);
+          fetch(
+            'https://organization-manager-server.onrender.com/loanSystem',
+            {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(allLoanInformation),
+            },
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              setSuccesss(data.acknowledged);
+            })
+        })
+    }
   return (
     <div className="">
       <p className="text-2xl text-[#2A9D8F] text-center">
         Apply for an Interest Free Loan
       </p>
-      <div className="grid lg:grid-cols-2  grid-cols-1">
+     <form onSubmit={ handleSubmit(onSubmit) }>
+     <div className="grid lg:grid-cols-2  grid-cols-1">
         <div className="m-5">
           <p className="text-xl m-3 text-[#54928b] font-medium">Duration</p>
+          <div>
           <div className="flex items-center m-4 mb-4">
             <input
               id="default-radio-1"
               type="radio"
-              value="3month"
+              value="3"
+              { ...register('threeM') }
               name="default-radio"
+              onChange={handleDuration}
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
@@ -73,7 +131,9 @@ const LoanApply = () => {
             <input
               id="default-radio-2"
               type="radio"
-              value="5"
+              value="4"
+              { ...register('fourM') }
+              onChange={handleDuration}
               name="default-radio"
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
@@ -88,7 +148,9 @@ const LoanApply = () => {
             <input
               id="default-radio-1"
               type="radio"
-              value="3month"
+              value="6"
+              { ...register('sixM') }
+              onChange={handleDuration}
               name="default-radio"
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
@@ -103,7 +165,9 @@ const LoanApply = () => {
             <input
               id="default-radio-1"
               type="radio"
-              value="3month"
+              value="9"
+              { ...register('nineM') }
+              onChange={handleDuration}
               name="default-radio"
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b]dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
@@ -114,13 +178,15 @@ const LoanApply = () => {
               9 Month
             </label>
           </div>
-{/* Nid */}
-<div>
+          </div>
+         {/* Nid */}
+         <div>
             <h1 className='text-xl text-[#2A9D8F] font-medium NID Or Birth Certificate'>Upload Your Identification NID Or Birth Certificate</h1>
             <div className="bg-white p-7 rounded">
       <div x-data={dataFileDnD} className="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
         <div x-ref="dnd" className="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
           <input accept="*" type="file" multiple
+          { ...register('nidPhoto') }
             className="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
             onChange={handleImageUpload}
             onDragOver={() => {
@@ -159,18 +225,19 @@ const LoanApply = () => {
             <p className="  my-2 font-medium text-[#2A9D8F]">Select Amount</p>
             <div className="flex items-center border-2">
               <p className=" text-[black] m-3">BDT</p>
-             
-              
+
               <select
                 id="states"
+                onClick={handleBdt}
+                { ...register('amount') }
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Choose amount</option>
-                <option value="CA">5000</option>
-                <option value="TX">10000</option>
-                <option value="TX">15000</option>
-                <option value="TX">20000</option>
-                <option value="WH">25000</option>
+                <option  value="5000">5000</option>
+                <option  value="10000">10000</option>
+                <option  value="15000">15000</option>
+                <option  value="20000">20000</option>
+                <option value="25000">25000</option>
               </select>
             </div>
           </div>
@@ -224,6 +291,7 @@ const LoanApply = () => {
       </div>
       <div className="flex mx-5 my-5">
         <button
+        type='button'
           onClick={() => setShowModal(true)}
           className="btn bg-[#2A9D8F] hover:bg-[#3d756f] w-1/2 mx-auto p-3 rounded"
         >
@@ -231,8 +299,9 @@ const LoanApply = () => {
         </button>
       </div>
       {showModal && (
-      <ConfirmationModal showModal={showModal} setShowModal={setShowModal}></ConfirmationModal>
+      <ConfirmationModal successs={successs} selectedBdt={selectedBdt} selectedMonth={selectedMonth} showModal={showModal} setShowModal={setShowModal}></ConfirmationModal>
       )}
+      </form>
     </div>
   )
 }

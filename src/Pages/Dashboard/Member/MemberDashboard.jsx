@@ -16,7 +16,7 @@ const MemberDashboard = () => {
       .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]));
   }, [user.email]);
-
+  
   console.log(userInfo)
   const handlePayment = (item) => {
     const paymentInfo = {

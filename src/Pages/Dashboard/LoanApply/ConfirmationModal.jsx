@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router'
 import ProcessingModal from './ProcessingModal'
 
-const ConfirmationModal = ({ setShowModal, showModal }) => {
+const ConfirmationModal = ({ setShowModal,successs, showModal,selectedBdt, selectedMonth }) => {
   const [processing, setProcessing] = useState(false)
   //   const navigate = useNavigate()
   //   const handleConfirm = () => {
@@ -13,12 +13,12 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
   //     setProcessing(true)
   //   }
 
-  const handleConfirmation = () => {
-    console.log('clicked')
-    // setShowModal(false)
-    // setProcessing(true)
-  }
-  console.log(processing)
+  // const handleConfirmation = () => {
+  //   console.log('clicked')
+  //   // setShowModal(false)
+  //   // setProcessing(true)
+  // }
+  // console.log(processing)
   return (
     <div
       id="authentication-modal"
@@ -54,13 +54,14 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
               <p className="text-3xl m-5">Review and apply</p>
               <p>
                 You are applying for{' '}
-                <span className="text-[#e4924b]">10,000</span> BDT <br /> for 5
-                months
+                <span className="text-[#e4924b]">{selectedBdt}</span> BDT <br /> for {selectedMonth}
+                  <span className='mx-1'>months</span>
               </p>
-              <div className=" m-5 flex justify-center items-center">
+              <div className="m-5 flex justify-center items-center">
                 <button
                   onClick={() => setShowModal(false)}
                   type="button"
+
                   className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                 >
                   Back
@@ -70,7 +71,7 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
                   data-modal-target="defaultModal"
                   data-modal-toggle="defaultModal"
                   className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                  type="button"
+                  type="submit"
                 >
                   Confirm
                 </button>
@@ -81,6 +82,7 @@ const ConfirmationModal = ({ setShowModal, showModal }) => {
       </div>
       {processing && (
         <ProcessingModal
+        successs={successs}
           setProcessing={setProcessing}
           processing={processing}
         ></ProcessingModal>

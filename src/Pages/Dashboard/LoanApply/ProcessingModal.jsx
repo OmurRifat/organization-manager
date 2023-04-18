@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import { PropagateLoader } from 'react-spinners';
-
-const ProcessingModal = ({ Processing, setProcessing }) => {
+import Lottie from "lottie-react";
+import success from "../../../../Success.json"
+const ProcessingModal = ({ Processing,successs, setProcessing }) => {
   const navigate = useNavigate()
   const handleProcessing = () => {
     setProcessing(false)
@@ -16,19 +17,27 @@ const ProcessingModal = ({ Processing, setProcessing }) => {
       className="fixed bg-black bg-opacity-50 backdrop-blur-sm flex justify-center  items-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div className="relative w-full max-w-2xl max-h-full">
-        <div className="relative text-white p-24 text-center bg-[#2A9D8F] rounded-lg shadow  dark:bg-gray-700">
+        <div className="relative text-white text-center bg-[#80bfb8] rounded-lg shadow  dark:bg-gray-700">
           <div className="flex justify-center items-center text-center  ">
           <div className='flex my-5 justify-center'>
-          <PropagateLoader
-
+            {
+              successs? <> <Lottie className='mb-14' loop={false} animationData={success}></Lottie>
+              </> :<PropagateLoader
               color="#ffffff"
               loading
               size={20}
               speedMultiplier={1}
             />
+            }
           </div>
           </div>
-          <p className=" text-2xl my-5 text-white">Application Processing</p>
+          <p className=" text-2xl my-5 text-white">
+          {
+              successs? <> Application Success
+              </> : <> Application Processing</>
+          
+            }
+          </p>
           <p>You will be notified on the status of your application</p>
           <button
             onClick={() => handleProcessing()}
