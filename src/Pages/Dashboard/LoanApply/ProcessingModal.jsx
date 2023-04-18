@@ -1,7 +1,9 @@
 import React from 'react'
-import { FcProcess } from 'react-icons/fc'
 import { useNavigate } from 'react-router'
-const ProcessingModal = ({ Processing, setProcessing }) => {
+import { PropagateLoader } from 'react-spinners';
+import Lottie from "lottie-react";
+import success from "../../../../Success.json"
+const ProcessingModal = ({ Processing,successs, setProcessing }) => {
   const navigate = useNavigate()
   const handleProcessing = () => {
     setProcessing(false)
@@ -15,11 +17,27 @@ const ProcessingModal = ({ Processing, setProcessing }) => {
       className="fixed bg-black bg-opacity-50 backdrop-blur-sm flex justify-center  items-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div className="relative w-full max-w-2xl max-h-full">
-        <div className="relative text-white p-24 text-center bg-[#50887f] rounded-lg shadow  dark:bg-gray-700">
+        <div className="relative text-white text-center bg-[#80bfb8] rounded-lg shadow  dark:bg-gray-700">
           <div className="flex justify-center items-center text-center  ">
-            <FcProcess className="text-6xl"></FcProcess>{' '}
+          <div className='flex my-5 justify-center'>
+            {
+              successs? <> <Lottie className='' loop={false} animationData={success}></Lottie>
+              </> :<PropagateLoader
+              color="#ffffff"
+              loading
+              size={20}
+              speedMultiplier={1}
+            />
+            }
           </div>
-          <p className="text-black text-2xl my-5">Application Processing</p>
+          </div>
+          <p className=" text-2xl my-5 text-white">
+          {
+              successs? <> Application Success
+              </> : <> Application Processing</>
+          
+            }
+          </p>
           <p>You will be notified on the status of your application</p>
           <button
             onClick={() => handleProcessing()}

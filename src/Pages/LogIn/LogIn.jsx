@@ -41,7 +41,7 @@ const LogIn = () => {
               <div className="bg-[black] h-1 w-24 me-5"></div>
 
             </div>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
+            {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
               <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
                 <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
                 <span className="py-3 md:py-1  font-semibold">Continue with Google</span>
@@ -50,7 +50,7 @@ const LogIn = () => {
                 <FaFacebook className="text-2xl mr-5 md:mr-3 text-[#45619D]"></FaFacebook>
                 <span className="py-3 md:py-1 font-semibold">Continue with Facebook</span>
               </button>
-            </div>
+            </div> */}
             <p className="flex flex-reverse justify-center text-3xl font-bold my-10">or</p>
             <div className="">
               <form onSubmit={ handleSubmit(onSubmit) }>
@@ -99,7 +99,7 @@ const LogIn = () => {
                       id="remember"
                       type="checkbox"
                       value=""
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                      className="w-4 h-4 border-[#2A9D8F] text-[#2A9D8F] rounded "
                       required
                     />
                   </div>
@@ -114,7 +114,6 @@ const LogIn = () => {
                 <button className='bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none' type="submit">
                   <AiOutlineArrowRight />
                 </button>
-
               </form>
               <p className='text-black mt-3'>
                 Do not have any account ?{ ' ' }
@@ -122,7 +121,6 @@ const LogIn = () => {
                   { ' ' }
                   Sign Up
                 </Link>
-
               </p>
             </div>
           </div>

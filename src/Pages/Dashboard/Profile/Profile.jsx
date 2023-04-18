@@ -3,12 +3,17 @@ import axios from "axios";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Profile = () => {
+
   const [userInfo, setUserInfo] = useState({});
+  
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
       .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]));
+      .then((data) => {
+        console.log(data);
+        setUserInfo(data.data[0])
+      });
   }, [user.email]);
   return (
     <div className="flex justify-center m-3">
@@ -64,7 +69,6 @@ const Profile = () => {
               >
                 Foundation
               </th>
-
               <td className="px-8 py-4">
                 { userInfo?.organization }
               </td>
