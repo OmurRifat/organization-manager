@@ -21,7 +21,7 @@ const ProcessingModal = ({ Processing,successs, setProcessing }) => {
           <div className="flex justify-center items-center text-center  ">
           <div className='flex my-5 justify-center'>
             {
-              successs? <> <Lottie className='mb-14' loop={false} animationData={success}></Lottie>
+              successs? <> <Lottie className='' loop={false} animationData={success}></Lottie>
               </> :<PropagateLoader
               color="#ffffff"
               loading

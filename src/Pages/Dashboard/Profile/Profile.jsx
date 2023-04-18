@@ -10,7 +10,10 @@ const Profile = () => {
   useEffect(() => {
     axios
       .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]));
+      .then((data) => {
+        console.log(data);
+        setUserInfo(data.data[0])
+      });
   }, [user.email]);
   return (
     <div className="flex justify-center m-3">

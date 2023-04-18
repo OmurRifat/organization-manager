@@ -12,9 +12,20 @@ const LoanApply = () => {
     watch,
     formState: { errors },
   } = useForm()
+  
   const [showModal, setShowModal] = useState(false)
   const [imageUrl, setImageUrl] = useState("https://gumlet.assettype.com/bdnews24-english%2Fimport%2Fmedia%2F2015%2F06%2F01%2Fsmart-card.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=768");
+  const [userInfo, setUserInfo] = useState({});
+  const { user } = useContext(AuthContext);
 
+  useEffect(() => {
+    axios
+      .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
+      .then((data) => {
+        console.log(data);
+        setUserInfo(data.data[0])
+      });
+  }, [user.email]);
   function handleImageUpload(event) {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -30,7 +41,6 @@ const LoanApply = () => {
       }
       setFiles(filesArray);
     }
-  
     function dragstart(event) {
       event.dataTransfer.setData('text/plain', event.target.dataset.index);
     }
@@ -52,19 +62,9 @@ const LoanApply = () => {
       setSelectedMonth(event.target.value);
     };
     const handleBdt = (event) => {
-      const e = document.getElementById("states").value
       setSelectedBdt(event.target.value)
-      console.log( e);
     }
-    const [userInfo, setUserInfo] = useState({});
-    const { user } = useContext(AuthContext);
-    useEffect(() => {
-      axios
-        .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-        .then((data) => {
-          setUserInfo(data.data[0])
-        });
-    }, [user.email]);
+    
     const onSubmit = (data) => {
       const durationMonth = selectedMonth;
       const LoanAmount = data.amount;
@@ -82,9 +82,8 @@ const LoanApply = () => {
         .then((imgData) => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,LoanAmount,Organizations, durationMonth,userInfos}
-          console.log(allLoanInformation);
           fetch(
-            'https://organization-manager-server.onrender.com/loanSystem',
+            'http://localhost:5000/loanSystem',
             {
               method: 'POST',
               headers: {
@@ -95,7 +94,7 @@ const LoanApply = () => {
           )
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              console.log();
               setSuccesss(data.acknowledged);
             })
         })
@@ -112,7 +111,7 @@ const LoanApply = () => {
           <div>
           <div className="flex items-center m-4 mb-4">
             <input
-              id="default-radio-1"
+              id="threeM"
               type="radio"
               value="3"
               { ...register('threeM') }
@@ -121,7 +120,7 @@ const LoanApply = () => {
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              htmlFor="default-radio-1"
+              htmlFor="threeM"
               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               3 Months
@@ -129,7 +128,7 @@ const LoanApply = () => {
           </div>
           <div className="flex m-4 items-center">
             <input
-              id="default-radio-2"
+              id="fourM"
               type="radio"
               value="4"
               { ...register('fourM') }
@@ -138,7 +137,7 @@ const LoanApply = () => {
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              htmlFor="default-radio-2"
+              htmlFor="fourM"
               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               4 Months
@@ -146,7 +145,7 @@ const LoanApply = () => {
           </div>
           <div className="flex items-center m-4 mb-4">
             <input
-              id="default-radio-1"
+              id="sixM"
               type="radio"
               value="6"
               { ...register('sixM') }
@@ -155,7 +154,7 @@ const LoanApply = () => {
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              htmlFor="default-radio-1"
+              htmlFor="sixM"
               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               6 Months
@@ -163,7 +162,7 @@ const LoanApply = () => {
           </div>
           <div className="flex items-center m-4 mb-4">
             <input
-              id="default-radio-1"
+              id="nineM"
               type="radio"
               value="9"
               { ...register('nineM') }
@@ -172,7 +171,7 @@ const LoanApply = () => {
               className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b]dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              htmlFor="default-radio-1"
+              htmlFor="nineM"
               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               9 Month
@@ -186,6 +185,7 @@ const LoanApply = () => {
       <div x-data={dataFileDnD} className="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
         <div x-ref="dnd" className="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
           <input accept="*" type="file" multiple
+          required
           { ...register('nidPhoto') }
             className="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
             onChange={handleImageUpload}
@@ -228,6 +228,7 @@ const LoanApply = () => {
 
               <select
                 id="states"
+                required
                 onClick={handleBdt}
                 { ...register('amount') }
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -247,18 +248,18 @@ const LoanApply = () => {
                 id="remember"
                 type="checkbox"
                 value=""
-                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                className="w-4 h-4 text-[#2A9D8F] border rounded"
                 required
               />
             </div>
             <label
               htmlFor="remember"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="ml-2 text-black text-sm font-medium "
             >
               I agree with the{' '}
               <a
                 href="#"
-                className="text-blue-600 hover:underline dark:text-blue-500"
+                className="text-[#2A9D8F] hover:underline dark:text-[#2A9D8F]"
               >
                 terms and conditions
               </a>

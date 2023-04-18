@@ -99,7 +99,7 @@ const LogIn = () => {
                       id="remember"
                       type="checkbox"
                       value=""
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                      className="w-4 h-4 border-[#2A9D8F] text-[#2A9D8F] rounded "
                       required
                     />
                   </div>
@@ -114,7 +114,6 @@ const LogIn = () => {
                 <button className='bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none' type="submit">
                   <AiOutlineArrowRight />
                 </button>
-
               </form>
               <p className='text-black mt-3'>
                 Do not have any account ?{ ' ' }
@@ -122,7 +121,6 @@ const LogIn = () => {
                   { ' ' }
                   Sign Up
                 </Link>
-
               </p>
             </div>
           </div>
