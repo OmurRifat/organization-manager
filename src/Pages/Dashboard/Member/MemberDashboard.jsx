@@ -6,7 +6,13 @@ import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
 
-
+  useEffect(()=>{
+    fetch(`http://localhost:5000/users/${user?.email}`)
+    .then(res => res.json())
+    .then(data => setUserData(data[0].donation))
+  },[])
+ 
+  
   const [payModal, setPayModal] = useState(false)
 
   const [userInfo, setUserInfo] = useState({});
@@ -185,6 +191,10 @@ const MemberDashboard = () => {
               >
                 { item?.donationName }
               </th>
+              <td className="px-6 ">{donation.amount}</td>
+               <td className="px-6 "></td>
+              <td className="px-6  text-[red]">{!donation.status ? 'pending' : 'paid'  }</td>
+            
               <td className="px-6 ">{ item?.amount }</td>
               <td className="px-6 ">{ item?.status ? item?.transactionId : "-due-" }</td>
               <td className="px-6  text-[orange]">On going</td>

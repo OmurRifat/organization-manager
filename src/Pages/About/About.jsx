@@ -110,12 +110,12 @@ const About = () => {
                 </p>
                 <br></br>
                 <Link
-                  to='/foundation-form'
+                  to='/show-organizations'
                   style={ styleObject.button }
                   type="button"
                   className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 "
                 >
-                  Manage Your Power
+                  View Organizations
 
                 </Link>
               </div>
