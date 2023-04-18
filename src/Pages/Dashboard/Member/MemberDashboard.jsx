@@ -12,18 +12,18 @@ const MemberDashboard = () => {
     .then(data => setUserData(data[0].donation))
   },[])
  
-  
   const [payModal, setPayModal] = useState(false)
 
-  const [userInfo, setUserInfo] = useState({});
-  const { user } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState({})
+  const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]));
-  }, [user.email]);
+      .get(
+        `https://organization-manager-server.onrender.com/users/${user.email}`,
+      )
+      .then((data) => setUserInfo(data.data[0]))
+  }, [user.email])
 
-  console.log(userInfo)
   const handlePayment = (item) => {
     const paymentInfo = {
       amount: item?.amount,
@@ -32,10 +32,10 @@ const MemberDashboard = () => {
       phone: userInfo?.phone,
       organization: userInfo?.organization,
       donationName: item?.donationName,
-      month: item?.month
+      month: item?.month,
     }
     console.log(paymentInfo)
-    fetch('https://organization-manager-server.onrender.com/due-payment', {
+    fetch('http://localhost:5000/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -44,9 +44,62 @@ const MemberDashboard = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        fetch(
+          `http://localhost:5000/update-donation?email=${user.email}&month=${item.month}`,
+          {
+            method: 'PUT',
+          },
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount > 0) {
+              // navigate('/dashboard/member')
+              toast.success('Successfully Paid Your Due')
+            }
+          })
         window.location.replace(data.url)
       })
   }
+
+  const [allTransaction, setAllTransaction] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/all-transaction`)
+      .then((data) => setAllTransaction(data.data))
+  }, [])
+
+  let totalDonations = 0
+  const calculateDonation = () => {
+    const myDonation = allTransaction?.filter(
+      (transaction) => (transaction.userEmail = user.email),
+    )
+    myDonation?.map((donation) => {
+      const amount = donation.amount
+      const value = parseInt(amount)
+      totalDonations = totalDonations + value
+    })
+  }
+  calculateDonation()
+
+  let totalDue = 0
+  const [donation, setDonation] = useState([])
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/users/${user.email}`)
+      .then((data) => setDonation(data.data[0].donation))
+  }, [])
+
+  const dueCalculation = () => {
+    donation?.map((d) => {
+      if (d.status === false) {
+        const amountString = d.amount
+        const amount = parseInt(amountString)
+        totalDue += amount
+      }
+    })
+  }
+  dueCalculation()
   return (
     <div>
       <p className="font-bold text-black mb-4 pl-4 text-2xl">All Data</p>
@@ -81,11 +134,11 @@ const MemberDashboard = () => {
           <button
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
-            onClick={ () => setPayModal(true) }
+            onClick={() => setPayModal(true)}
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            1000 BDT
+            {totalDue} BDT
           </button>
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
@@ -100,7 +153,7 @@ const MemberDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            2029 BDT
+            {totalDonations} BDT
           </button>
         </div>
       </div>
@@ -204,21 +257,53 @@ const MemberDashboard = () => {
                   type="button"
                   className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
-                  Pay
-                </button>
-              </td>
-            </tr>) }
-
-
+                  <td className="px-6 ">{item?.month}</td>
+                  <th
+                    scope="row"
+                    className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {item?.donationName}
+                  </th>
+                  <td className="px-6 ">{item?.amount}</td>
+                  <td className="px-6 ">
+                    {item?.status ? item?.transactionId : '-due-'}
+                  </td>
+                  <td className="px-6  text-[orange]">
+                    {item?.status === true ? (
+                      <span className="bg-[green] p-2 px-3 rounded text-white">
+                        Paid
+                      </span>
+                    ) : (
+                      'On Going'
+                    )}
+                  </td>
+                  {item?.status === false ? (
+                    <td className="px-6 ">
+                      <button
+                        onClick={() => handlePayment(item)}
+                        type="button"
+                        className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                      >
+                        Pay
+                      </button>
+                    </td>
+                  ) : (
+                    ''
+                  )}
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
       <div className="flex justify-between items-center  mx-5">
         <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
-          Showing{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">30</span> of
-          List
+          Showing{' '}
+          <span className="font-semibold text-gray-900 dark:text-white">1</span>{' '}
+          -{' '}
+          <span className="font-semibold text-gray-900 dark:text-white">
+            30
+          </span>{' '}
+          of List
         </span>
         <nav aria-label="Page navigation sm:mt-5 example">
           <ul className="inline-flex -space-x-px">
@@ -379,7 +464,7 @@ const MemberDashboard = () => {
                   Login to your account
                 </button>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                  Not registered?{ ' ' }
+                  Not registered?{' '}
                   <a
                     href="#"
                     className="text-blue-700 hover:underline dark:text-blue-500"
@@ -392,12 +477,12 @@ const MemberDashboard = () => {
           </div>
         </div>
       </div>
-      { payModal && (
+      {payModal && (
         <PayMethodModal
-          payModal={ payModal }
-          setPayModal={ setPayModal }
+          payModal={payModal}
+          setPayModal={setPayModal}
         ></PayMethodModal>
-      ) }
+      )}
     </div>
   )
 }
