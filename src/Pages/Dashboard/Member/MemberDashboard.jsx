@@ -28,7 +28,7 @@ const MemberDashboard = () => {
       month: item?.month,
     }
     console.log(paymentInfo)
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server.onrender.com/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -38,7 +38,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `http://localhost:5000/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server.onrender.com/update-donation?email=${user.email}&month=${item.month}`,
           {
             method: 'PUT',
           },
@@ -58,28 +58,17 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server.onrender.com/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
-  let totalDonations = 0
-  const calculateDonation = () => {
-    const myDonation = allTransaction?.filter(
-      (transaction) => (transaction.userEmail = user.email),
-    )
-    myDonation?.map((donation) => {
-      const amount = donation.amount
-      const value = parseInt(amount)
-      totalDonations = totalDonations + value
-    })
-  }
-  calculateDonation()
+  
 
   let totalDue = 0
   const [donation, setDonation] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setDonation(data.data[0].donation))
   }, [])
 
@@ -92,6 +81,17 @@ const MemberDashboard = () => {
       }
     })
   }
+  let totalDonations = 0
+  const calculateDonation = () => {
+    donation?.map((d) => {
+      if (d.status === true) {
+        const amountString = d.amount
+        const amount = parseInt(amountString)
+        totalDonations += amount
+      }
+    })
+  }
+  calculateDonation()
   dueCalculation()
   return (
     <div>
@@ -242,7 +242,7 @@ const MemberDashboard = () => {
                   >
                     {item?.donationName}
                   </th>
-                  <td className="px-6 ">{item?.amount}</td>
+                  <td className="px-6 ">{item?.amount} Tk</td>
                   <td className="px-6 ">
                     {item?.status ? item?.transactionId : '-due-'}
                   </td>
@@ -265,9 +265,15 @@ const MemberDashboard = () => {
                         Pay
                       </button>
                     </td>
-                  ) : (
-                    ''
-                  )}
+                  ) : <td className="px-6 ">
+                  <button
+                   
+                    type="button"
+                    className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  >
+                    Invoice
+                  </button>
+                </td>}
                 </tr>
               ))}
           </tbody>
