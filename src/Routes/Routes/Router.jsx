@@ -19,6 +19,7 @@ import AllMember from '../../Pages/Dashboard/Admin/AllMember/AllMember'
 import AdminRoute from '../AdminRoute/AdminRoute'
 import AllTransaction from '../../Pages/Dashboard/Admin/AllTransaction/AllTransaction'
 import MemberRoute from '../MemberRoute/MemberRoute'
+import AllOrganizations from '../../Pages/Home/All_Organizations/AllOrganizations'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/foundation-form',
         element: <FoundationForm></FoundationForm>,
+      },
+      {
+        path: '/show-organizations',
+        element: <AllOrganizations></AllOrganizations>,
       },
       {
         path: '/logout',

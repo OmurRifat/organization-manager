@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './About.css'
 import { Link } from 'react-router-dom';
 
@@ -22,6 +22,13 @@ const About = () => {
     }
   };
 
+  const [organizations, setOrganizations] = useState([]);
+  useEffect(() => {
+      fetch('https://organization-manager-server.onrender.com/organizations')
+          .then(res => res.json())
+          .then(data => setOrganizations(data));
+  }, [])
+
   return (
 
 
@@ -31,7 +38,7 @@ const About = () => {
       <div className=" flex justify-center items-center pb-4 md:pb-0 bg-white  sm:flex ">
         <img className="h-36" src="https://i.ibb.co/QHjcc5v/Screenshot-2023-03-31-100804-removebg-preview.png" alt="" />
         <div className="font-medium text-gray-800">
-          <div className="text-2xl">1000+</div>
+          <div className="text-2xl">{organizations.length}+</div>
           <div className="text-sm text-gray-500 dark:text-gray-400">Active Organization</div>
         </div>
         <br></br>
@@ -110,12 +117,12 @@ const About = () => {
                 </p>
                 <br></br>
                 <Link
-                  to='/foundation-form'
+                  to='/show-organizations'
                   style={ styleObject.button }
                   type="button"
                   className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 "
                 >
-                  Manage Your Power
+                  View Organizations
 
                 </Link>
               </div>

@@ -55,11 +55,8 @@ const Contact = () => {
         <h2 style={styleObject.h2} className="text-4xl font-semibold">
           Get In Touch With Us
         </h2>
-        <p className="font-normal mb-5 text-justify text-gray-700 max-w-md">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod fugit
-          possimus tempora rerum aliquam id neque eum commodi quidem! Impedit
-          dicta ex dolorum eaque facilis corrupti minima commodi omnis
-          consequuntur.
+        <p className="font-normal mb-5 text-justify text-gray-700 max-w-sm">
+          Fill up the form and our Team will get back to you within 24 hours.
           <div className="flex flex-col mt-6">
             <div className="flex pb-8">
               <div style={styleObject.bg} className="w-12 py-2 rounded-sm h-12 mr-4">
