@@ -5,6 +5,13 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
+
+  useEffect(()=>{
+    fetch(`http://localhost:5000/users/${user?.email}`)
+    .then(res => res.json())
+    .then(data => setUserData(data[0].donation))
+  },[])
+ 
   const [payModal, setPayModal] = useState(false)
 
   const [userInfo, setUserInfo] = useState({})
@@ -229,11 +236,26 @@ const MemberDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {userInfo &&
-              userInfo?.donation?.map((item) => (
-                <tr
-                  key={item.month}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            { userInfo && userInfo?.donation?.map(item => <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td className="px-6 ">{ item?.month }</td>
+              <th
+                scope="row"
+                className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                { item?.donationName }
+              </th>
+              <td className="px-6 ">{donation.amount}</td>
+               <td className="px-6 "></td>
+              <td className="px-6  text-[red]">{!donation.status ? 'pending' : 'paid'  }</td>
+            
+              <td className="px-6 ">{ item?.amount }</td>
+              <td className="px-6 ">{ item?.status ? item?.transactionId : "-due-" }</td>
+              <td className="px-6  text-[orange]">On going</td>
+              <td className="px-6 ">
+                <button
+                  onClick={ () => handlePayment(item) }
+                  type="button"
+                  className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   <td className="px-6 ">{item?.month}</td>
                   <th
