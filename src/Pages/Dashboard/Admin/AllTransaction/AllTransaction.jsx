@@ -12,19 +12,19 @@ const AllTransaction = () => {
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server.onrender.com/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
   console.log(allTransaction)
 
   const organizationTransactions = allTransaction.filter(
-    (transaction) => transaction.organization === userInfo.organization 
+    (transaction) => transaction.organization === userInfo.organization
   )
   console.log(organizationTransactions)
   return (
@@ -40,7 +40,7 @@ const AllTransaction = () => {
               Member Name
             </th>
 
-            <th scope="col"className="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Transaction ID
             </th>
             <th scope="col" className="px-6 py-3">
@@ -55,14 +55,14 @@ const AllTransaction = () => {
         </thead>
       </table>
       <tbody>
-        {organizationTransactions &&
+        { organizationTransactions &&
           organizationTransactions?.map((transaction, i) => (
             <TransactionInfo
-              i={i}
-              key={transaction._id}
-              transaction={transaction}
+              i={ i }
+              key={ transaction._id }
+              transaction={ transaction }
             ></TransactionInfo>
-          ))}
+          )) }
       </tbody>
     </div>
   )
