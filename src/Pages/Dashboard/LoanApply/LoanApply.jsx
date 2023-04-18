@@ -83,7 +83,7 @@ const LoanApply = () => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
-            'http://localhost:5000/loanSystem',
+            'https://organization-manager-server.onrender.com/loanSystem',
             {
               method: 'POST',
               headers: {
