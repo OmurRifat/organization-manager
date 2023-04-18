@@ -4,7 +4,7 @@ import SingleNews from "./SingleNews";
 const AllNews = () => {
   const [news, setNews] = useState([]);
   useEffect(() => {
-    fetch("/public/news.json")
+    fetch("https://organization-manager-server.onrender.com/news")
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
