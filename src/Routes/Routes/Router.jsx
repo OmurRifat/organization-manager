@@ -20,6 +20,7 @@ import AdminRoute from '../AdminRoute/AdminRoute'
 import AllTransaction from '../../Pages/Dashboard/Admin/AllTransaction/AllTransaction'
 import MemberRoute from '../MemberRoute/MemberRoute'
 import AllOrganizations from '../../Pages/Home/All_Organizations/AllOrganizations'
+import AllEvents from './../../Pages/Home/UpcommingEvents/AllEvents';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/allnews',
         element: <AllNews></AllNews>,
+      },
+      {
+        path: '/allevents',
+        element: <AllEvents></AllEvents>,
       },
     ],
   },

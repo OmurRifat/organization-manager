@@ -28,6 +28,12 @@ const About = () => {
           .then(res => res.json())
           .then(data => setOrganizations(data));
   }, [])
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+      fetch('https://organization-manager-server.onrender.com/users')
+          .then(res => res.json())
+          .then(data => setUsers(data));
+  }, [])
 
   return (
 
@@ -99,11 +105,11 @@ const About = () => {
                 <br></br>
                 <div style={ styleObject.bgcolor } className=" flex justify-between items-center bg-white sm:flex">
                   <div className="font-medium text-gray-800">
-                    <div className="text-2xl text-gray-700">15,3 M</div>
+                    <div className="text-2xl text-gray-700">{users.length}+</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Members</div>
                   </div>
                   <div className="font-medium text-gray-700 mr-9">
-                    <div className="text-2xl">1000+</div>
+                    <div className="text-2xl">{organizations.length}+</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Organization</div>
                   </div>
                   <br></br>
