@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UpcommingEvents = () => {
 
@@ -6,8 +7,8 @@ const UpcommingEvents = () => {
         bgcolor: {
             background: '#EAF5F4',
         },
-        textcolor: {
-            color: '#2A9D8F',
+        button: {
+            background: '#2A9D8F',
           },
       };
 
@@ -76,7 +77,18 @@ const UpcommingEvents = () => {
                     </div>     
                 <br />
             </div>
-            <br />
+            <div className='text-center '>
+            <Link
+                  to='/allevents'
+                  style={ styleObject.button }
+                  type="button"
+                  className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 "
+                >
+                  View Organizations
+
+                </Link>
+            </div>
+      <br />
         </div>
     );
 };
