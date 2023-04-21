@@ -1,7 +1,36 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser'
+import { toast } from 'react-hot-toast'
 
 const ReminderModal = ({setModal,modal}) => {
-    const [close,setClose] = useState(true)
+   
+  const sendEmail = () => {
+    const templateParams = {
+      to_name: 'Dibbo Dash',
+      subject: 'Due Payment Remainder!',
+      message: 'Please pay your due with according to table information:',
+      email: 'mdabdurrouf.likhon2@gmail.com',
+      foundation_name: 'Ikhlab Foundation',
+    }
+
+    emailjs
+      .send(
+        'service_55ozcrd',
+        'template_e21lzan',
+        templateParams,
+        'VLd32F4SLKnPSZxsK',
+      )
+      .then(
+        function (response) {
+          console.log('SUCCESS!', response.status, response.text)
+          toast.success('Remainder Send')
+        },
+        function (error) {
+          console.log('FAILED...', error)
+        },
+      )
+  }
+
     
     return (
         <div
@@ -37,7 +66,7 @@ const ReminderModal = ({setModal,modal}) => {
                 <p className="text-3xl text-black mb-5">Are you sure?</p>
                 <div className=" m-5 flex justify-center items-center">
                   <button
-                    
+                    onClick={()=>setModal(sendEmail())}
                     type="button"
                     className="py-2.5 px-5 mr-6 mb-2 text-sm font-medium  bg-red-600 text-white focus:outline-none  rounded-lg border-none"
                   >
