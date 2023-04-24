@@ -75,7 +75,7 @@ const ReminderModal = ({ setModal, modal, member }) => {
                 <button
                   onClick={ () => setModal(sendEmail()) }
                   type="button"
-                  className="py-2.5 px-5 mr-6 mb-2 text-sm font-medium  bg-red-600 text-white focus:outline-none  rounded-lg border-none"
+                  className="py-2.5 px-5 mr-6 mb-2 text-sm font-medium  bg-green-600 text-white focus:outline-none  rounded-lg border-none"
                 >
                   Yes
                 </button>
@@ -83,7 +83,7 @@ const ReminderModal = ({ setModal, modal, member }) => {
                   onClick={ () => setModal(false) }
                   data-modal-target="defaultModal"
                   data-modal-toggle="defaultModal"
-                  className="text-white bg-green-500    focus:outline-none   font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  className="text-white bg-red-500    focus:outline-none   font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                   type="button"
                 >
                   Cancel
