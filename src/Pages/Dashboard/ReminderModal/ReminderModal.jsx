@@ -70,14 +70,14 @@ const ReminderModal = ({ setModal, modal, member }) => {
             <div className="text-center text-white p-10">
               {/* showing the total due ammount with bold*/ }
               <p className="text-5xl text-black mb-5">Total Due: <span className="font-bold">{ totalDue }</span></p>
-              <p className="text-3xl text-black mb-5">Are you sure?</p>
+              <p className="text-3xl text-black mb-5">Want to send a reminder?</p>
               <div className=" m-5 flex justify-center items-center">
                 <button
                   onClick={ () => setModal(sendEmail()) }
                   type="button"
                   className="py-2.5 px-5 mr-6 mb-2 text-sm font-medium  bg-red-600 text-white focus:outline-none  rounded-lg border-none"
                 >
-                  Confirm
+                  Yes
                 </button>
                 <button
                   onClick={ () => setModal(false) }
