@@ -15,7 +15,7 @@ const AllMember = () => {
   }, [user.email])
   console.log(userInfo)
   const { data: members = [], refetch, isLoading } = useQuery({
-    queryKey: ['foodItems'],
+    queryKey: ['members'],
     queryFn: async () => {
       const res = await fetch('https://organization-manager-server.onrender.com/users')
       const data = await res.json()

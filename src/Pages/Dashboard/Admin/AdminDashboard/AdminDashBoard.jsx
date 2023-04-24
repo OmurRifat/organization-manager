@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from '../../Member/PayMethodModal'
 // import emailjs from '@emailjs/browser'
@@ -6,27 +6,37 @@ import PayMethodModal from '../../Member/PayMethodModal'
 import ConfirmationModal from '../../LoanApply/ConfirmationModal'
 import ReminderModal from '../../ReminderModal/ReminderModal'
 import { useQuery } from '@tanstack/react-query'
+import { AuthContext } from '../../../../context/AuthProvider'
+import axios from 'axios'
 
 const AdminDashboard = () => {
-  const [modal,setModal] = useState(false)
+  const { user } = useContext(AuthContext)
+  const [userInfo, setUserInfo] = useState({})
+  const [modal, setModal] = useState(false)
+  const [specificMember, setSpecificMember] = useState({});
 
   const { data: members = [], refetch, isLoading } = useQuery({
-    queryKey: ['foodItems'],
+    queryKey: ['members'],
     queryFn: async () => {
       const res = await fetch('https://organization-manager-server.onrender.com/users')
       const data = await res.json()
       return data
     },
   })
-  
-  
+  useEffect(() => {
+    axios
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
+      .then((data) => setUserInfo(data.data[0]))
+  }, [user.email])
+  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
 
-  const handleReminder = () => {
+
+  const handleReminder = (data) => {
     setModal(true);
-    
+    setSpecificMember(data);
   }
   let total = 0;
- 
+  let totalDue = 0
 
   // const sendEmail = () => {
   //   const templateParams = {
@@ -78,8 +88,8 @@ const AdminDashboard = () => {
   }
   return (
     <>
-  
-      {/* <p className="font-bold text-2xl">All Data</p> */}
+
+      {/* <p className="font-bold text-2xl">All Data</p> */ }
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
         <div className="text-center  flex-col lg:border-r border-b just-2y-center p-5 items-center ">
           <img
@@ -208,35 +218,55 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            
-            {members && members.map(member => <tr key={member._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+            { organizationMembers && organizationMembers.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
-                {member.name}
+                { member.name }
               </th>
 
-              <td className="px-6  text-green-500">{member.phone}</td>
-              
-              
-             <td className="px-6  text-[red]">"total"</td> 
-             
-             
-             
-               <td className="px-6 ">
-               {member.donation.map((d,i) => d.status === false ?
-              <button key={i}  type="button" onClick={handleReminder} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button> : 'paid')}
-              {modal && <ReminderModal modal={modal} setModal={setModal} />}
+              <td className="px-6  text-green-500">{ member.phone }</td>
+
+
+              <td className="px-6  text-[red]">{
+                // add all the due amount and show in this column
+                member.donation.map((d, i) => d.status === false ? parseInt(d.amount) : 0).reduce((a, b) => a + b, 0)
+              }</td>
+
+
+
+              <td className="px-6 ">
+                {
+                  // showing a send reminder btn if the total due is greater than 0 else show paid
+                  member.donation.map((d) => d.status === false ? parseInt(d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? <button
+                    key={ member._id }
+                    type="button"
+                    onClick={ () => handleReminder(member) }
+                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                    Send Remainder
+                  </button> : <p
+                    className="text-green-500">
+                    Paid
+                  </p>
+                }
+                {
+                  modal && <ReminderModal
+                    modal={ modal }
+                    setModal={ setModal }
+                    member={ specificMember }
+                  />
+                }
               </td>
-            </tr>)}
+            </tr>) }
           </tbody>
         </table>
       </div>
       <div className="flex justify-between items-center  mx-5">
         <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
-          Showing{' '}
-          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{' '}
+          Showing{ ' ' }
+          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">30</span> of
           List
         </span>
