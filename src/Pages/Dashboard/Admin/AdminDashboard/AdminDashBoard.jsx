@@ -5,15 +5,28 @@ import PayMethodModal from '../../Member/PayMethodModal'
 // import { toast } from 'react-hot-toast'
 import ConfirmationModal from '../../LoanApply/ConfirmationModal'
 import ReminderModal from '../../ReminderModal/ReminderModal'
+import { useQuery } from '@tanstack/react-query'
 
 const AdminDashboard = () => {
   const [modal,setModal] = useState(false)
+
+  const { data: members = [], refetch, isLoading } = useQuery({
+    queryKey: ['foodItems'],
+    queryFn: async () => {
+      const res = await fetch('https://organization-manager-server.onrender.com/users')
+      const data = await res.json()
+      return data
+    },
+  })
+  
   
 
   const handleReminder = () => {
     setModal(true);
-    // sendEmail();
+    
   }
+  let total = 0;
+ 
 
   // const sendEmail = () => {
   //   const templateParams = {
@@ -64,7 +77,7 @@ const AdminDashboard = () => {
       })
   }
   return (
-    <div>
+    <>
   
       {/* <p className="font-bold text-2xl">All Data</p> */}
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
@@ -195,84 +208,28 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                className=" px-6 py-6 text-center text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-
-              <td className="px-6  text-green-500">01743586381</td>
-              <td className="px-6  text-[red]">1000 Tk</td>
-              <td className="px-6 ">
-              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
-              </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            
+            {members && members.map(member => <tr key={member._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Emeka Warhouse
+                {member.name}
               </th>
 
-              <td className="px-6  text-green-500">01743586381</td>
-              <td className="px-6  text-[red]">1000 Tk</td>
-              <td className="px-6 ">
-              <button type="button" onClick={handleReminder} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
+              <td className="px-6  text-green-500">{member.phone}</td>
+              
+              
+             <td className="px-6  text-[red]">"total"</td> 
+             
+             
+             
+               <td className="px-6 ">
+               {member.donation.map((d,i) => d.status === false ?
+              <button key={i}  type="button" onClick={handleReminder} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button> : 'paid')}
               {modal && <ReminderModal modal={modal} setModal={setModal} />}
               </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-
-              <td className="px-6  text-green-500">01743586381</td>
-              <td className="px-6  text-[red]">1000 Tk</td>
-              <td className="px-6 ">
-                <button  onClick={() => setModal(true)}
-                  type="button" 
-                  className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                >
-                  send sucessfully
-                </button>
-                {modal && <ReminderModal setModal={setModal} modal={modal}></ReminderModal>}
-              </td>
-            </tr>
-            <tr className="bg-white openModalBtn border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-
-              <td className="px-6  text-green-500">01743586381</td>
-              <td className="px-6  text-[red]">1000 Tk</td>
-              <td className="px-6 ">
-              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
-
-              </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Emeka Warhouse
-              </th>
-
-              <td className="px-6  text-green-500">01743586381</td>
-              <td className="px-6  text-[red]">1000 Tk</td>
-              <td className="px-6 ">
-              <button type="button" onClick={() => sendEmail()} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Send Remainder</button>
-              </td>
-            </tr>
+            </tr>)}
           </tbody>
         </table>
       </div>
@@ -345,8 +302,7 @@ const AdminDashboard = () => {
           </ul>
         </nav>
       </div>
-      
-    </div>
+    </>
   )
 }
 
