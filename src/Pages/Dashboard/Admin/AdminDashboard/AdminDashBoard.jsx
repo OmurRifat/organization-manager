@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from '../../Member/PayMethodModal'
-// import emailjs from '@emailjs/browser'
-// import { toast } from 'react-hot-toast'
 import ConfirmationModal from '../../LoanApply/ConfirmationModal'
 import ReminderModal from '../../ReminderModal/ReminderModal'
 import { useQuery } from '@tanstack/react-query'
@@ -29,6 +27,18 @@ const AdminDashboard = () => {
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
+
+//  total collected amount
+  const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0))
+  const collected = amount.reduce((c,d) => c + d , 0)
+// total due amount
+  const dueAmount = organizationMembers.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0))
+  const due = dueAmount.reduce((c,d) => c + d , 0)
+
+  // total members
+  const totalMember = organizationMembers.length; 
+  
+
 
 
   const handleReminder = (data) => {
@@ -89,7 +99,7 @@ const AdminDashboard = () => {
   return (
     <>
 
-      {/* <p className="font-bold text-2xl">All Data</p> */ }
+       <p className="font-semibold text-2xl text-black mb-3 pl-4">All Data</p>  
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
         <div className="text-center  flex-col lg:border-r border-b just-2y-center p-5 items-center ">
           <img
@@ -106,7 +116,7 @@ const AdminDashboard = () => {
               type="button"
               className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             >
-              10000 BDT
+        {collected}
             </button>
           </Link>
         </div>
@@ -124,7 +134,7 @@ const AdminDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            1000 BDT
+           {due}
           </button>
         </div>
         <div className="text-center  flex-col border-r justify-center p-5  items-center ">
@@ -139,7 +149,7 @@ const AdminDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            100
+            {totalMember}
           </button>
         </div>
       </div>
@@ -232,7 +242,7 @@ const AdminDashboard = () => {
 
               <td className="px-6  text-[red]">{
                 // add all the due amount and show in this column
-                member.donation.map((d, i) => d.status === false ? parseInt(d.amount) : 0).reduce((a, b) => a + b, 0)
+                member.donation.map((d, i) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0)
               }</td>
 
 
@@ -240,7 +250,7 @@ const AdminDashboard = () => {
               <td className="px-6 ">
                 {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
-                  member.donation.map((d) => d.status === false ? parseInt(d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? <button
+                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? <button
                     key={ member._id }
                     type="button"
                     onClick={ () => handleReminder(member) }

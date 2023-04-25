@@ -142,12 +142,12 @@ const Signup = () => {
   }
   return (
     <div style={ styles.bg } className="signup-container text-black mt-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
+      <div className="flex lg:flex-row-reverse md:flex-row-reverse flex-col justify-evenly items-start">
         <div className="border p-10">
-          <h1 className="md:text-5xl text-3xl font-bold m-5 ">Sign Up</h1>
-          <div className="flex  items-center m-5 mt-10">
+          {/* <h1 className="md:text-5xl text-3xl font-bold m-5 ">Sign Up</h1> */}
+          {/* <div className="flex  items-center m-5 mt-10">
             <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
-          </div>
+          </div> */}
           {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
             <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
               <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
@@ -162,9 +162,6 @@ const Signup = () => {
               </span>
             </button>
           </div> */}
-          <p className="flex justify-center text-3xl font-bold mt-10 mb-7">
-            or
-          </p>
           <div className="px-2 md:px-0">
             <form onSubmit={ handleSubmit(onSubmit) }>
               <label
@@ -352,7 +349,7 @@ const Signup = () => {
             </p>
           </div>
         </div>
-        <div className="max-w-3xl px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
+        <div className="max-w-md px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
           <img src={ signup } alt="signup page image" />
         </div>
       </div>
