@@ -94,7 +94,7 @@ const LoanApply = () => {
           )
             .then((res) => res.json())
             .then((data) => {
-              console.log();
+              console.log(data);
               setSuccesss(data.acknowledged);
             })
         })
