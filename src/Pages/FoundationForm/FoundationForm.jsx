@@ -5,18 +5,17 @@ import foundation from '../../assets/foundationform.png'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { useOrganizationsPostMutation } from '../../features/organizations/organizationsApi'
 
 const FoundationForm = () => {
   const { register, handleSubmit, reset } = useForm()
+  const [postOrganization, {isLoading, isError, isSuccess}] = useOrganizationsPostMutation();
   const onSubmit = (data) => {
     console.log(data)
-    axios.post('https://organization-manager-server.onrender.com/organizations', data).then((res) => {
-      if (res.data.insertedId) {
-        console.log(data)
-        toast('Added Successfully')
-        reset()
-      }
-    })
+   postOrganization(data);
+   if(data){
+    toast('Added Foundation Successfully !!!!')
+  }
   }
 
   const styles = {

@@ -20,7 +20,7 @@ const LoanApply = () => {
 
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
+      .get(`http://localhost:5000/users/${user?.email}`)
       .then((data) => {
         console.log(data);
         setUserInfo(data.data[0])
@@ -83,7 +83,7 @@ const LoanApply = () => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
-            'https://organization-manager-server.onrender.com/loanSystem',
+            'http://localhost:5000/loanSystem',
             {
               method: 'POST',
               headers: {
