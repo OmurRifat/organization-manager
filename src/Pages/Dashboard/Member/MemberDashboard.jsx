@@ -242,15 +242,15 @@ const MemberDashboard = () => {
                   </th>
                   <td className="px-6 ">{item?.amount} Tk</td>
                   <td className="px-6 ">
-                    { item?.status ? item?.transactionId : '-due-' }
+                    { item?.status ? item?.transactionId : '' }
                   </td>
-                  <td className="px-6  text-[orange]">
+                  <td className="px-6 ">
                     { item?.status === true ? (
-                      <span className="bg-[green] p-2 px-3 rounded text-white">
+                      <span className="text-green-600 font-semibold">
                         Paid
                       </span>
                     ) : (
-                      'On Going'
+                      <span className='text-red-600 font-semibold'>Due</span>
                     ) }
                   </td>
                   { item?.status === false ? (
