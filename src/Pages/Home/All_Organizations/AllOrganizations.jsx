@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BsSearch } from "react-icons/bs";
 // custom css file 
 import './AllOrganizations.css';
+import { useOrganizationsGetQuery } from '../../../features/organizations/organizationsApi';
 
 const AllOrganizations = () => {
     const styleObject = {
@@ -11,14 +12,49 @@ const AllOrganizations = () => {
           }
       };
 
-    const [organizations, setOrganizations] = useState([]);
+    const {data:organizations, isLoading, isError, isSuccess} = useOrganizationsGetQuery()
     const [search, setSearch] = useState('');
     console.log(search);
-    useEffect(() => {
-        fetch('https://organization-manager-server.onrender.com/organizations')
-            .then(res => res.json())
-            .then(data => setOrganizations(data));
-    }, [])
+   
+    let content = null;
+
+    if(isLoading && !isError){
+        content = <p>Loading</p>
+    }
+    if(!isLoading && isError){
+        content = <p>An error occured</p>
+    }
+    if(!isLoading && !isError && organizations.length ===0){
+        content = <p>No Data Found</p>
+    }
+    if(!isLoading && !isError && organizations.length > 0){
+        content = <tbody>
+        { organizations.filter((organization) => {
+            return search?.toLowerCase() === '' ? organization : organization?.name?.toLowerCase().includes(search);
+        }).map((organization) => (
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    { organization.name }
+                </th>
+                <td class="px-6 py-4">
+                    { organization.founder }
+                </td>
+                <td class="px-6 py-4">
+                    { organization.email }
+                </td>
+                <td class="px-6 py-4">
+                    { organization.address }
+                </td>
+                <td class="px-6 py-4">
+                    <button style={ styleObject.button } type="button" class="text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Details</button>
+                </td>
+            </tr>
+
+        )) }
+
+    </tbody>
+    }
 
     return (
         <div>
@@ -55,32 +91,7 @@ const AllOrganizations = () => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        { organizations.filter((organization) => {
-                            return search?.toLowerCase() === '' ? organization : organization?.name?.toLowerCase().includes(search);
-                        }).map((organization) => (
-
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    { organization.name }
-                                </th>
-                                <td class="px-6 py-4">
-                                    { organization.founder }
-                                </td>
-                                <td class="px-6 py-4">
-                                    { organization.email }
-                                </td>
-                                <td class="px-6 py-4">
-                                    { organization.address }
-                                </td>
-                                <td class="px-6 py-4">
-                                    <button style={ styleObject.button } type="button" class="text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Details</button>
-                                </td>
-                            </tr>
-
-                        )) }
-
-                    </tbody>
+                    {content}
                 </table>
             </div>
         </div>
