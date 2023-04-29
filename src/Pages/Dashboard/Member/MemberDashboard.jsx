@@ -11,7 +11,7 @@ const MemberDashboard = () => {
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
@@ -26,7 +26,7 @@ const MemberDashboard = () => {
       month: item?.month,
     }
     console.log(paymentInfo)
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server.onrender.com/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -36,7 +36,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `http://localhost:5000/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server.onrender.com/update-donation?email=${user.email}&month=${item.month}`,
           {
             method: 'PUT',
           },
@@ -56,7 +56,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server.onrender.com/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -66,7 +66,7 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setDonation(data.data[0].donation))
   }, [])
 

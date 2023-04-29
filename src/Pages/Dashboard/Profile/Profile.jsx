@@ -9,7 +9,7 @@ const Profile = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => {
         console.log(data);
         setUserInfo(data.data[0])

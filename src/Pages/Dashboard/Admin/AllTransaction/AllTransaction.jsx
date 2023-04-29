@@ -13,13 +13,13 @@ const AllTransaction = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/users/${user.email}`,
+        `https://organization-manager-server.onrender.com/users/${user.email}`,
       )
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server.onrender.com/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 

@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`http://localhost:5000/users/${user?.email}`)
+  //     .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
   //     .then((data) => setLoadingDataStatus(true));
   // }, [user?.email]);
 
