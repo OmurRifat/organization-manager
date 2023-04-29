@@ -4,7 +4,7 @@ import SingleEvents from './SingleEvents';
 const AllEvents = () => {
     const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://organization-manager-server.onrender.com/events")
       .then((res) => res.json())
       .then((data) => setEvents(data));
   }, []);
