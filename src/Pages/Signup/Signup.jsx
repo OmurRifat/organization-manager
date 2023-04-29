@@ -141,10 +141,10 @@ const Signup = () => {
     reader.readAsDataURL(e.target.files[0])
   }
   return (
-    <div style={ styles.bg } className="signup-container text-black mt-4">
-      <div className="flex lg:flex-row-reverse md:flex-row-reverse flex-col justify-evenly items-start">
-        <div className="border p-10">
-          {/* <h1 className="md:text-5xl text-3xl font-bold m-5 ">Sign Up</h1> */}
+    <div className="signup-container text-black mt-4">
+      <div className="flex md:flex-row flex-col justify-evenly items-start">
+        <div className=" p-10 py-5">
+          <h1 className="md:text-5xl text-3xl text-[#2A9D8F]  mb-7 text-center ">Create Account</h1>
           {/* <div className="flex  items-center m-5 mt-10">
             <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
           </div> */}
@@ -187,20 +187,18 @@ const Signup = () => {
                 <div className="flex items-center bg-gray-50 my-4 rounded-lg">
                   <div className="text-center ">
                     <div
-                      className=""
                       style={ { display: !photoPreview ? 'block' : 'none' } }
                     >
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
-                        className="md:w-16 w-16 h-10 md:h-16 m-auto rounded-full shadow"
+                        className="md:w-10 w-16 h-10 md:h-10 m-auto ml-2 my-1 rounded-full shadow"
                       />
                     </div>
                     <div
-                      className=""
                       style={ { display: photoPreview ? 'block' : 'none' } }
                     >
                       <span
-                        className="block md:w-16 w-16 h-10 md:h-16 rounded-full m-auto shadow"
+                        className="block md:w-8 w-16 h-10 md:h-8 rounded-full m-auto shadow"
                         style={ {
                           backgroundSize: 'cover',
                           backgroundRepeat: 'no-repeat',
@@ -223,7 +221,7 @@ const Signup = () => {
               {/* photo set */ }
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div className="mb-4 md:mb-6">
+                <div className="mb-4 md:mb-3">
                   <label
                     htmlFor="name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -315,13 +313,13 @@ const Signup = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start mb-6">
-                <div className="flex items-center h-5">
+              <div className="flex items-start mb-4">
+                <div className="flex items-center h-4">
                   <input
                     id="remember"
                     type="checkbox"
                     value=""
-                    className="w-4 h-4 border text-[#2A9D8F] rounded "
+                    className="w-4 h-4 border-none outline-none focus:border-none focus:outline-none text-[#2A9D8F] rounded"
                     required
                   />
                 </div>
@@ -334,7 +332,7 @@ const Signup = () => {
                 </label>
               </div>
               <button
-                className="bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none"
+                className="bg-[#2A9D8F] text-white p-3 rounded-full text-3xl border-none"
                 type="submit"
               >
                 <AiOutlineArrowRight />
