@@ -20,7 +20,7 @@ const Signup = () => {
     formState: { errors },
   } = useForm()
   useEffect(() => {
-    fetch('https://organization-manager-server.onrender.com/organizations')
+    fetch('https://organization-manager-server-main.vercel.app/organizations')
       .then((res) => res.json())
       .then((data) => setFoundation(data))
   }, [])
@@ -102,7 +102,7 @@ const Signup = () => {
               updateUser(updateUserInfo)
                 .then(() => {
                   fetch(
-                    'https://organization-manager-server.onrender.com/users',
+                    'https://organization-manager-server-main.vercel.app/users',
                     {
                       method: 'POST',
                       headers: {
