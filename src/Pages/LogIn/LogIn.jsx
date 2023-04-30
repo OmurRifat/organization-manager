@@ -33,14 +33,15 @@ const LogIn = () => {
   };
   return (
     <div>
-      <div style={ styles.bg } className="lg:block signup-container text-black mt-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 ">
+    {/* grid grid-cols-1 md:grid-cols-2 gap-x-6 */}
+      <div className="lg:block signup-container text-black mt-4">
+        <div className="flex lg:flex-row-reverse md:flex-row-reverse flex-col justify-evenly items-start ">
           <div className="p-10">
-            <h1 className="text-5xl text-black ">Sign In</h1>
-            <div className="flex  items-center m-5 mt-10">
+            <h1 className="text-5xl text-center mb-7  text-[#2A9D8F] ">Sign in</h1>
+            {/* <div className="flex  items-center m-5 mt-10">
               <div className="bg-[black] h-1 w-24 me-5"></div>
 
-            </div>
+            </div> */}
             {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
               <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
                 <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
@@ -51,8 +52,7 @@ const LogIn = () => {
                 <span className="py-3 md:py-1 font-semibold">Continue with Facebook</span>
               </button>
             </div> */}
-            <p className="flex flex-reverse justify-center text-3xl font-bold my-10">or</p>
-            <div className="">
+            <div className="mx-auto">
               <form onSubmit={ handleSubmit(onSubmit) }>
                 <div className="grid grid-cols-1 gap-2">
                   <div className="mb-6">
@@ -69,7 +69,7 @@ const LogIn = () => {
                         required: "Please Enter Your Email!",
 
                       }) }
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Email address"
                       required
                     />
@@ -88,7 +88,7 @@ const LogIn = () => {
                     type="password"
                     id="password"
                     placeholder="Enter Password"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
                   <p className='alerts text-red-600'>{ errors.password?.message }</p>
@@ -111,7 +111,7 @@ const LogIn = () => {
                     policy
                   </label>
                 </div>
-                <button className='bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none' type="submit">
+                <button className='bg-[#2A9D8F] text-white p-3 rounded-full text-3xl border-none' type="submit">
                   <AiOutlineArrowRight />
                 </button>
               </form>
@@ -124,7 +124,7 @@ const LogIn = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-right">
+          <div className="max-w-md px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
             <img
               src="https://i.ibb.co/F0Tkjwt/Layer-13.png"
               alt="Family-logo-template-removebg-preview"
