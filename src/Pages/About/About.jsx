@@ -24,13 +24,13 @@ const About = () => {
 
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
-      fetch('https://organization-manager-server.onrender.com/organizations')
+      fetch('https://organization-manager-server-main.vercel.app/organizations')
           .then(res => res.json())
           .then(data => setOrganizations(data));
   }, [])
   const [users, setUsers] = useState([]);
   useEffect(() => {
-      fetch('https://organization-manager-server.onrender.com/users')
+      fetch('https://organization-manager-server-main.vercel.app/users')
           .then(res => res.json())
           .then(data => setUsers(data));
   }, [])
