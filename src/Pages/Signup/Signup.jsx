@@ -100,7 +100,7 @@ const Signup = () => {
               updateUser(updateUserInfo)
                 .then(() => {
                   fetch(
-                    'https://organization-manager-server.onrender.com/users',
+                    'https://organization-manager-server-main.vercel.app/users',
                     {
                       method: 'POST',
                       headers: {
