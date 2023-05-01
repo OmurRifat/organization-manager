@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from './PayMethodModal'
-import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
   const [payModal, setPayModal] = useState(false)
-
   const [userInfo, setUserInfo] = useState({})
   const { user } = useContext(AuthContext)
   useEffect(() => {
@@ -148,11 +146,7 @@ const MemberDashboard = () => {
           </button>
         </div>
       </div>
-      {/* <img
-        src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png"
-        width="100%"
-        alt=""
-      /> */}
+     
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">

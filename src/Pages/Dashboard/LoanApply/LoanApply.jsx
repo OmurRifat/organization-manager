@@ -64,13 +64,13 @@ const LoanApply = () => {
     const handleBdt = (event) => {
       setSelectedBdt(event.target.value)
     }
-    
     const onSubmit = (data) => {
       const durationMonth = selectedMonth;
       const LoanAmount = data.amount;
       const NidPhoto = data.nidPhoto[0];
       const userInfos = userInfo;
       const Organizations = userInfo.organization;
+      const userEmail = userInfo.email
       const formData = new FormData();
       formData.append('image', NidPhoto);
       const url = `https://api.imgbb.com/1/upload?key=86fadc190ecd3694fb9e2164676b3ced`
@@ -81,7 +81,7 @@ const LoanApply = () => {
         .then((res) => res.json())
         .then((imgData) => {
           const NidPhoto = imgData.data.url
-          const allLoanInformation = {NidPhoto,LoanAmount,Organizations, durationMonth,userInfos}
+          const allLoanInformation = {NidPhoto,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
             'https://organization-manager-server.onrender.com/loanSystem',
             {
@@ -107,7 +107,7 @@ const LoanApply = () => {
      <form onSubmit={ handleSubmit(onSubmit) }>
      <div className="grid lg:grid-cols-2  grid-cols-1">
         <div className="m-5">
-          <p className="text-xl m-3 text-[#54928b] font-medium">Duration</p>
+          <p className="text-base m-3 text-[#2A9D8F] font-medium">Duration</p>
           <div>
           <div className="flex items-center m-4 mb-4">
             <input
@@ -178,9 +178,23 @@ const LoanApply = () => {
             </label>
           </div>
           </div>
+          <div>
+         {/* <div className='my-5'>
+         <span className='text-[#2A9D8F] text-base mb-32 font-semibold' >Type 16 Digit or 10 digit NID No</span>
+          <input
+              id="threeM"
+              type="number"
+             
+              { ...register('threeM') }
+              name="default-radio"
+              onChange={handleDuration}
+              className="w-full h-full text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+         </div> */}
+          </div>
          {/* Nid */}
          <div>
-            <h1 className='text-xl text-[#2A9D8F] font-medium NID Or Birth Certificate'>Upload Your Identification NID Or Birth Certificate</h1>
+            <h1 className='text-base text-[#2A9D8F] font-medium NID Or Birth Certificate'>Upload Your Identification NID Or Birth Certificate</h1>
             <div className="bg-white p-7 rounded">
       <div x-data={dataFileDnD} className="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
         <div x-ref="dnd" className="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">

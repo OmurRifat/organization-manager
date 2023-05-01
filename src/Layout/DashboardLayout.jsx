@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Header from '../Pages/Dashboard/Header/Header'
+import { FaUserCog } from 'react-icons/fa';
+import { MdOutlineSettingsApplications } from 'react-icons/md';
 
 import { AuthContext } from '../context/AuthProvider'
 import useAdmin from '../hooks/useAdmin'
@@ -120,6 +122,18 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <Link
+                    to="/dashboard/admin/LoanApplication"
+                    className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <FaUserCog className='w-6 h-6'></FaUserCog>
+
+                    <span className="flex-1 ml-3 whitespace-nowrap">
+                      Loan Application
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/dashboard/admin/settings"
                     className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -170,13 +184,20 @@ const DashboardLayout = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">Settings</span>
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/dashboard/member/myLoan"
+                    className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <MdOutlineSettingsApplications className='w-6 h-6'  ></MdOutlineSettingsApplications>
+                    <span className="flex-1 ml-3 whitespace-nowrap">My Loan</span>
+                  </Link>
+                </li>
               </>
             ) }
           </ul>
-          <div className=""></div>
         </div>
       </aside>
-
       <div className=" sm:ml-64">
         <Header></Header>
         <div className="mb-5">
