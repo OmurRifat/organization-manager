@@ -36,7 +36,7 @@ const LoanApplication = () => {
 console.log(loanApplied);
 
 const handleAccept = (id) => {
-  fetch(`http://localhost:5000/accept/${id}`, {
+  fetch(`https://organization-manager-server.onrender.com/accept/${id}`, {
     method: "PUT",
   })
     .then((res) => res.json())
@@ -48,7 +48,7 @@ const handleAccept = (id) => {
     });
 };
 const handleReject = (id) => {
-  fetch(`http://localhost:5000/reject/${id}`, {
+  fetch(`https://organization-manager-server.onrender.com/reject/${id}`, {
     method: "PUT",
   })
     .then((res) => res.json())

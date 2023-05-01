@@ -7,7 +7,7 @@ const MyLoan = () => {
     const [myLoan, setMyLoan]= useState([])
     useEffect(() => {
         axios
-          .get(`http://localhost:5000/myLoan?userEmail=${user?.email}`)
+          .get(`https://organization-manager-server.onrender.com/myLoan?userEmail=${user?.email}`)
           .then((response) => {
             setMyLoan(response.data);
             console.log(response.data);
