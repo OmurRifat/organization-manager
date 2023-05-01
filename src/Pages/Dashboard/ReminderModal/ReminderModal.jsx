@@ -11,11 +11,11 @@ const ReminderModal = ({ setModal, modal, member }) => {
 
   const sendEmail = () => {
     const templateParams = {
-      to_name: 'Dibbo Dash',
+      to_name: member.name,
       subject: 'Due Payment Remainder!',
       message: 'Please pay your due with according to table information:',
-      email: 'mdabdurrouf.likhon2@gmail.com',
-      foundation_name: 'Ikhlab Foundation',
+      email: member.email,
+      foundation_name: member.organization,
     }
 
     emailjs
@@ -42,10 +42,10 @@ const ReminderModal = ({ setModal, modal, member }) => {
       id="authentication-modal"
       tabIndex="-1"
       aria-hidden="true"
-      className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 bg-black bg-opacity-50 backdrop-blur-sm  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0  bg-opacity-50 backdrop-blur-sm  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div className="relative w-full max-w-md max-h-full">
-        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div className="relative bg-white rounded-lg  drop-shadow-xl">
           <button onClick={ () => setModal(false) }
             type="button"
             className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -69,8 +69,8 @@ const ReminderModal = ({ setModal, modal, member }) => {
           <div className="px-6 py-6 lg:px-8">
             <div className="text-center text-white p-10">
               {/* showing the total due ammount with bold*/ }
-              <p className="text-5xl text-black mb-5">Total Due: <span className="font-bold">{ totalDue }</span></p>
-              <p className="text-3xl text-black mb-5">Want to send a reminder?</p>
+              <p className="text-4xl text-black mb-5">Total Due: <span className="font-semibold">{ totalDue }</span></p>
+              <p className="text-2xl text-black mb-5">Want to send a reminder?</p>
               <div className=" m-5 flex justify-center items-center">
                 <button
                   onClick={ () => setModal(sendEmail()) }

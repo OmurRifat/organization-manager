@@ -9,30 +9,30 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 
 const Signup = () => {
-  const [foundation, setFoundation] = useState([])
-  const [userImg, setUserImg] = useState('')
-  const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1'
-  const [error, setError] = useState(null)
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
-  useEffect(() => {
-    fetch('https://organization-manager-server.onrender.com/organizations')
-      .then((res) => res.json())
-      .then((data) => setFoundation(data))
-  }, [])
+
+  const { createUsersEmail, updateUser, googleRegister } = useContext(AuthContext)
+
   const styles = {
     bg: {
       background:
         'radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%)',
     },
-  }
-  const { createUsersEmail, updateUser, googleRegister } = useContext(
-    AuthContext,
-  )
+  };
+
+
+  const [foundation, setFoundation] = useState([]);
+  const [userImg, setUserImg] = useState('');
+  const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1';
+  const [error, setError] = useState(null);
+  const {register,handleSubmit,watch,formState: { errors },} = useForm();
+
+  useEffect(() => {
+    fetch('https://organization-manager-server.onrender.com/organizations')
+      .then((res) => res.json())
+      .then((data) => setFoundation(data))
+  }, []);
+
+
 
   const navigate = useNavigate()
   const monthNames = [
@@ -51,7 +51,7 @@ const Signup = () => {
   ]
 
   const d = new Date()
-  console.log()
+  
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -69,9 +69,7 @@ const Signup = () => {
           console.log(imgData.data.url)
           setUserImg(imgData.data.url)
           const userInfo = {
-            organization: data.organization
-              ? data.organization
-              : 'Iklab Foundation',
+            organization: data.organization? data.organization: 'Iklab Foundation',
             name: data.name,
             email: data.email,
             phone: data.phone,
@@ -102,7 +100,7 @@ const Signup = () => {
               updateUser(updateUserInfo)
                 .then(() => {
                   fetch(
-                    'https://organization-manager-server.onrender.com/users',
+                    'https://organization-manager-server-main.vercel.app/users',
                     {
                       method: 'POST',
                       headers: {
@@ -133,21 +131,21 @@ const Signup = () => {
   const [photoPreview, setPhotoPreview] = useState(null)
 
   const handleFileChange = (e) => {
-    setPhotoName(e.target.files[0].name)
-    const reader = new FileReader()
+    setPhotoName(e.target.files[0].name);
+    const reader = new FileReader();
     reader.onload = (e) => {
       setPhotoPreview(e.target.result)
-    }
-    reader.readAsDataURL(e.target.files[0])
+    };
+    reader.readAsDataURL(e.target.files[0]);
   }
   return (
-    <div style={ styles.bg } className="signup-container text-black mt-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
-        <div className="border p-10">
-          <h1 className="md:text-5xl text-3xl font-bold m-5 ">Sign Up</h1>
-          <div className="flex  items-center m-5 mt-10">
+    <div className="signup-container text-black mt-4">
+      <div className="flex md:flex-row flex-col justify-evenly items-start">
+        <div className=" p-10 py-5">
+          <h1 className="md:text-5xl text-3xl text-[#2A9D8F]  mb-7 text-center ">Create Account</h1>
+          {/* <div className="flex  items-center m-5 mt-10">
             <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
-          </div>
+          </div> */}
           {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
             <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
               <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
@@ -162,9 +160,6 @@ const Signup = () => {
               </span>
             </button>
           </div> */}
-          <p className="flex justify-center text-3xl font-bold mt-10 mb-7">
-            or
-          </p>
           <div className="px-2 md:px-0">
             <form onSubmit={ handleSubmit(onSubmit) }>
               <label
@@ -190,20 +185,18 @@ const Signup = () => {
                 <div className="flex items-center bg-gray-50 my-4 rounded-lg">
                   <div className="text-center ">
                     <div
-                      className=""
                       style={ { display: !photoPreview ? 'block' : 'none' } }
                     >
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
-                        className="md:w-16 w-16 h-10 md:h-16 m-auto rounded-full shadow"
+                        className="md:w-10 w-16 h-10 md:h-10 m-auto ml-2 my-1 rounded-full shadow"
                       />
                     </div>
                     <div
-                      className=""
                       style={ { display: photoPreview ? 'block' : 'none' } }
                     >
                       <span
-                        className="block md:w-16 w-16 h-10 md:h-16 rounded-full m-auto shadow"
+                        className="block md:w-8 w-16 h-10 md:h-8 rounded-full m-auto shadow"
                         style={ {
                           backgroundSize: 'cover',
                           backgroundRepeat: 'no-repeat',
@@ -226,7 +219,7 @@ const Signup = () => {
               {/* photo set */ }
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div className="mb-4 md:mb-6">
+                <div className="mb-4 md:mb-3">
                   <label
                     htmlFor="name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -318,13 +311,13 @@ const Signup = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start mb-6">
-                <div className="flex items-center h-5">
+              <div className="flex items-start mb-4">
+                <div className="flex items-center h-4">
                   <input
                     id="remember"
                     type="checkbox"
                     value=""
-                    className="w-4 h-4 border text-[#2A9D8F] rounded "
+                    className="w-4 h-4 border-none outline-none focus:border-none focus:outline-none text-[#2A9D8F] rounded"
                     required
                   />
                 </div>
@@ -337,7 +330,7 @@ const Signup = () => {
                 </label>
               </div>
               <button
-                className="bg-[#2A9D8F] text-white p-4 rounded-full text-4xl border-none"
+                className="bg-[#2A9D8F] text-white p-3 rounded-full text-3xl border-none"
                 type="submit"
               >
                 <AiOutlineArrowRight />
@@ -352,7 +345,7 @@ const Signup = () => {
             </p>
           </div>
         </div>
-        <div className="max-w-3xl px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
+        <div className="max-w-md px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
           <img src={ signup } alt="signup page image" />
         </div>
       </div>

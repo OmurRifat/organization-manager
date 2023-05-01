@@ -20,7 +20,7 @@ const LoanApply = () => {
 
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
+      .get(`https://organization-manager-server-main.vercel.app/users/${user?.email}`)
       .then((data) => {
         console.log(data);
         setUserInfo(data.data[0])
@@ -83,7 +83,7 @@ const LoanApply = () => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
-            'https://organization-manager-server.onrender.com/loanSystem',
+            'https://organization-manager-server-main.vercel.app/loanSystem',
             {
               method: 'POST',
               headers: {

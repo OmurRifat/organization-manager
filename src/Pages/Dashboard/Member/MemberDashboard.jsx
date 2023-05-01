@@ -9,7 +9,7 @@ const MemberDashboard = () => {
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
+      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
@@ -24,7 +24,7 @@ const MemberDashboard = () => {
       month: item?.month,
     }
     console.log(paymentInfo)
-    fetch('https://organization-manager-server.onrender.com/due-payment', {
+    fetch('https://organization-manager-server-main.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -34,7 +34,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `https://organization-manager-server.onrender.com/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server-main.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
           {
             method: 'PUT',
           },
@@ -54,7 +54,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/all-transaction`)
+      .get(`https://organization-manager-server-main.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -64,7 +64,7 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([])
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
+      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
       .then((data) => setDonation(data.data[0].donation))
   }, [])
 
@@ -236,15 +236,15 @@ const MemberDashboard = () => {
                   </th>
                   <td className="px-6 ">{item?.amount} Tk</td>
                   <td className="px-6 ">
-                    { item?.status ? item?.transactionId : '-due-' }
+                    { item?.status ? item?.transactionId : '' }
                   </td>
-                  <td className="px-6  text-[orange]">
+                  <td className="px-6 ">
                     { item?.status === true ? (
-                      <span className="bg-[green] p-2 px-3 rounded text-white">
+                      <span className="text-green-600 font-semibold">
                         Paid
                       </span>
                     ) : (
-                      'On Going'
+                      <span className='text-red-600 font-semibold'>Due</span>
                     ) }
                   </td>
                   { item?.status === false ? (
