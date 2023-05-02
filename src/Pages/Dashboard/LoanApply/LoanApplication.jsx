@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
+
+import Loader from './Loader';
 
 const LoanApplication = () => {
   const [userInfo, setUserInfo] = useState({});
   const { user } = useContext(AuthContext);
-  const [loanApplied, setLoanApplied] = useState([]);
   
   useEffect(() => {
     axios
@@ -20,20 +22,38 @@ const LoanApplication = () => {
   }, [user?.email]);
 
   
+  const [loanApplied, setLoanApplied] = useState([]);
+
+  const { isLoading, isError, refetch, data } = useQuery(
+    ["loanApplied", userInfo?.organization],
+    async () => {
+      const response = await fetch(
+        `https://organization-manager-server.onrender.com/loanApplication?Organizations=${userInfo.organization}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      return data;
+    },
+    { enabled: !!userInfo?.organization }
+  );
 
   useEffect(() => {
-    if (userInfo?.organization) {
-      axios
-        .get(`https://organization-manager-server.onrender.com/loanApplication?Organizations=${userInfo.organization}`)
-        .then((response) => {
-          setLoanApplied(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    if (isError) {
+      console.log("Error fetching loan applied data");
     }
-  }, [userInfo?.organization]);
-console.log(loanApplied);
+  }, [isError]);
+
+  useEffect(() => {
+    if (data) {
+      setLoanApplied(data);
+    }
+  }, [data]);
+
+  if (isLoading) {
+    return <div className='text-black'> <Loader></Loader> </div>;
+  }
 
 const handleAccept = (id) => {
   fetch(`https://organization-manager-server.onrender.com/accept/${id}`, {
@@ -41,8 +61,8 @@ const handleAccept = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (data.acknowledged) {
+        refetch()
         toast.success("Loan Accepted");
       }
     });
@@ -53,15 +73,15 @@ const handleReject = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (data.acknowledged) {
+        refetch()
         toast.error("Loan Rejected");
       }
     });
 };
 
     return (
-        <div>
+      <div>
       <p className="text-xl font-bold text-[#ff8000] py-3">All Loan Application</p>
       <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">

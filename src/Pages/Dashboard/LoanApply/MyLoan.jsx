@@ -1,19 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
-import axios from 'axios';
+import Loader from './Loader';
+import { useQuery } from '@tanstack/react-query';
 
 const MyLoan = () => {
     const {user}= useContext(AuthContext)
-    const [myLoan, setMyLoan]= useState([])
-    useEffect(() => {
-        axios
-          .get(`https://organization-manager-server.onrender.com/myLoan?userEmail=${user?.email}`)
-          .then((response) => {
-            setMyLoan(response.data);
-            console.log(response.data);
-          })
-         
-      }, [user?.email]);
+    const { isLoading, isError, data: myLoan } = useQuery(
+      ["myLoan", user?.email],
+      async () => {
+        const response = await fetch(
+          `https://organization-manager-server.onrender.com/myLoan?userEmail=${user?.email}`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        return data;
+      },
+      { enabled: !!user?.email }
+    );
+  
+    if (isLoading) {
+      return <div> <Loader></Loader>  </div>;
+    }
+  
+    if (isError) {
+      return <div>Error fetching data</div>;
+    }
     return (
         <div>
             <div>
