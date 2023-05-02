@@ -1,0 +1,12 @@
+.paginate{
+    padding: 6px 12px;
+    background: white;
+    color: black;
+    border: 1px solid gray;
+}
+.paginate .selected
+{
+    /* background-color: greenyellow; */
+    color: green;
+    font-weight: bold;
+}
