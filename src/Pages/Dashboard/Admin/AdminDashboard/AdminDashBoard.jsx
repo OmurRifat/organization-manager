@@ -14,12 +14,11 @@ const AdminDashboard = () => {
   const [userInfo, setUserInfo] = useState({})
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
-
   const [page,setPage] = useState(0);
   const [size,setSize] = useState(5);
   const [count,setCount] = useState(0);
-  const [userData,setUserData] = useState([])
-  const pages = Math.ceil(count / size)
+  const [userData,setUserData] = useState([]);
+  const pages = Math.ceil(count / size);
   
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
