@@ -4,7 +4,7 @@ import SingleNews from "./SingleNews";
 const AllNews = () => {
   const [news, setNews] = useState([]);
   useEffect(() => {
-    fetch("https://organization-manager-server-main.vercel.app/news")
+    fetch("https://organization-manager-server-main-jsarafath.vercel.app/news")
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);

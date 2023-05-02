@@ -16,14 +16,14 @@ const AdminDashboard = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main.vercel.app/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
   })
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
@@ -84,7 +84,7 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server-main.vercel.app/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
