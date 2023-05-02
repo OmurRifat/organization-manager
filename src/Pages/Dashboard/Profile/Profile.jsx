@@ -11,7 +11,7 @@ const Profile = () => {
     axios
       .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
       .then((data) => {
-        console.log(data);
+     
         setUserInfo(data.data[0])
       });
   }, [user.email]);
