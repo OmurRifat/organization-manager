@@ -16,9 +16,17 @@ const organizationsApi = apiSlice.injectEndpoints({
             query: () => ({
               url: '/organizations',
             }),
+            }),
+   
+        organizationsGetById: builder.query({
+            // note: an optional `queryFn` may be used in place of `query`
+            query: (id) => ({
+              url: `/organizations/${id}`,
+            }),
             })
     })
-})
-export const {useOrganizationsPostMutation, useOrganizationsGetQuery} = organizationsApi;
+    })
+
+export const {useOrganizationsPostMutation, useOrganizationsGetQuery,useOrganizationsGetByIdQuery} = organizationsApi;
 
 
