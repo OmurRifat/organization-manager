@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://organization-manager-server-main.vercel.app/users/${user?.email}`)
+  //     .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`)
   //     .then((data) => setLoadingDataStatus(true));
   // }, [user?.email]);
 

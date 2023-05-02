@@ -9,9 +9,9 @@ const Profile = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
       .then((data) => {
-        console.log(data);
+     
         setUserInfo(data.data[0])
       });
   }, [user.email]);

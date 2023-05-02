@@ -6,7 +6,7 @@ const TransactionInfo = ({ transaction, i }) => {
   useEffect(() => {
     console.log(transaction)
     fetch(
-      `https://organization-manager-server-main.vercel.app/transaction-query-by-transaction-id?${transaction.transactionId}`,
+      `https://organization-manager-server-main-jsarafath.vercel.app/transaction-query-by-transaction-id?${transaction.transactionId}`,
     )
       .then((response) => response.json())
       .then((data) => setTxdInfo(data.element[0]))
@@ -21,7 +21,6 @@ const TransactionInfo = ({ transaction, i }) => {
       <td className="px-6  text-green-500">{transaction.transactionId}</td>
       <td className="px-6  text-[red]">{transaction.amount}</td>
       <td className="px-6  text-[red]">{txdInfo.card_type}</td>
-
       <td className="px-6 ">
         <button
           type="button"

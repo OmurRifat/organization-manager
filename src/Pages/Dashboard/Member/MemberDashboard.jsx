@@ -1,17 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from './PayMethodModal'
-import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
   const [payModal, setPayModal] = useState(false)
-
   const [userInfo, setUserInfo] = useState({})
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
@@ -26,7 +24,7 @@ const MemberDashboard = () => {
       month: item?.month,
     }
     console.log(paymentInfo)
-    fetch('https://organization-manager-server-main.vercel.app/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -36,7 +34,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `https://organization-manager-server-main.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
           {
             method: 'PUT',
           },
@@ -56,7 +54,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/all-transaction`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -66,7 +64,7 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([])
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
       .then((data) => setDonation(data.data[0].donation))
   }, [])
 
@@ -148,11 +146,7 @@ const MemberDashboard = () => {
           </button>
         </div>
       </div>
-      {/* <img
-        src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png"
-        width="100%"
-        alt=""
-      /> */}
+     
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">

@@ -13,13 +13,13 @@ const AllTransaction = () => {
   useEffect(() => {
     axios
       .get(
-        `https://organization-manager-server-main.vercel.app/users/${user.email}`,
+        `https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`,
       )
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/all-transaction`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -41,7 +41,6 @@ const AllTransaction = () => {
             <th scope="col" className="px-6 py-3">
               Member Name
             </th>
-
             <th scope="col" className="px-6 py-3">
               Transaction ID
             </th>

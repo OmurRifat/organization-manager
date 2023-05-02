@@ -9,30 +9,27 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 
 const Signup = () => {
-
-  const { createUsersEmail, updateUser, googleRegister } = useContext(AuthContext)
-
+  const [foundation, setFoundation] = useState([])
+  const [userImg, setUserImg] = useState('')
+  const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1'
+  const [error, setError] = useState(null)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+  useEffect(() => {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
+      .then((res) => res.json())
+      .then((data) => setFoundation(data))
+  }, [])
   const styles = {
     bg: {
       background:
         'radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%)',
     },
   };
-
-
-  const [foundation, setFoundation] = useState([]);
-  const [userImg, setUserImg] = useState('');
-  const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1';
-  const [error, setError] = useState(null);
-  const {register,handleSubmit,watch,formState: { errors },} = useForm();
-
-  useEffect(() => {
-    fetch('https://organization-manager-server.onrender.com/organizations')
-      .then((res) => res.json())
-      .then((data) => setFoundation(data))
-  }, []);
-
-
 
   const navigate = useNavigate()
   const monthNames = [
@@ -51,7 +48,7 @@ const Signup = () => {
   ]
 
   const d = new Date()
-  
+
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -69,7 +66,7 @@ const Signup = () => {
           console.log(imgData.data.url)
           setUserImg(imgData.data.url)
           const userInfo = {
-            organization: data.organization? data.organization: 'Iklab Foundation',
+            organization: data.organization ? data.organization : 'Iklab Foundation',
             name: data.name,
             email: data.email,
             phone: data.phone,
@@ -100,7 +97,7 @@ const Signup = () => {
               updateUser(updateUserInfo)
                 .then(() => {
                   fetch(
-                    'https://organization-manager-server-main.vercel.app/users',
+                    'https://organization-manager-server-main-jsarafath.vercel.app/users',
                     {
                       method: 'POST',
                       headers: {
