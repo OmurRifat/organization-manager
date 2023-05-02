@@ -24,10 +24,10 @@ const Signup = () => {
   const [userImg, setUserImg] = useState('');
   const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1';
   const [error, setError] = useState(null);
-  const {register,handleSubmit,watch,formState: { errors },} = useForm();
+  const { register, handleSubmit, watch, formState: { errors }, } = useForm();
 
   useEffect(() => {
-    fetch('https://organization-manager-server.onrender.com/organizations')
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
       .then((res) => res.json())
       .then((data) => setFoundation(data))
   }, []);
@@ -51,7 +51,7 @@ const Signup = () => {
   ]
 
   const d = new Date()
-  
+
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -69,7 +69,7 @@ const Signup = () => {
           console.log(imgData.data.url)
           setUserImg(imgData.data.url)
           const userInfo = {
-            organization: data.organization? data.organization: 'Iklab Foundation',
+            organization: data.organization ? data.organization : 'Iklab Foundation',
             name: data.name,
             email: data.email,
             phone: data.phone,
