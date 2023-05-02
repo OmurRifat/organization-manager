@@ -9,7 +9,7 @@ const MyLoan = () => {
       ["myLoan", user?.email],
       async () => {
         const response = await fetch(
-          `https://organization-manager-server.onrender.com/myLoan?userEmail=${user?.email}`
+          `https://organization-manager-server-main-jsarafath.vercel.app/myLoan?userEmail=${user?.email}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

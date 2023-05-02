@@ -12,7 +12,7 @@ const LoanApplication = () => {
   
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`)
       .then((response) => {
         setUserInfo(response.data[0]);
       })
@@ -28,7 +28,7 @@ const LoanApplication = () => {
     ["loanApplied", userInfo?.organization],
     async () => {
       const response = await fetch(
-        `https://organization-manager-server.onrender.com/loanApplication?Organizations=${userInfo.organization}`
+        `https://organization-manager-server-main-jsarafath.vercel.app/loanApplication?Organizations=${userInfo.organization}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -56,7 +56,7 @@ const LoanApplication = () => {
   }
 
 const handleAccept = (id) => {
-  fetch(`https://organization-manager-server.onrender.com/accept/${id}`, {
+  fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
     method: "PUT",
   })
     .then((res) => res.json())
@@ -68,7 +68,7 @@ const handleAccept = (id) => {
     });
 };
 const handleReject = (id) => {
-  fetch(`https://organization-manager-server.onrender.com/reject/${id}`, {
+  fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
     method: "PUT",
   })
     .then((res) => res.json())
