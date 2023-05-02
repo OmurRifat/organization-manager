@@ -31,9 +31,6 @@ const Signup = () => {
     },
   };
 
-
-
-
   const navigate = useNavigate()
   const monthNames = [
     'January',
@@ -51,7 +48,7 @@ const Signup = () => {
   ]
 
   const d = new Date()
-  
+
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -69,7 +66,7 @@ const Signup = () => {
           console.log(imgData.data.url)
           setUserImg(imgData.data.url)
           const userInfo = {
-            organization: data.organization? data.organization: 'Iklab Foundation',
+            organization: data.organization ? data.organization : 'Iklab Foundation',
             name: data.name,
             email: data.email,
             phone: data.phone,
