@@ -22,6 +22,8 @@ import MemberRoute from '../MemberRoute/MemberRoute'
 import AllOrganizations from '../../Pages/Home/All_Organizations/AllOrganizations'
 import AllEvents from './../../Pages/Home/UpcommingEvents/AllEvents';
 import OrganizationDetails from '../../Pages/Home/All_Organizations/OrganizationDetails'
+import LoanApplication from '../../Pages/Dashboard/LoanApply/LoanApplication'
+import MyLoan from '../../Pages/Dashboard/LoanApply/MyLoan'
 
 const router = createBrowserRouter([
   {
@@ -103,9 +105,21 @@ const router = createBrowserRouter([
         </AdminRoute>,
       },
       {
+        path: '/dashboard/admin/LoanApplication',
+        element: <AdminRoute>
+          <LoanApplication></LoanApplication>
+        </AdminRoute>,
+      },
+      {
         path: '/dashboard/member/settings',
         element: <MemberRoute>
           <Settings></Settings>
+        </MemberRoute>,
+      },
+      {
+        path: '/dashboard/member/myLoan',
+        element: <MemberRoute>
+          <MyLoan></MyLoan>
         </MemberRoute>,
       },
       {

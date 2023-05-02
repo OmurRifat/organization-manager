@@ -11,7 +11,7 @@ const Profile = () => {
     axios
       .get(`http://localhost:5000/users/${user.email}`)
       .then((data) => {
-        console.log(data);
+     
         setUserInfo(data.data[0])
       });
   }, [user.email]);

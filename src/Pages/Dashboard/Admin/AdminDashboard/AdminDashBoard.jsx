@@ -188,7 +188,6 @@ const AdminDashboard = () => {
                 ></path>
               </svg>
             </button>
-
             <div
               id="dropdownAction"
               className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
@@ -250,24 +249,14 @@ const AdminDashboard = () => {
               <td className="px-6 ">
                 {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
-                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? <button
-                    key={ member._id }
-                    type="button"
-                    onClick={ () => handleReminder(member) }
+                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? 
+                  <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
                     className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                     Send Remainder
-                  </button> : <p
-                    className="text-green-500">
-                    Paid
-                  </p>
+                  </button> : 
+                  <p className="text-green-500">Paid </p>
                 }
-                {
-                  modal && <ReminderModal
-                    modal={ modal }
-                    setModal={ setModal }
-                    member={ specificMember }
-                  />
-                }
+                {modal && <ReminderModal modal={ modal } setModal={ setModal } member={ specificMember } /> }
               </td>
             </tr>) }
           </tbody>

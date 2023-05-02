@@ -4,8 +4,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../../context/AuthProvider'
 import axios from 'axios'
+import DetailsModal from '../../DetailsModal/DetailsModal'
 
 const AllMember = () => {
+
+  const [details,setDetails] = useState(false)
+  const [detailsMember,setDetailsMember] = useState({})
   const [userInfo, setUserInfo] = useState({})
   const { user } = useContext(AuthContext)
   useEffect(() => {
@@ -22,6 +26,14 @@ const AllMember = () => {
       return data
     },
   })
+
+  const handleDetails = (singleData) => {
+    
+    setDetails(true)
+    setDetailsMember(singleData)
+   
+  
+  }
 
   const organizationMembers = members.filter(member => member.organization === userInfo.organization && member.verified === true)
   return (
@@ -85,12 +97,14 @@ const AllMember = () => {
                 <td className="px-6 ">{ member?.phone }</td>
                 <td className="px-6  text-[orange]">{ member?.joiningDate }</td>
                 <td className="px-6 ">
-                  <button
+                  {member && <button
+                    onClick={()=>handleDetails(member)}
                     type="button"
                     className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
                     View Details
-                  </button>
+                  </button>}
+                  {details && <DetailsModal setDetails = {setDetails} member = {detailsMember}/>}
                 </td>
               </tr>
             )) }

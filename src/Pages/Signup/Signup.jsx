@@ -29,10 +29,10 @@ const Signup = () => {
       background:
         'radial-gradient(50.56% 100.18% at 49.27% 47.2%, #65C4B8 0%, rgba(255, 255, 255, 0) 100%)',
     },
-  }
-  const { createUsersEmail, updateUser, googleRegister } = useContext(
-    AuthContext,
-  )
+  };
+
+
+
 
   const navigate = useNavigate()
   const monthNames = [
@@ -51,7 +51,7 @@ const Signup = () => {
   ]
 
   const d = new Date()
-  console.log()
+  
   // const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     console.log(data)
@@ -69,9 +69,7 @@ const Signup = () => {
           console.log(imgData.data.url)
           setUserImg(imgData.data.url)
           const userInfo = {
-            organization: data.organization
-              ? data.organization
-              : 'Iklab Foundation',
+            organization: data.organization? data.organization: 'Iklab Foundation',
             name: data.name,
             email: data.email,
             phone: data.phone,
@@ -133,12 +131,12 @@ const Signup = () => {
   const [photoPreview, setPhotoPreview] = useState(null)
 
   const handleFileChange = (e) => {
-    setPhotoName(e.target.files[0].name)
-    const reader = new FileReader()
+    setPhotoName(e.target.files[0].name);
+    const reader = new FileReader();
     reader.onload = (e) => {
       setPhotoPreview(e.target.result)
-    }
-    reader.readAsDataURL(e.target.files[0])
+    };
+    reader.readAsDataURL(e.target.files[0]);
   }
   return (
     <div className="signup-container text-black mt-4">
