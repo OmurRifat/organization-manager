@@ -13,13 +13,13 @@ const AllTransaction = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/users/${user.email}`,
+        `https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`,
       )
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 

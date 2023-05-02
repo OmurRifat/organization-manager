@@ -20,7 +20,7 @@ const LoanApply = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${user?.email}`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`)
       .then((data) => {
         console.log(data);
         setUserInfo(data.data[0])
@@ -83,7 +83,7 @@ const LoanApply = () => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
-            'http://localhost:5000/loanSystem',
+            'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
             {
               method: 'POST',
               headers: {
