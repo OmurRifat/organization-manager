@@ -21,6 +21,7 @@ import AllTransaction from '../../Pages/Dashboard/Admin/AllTransaction/AllTransa
 import MemberRoute from '../MemberRoute/MemberRoute'
 import AllOrganizations from '../../Pages/Home/All_Organizations/AllOrganizations'
 import AllEvents from './../../Pages/Home/UpcommingEvents/AllEvents';
+import OrganizationDetails from '../../Pages/Home/All_Organizations/OrganizationDetails'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/show-organizations',
         element: <AllOrganizations></AllOrganizations>,
+      },
+      {
+        path: '/organizations/:id',
+        element: <OrganizationDetails></OrganizationDetails>,
       },
       {
         path: '/logout',

@@ -10,14 +10,14 @@ const AllMember = () => {
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
+      .get(`http://localhost:5000/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
   console.log(userInfo)
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main.vercel.app/users')
+      const res = await fetch('http://localhost:5000/users')
       const data = await res.json()
       return data
     },

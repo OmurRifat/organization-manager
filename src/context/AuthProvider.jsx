@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://organization-manager-server-main.vercel.app/users/${user?.email}`)
+  //     .get(`http://localhost:5000/users/${user?.email}`)
   //     .then((data) => setLoadingDataStatus(true));
   // }, [user?.email]);
 

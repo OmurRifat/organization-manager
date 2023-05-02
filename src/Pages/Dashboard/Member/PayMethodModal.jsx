@@ -10,7 +10,7 @@ const PayMethodModal = ({ payModal, setPayModal }) => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server-main.vercel.app/due-payment', {
+    fetch('http://localhost:5000/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
