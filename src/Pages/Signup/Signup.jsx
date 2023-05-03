@@ -9,6 +9,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 
 const Signup = () => {
+  const {createUsersEmail,updateUser} = useContext(AuthContext)
   const [foundation, setFoundation] = useState([])
   const [userImg, setUserImg] = useState('')
   const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1'
@@ -108,6 +109,7 @@ const Signup = () => {
                   )
                     .then((res) => res.json())
                     .then((data) => {
+                      console.log(data);
                       navigate('/dashboard')
                     })
                 })
