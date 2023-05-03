@@ -31,7 +31,7 @@ const AdminDashboard = () => {
 
   useEffect(()=>{
     axios
-    .get(`http://localhost:5000/userspaginate?page=${page}&size=${size}`)
+    .get(`https://organization-manager-server-main-jsarafath.vercel.app/userspaginate?page=${page}&size=${size}`)
     .then((data) =>{
             setUserData(data.data.users)
             setCount(data.data.count)
