@@ -2,15 +2,13 @@ import React from 'react'
 
 const PayMethodModal = ({ payModal, setPayModal }) => {
   const handlePayment = () => {
-    console.log('click')
-
     const paymentInfo = {
       amount: '10000',
       userName: 'Likhon',
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server-main.vercel.app/due-payment', {
+    fetch('https://organization-manager-server.onrender.com/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

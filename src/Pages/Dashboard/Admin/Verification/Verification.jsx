@@ -13,14 +13,14 @@ const Verification = () => {
   const { user } = useContext(AuthContext)
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main.vercel.app/users/${user.email}`)
+      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main.vercel.app/users')
+      const res = await fetch('https://organization-manager-server.onrender.com/users')
       const data = await res.json()
       return data
     },
