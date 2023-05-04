@@ -13,8 +13,8 @@ const CounterUp = () => {
         onEnter={() => setCountOn(true)}
         onExit={() => setCountOn(false)}
       >
-        <div className="grid grid-cols-3 text-[#2A9D8F]">
-          <div>
+        <div className="grid lg:grid-cols-3 grid-cols-1 text-[#2A9D8F]">
+          <div className="mb-14 md:mb-0">
             <h2 className="text-4xl font-semibold mb-1">
               {countOn && (
                 <CountUp start={0} end={100} duration={2} delay={0} />
@@ -23,7 +23,7 @@ const CounterUp = () => {
             </h2>
             <p className="capitalize">total organizations</p>
           </div>
-          <div>
+          <div className="mb-14 md:mb-0">
             <h2 className="text-4xl font-semibold mb-1">
               {countOn && (
                 <CountUp start={0} end={2000} duration={2} delay={0} />
