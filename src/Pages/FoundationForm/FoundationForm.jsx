@@ -3,31 +3,12 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import foundation from '../../assets/foundationform.png'
 import { AiOutlineArrowRight } from 'react-icons/ai'
-import { useFieldArray, useForm } from 'react-hook-form'
-import { FiTrash } from "react-icons/fi";
+import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useOrganizationsPostMutation } from '../../features/organizations/organizationsApi'
 
 const FoundationForm = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm();
-  
-  const {
-    fields: projectsFields,
-    append: projectsAppend,
-    remove: projectsRemove,
-  } = useFieldArray({ control, name: "projects" });
-  const {
-    fields: servicesFields,
-    append: servicesAppend,
-    remove: servicesRemove,
-  } = useFieldArray({ control, name: "services" });
-
+  const { register, handleSubmit, reset } = useForm()
   const [postOrganization, {isLoading, isError, isSuccess}] = useOrganizationsPostMutation();
   const onSubmit = (data) => {
     console.log(data)
@@ -138,106 +119,12 @@ const FoundationForm = () => {
                       name="location"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       {...register('address')}
-                      id="email"                      placeholder="Select your location"
-                      required
-                    />
-                  </div>
-                  
-                </div>
-                <div className="grid grid-cols-1 gap-2">
-                  <div className="mb-6">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                     Description
-                    </label>
-                    <input
-                      {...register('desc')}
-                      type="text"
-                      name="name"
-                      id="name"
-                      className="bg-gray-50 h-20 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Description"
+                      id="email"                      
+                      placeholder="Select your location"
                       required
                     />
                   </div>
                 </div>
-                <div className='flex flex-col w-full'>
-          <label className='mb-2 text-black'>Our Top Works</label>
-          <div>
-            <div>
-              {projectsFields.map((item, index) => {
-                return (
-                  <div key={item.key} className='flex items-center gap-3 mb-5'>
-                    <input
-                      className='!w-full text-black'
-                      type='text'
-                      placeholder='Add picture'
-                      {...register(`projects[${index}]`)}
-                    />
-                    <button
-                      type='button'
-                      onClick={() => projectsRemove(index)}
-                      className='grid place-items-center btn  rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500'
-                    >
-                      <FiTrash
-                        className='text-red-500 group-hover:text-white transition-all'
-                        size='20'
-                      />
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-            <div>
-              <button
-                type='button'
-                onClick={() => projectsAppend("")}
-                style={{ backgroundColor: '#2A9D8F' }}
-                className='pl-4 pr-4 pt-2 pb-2 rounded-md'
-              >
-               Add Works 
-              </button>
-            </div>
-          </div>
-        </div>
-                <div className='flex flex-col w-full'>
-          <label className='mb-2 text-black'>Our Services</label>
-          <div>
-            <div>
-              {servicesFields.map((item, index) => {
-                return (
-                  <div key={item.key} className='flex items-center gap-3 mb-5'>
-                    <input
-                      className='!w-full text-black'
-                      type='text'
-                      placeholder='Add picture'
-                      {...register(`services[${index}]`)}
-                    />
-                    <button
-                      type='button'
-                      onClick={() => servicesRemove(index)}
-                      className='grid place-items-center btn  rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500'
-                    >
-                      <FiTrash
-                        className='text-red-500 group-hover:text-white transition-all'
-                        size='20'
-                      />
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-            <div>
-              <button
-                type='button'
-                onClick={() => servicesAppend("")}
-                style={{ backgroundColor: '#2A9D8F' }}
-                className='pl-4 pr-4 pt-2 pb-2 rounded-md'
-              >
-               Add Services
-              </button>
-            </div>
-          </div>
-        </div>
                 <div className="flex items-start mb-6">
                   <div className="flex items-center h-5">
                     <input

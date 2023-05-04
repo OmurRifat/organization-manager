@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import ReCAPTCHA from "react-google-recaptcha";
 import './Login.css'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthProvider';
@@ -17,6 +18,9 @@ const LogIn = () => {
   }
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
   const from = location?.state?.from?.pathname || "/";
   const onSubmit = data => {
     loginUser(data.email, data.password).then(res => {
@@ -93,6 +97,13 @@ const LogIn = () => {
                   />
                   <p className='alerts text-red-600'>{ errors.password?.message }</p>
                 </div>
+                  <div>
+           <ReCAPTCHA
+    sitekey="6LeKaNwlAAAAANq3hvgLPS4paH3wS3H0eh9Oc5-J"
+    onChange={onChange}
+  />
+           </div>
+           <br></br>
                 <div className="flex items-start mb-6">
                   <div className="flex items-center h-5">
                     <input
@@ -103,6 +114,7 @@ const LogIn = () => {
                       required
                     />
                   </div>
+
                   <label
                     htmlFor="remember"
                     className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
