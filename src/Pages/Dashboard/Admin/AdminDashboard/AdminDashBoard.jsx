@@ -19,7 +19,7 @@ const AdminDashboard = () => {
   const [count,setCount] = useState(0);
   const [userData,setUserData] = useState([]);
   const pages = Math.ceil(count / size);
-  
+  console.log(user);
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
@@ -29,29 +29,32 @@ const AdminDashboard = () => {
     },
   });
 
-  useEffect(()=>{
-    axios
-    .get(`https://organization-manager-server-main-jsarafath.vercel.app/userspaginate?page=${page}&size=${size}`)
-    .then((data) =>{
-            setUserData(data.data.users)
-            setCount(data.data.count)
-    })
-  },[page,size]);
-
   useEffect(() => {
     axios
       .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
       .then((data) => setUserInfo(data.data[0]))
   }, [user.email])
 
+  useEffect(()=>{
+    axios
+    .get(`http://localhost:5000/users/${userInfo?.organization}?page=${page}&size=${size}`)
+    .then((data) =>{
+            setUserData(data.data.users)
+            setCount(data.data.count)
+    })
+  },[userInfo,page,size]);
 
-  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
+
+  //total verifiedUsers
+  const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+
+  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true);
 //  total collected amount
-  const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0))
-  const collected = amount.reduce((c,d) => c + d , 0)
+  const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
+  const collected = amount.reduce((c,d) => c + d , 0);
 // total due amount
-  const dueAmount = organizationMembers.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0))
-  const due = dueAmount.reduce((c,d) => c + d , 0)
+  const dueAmount = organizationMembers.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
+  const due = dueAmount.reduce((c,d) => c + d , 0);
   // total members
   const totalMember = organizationMembers.length; 
   
@@ -86,15 +89,15 @@ const AdminDashboard = () => {
       })
   }
 
-  const styles = {
-    pageButton:{
-      padding: '8px 12px',
-      color: 'black',
-      background : 'white',
-      border : '1px solid gray'
-      // text-black bg-white border border-gray-300" 
-    }
-  }
+  // const styles = {
+  //   pageButton:{
+  //     padding: '8px 12px',
+  //     color: 'black',
+  //     background : 'white',
+  //     border : '1px solid gray'
+  //     // text-black bg-white border border-gray-300" 
+  //   }
+  // }
 
 
 
@@ -223,7 +226,7 @@ const AdminDashboard = () => {
           <tbody>
           {/* organizationMembers */}
 
-            { userData && userData.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            { verifiedUsers && verifiedUsers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
