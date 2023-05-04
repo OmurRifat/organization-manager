@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PayMethodModal from '../../Member/PayMethodModal'
 import ConfirmationModal from '../../LoanApply/ConfirmationModal'
 import ReminderModal from '../../ReminderModal/ReminderModal'
@@ -7,7 +7,6 @@ import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../../../context/AuthProvider'
 import axios from 'axios'
 import './AdminDashboard.css'
-import Loader from '../../LoanApply/Loader'
 
 const AdminDashboard = () => {
 
@@ -29,15 +28,15 @@ const AdminDashboard = () => {
       return data
     },
   });
-  
-  // useEffect(()=>{
-  //   axios
-  //   .get(`http://localhost:5000/userspaginate?page=${page}&size=${size}`)
-  //   .then((data) =>{
-  //           setUserData(data.data.users)
-  //           setCount(data.data.count)
-  //   })
-  // },[page,size]);
+
+  useEffect(()=>{
+    axios
+    .get(`https://organization-manager-server-main-jsarafath.vercel.app/userspaginate?page=${page}&size=${size}`)
+    .then((data) =>{
+            setUserData(data.data.users)
+            setCount(data.data.count)
+    })
+  },[page,size]);
 
   useEffect(() => {
     axios
@@ -46,18 +45,7 @@ const AdminDashboard = () => {
   }, [user.email])
 
 
-  useEffect(()=>{
-    axios
-    .get(`http://localhost:5000/users/${userInfo.organization}?page=${page}&size=${size}`)
-    .then((data) =>{
-           setUserData(data.data.users)
-          setCount(data.data.count)
-    })
-  },[userInfo.organization,page,size]);
-
-
-  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true);
-  const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
 //  total collected amount
   const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0))
   const collected = amount.reduce((c,d) => c + d , 0)
@@ -96,6 +84,16 @@ const AdminDashboard = () => {
       .then((data) => {
         window.location.replace(data.url)
       })
+  }
+
+  const styles = {
+    pageButton:{
+      padding: '8px 12px',
+      color: 'black',
+      background : 'white',
+      border : '1px solid gray'
+      // text-black bg-white border border-gray-300" 
+    }
   }
 
 
@@ -225,7 +223,7 @@ const AdminDashboard = () => {
           <tbody>
           {/* organizationMembers */}
 
-            { verifiedUsers && verifiedUsers.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            { userData && userData.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
@@ -275,16 +273,15 @@ const AdminDashboard = () => {
                 Previous
               </button>
             </li> */}
-            { [...Array(pages).keys()].map(number =>
-            <li key={number} className='paginate' >
+            { [...Array(pages).keys()].map(number => <li className='paginate' >
 
               <button   onClick={() => setPage(number)} 
+              key={number}
               className={page === number && 'selected'} 
               >
                 {number+1}
               </button>
-                </li>
-                )
+                </li>)
               }
             {/* <li>
               <button

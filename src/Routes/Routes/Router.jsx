@@ -53,6 +53,7 @@ const router = createBrowserRouter([
       {
         path: '/organizations/:id',
         element: <OrganizationDetails></OrganizationDetails>,
+       
       },
       {
         path: '/logout',

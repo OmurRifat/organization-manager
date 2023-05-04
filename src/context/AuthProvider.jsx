@@ -23,17 +23,14 @@ const AuthProvider = ({ children }) => {
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
+    
   };
 
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
-  // const googleRegister = () => {
-  //   setLoading(true);
-  //   return signInWithPopup(auth, provider);
-  // };
-
+ 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -42,12 +39,7 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`)
-  //     .then((data) => setLoadingDataStatus(true));
-  // }, [user?.email]);
-
+ 
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
