@@ -21,7 +21,7 @@ const Verification = () => {
     },
   });
 
-  const organizationMembers = members.filter((member) =>member.organization === userInfo.organization && member.verified !== true)
+  const organizationMembers = members.filter((member) =>member?.organization === userInfo?.organization && member.verified !== true)
 
   const handleShowDetails = (selectedProfile) => {
     setProfileModal(true)
