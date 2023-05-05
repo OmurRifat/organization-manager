@@ -5,7 +5,7 @@ import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
   const [payModal, setPayModal] = useState(false);
-  const { user,userInfo } = useContext(AuthContext);
+  const { user, userInfo } = useContext(AuthContext);
   const [donation, setDonation] = useState([]);
   const [allTransaction, setAllTransaction] = useState([]);
 
@@ -19,7 +19,7 @@ const MemberDashboard = () => {
       donationName: item?.donationName,
       month: item?.month,
     }
-   
+
     fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
@@ -52,20 +52,20 @@ const MemberDashboard = () => {
       .then((data) => setAllTransaction(data.data))
   }, [])
 
-  
+
 
   let totalDue = 0
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
       const data = await res.json();
       setDonation(data[0].donation);
     }
-  fetchData()
-  .catch(console.error)
+    fetchData()
+      .catch(console.error)
 
-  },[user?.email])
+  }, [user?.email])
 
   const dueCalculation = () => {
     donation?.map((d) => {
@@ -145,7 +145,7 @@ const MemberDashboard = () => {
           </button>
         </div>
       </div>
-     
+
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
@@ -233,7 +233,7 @@ const MemberDashboard = () => {
                   >
                     { item?.donationName }
                   </th>
-                  <td className="px-6 ">{item?.amount} Tk</td>
+                  <td className="px-6 ">{ item?.amount } Tk</td>
                   <td className="px-6 ">
                     { item?.status ? item?.transactionId : '' }
                   </td>
@@ -257,14 +257,14 @@ const MemberDashboard = () => {
                       </button>
                     </td>
                   ) : <td className="px-6 ">
-                  <button
-                   
-                    type="button"
-                    className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                  >
-                    Invoice
-                  </button>
-                </td>}
+                    <button
+
+                      type="button"
+                      className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    >
+                      Invoice
+                    </button>
+                  </td> }
                 </tr>
               )) }
           </tbody>

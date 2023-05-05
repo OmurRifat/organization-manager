@@ -10,7 +10,7 @@ import './AdminDashboard.css'
 
 const AdminDashboard = () => {
 
-  const { user,userInfo } = useContext(AuthContext)
+  const { user, userInfo } = useContext(AuthContext)
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
   const [page, setPage] = useState(0);
@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const [count, setCount] = useState(0);
   const [userData, setUserData] = useState([]);
   const pages = Math.ceil(count / size);
-  
+
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
 
   // useEffect(()=>{
   //   axios
-  //   .get(`http://localhost:5000/users/${userInfo?.organization}?page=${page}&size=${size}`)
+  //   .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${userInfo?.organization}?page=${page}&size=${size}`)
   //   .then((data) =>{
   //           setUserData(data.data.users)
   //           setCount(data.data.count)

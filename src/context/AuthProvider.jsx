@@ -24,14 +24,14 @@ const AuthProvider = ({ children }) => {
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
-    
+
   };
 
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
- 
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
- 
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -49,14 +49,14 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
       const data = await res.json();
       setUserInfo(data[0]);
     }
-  fetchData()
-  .catch(console.error)
+    fetchData()
+      .catch(console.error)
 
-  },[user?.email])
+  }, [user?.email])
 
   const authInfo = {
     createUsersEmail,
