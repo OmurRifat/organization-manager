@@ -2,8 +2,6 @@ import React from 'react'
 
 const PayMethodModal = ({ payModal, setPayModal }) => {
   const handlePayment = () => {
-    console.log('click')
-
     const paymentInfo = {
       amount: '10000',
       userName: 'Likhon',
