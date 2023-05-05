@@ -19,7 +19,7 @@ const MyLoan = () => {
     },
     { enabled: !!user?.email }
   );
-
+  
   if (isLoading) {
     return <div> <Loader></Loader>  </div>;
   }
@@ -58,8 +58,9 @@ const MyLoan = () => {
           </thead>
 
           {
-            myLoan?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium w-full' >You Have Not Applied For Any Loan</caption> : <>{ myLoan.map((loan, index) => (
-              <tbody>
+            myLoan?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium w-full' >You Have Not Applied For Any Loan</caption> :
+             <>{ myLoan.map((loan, index) => (
+              <tbody key={index}>
                 <tr
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
