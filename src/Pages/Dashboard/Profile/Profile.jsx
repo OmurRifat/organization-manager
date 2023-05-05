@@ -4,9 +4,10 @@ import { AuthContext } from "../../../context/AuthProvider";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
-  
-  const { user,userInfo } = useContext(AuthContext);
- 
+
+  const { user, userInfo } = useContext(AuthContext);
+  console.log(user, userInfo, "from profile page")
+
   return (
     <div className="flex justify-center m-3">
       <div className="rounded-3xl overflow-hidden  shadow-2xl w-2/3  my-15 ">

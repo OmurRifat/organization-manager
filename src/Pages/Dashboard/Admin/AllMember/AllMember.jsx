@@ -8,14 +8,14 @@ import DetailsModal from '../../DetailsModal/DetailsModal'
 
 const AllMember = () => {
 
-  const [details,setDetails] = useState(false)
-  const [detailsMember,setDetailsMember] = useState({})
-  const { user,userInfo } = useContext(AuthContext)
+  const [details, setDetails] = useState(false)
+  const [detailsMember, setDetailsMember] = useState({})
+  const { user, userInfo } = useContext(AuthContext)
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
@@ -27,7 +27,7 @@ const AllMember = () => {
   }
 
   const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
-  
+
   return (
     <div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

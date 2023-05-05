@@ -7,21 +7,21 @@ import axios from 'axios'
 import ProfileModal from './ProfileModal'
 
 const Verification = () => {
-  
+
   const [profile, setProfile] = useState(null)
   const [profileModal, setProfileModal] = useState(false)
-  const { user,userInfo } = useContext(AuthContext)
+  const { user, userInfo } = useContext(AuthContext)
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
   });
 
-  const organizationMembers = members.filter((member) =>member?.organization === userInfo?.organization && member.verified !== true)
+  const organizationMembers = members?.filter((member) => member.organization === userInfo?.organization && member.verified !== true)
 
   const handleShowDetails = (selectedProfile) => {
     setProfileModal(true)

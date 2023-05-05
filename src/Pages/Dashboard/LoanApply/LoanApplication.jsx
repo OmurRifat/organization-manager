@@ -7,15 +7,15 @@ import { useQuery } from '@tanstack/react-query';
 import Loader from './Loader';
 
 const LoanApplication = () => {
-  
-  const { user,userInfo } = useContext(AuthContext);
+
+  const { user, userInfo } = useContext(AuthContext);
   const [loanApplied, setLoanApplied] = useState([]);
 
   const { isLoading, isError, refetch, data } = useQuery(
     ["loanApplied", userInfo?.organization],
     async () => {
       const response = await fetch(
-        `http://localhost:5000/loanApplication?Organizations=${userInfo?.organization}`
+        `https://organization-manager-server-main-jsarafath.vercel.app/loanApplication?Organizations=${userInfo?.organization}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -43,7 +43,7 @@ const LoanApplication = () => {
   }
 
   const handleAccept = (id) => {
-    fetch(`http://localhost:5000/accept/${id}`, {
+    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -55,7 +55,7 @@ const LoanApplication = () => {
       });
   };
   const handleReject = (id) => {
-    fetch(`http://localhost:5000/reject/${id}`, {
+    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
