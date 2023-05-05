@@ -4,14 +4,10 @@ import PayMethodModal from './PayMethodModal'
 import axios from 'axios'
 import { AuthContext } from '../../../context/AuthProvider'
 const MemberDashboard = () => {
-  const [payModal, setPayModal] = useState(false)
-  const [userInfo, setUserInfo] = useState({})
-  const { user } = useContext(AuthContext)
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]))
-  }, [user.email])
+  const [payModal, setPayModal] = useState(false);
+  const { user,userInfo } = useContext(AuthContext);
+  const [donation, setDonation] = useState([]);
+  const [allTransaction, setAllTransaction] = useState([]);
 
   const handlePayment = (item) => {
     const paymentInfo = {
@@ -23,7 +19,7 @@ const MemberDashboard = () => {
       donationName: item?.donationName,
       month: item?.month,
     }
-    console.log(paymentInfo)
+   
     fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
@@ -50,8 +46,6 @@ const MemberDashboard = () => {
       })
   }
 
-  const [allTransaction, setAllTransaction] = useState([])
-
   useEffect(() => {
     axios
       .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
@@ -61,12 +55,17 @@ const MemberDashboard = () => {
   
 
   let totalDue = 0
-  const [donation, setDonation] = useState([])
+
   useEffect(() => {
-    axios
-      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
-      .then((data) => setDonation(data.data[0].donation))
-  }, [])
+    const fetchData = async () => {
+      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const data = await res.json();
+      setDonation(data[0].donation);
+    }
+  fetchData()
+  .catch(console.error)
+
+  },[user?.email])
 
   const dueCalculation = () => {
     donation?.map((d) => {

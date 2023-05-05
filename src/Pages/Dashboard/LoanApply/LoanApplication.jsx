@@ -7,21 +7,8 @@ import { useQuery } from '@tanstack/react-query';
 import Loader from './Loader';
 
 const LoanApplication = () => {
-  const [userInfo, setUserInfo] = useState({});
-  const { user } = useContext(AuthContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
-      const data = await res.json();
-      setUserInfo(data[0]);
-    }
-  fetchData()
-  .catch(console.error)
-
-  },[user?.email])
-
-
+  
+  const { user,userInfo } = useContext(AuthContext);
   const [loanApplied, setLoanApplied] = useState([]);
 
   const { isLoading, isError, refetch, data } = useQuery(

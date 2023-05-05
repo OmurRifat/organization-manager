@@ -3,18 +3,9 @@ import axios from "axios";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Profile = () => {
-
-  const [userInfo, setUserInfo] = useState({});
   
-  const { user } = useContext(AuthContext);
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`)
-      .then((data) => {
-     
-        setUserInfo(data.data[0])
-      });
-  }, [user.email]);
+  const { user,userInfo } = useContext(AuthContext);
+ 
   return (
     <div className="flex justify-center m-3">
       <div className="rounded-3xl overflow-hidden  shadow-2xl w-2/3  my-15 ">
