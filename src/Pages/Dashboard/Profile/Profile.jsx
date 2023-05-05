@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   
@@ -9,7 +10,7 @@ const Profile = () => {
   return (
     <div className="flex justify-center m-3">
       <div className="rounded-3xl overflow-hidden  shadow-2xl w-2/3  my-15 ">
-        <img src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png" className="w-full h-40" alt="" />
+        <img src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png" className="w-full h-40" alt=""/>
         <div className="flex justify-center -mt-32">
           <img
             src={ user.photoURL }
@@ -18,7 +19,8 @@ const Profile = () => {
           />
         </div>
         <div className="text-right">
-          <button type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</button>
+          <Link to='/editprofile' type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit
+          </Link>
 
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

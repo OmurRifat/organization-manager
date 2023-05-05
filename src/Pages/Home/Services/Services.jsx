@@ -21,7 +21,7 @@ const Services = () => {
 
             </div>
             {/* ------------Services Card------------- */}
-            <div className='grid lg:grid-cols-4 px-4 md:grid-cols-2 place-items-center gap-y-14 grid-cols-1 p-9 border border-red-600'>
+            <div className='grid lg:grid-cols-4 px-4 md:grid-cols-2 place-items-center gap-y-14 grid-cols-1 p-9'>
 
                 {/* ------services-1------ */}
                     <div className="cursor-pointer hover:shadow-xl  bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
