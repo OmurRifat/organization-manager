@@ -46,17 +46,17 @@ const AdminDashboard = () => {
 
 
   //total verifiedUsers
-  const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+  const verifiedUsers = userData?.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
-  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true);
+  const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
-  const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
+  const amount = organizationMembers?.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
   const collected = amount.reduce((c, d) => c + d, 0);
   // total due amount
-  const dueAmount = organizationMembers.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
+  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
   const due = dueAmount.reduce((c, d) => c + d, 0);
   // total members
-  const totalMember = organizationMembers.length;
+  const totalMember = organizationMembers?.length;
 
 
   const handleReminder = (data) => {
@@ -276,7 +276,7 @@ const AdminDashboard = () => {
                 Previous
               </button>
             </li> */}
-            { [...Array(pages).keys()].map(number => <li className='paginate' >
+            { [...Array(pages ? pages : 0).keys()].map(number => <li className='paginate' >
 
               <button onClick={ () => setPage(number) }
                 key={ number }
