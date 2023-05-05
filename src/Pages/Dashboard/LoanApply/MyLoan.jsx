@@ -4,7 +4,7 @@ import Loader from './Loader';
 import { useQuery } from '@tanstack/react-query';
 
 const MyLoan = () => {
-  const { user } = useContext(AuthContext)
+  const { user,userInfo } = useContext(AuthContext)
   const { isLoading, isError, data: myLoan } = useQuery(
     ["myLoan", user?.email],
     async () => {
@@ -58,7 +58,7 @@ const MyLoan = () => {
           </thead>
 
           {
-            myLoan?.length === 0 ? <span className='flex my-5 mx-auto justify-center font-medium w-full' >You Have Not Applied For Any Loan</span> : <>{ myLoan.map((loan, index) => (
+            myLoan?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium w-full' >You Have Not Applied For Any Loan</caption> : <>{ myLoan.map((loan, index) => (
               <tbody>
                 <tr
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 const TransactionInfo = ({ transaction, i }) => {
-  const [txdInfo, setTxdInfo] = useState({})
-
+  const [txdInfo, setTxdInfo] = useState({});
+  
   useEffect(() => {
-    console.log(transaction)
     fetch(
       `https://organization-manager-server-main-jsarafath.vercel.app/transaction-query-by-transaction-id?${transaction.transactionId}`,
     )

@@ -13,6 +13,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({})
   const provider = new GoogleAuthProvider();
 
   const createUsersEmail = (email, password) => {
@@ -45,6 +46,18 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const data = await res.json();
+      setUserInfo(data[0]);
+    }
+  fetchData()
+  .catch(console.error)
+
+  },[user?.email])
+
   const authInfo = {
     createUsersEmail,
     loginUser,
@@ -53,6 +66,7 @@ const AuthProvider = ({ children }) => {
     setLoading,
     logOut,
     user,
+    userInfo
   };
   return (
     <AuthContext.Provider value={ authInfo }>

@@ -8,15 +8,10 @@ import DetailsModal from '../../DetailsModal/DetailsModal'
 
 const AllMember = () => {
 
-  const [details, setDetails] = useState(false)
-  const [detailsMember, setDetailsMember] = useState({})
-  const [userInfo, setUserInfo] = useState({})
-  const { user } = useContext(AuthContext)
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`)
-      .then((data) => setUserInfo(data.data[0]))
-  }, [user?.email])
+  const [details,setDetails] = useState(false)
+  const [detailsMember,setDetailsMember] = useState({})
+  const { user,userInfo } = useContext(AuthContext)
+
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
@@ -24,17 +19,15 @@ const AllMember = () => {
       const data = await res.json()
       return data
     },
-  })
+  });
 
   const handleDetails = (singleData) => {
-
     setDetails(true)
     setDetailsMember(singleData)
-
-
   }
 
-  const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true)
+  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
+  
   return (
     <div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -60,7 +53,7 @@ const AllMember = () => {
             </tr>
           </thead>
         ) : (
-          <div className="flex justify-center items-center h-[200px] bg-slate-200">
+          <caption className="flex justify-center items-center h-[200px] bg-slate-200">
             No Members Founded Please{ ' ' }
             <Link to="/">
               <span className="underline text-blue-700 ms-2">
@@ -68,7 +61,7 @@ const AllMember = () => {
                 Back to Home
               </span>
             </Link>
-          </div>
+          </caption>
         ) }
         <tbody>
           { organizationMembers &&
