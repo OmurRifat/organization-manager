@@ -15,7 +15,7 @@ const LoanApplication = () => {
     ["loanApplied", userInfo?.organization],
     async () => {
       const response = await fetch(
-        `https://organization-manager-server-main-jsarafath.vercel.app/loanApplication?Organizations=${userInfo?.organization}`
+        `http://localhost:5000/loanApplication?Organizations=${userInfo?.organization}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -43,7 +43,7 @@ const LoanApplication = () => {
   }
 
   const handleAccept = (id) => {
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
+    fetch(`http://localhost:5000/accept/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -55,7 +55,7 @@ const LoanApplication = () => {
       });
   };
   const handleReject = (id) => {
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
+    fetch(`http://localhost:5000/reject/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

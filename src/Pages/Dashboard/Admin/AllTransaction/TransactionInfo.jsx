@@ -5,7 +5,7 @@ const TransactionInfo = ({ transaction, i }) => {
   
   useEffect(() => {
     fetch(
-      `https://organization-manager-server-main-jsarafath.vercel.app/transaction-query-by-transaction-id?${transaction.transactionId}`,
+      `http://localhost:5000/transaction-query-by-transaction-id?${transaction.transactionId}`,
     )
       .then((response) => response.json())
       .then((data) => setTxdInfo(data.element[0]))

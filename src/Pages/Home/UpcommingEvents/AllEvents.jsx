@@ -4,7 +4,7 @@ import SingleEvents from './SingleEvents';
 const AllEvents = () => {
     const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("https://organization-manager-server-main-jsarafath.vercel.app/events")
+    fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => setEvents(data));
   }, []);

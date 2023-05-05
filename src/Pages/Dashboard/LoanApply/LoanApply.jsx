@@ -74,7 +74,7 @@ const LoanApply = () => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
-            'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
+            'http://localhost:5000/loanSystem',
             {
               method: 'POST',
               headers: {
