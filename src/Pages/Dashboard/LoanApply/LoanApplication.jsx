@@ -7,8 +7,8 @@ import { useQuery } from '@tanstack/react-query';
 import Loader from './Loader';
 
 const LoanApplication = () => {
-  
-  const { user,userInfo } = useContext(AuthContext);
+
+  const { user, userInfo } = useContext(AuthContext);
   const [loanApplied, setLoanApplied] = useState([]);
 
   const { isLoading, isError, refetch, data } = useQuery(

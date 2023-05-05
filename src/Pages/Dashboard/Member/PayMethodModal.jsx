@@ -34,7 +34,7 @@ const PayMethodModal = ({ payModal, setPayModal }) => {
             type="button"
             className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
             data-modal-hide="popup-modal"
-            onClick={() => setPayModal(false)}
+            onClick={ () => setPayModal(false) }
           >
             <svg
               aria-hidden="true"
@@ -56,7 +56,7 @@ const PayMethodModal = ({ payModal, setPayModal }) => {
               Are you you want to pay your due?
             </p>
             <p className="m-5">
-              {' '}
+              { ' ' }
               <span className="text-[#d97a3b] text-3xl">10000 BDT</span>
             </p>
             <p className="m-5">Pay with</p>
@@ -73,7 +73,7 @@ const PayMethodModal = ({ payModal, setPayModal }) => {
                 />
               </button>
               <button
-                onClick={() => handlePayment()}
+                onClick={ () => handlePayment() }
                 type="button"
                 className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
               >
