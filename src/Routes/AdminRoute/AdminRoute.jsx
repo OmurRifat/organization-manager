@@ -9,6 +9,7 @@ import { MoonLoader } from 'react-spinners';
 const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+    console.log(isAdmin);
     const location = useLocation();
 
     if (loading || isAdminLoading) {
@@ -21,7 +22,6 @@ const AdminRoute = ({ children }) => {
           />
         </div>
     }
-
     if (user && isAdmin) {
         return children;
     }
