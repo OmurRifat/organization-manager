@@ -24,7 +24,6 @@ const About = () => {
 
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
-<<<<<<< HEAD
       fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
           .then(res => res.json())
           .then(data => setOrganizations(data));
@@ -34,17 +33,6 @@ const About = () => {
       fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
           .then(res => res.json())
           .then(data => setUsers(data));
-=======
-    fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
-      .then(res => res.json())
-      .then(data => setOrganizations(data));
-  }, [])
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
-      .then(res => res.json())
-      .then(data => setUsers(data));
->>>>>>> 4dab91510228116943652bfff60b519b2b27a6c6
   }, [])
 
   return (
