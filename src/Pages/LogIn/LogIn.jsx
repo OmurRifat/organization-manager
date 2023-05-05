@@ -26,12 +26,8 @@ const LogIn = () => {
   const from = location?.state?.from?.pathname || "/";
 
   const [userEmail, setUserEmail] = useState("")
-  // const onSubmit = (data, event) => {
+  // const onSubmit = data => {
   //   loginUser(data.email, data.password).then(res => {
-  //     const form = event.target;
-  //     const email = form.email.value;
-  //     const password = form.password.value;
-  //     console.log(email, password)
   //     const user = res.user;
   //     console.log(user);
   //     if (user.uid) {
@@ -56,10 +52,14 @@ const LogIn = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            setSuccess(true);
+            navigate(from, { replace: true });
+         toast.success("You Have Successfully Signed In!")
+           
         })
         .catch(error => {
             console.error('error', error)
+            const errorMessage = error.message;
+            toast.error(errorMessage)
         })
   };
   const handleonBlur = event => {
