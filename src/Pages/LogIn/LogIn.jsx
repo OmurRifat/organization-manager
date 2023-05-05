@@ -25,57 +25,23 @@ const LogIn = () => {
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
 
-  const [userEmail, setUserEmail] = useState("")
-  // const onSubmit = data => {
-  //   loginUser(data.email, data.password).then(res => {
-  //     const user = res.user;
-  //     console.log(user);
-  //     if (user.uid) {
-  //       navigate(from, { replace: true });
-  //       toast.success("You Have Successfully Signed In!")
-  //     }
-  //   }).catch((error) => {
-  //     const errorMessage = error.message;
-  //     toast.error(errorMessage)
-  //   });
-  // };
-  const onSubmit = (data,event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password)
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            navigate(from, { replace: true });
-         toast.success("You Have Successfully Signed In!")
-           
-        })
-        .catch(error => {
-            console.error('error', error)
-            const errorMessage = error.message;
-            toast.error(errorMessage)
-        })
+  
+
+  const onSubmit = data => {
+    loginUser(data.email, data.password).then(res => {
+      const user = res.user;
+      console.log(user);
+      if (user.uid) {
+        navigate(from, { replace: true });
+        toast.success("You Have Successfully Signed In!")
+      }
+    }).catch((error) => {
+      const errorMessage = error.message;
+      toast.error(errorMessage)
+    });
   };
-  const handleonBlur = event => {
-    const email = event .target.value;
-    setUserEmail(email)
-console.log(email)
-  }
-
-  const handleForgetPassword = () => {
-    sendPasswordResetEmail(auth, userEmail)
-  .then(() => {
-    toast.success("Please check your email for verification !!")
-  })
-  .catch((error) => {
  
-  });
-
-  }
   return (
     <div>
     {/* grid grid-cols-1 md:grid-cols-2 gap-x-6 */}
@@ -121,7 +87,14 @@ console.log(email)
                       placeholder="Email address"
                       required
                     /> */}
-                     <input onBlur={handleonBlur} type="email" name='email' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="Email Address"
+                     <input  type="email"
+                       
+                      { ...register("email", {
+                       
+                        required: "Please Enter Your Email!",
+
+                      }) }
+                       name='email' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="Email Address"
                required />
                     <p className='error-message text-red-600'>{ errors.email?.message }</p>
                   </div>
@@ -135,7 +108,7 @@ console.log(email)
                   </label>
                   <input
                   name='password'
-                    { ...register("password", { required: "Password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 12, message: "Password cannot exceed more than 12 characters" } }) }
+                    { ...register("password", { required: "Password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 120, message: "Password cannot exceed more than 12 characters" } }) }
                     type="password"
                     id="password"
                     placeholder="Enter Password"
@@ -150,9 +123,6 @@ console.log(email)
     onChange={onChange}
   />
            </div>
-                <div className='mb-2'>
-                <Link onClick={handleForgetPassword} ><a>Forgot Password ?</a></Link>
-                </div>
                 <div className="flex items-start mb-6">
                   <div className="flex items-center h-5">
                     <input

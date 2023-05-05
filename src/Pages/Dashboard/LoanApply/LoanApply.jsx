@@ -15,8 +15,8 @@ const LoanApply = () => {
 
   const [showModal, setShowModal] = useState(false)
   const [imageUrl, setImageUrl] = useState("https://gumlet.assettype.com/bdnews24-english%2Fimport%2Fmedia%2F2015%2F06%2F01%2Fsmart-card.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=768");
-  const { user, userInfo } = useContext(AuthContext);
-
+  const { user,userInfo } = useContext(AuthContext);
+  
   function handleImageUpload(event) {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
