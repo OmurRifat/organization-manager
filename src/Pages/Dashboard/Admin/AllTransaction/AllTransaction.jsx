@@ -7,28 +7,18 @@ import { AuthContext } from '../../../../context/AuthProvider'
 import TransactionInfo from './TransactionInfo'
 
 const AllTransaction = () => {
-  const [allTransaction, setAllTransaction] = useState([])
-  const [userInfo, setUserInfo] = useState({})
-  const { user } = useContext(AuthContext)
-  useEffect(() => {
-    axios
-      .get(
-        `https://organization-manager-server-main-jsarafath.vercel.app/users/${user.email}`,
-      )
-      .then((data) => setUserInfo(data.data[0]))
-  }, [user.email])
+  const [allTransaction, setAllTransaction] = useState([]);
+  const { user,userInfo } = useContext(AuthContext);
+
   useEffect(() => {
     axios
       .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
-  console.log(allTransaction)
 
-  const organizationTransactions = allTransaction.filter(
-    (transaction) => transaction.organization === userInfo.organization,
-  )
-  console.log(organizationTransactions)
+  const organizationTransactions = allTransaction.filter((transaction) => transaction.organization === userInfo?.organization)
+  
   return (
     <div>
       <p className="text-xl font-bold text-[#ff8000] py-3">All Transaction</p>
@@ -54,8 +44,7 @@ const AllTransaction = () => {
             <th scope="col" className="px-6 py-3"></th>
           </tr>
         </thead>
-      </table>
-      <tbody>
+        <tbody>
         { organizationTransactions &&
           organizationTransactions?.map((transaction, i) => (
             <TransactionInfo
@@ -65,6 +54,8 @@ const AllTransaction = () => {
             ></TransactionInfo>
           )) }
       </tbody>
+      </table>
+      
     </div>
   )
 }

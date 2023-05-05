@@ -11,15 +11,15 @@ const LoanApplication = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    axios
-      .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`)
-      .then((response) => {
-        setUserInfo(response.data[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [user?.email]);
+    const fetchData = async () => {
+      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const data = await res.json();
+      setUserInfo(data[0]);
+    }
+  fetchData()
+  .catch(console.error)
+
+  },[user?.email])
 
 
   const [loanApplied, setLoanApplied] = useState([]);
@@ -111,7 +111,7 @@ const LoanApplication = () => {
         </thead>
 
         {
-          loanApplied?.length === 0 ? <div className='flex my-5 mx-auto justify-center font-medium' ><span>Loan Request Not Available</span> </div> : <> { loanApplied.map((loan, index) => (
+          loanApplied?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium' ><span>Loan Request Not Available</span> </caption> : <> { loanApplied.map((loan, index) => (
             <tbody>
 
               <tr
