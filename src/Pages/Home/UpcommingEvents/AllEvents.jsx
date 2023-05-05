@@ -3,19 +3,11 @@ import SingleEvents from './SingleEvents';
 
 const AllEvents = () => {
     const [events, setEvents] = useState([]);
-<<<<<<< HEAD
   useEffect(() => {
     fetch("https://organization-manager-server-main-jsarafath.vercel.app/events")
       .then((res) => res.json())
       .then((data) => setEvents(data));
   }, []);
-=======
-    useEffect(() => {
-        fetch("https://organization-manager-server-main-jsarafath.vercel.app/events")
-            .then((res) => res.json())
-            .then((data) => setEvents(data));
-    }, []);
->>>>>>> 4dab91510228116943652bfff60b519b2b27a6c6
 
     return (
         <div>
