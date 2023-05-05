@@ -6,74 +6,59 @@ import ReminderModal from '../../ReminderModal/ReminderModal'
 import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../../../context/AuthProvider'
 import axios from 'axios'
+import './AdminDashboard.css'
 
 const AdminDashboard = () => {
-  const { user } = useContext(AuthContext)
-  const [userInfo, setUserInfo] = useState({})
+
+  const { user, userInfo } = useContext(AuthContext)
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(5);
+  const [count, setCount] = useState(0);
+  const [userData, setUserData] = useState([]);
+  const pages = Math.ceil(count / size);
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server.onrender.com/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
-  })
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]))
-  }, [user.email])
-  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
+  });
 
-//  total collected amount
-  const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0))
-  const collected = amount.reduce((c,d) => c + d , 0)
-// total due amount
-  const dueAmount = organizationMembers.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0))
-  const due = dueAmount.reduce((c,d) => c + d , 0)
+  // useEffect(()=>{
+  //   axios
+  //   .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${userInfo?.organization}?page=${page}&size=${size}`)
+  //   .then((data) =>{
+  //           setUserData(data.data.users)
+  //           setCount(data.data.count)
+  //   })
+  // },[userInfo,page,size]);
 
+
+  //total verifiedUsers
+  // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+
+  const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
+  //  total collected amount
+  const amount = organizationMembers?.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
+  const collected = amount.reduce((c, d) => c + d, 0);
+  // total due amount
+  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
+  const due = dueAmount.reduce((c, d) => c + d, 0);
   // total members
-  const totalMember = organizationMembers.length; 
-  
-
+  const totalMember = organizationMembers?.length;
 
 
   const handleReminder = (data) => {
     setModal(true);
     setSpecificMember(data);
   }
+
   let total = 0;
-  let totalDue = 0
-
-  // const sendEmail = () => {
-  //   const templateParams = {
-  //     to_name: 'Dibbo Dash',
-  //     subject: 'Due Payment Remainder!',
-  //     message: 'Please pay your due with according to table information:',
-  //     email: 'mdabdurrouf.likhon2@gmail.com',
-  //     foundation_name: 'Ikhlab Foundation',
-  //   }
-
-  //   emailjs
-  //     .send(
-  //       'service_55ozcrd',
-  //       'template_e21lzan',
-  //       templateParams,
-  //       'VLd32F4SLKnPSZxsK',
-  //     )
-  //     .then(
-  //       function (response) {
-  //         console.log('SUCCESS!', response.status, response.text)
-  //         toast.success('Remainder Send')
-  //       },
-  //       function (error) {
-  //         console.log('FAILED...', error)
-  //       },
-  //     )
-  // }
+  let totalDue = 0;
 
   const handlePayment = () => {
     console.log('click')
@@ -84,10 +69,10 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server.onrender.com/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(paymentInfo),
     })
@@ -96,10 +81,23 @@ const AdminDashboard = () => {
         window.location.replace(data.url)
       })
   }
+
+  // const styles = {
+  //   pageButton:{
+  //     padding: '8px 12px',
+  //     color: 'black',
+  //     background : 'white',
+  //     border : '1px solid gray'
+  //     // text-black bg-white border border-gray-300" 
+  //   }
+  // }
+
+
+
   return (
     <>
 
-       <p className="font-semibold text-2xl text-black mb-3 pl-4">All Data</p>  
+      <p className="font-semibold text-2xl text-black mb-3 pl-4">All Data</p>
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
         <div className="text-center  flex-col lg:border-r border-b just-2y-center p-5 items-center ">
           <img
@@ -116,7 +114,7 @@ const AdminDashboard = () => {
               type="button"
               className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             >
-        {collected}
+              { collected }
             </button>
           </Link>
         </div>
@@ -134,7 +132,7 @@ const AdminDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-           {due}
+            { due }
           </button>
         </div>
         <div className="text-center  flex-col border-r justify-center p-5  items-center ">
@@ -149,7 +147,7 @@ const AdminDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            {totalMember}
+            { totalMember }
           </button>
         </div>
       </div>
@@ -164,30 +162,22 @@ const AdminDashboard = () => {
           <p>Donation History</p>
           <div className="flex justify-between items-center">
             <p className="mx-2 text-black">Show</p>
-            <button
+            {/* <button
               id="dropdownActionButton"
               data-dropdown-toggle="dropdownAction"
               className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button"
-            >
-              <span className="sr-only text-black">Action button</span>
-              10
-              <svg
-                className="w-3 h-3 ml-2"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
+            > */}
+            {/* <span className="sr-only text-black">Action button</span> */ }
+            {/* 10 */ }
+            <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
+
+            {/* </button> */ }
+
             <div
               id="dropdownAction"
               className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
@@ -227,8 +217,9 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
+            {/* organizationMembers */ }
 
-            { organizationMembers && organizationMembers.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            { organizationMembers && organizationMembers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
@@ -249,14 +240,14 @@ const AdminDashboard = () => {
               <td className="px-6 ">
                 {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
-                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? 
-                  <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
-                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                    Send Remainder
-                  </button> : 
-                  <p className="text-green-500">Paid </p>
+                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
+                    <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
+                      className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                      Send Remainder
+                    </button> :
+                    <p className="text-green-500">Paid </p>
                 }
-                {modal && <ReminderModal modal={ modal } setModal={ setModal } member={ specificMember } /> }
+                { modal && <ReminderModal modal={ modal } setModal={ setModal } member={ specificMember } /> }
               </td>
             </tr>) }
           </tbody>
@@ -271,63 +262,30 @@ const AdminDashboard = () => {
         </span>
         <nav aria-label="Page navigation sm:mt-5 example">
           <ul className="inline-flex -space-x-px">
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            {/* <li>
+              <button
+                className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-black rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              </button>
+            </li> */}
+            { [...Array(pages ? pages : 0).keys()].map(number => <li className='paginate' >
+
+              <button onClick={ () => setPage(number) }
+                key={ number }
+                className={ page === number && 'selected' }
               >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                className="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                { number + 1 }
+              </button>
+            </li>)
+            }
+            {/* <li>
+              <button
+                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-black rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
-              </a>
-            </li>
+              </button>
+            </li> */}
           </ul>
         </nav>
       </div>

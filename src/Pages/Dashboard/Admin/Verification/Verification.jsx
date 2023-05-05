@@ -7,29 +7,21 @@ import axios from 'axios'
 import ProfileModal from './ProfileModal'
 
 const Verification = () => {
-  const [userInfo, setUserInfo] = useState({})
+  
   const [profile, setProfile] = useState(null)
   const [profileModal, setProfileModal] = useState(false)
-  const { user } = useContext(AuthContext)
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]))
-  }, [user.email])
+  const { user,userInfo } = useContext(AuthContext)
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server.onrender.com/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
-  })
+  });
 
-  const organizationMembers = members.filter(
-    (member) =>
-      member.organization === userInfo.organization && member.verified !== true,
-  )
+  const organizationMembers = members.filter((member) =>member.organization === userInfo.organization && member.verified !== true)
 
   const handleShowDetails = (selectedProfile) => {
     setProfileModal(true)
@@ -60,7 +52,7 @@ const Verification = () => {
             </tr>
           </thead>
         ) : (
-          <div className="flex justify-center items-center h-[200px] bg-slate-200">
+          <caption className="flex justify-center items-center h-[200px] bg-slate-200">
             No Members Founded Please{ ' ' }
             <Link to="/">
               <span className="underline text-blue-700 ms-2">
@@ -68,7 +60,7 @@ const Verification = () => {
                 Back to Home
               </span>
             </Link>
-          </div>
+          </caption>
         ) }
         <tbody>
           { organizationMembers &&

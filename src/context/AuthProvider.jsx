@@ -13,6 +13,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({})
   const provider = new GoogleAuthProvider();
 
   const createUsersEmail = (email, password) => {
@@ -23,16 +24,13 @@ const AuthProvider = ({ children }) => {
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
+
   };
 
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
-  // const googleRegister = () => {
-  //   setLoading(true);
-  //   return signInWithPopup(auth, provider);
-  // };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -42,16 +40,23 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
-  //     .then((data) => setLoadingDataStatus(true));
-  // }, [user?.email]);
 
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
+      const data = await res.json();
+      setUserInfo(data[0]);
+    }
+    fetchData()
+      .catch(console.error)
+
+  }, [user?.email])
 
   const authInfo = {
     createUsersEmail,
@@ -61,6 +66,7 @@ const AuthProvider = ({ children }) => {
     setLoading,
     logOut,
     user,
+    userInfo
   };
   return (
     <AuthContext.Provider value={ authInfo }>

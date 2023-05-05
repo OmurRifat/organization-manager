@@ -10,32 +10,24 @@ const AllMember = () => {
 
   const [details,setDetails] = useState(false)
   const [detailsMember,setDetailsMember] = useState({})
-  const [userInfo, setUserInfo] = useState({})
-  const { user } = useContext(AuthContext)
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server.onrender.com/users/${user.email}`)
-      .then((data) => setUserInfo(data.data[0]))
-  }, [user.email])
-  console.log(userInfo)
+  const { user,userInfo } = useContext(AuthContext)
+
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server.onrender.com/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
-  })
+  });
 
   const handleDetails = (singleData) => {
-    
     setDetails(true)
     setDetailsMember(singleData)
-   
-  
   }
 
-  const organizationMembers = members.filter(member => member.organization === userInfo.organization && member.verified === true)
+  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
+  
   return (
     <div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -61,7 +53,7 @@ const AllMember = () => {
             </tr>
           </thead>
         ) : (
-          <div className="flex justify-center items-center h-[200px] bg-slate-200">
+          <caption className="flex justify-center items-center h-[200px] bg-slate-200">
             No Members Founded Please{ ' ' }
             <Link to="/">
               <span className="underline text-blue-700 ms-2">
@@ -69,7 +61,7 @@ const AllMember = () => {
                 Back to Home
               </span>
             </Link>
-          </div>
+          </caption>
         ) }
         <tbody>
           { organizationMembers &&
@@ -97,14 +89,14 @@ const AllMember = () => {
                 <td className="px-6 ">{ member?.phone }</td>
                 <td className="px-6  text-[orange]">{ member?.joiningDate }</td>
                 <td className="px-6 ">
-                  {member && <button
-                    onClick={()=>handleDetails(member)}
+                  { member && <button
+                    onClick={ () => handleDetails(member) }
                     type="button"
                     className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
                     View Details
-                  </button>}
-                  {details && <DetailsModal setDetails = {setDetails} member = {detailsMember}/>}
+                  </button> }
+                  { details && <DetailsModal setDetails={ setDetails } member={ detailsMember } /> }
                 </td>
               </tr>
             )) }

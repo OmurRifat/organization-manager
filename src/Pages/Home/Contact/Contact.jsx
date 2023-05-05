@@ -55,7 +55,7 @@ const Contact = () => {
         <h2 style={styleObject.h2} className="text-4xl font-semibold">
           Get In Touch With Us
         </h2>
-        <p className="font-normal mb-5 text-justify text-gray-700 max-w-sm">
+        <div className="font-normal mb-5 text-justify text-gray-700 max-w-sm">
           Fill up the form and our Team will get back to you within 24 hours.
           <div className="flex flex-col mt-6">
             <div className="flex pb-8">
@@ -63,7 +63,7 @@ const Contact = () => {
                 <BsHouseDoor className="text-center text-2xl text-white mx-auto"></BsHouseDoor>
               </div>
               <div>
-                <h5 className="font-bold">Our Location</h5>
+                <div className="font-bold">Our Location</div>
                 <p>222 Mirpur Dhaka Bangladesh</p>
               </div>
             </div>
@@ -72,7 +72,7 @@ const Contact = () => {
                 <BsTelephone className="text-center text-2xl text-white mx-auto"></BsTelephone>
               </div>
               <div>
-                <h5 className="font-bold">Phone Number</h5>
+                <div className="font-bold">Phone Number</div>
                 <p>+63828 343 433 8847</p>
               </div>
             </div>
@@ -81,12 +81,12 @@ const Contact = () => {
                 <FiMail className="text-center text-2xl text-white mx-auto"></FiMail>
               </div>
               <div>
-                <h5 className="font-bold">name Address</h5>
+                <div className="font-bold">name Address</div>
                 <p>dibbodas228@gmail.com</p>
               </div>
             </div>
           </div>
-        </p>
+        </div>
       </div>
       
         <div style={styleObject.bg} className="w-full max-w-sm p-4 border h-[370px] border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">

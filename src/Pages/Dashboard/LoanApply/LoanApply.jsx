@@ -15,17 +15,8 @@ const LoanApply = () => {
   
   const [showModal, setShowModal] = useState(false)
   const [imageUrl, setImageUrl] = useState("https://gumlet.assettype.com/bdnews24-english%2Fimport%2Fmedia%2F2015%2F06%2F01%2Fsmart-card.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=768");
-  const [userInfo, setUserInfo] = useState({});
-  const { user } = useContext(AuthContext);
+  const { user,userInfo } = useContext(AuthContext);
 
-  useEffect(() => {
-    axios
-      .get(`https://organization-manager-server.onrender.com/users/${user?.email}`)
-      .then((data) => {
-        console.log(data);
-        setUserInfo(data.data[0])
-      });
-  }, [user.email]);
   function handleImageUpload(event) {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -70,7 +61,7 @@ const LoanApply = () => {
       const NidPhoto = data.nidPhoto[0];
       const userInfos = userInfo;
       const Organizations = userInfo.organization;
-      const userEmail = userInfo.email
+      const userEmail = userInfo.email;
       const formData = new FormData();
       formData.append('image', NidPhoto);
       const url = `https://api.imgbb.com/1/upload?key=86fadc190ecd3694fb9e2164676b3ced`
@@ -83,7 +74,7 @@ const LoanApply = () => {
           const NidPhoto = imgData.data.url
           const allLoanInformation = {NidPhoto,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
-            'https://organization-manager-server.onrender.com/loanSystem',
+            'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
             {
               method: 'POST',
               headers: {
@@ -114,6 +105,7 @@ const LoanApply = () => {
               id="threeM"
               type="radio"
               value="3"
+              required
               { ...register('threeM') }
               name="default-radio"
               onChange={handleDuration}
@@ -131,6 +123,7 @@ const LoanApply = () => {
               id="fourM"
               type="radio"
               value="4"
+              required
               { ...register('fourM') }
               onChange={handleDuration}
               name="default-radio"
@@ -247,7 +240,7 @@ const LoanApply = () => {
                 { ...register('amount') }
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Choose amount</option>
+                <option>Choose amount</option>
                 <option  value="5000">5000</option>
                 <option  value="10000">10000</option>
                 <option  value="15000">15000</option>
@@ -283,7 +276,7 @@ const LoanApply = () => {
         </div>
         <div className="text-[orange] m-5">
           <h1 className="text-2xl">*Terms and Conditions for take loan</h1>
-          <p className="m-3 ">
+          <div className="m-3 ">
             The terms and conditions for an educational loan will vary depending
             on the lender and the specific loan program. However, some common
             things to consider include:
@@ -301,7 +294,7 @@ const LoanApply = () => {
 </li>
               
             </ul>
-          </p>
+          </div>
         </div>
       </div>
       <div className="flex mx-5 my-5">

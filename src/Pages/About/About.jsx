@@ -24,13 +24,13 @@ const About = () => {
 
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
-      fetch('https://organization-manager-server.onrender.com/organizations')
+      fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
           .then(res => res.json())
           .then(data => setOrganizations(data));
   }, [])
   const [users, setUsers] = useState([]);
   useEffect(() => {
-      fetch('https://organization-manager-server.onrender.com/users')
+      fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
           .then(res => res.json())
           .then(data => setUsers(data));
   }, [])
@@ -67,21 +67,18 @@ const About = () => {
                   <img className="pr-20 absolute left-0 top-0 size2 pl-1 pb-5" src="https://i.ibb.co/pz1PX8s/Ellipse-1.png" alt="" />
                 </div>
 
-                <img style={ styleObject.size } className="" src="https://i.ibb.co/DMWcZ3y/1-5sp-W5-L8-CWMwm0-P7-Wr-TUXpg-removebg-preview.png" alt="" />
+                <img style={ styleObject.size } src="https://i.ibb.co/DMWcZ3y/1-5sp-W5-L8-CWMwm0-P7-Wr-TUXpg-removebg-preview.png" alt="" />
               </div>
             </div>
 
             <div className=" sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center">
               <div className="text-left p-8">
                 <p style={ styleObject.textcolor } className="text-gray-900 font-semibold pb-2">Managing Organization</p>
-                <h1 className="text-4xl font-semibold text-gray-700">We Commit To Manage <br></br> Your Organization </h1>
-                <br></br>
-                <p className=" text-base font-normal text-gray-500 dark:text-gray-400">GROW - Is a non-profit organization whose goal is to <br></br> protect, maintain, care for, and preserve the trees on <br></br> the earth that we stand on now</p>
-                <br></br>
+                <h1 className="text-3xl md:text-4xl max-w-md font-semibold text-gray-700 mb-6">We Commit To Manage Your Organization </h1>
+                <p className=" text-base font-normal max-w-sm text-gray-500 dark:text-gray-400 mb-6">GROW - Is a non-profit organization whose goal is to  protect, maintain, care for, and preserve the trees on  the earth that we stand on now</p>
                 <Link to='/foundation-form' style={ styleObject.button } type="button" className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 ">   Start A Free Trail</Link>
 
               </div>
-              <br></br>
             </div>
           </div>
           <br></br>
@@ -95,15 +92,15 @@ const About = () => {
               <div className="text-left pr-5">
                 <p
                   style={ styleObject.textcolor }
-                  className="text-gray-900 font-semibold "
+                  className="text-gray-900 font-semibold"
                 >
                   Managing Man-Power
                 </p>
-                <h1 className="text-4xl font-semibold text-gray-700 ">
-                  We Will Manage Your <br /> { ' ' } Man-Power Carefully
+                <h1 className="text-3xl md:text-4xl pr-2 font-semibold text-gray-700 mb-6">
+                  We Will Manage Your Man-Power Carefully
                 </h1>
-                <br></br>
-                <div style={ styleObject.bgcolor } className=" flex justify-between items-center bg-white sm:flex">
+               
+                <div style={ styleObject.bgcolor } className="flex justify-between items-center bg-white sm:flex">
                   <div className="font-medium text-gray-800">
                     <div className="text-2xl text-gray-700">{users.length}+</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Members</div>
@@ -115,13 +112,13 @@ const About = () => {
                   <br></br>
                 </div>
                 <br></br>
-                <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                  15.3 billion trees are cut down every year in the { " " }
-                  <br></br>world and 14.7 hectares of forest land is lost in { " " }
-                  <br></br>Indonesia. This causes the earth to become  { " " }
-                  <br></br> unstable and we invite you to join us and achieve a common goal{ " " }
+                <p className="text-base font-normal text-gray-500 mb-5 dark:text-gray-400">
+                  15.3 billion trees are cut down every year in the 
+                  <br></br>world and 14.7 hectares of forest land is lost in 
+                  <br></br>Indonesia. This causes the earth to become  
+                  <br></br> unstable and we invite you to join us and achieve a common goal
                 </p>
-                <br></br>
+                
                 <Link
                   to='/show-organizations'
                   style={ styleObject.button }
