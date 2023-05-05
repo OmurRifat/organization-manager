@@ -13,10 +13,10 @@ const AdminDashboard = () => {
   const { user,userInfo } = useContext(AuthContext)
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
-  const [page,setPage] = useState(0);
-  const [size,setSize] = useState(5);
-  const [count,setCount] = useState(0);
-  const [userData,setUserData] = useState([]);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(5);
+  const [count, setCount] = useState(0);
+  const [userData, setUserData] = useState([]);
   const pages = Math.ceil(count / size);
   
   const { data: members = [], refetch, isLoading } = useQuery({
@@ -41,16 +41,16 @@ const AdminDashboard = () => {
   //total verifiedUsers
   // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
-  const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true);
-//  total collected amount
-  const amount = organizationMembers.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
-  const collected = amount.reduce((c,d) => c + d , 0);
-// total due amount
-  const dueAmount = organizationMembers.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
-  const due = dueAmount.reduce((c,d) => c + d , 0);
+  const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
+  //  total collected amount
+  const amount = organizationMembers?.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
+  const collected = amount.reduce((c, d) => c + d, 0);
+  // total due amount
+  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
+  const due = dueAmount.reduce((c, d) => c + d, 0);
   // total members
-  const totalMember = organizationMembers.length; 
-  
+  const totalMember = organizationMembers?.length;
+
 
   const handleReminder = (data) => {
     setModal(true);
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
   return (
     <>
 
-       <p className="font-semibold text-2xl text-black mb-3 pl-4">All Data</p>  
+      <p className="font-semibold text-2xl text-black mb-3 pl-4">All Data</p>
       <div className="bg-[url('https://i.ibb.co/NFWqVcK/Frame-1171275325.png')] bg-cover grid grid-cols-1 lg:grid-cols-3">
         <div className="text-center  flex-col lg:border-r border-b just-2y-center p-5 items-center ">
           <img
@@ -114,7 +114,7 @@ const AdminDashboard = () => {
               type="button"
               className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             >
-        {collected}
+              { collected }
             </button>
           </Link>
         </div>
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-           {due}
+            { due }
           </button>
         </div>
         <div className="text-center  flex-col border-r justify-center p-5  items-center ">
@@ -147,7 +147,7 @@ const AdminDashboard = () => {
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
-            {totalMember}
+            { totalMember }
           </button>
         </div>
       </div>
@@ -168,15 +168,15 @@ const AdminDashboard = () => {
               className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button"
             > */}
-              {/* <span className="sr-only text-black">Action button</span> */}
-              {/* 10 */}
-              <select className="font-semibold text-black" onChange={(e)=>setSize(e.target.value)}>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-              </select>
-              
-            {/* </button> */}
+            {/* <span className="sr-only text-black">Action button</span> */ }
+            {/* 10 */ }
+            <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
+
+            {/* </button> */ }
 
             <div
               id="dropdownAction"
@@ -217,7 +217,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-          {/* organizationMembers */}
+            {/* organizationMembers */ }
 
             { organizationMembers && organizationMembers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
@@ -240,14 +240,14 @@ const AdminDashboard = () => {
               <td className="px-6 ">
                 {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
-                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ? 
-                  <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
-                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                    Send Remainder
-                  </button> : 
-                  <p className="text-green-500">Paid </p>
+                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
+                    <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
+                      className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                      Send Remainder
+                    </button> :
+                    <p className="text-green-500">Paid </p>
                 }
-                {modal && <ReminderModal modal={ modal } setModal={ setModal } member={ specificMember } /> }
+                { modal && <ReminderModal modal={ modal } setModal={ setModal } member={ specificMember } /> }
               </td>
             </tr>) }
           </tbody>
@@ -269,16 +269,16 @@ const AdminDashboard = () => {
                 Previous
               </button>
             </li> */}
-            { [...Array(pages).keys()].map(number => <li className='paginate' >
+            { [...Array(pages ? pages : 0).keys()].map(number => <li className='paginate' >
 
-              <button   onClick={() => setPage(number)} 
-              key={number}
-              className={page === number && 'selected'} 
+              <button onClick={ () => setPage(number) }
+                key={ number }
+                className={ page === number && 'selected' }
               >
-                {number+1}
+                { number + 1 }
               </button>
-                </li>)
-              }
+            </li>)
+            }
             {/* <li>
               <button
                 className="px-3 py-2 leading-tight text-gray-500 bg-white border border-black rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
