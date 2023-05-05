@@ -8,11 +8,14 @@ import { AuthContext } from '../context/AuthProvider'
 import useAdmin from '../hooks/useAdmin'
 import useMember from '../hooks/useMember'
 import Loader from '../Pages/Dashboard/LoanApply/Loader';
+import Skeleton from '../Skeleton/Skeleton';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext)
   const [isAdmin] = useAdmin(user?.email)
   const [isMember] = useMember(user?.email)
+  const isLoading = !(isAdmin || isMember) && (window.location.pathname.includes("/dashboard/admin") || window.location.pathname.includes("/dashboard/member"));
+
   const [isOpen, setIsOpen] = useState(false)
   const toggleSideNav = () => setIsOpen((prevState) => !prevState)
   return (
@@ -60,7 +63,8 @@ const DashboardLayout = () => {
             </div>
           </Link>
           
-<ul className="space-y-2 font-medium mx-5 ">
+ {
+  isLoading ? <Skeleton></Skeleton>  : <>  <ul className="space-y-2 font-medium mx-5 ">
   { isAdmin && (
     isAdmin? <>
     <li>
@@ -197,7 +201,8 @@ const DashboardLayout = () => {
       </li>
     </>
   ) }
-</ul> 
+</ul> </>
+ }
 
 
 

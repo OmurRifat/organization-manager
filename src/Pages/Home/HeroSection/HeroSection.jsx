@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import { BsFillPlayFill } from "react-icons/bs";
 import hero from '../../../assets/hero.png'
 import { AuthContext } from "../../../context/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useMember from "../../../hooks/useMember";
 
 const HeroSection = () => {
-  
   const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email)
+  const [isMember] = useMember(user?.email)
+
   const styleObject = {
     background: {
       background: "rgba(42, 157, 143, 0.1)",
@@ -32,14 +36,28 @@ const HeroSection = () => {
           </p>
           <div className="flex ">
             {
-              user?.uid ? <Link to="/dashboard">
+              user?.uid ? <>
+              {
+                isAdmin && <Link to="/dashboard/admin">
                 <button
                   style={ styleObject.button }
                   className="flex mt-2 mr-4 px-3 py-3 md:px-8 md:py-[8px] text-white rounded p-1 items-center justify-center"
                 >
-                  Dashboard
+                 Dashboard
                 </button>
-              </Link> :
+              </Link>
+              }
+              {
+                isMember && <Link to="/dashboard/member">
+                <button
+                  style={ styleObject.button }
+                  className="flex mt-2 mr-4 px-3 py-3 md:px-8 md:py-[8px] text-white rounded p-1 items-center justify-center"
+                >
+                 Dashboard
+                </button>
+              </Link>
+              }
+              </> :
                 <Link to="/signup">
                   <button
                     style={ styleObject.button }
