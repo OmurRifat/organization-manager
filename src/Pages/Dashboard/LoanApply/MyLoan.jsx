@@ -85,28 +85,31 @@ const MyLoan = () => {
                     <td className="px-6">{ loan?.durationMonth } Month</td>
                     <td className="px-6">{ loan?.Organizations }</td>
                     <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
+
+
                     <td className="px-6">
 
-                      { loan?.loan === "accepted" ? <span
+{ loan?.loan === "accepted" ? <span
 
-                      className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
-                    >
-                      Accepted
-                    </span> :
-                      loan?.loan === "rejected" ? <span className="text-red-900 mx-2  bg-gradient-to-r font-medium  bg-red-200 text-center text-xs px-2 py-1 rounded"
-                      >
-                        Rejected
-                      </span> :
-                        loan?.loan === "rejected" ? <span className="text-red-600 font-bold mx-2 text-center text-xs px-2 py-1 "
-                        >
-                          Your Loan is Rejected
-                        </span> :
-                          <><span
-                            className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
-                          >
-                            Pending
-                          </span></> }
-                    </td>
+  className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
+>
+  Accepted
+</span> :
+  loan?.loan === "rejected" ? <span className="text-red-900 mx-2  bg-gradient-to-r font-medium  bg-red-200 text-center text-xs px-2 py-1 rounded "
+  >
+    Rejected
+  </span> :
+    <><span
+      className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
+    >
+      Pending
+    </span></> }
+</td>
+
+
+
+
+
                     <td className="pl-6">
                   {loan?.loan === 'accepted' ?  (
     <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  ><Countdown date={new Date(loan?.endDate)} /></span>
