@@ -56,7 +56,7 @@ const LoanApply = () => {
     setSelectedBdt(event.target.value)
   }
   const onSubmit = (data) => {
-    const durationMonth = selectedMonth;
+    const durationMonth = parseFloat(selectedMonth);
     const durationInMs = durationMonth * 30 * 24 * 60 * 60 * 1000;
     const endDate = new Date(Date.now() + durationInMs);
     const LoanAmount = data.amount;
