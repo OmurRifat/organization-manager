@@ -52,9 +52,8 @@ const LoanApplication = () => {
   //         'Content-Type': 'application/json',
   //       },
   //       body: JSON.stringify({
-  //         loanId: loan?._id,
-  //         loanStatus: 'accepted',
-  //         countdownEndDate: Date.now() + loan?.durationMonth * 30 * 24 * 60 * 60 * 1000,
+    // const durationInMs = durationMonth * 30 * 24 * 60 * 60 * 1000;
+    // const endDate = new Date(Date.now() + durationInMs);
   //       }),
   //     }).then((res) => res.json())
   //     .then((data) => {
@@ -73,13 +72,22 @@ const LoanApplication = () => {
 
 
 
-
-
+  const durationInMs = loanApplied?.durationMonth * 30 * 24 * 60 * 60 * 1000;
+    const endDate = new Date(Date.now() + durationInMs);
+const all = {
+  durationInMs, endDate
+}
 
 
   const handleAccept = (id) => {
     fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
       method: "PUT",
+              headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          all
+        }),
     })
       .then((res) => res.json())
       .then((data) => {
