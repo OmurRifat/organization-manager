@@ -8,9 +8,9 @@ import DetailsModal from '../../DetailsModal/DetailsModal'
 
 const AllMember = () => {
 
-  const [details,setDetails] = useState(false)
-  const [detailsMember,setDetailsMember] = useState({})
-  const { user,userInfo } = useContext(AuthContext)
+  const [details, setDetails] = useState(false)
+  const [detailsMember, setDetailsMember] = useState({})
+  const { user, userInfo } = useContext(AuthContext)
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
@@ -27,7 +27,7 @@ const AllMember = () => {
   }
 
   const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
-  
+
   return (
     <div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

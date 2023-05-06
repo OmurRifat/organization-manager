@@ -7,10 +7,10 @@ import axios from 'axios'
 import ProfileModal from './ProfileModal'
 
 const Verification = () => {
-  
+
   const [profile, setProfile] = useState(null)
   const [profileModal, setProfileModal] = useState(false)
-  const { user,userInfo } = useContext(AuthContext)
+  const { user, userInfo } = useContext(AuthContext)
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
@@ -21,7 +21,7 @@ const Verification = () => {
     },
   });
 
-  const organizationMembers = members.filter((member) =>member.organization === userInfo.organization && member.verified !== true)
+  const organizationMembers = members?.filter((member) => member.organization === userInfo?.organization && member.verified !== true)
 
   const handleShowDetails = (selectedProfile) => {
     setProfileModal(true)

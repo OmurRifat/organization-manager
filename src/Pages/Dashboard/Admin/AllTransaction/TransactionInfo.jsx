@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const TransactionInfo = ({ transaction, i }) => {
   const [txdInfo, setTxdInfo] = useState({});
-  
+
   useEffect(() => {
     fetch(
       `https://organization-manager-server-main-jsarafath.vercel.app/transaction-query-by-transaction-id?${transaction.transactionId}`,
@@ -13,9 +13,9 @@ const TransactionInfo = ({ transaction, i }) => {
 
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 my-2">
-      <td className="px-6  text-green-500">{transaction.userEmail}</td>
+      <td className="px-6  text-green-500">{ transaction.userEmail }</td>
       <td className=" px-6 text-center text-gray-900 whitespace-nowrap dark:text-white">
-        {transaction.userName}
+        { transaction.userName }
       </td>
       <td className="px-6  text-green-500">{transaction.transactionId}</td>
       <td className="px-6  text-[red]">{transaction.amount}</td>
