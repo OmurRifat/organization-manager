@@ -24,6 +24,7 @@ import AllEvents from './../../Pages/Home/UpcommingEvents/AllEvents';
 import OrganizationDetails from '../../Pages/Home/All_Organizations/OrganizationDetails'
 import LoanApplication from '../../Pages/Dashboard/LoanApply/LoanApplication'
 import MyLoan from '../../Pages/Dashboard/LoanApply/MyLoan'
+import EditProfile from '../../Pages/Dashboard/Profile/EditProfile'
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,12 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivetRoute>
           <Profile></Profile>
+        </PrivetRoute>,
+      },
+      {
+        path: '/dashboard/editprofile',
+        element: <PrivetRoute>
+          <EditProfile></EditProfile>
         </PrivetRoute>,
       },
       {
