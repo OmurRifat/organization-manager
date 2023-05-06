@@ -254,7 +254,7 @@ const LoanApply = () => {
               <input
                 id="remember"
                 type="checkbox"
-                value=""
+                
                 className="w-4 h-4 text-[#2A9D8F] border rounded"
                 required
               />

@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const [count, setCount] = useState(0);
   const [userData, setUserData] = useState([]);
   const pages = Math.ceil(count / size);
-
+ 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
@@ -28,18 +28,21 @@ const AdminDashboard = () => {
     },
   });
 
-  // useEffect(()=>{
-  //   axios
-  //   .get(`https://organization-manager-server-main-jsarafath.vercel.app/users/${userInfo?.organization}?page=${page}&size=${size}`)
-  //   .then((data) =>{
-  //           setUserData(data.data.users)
-  //           setCount(data.data.count)
-  //   })
-  // },[userInfo,page,size]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`http://localhost:5000/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
+      const data = await res.json();
+      setUserData(data.users)
+      setCount(data.count)
+    }
+    fetchData()
+      .catch(console.error)
+
+  }, [userInfo,page,size]);
 
 
   //total verifiedUsers
-  // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+  const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
   const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
@@ -171,9 +174,9 @@ const AdminDashboard = () => {
             {/* <span className="sr-only text-black">Action button</span> */ }
             {/* 10 */ }
             <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
+              <option value='5'>5</option>
+              <option value='10'>10</option>
+              <option value='5'>15</option>
             </select>
 
             {/* </button> */ }
@@ -219,7 +222,7 @@ const AdminDashboard = () => {
           <tbody>
             {/* organizationMembers */ }
 
-            { organizationMembers && organizationMembers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            { verifiedUsers && verifiedUsers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
@@ -257,7 +260,7 @@ const AdminDashboard = () => {
         <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
           Showing{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">30</span> of
+          <span className="font-semibold text-gray-900 dark:text-white">{verifiedUsers.length}</span> of
           List
         </span>
         <nav aria-label="Page navigation sm:mt-5 example">
@@ -269,16 +272,16 @@ const AdminDashboard = () => {
                 Previous
               </button>
             </li> */}
-            { [...Array(pages ? pages : 0).keys()].map(number => <li className='paginate' >
+            {/* { [...Array(pages).keys()].map(number => <li key={ number } className='paginate' >
 
               <button onClick={ () => setPage(number) }
-                key={ number }
+                
                 className={ page === number && 'selected' }
               >
                 { number + 1 }
               </button>
             </li>)
-            }
+            } */}
             {/* <li>
               <button
                 className="px-3 py-2 leading-tight text-gray-500 bg-white border border-black rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"

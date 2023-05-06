@@ -73,53 +73,28 @@ const LoanApplication = () => {
       <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-6 py-3">
-
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Member Name
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Member Email
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Loan Duration
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Phone Number
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Amount
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Action
-            </th>
+            <th scope="col" className="px-6 py-3">Profile</th>
+            <th scope="col" className="px-6 py-3">Member Name</th>
+            <th scope="col" className="px-6 py-3">Member Email</th>
+            <th scope="col" className="px-6 py-3">Loan Duration</th>
+            <th scope="col" className="px-6 py-3">Phone Number</th>
+            <th scope="col" className="px-6 py-3">Amount</th>
+            <th scope="col" className="px-6 py-3">Action</th>
           </tr>
         </thead>
 
         {
-          loanApplied?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium' ><span>Loan Request Not Available</span> </caption> : <> { loanApplied.map((loan, index) => (
-            <tbody>
+          loanApplied?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium'><span>Loan Request Not Available</span> </caption> : 
+          <> { loanApplied.map((loan, index) => (
+            <tbody key={index}>
 
-              <tr
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-              >
-                <td className="px-6 ">
-                  <img
-                    src={ loan?.userInfos?.photoURL }
-                    alt=""
-                    width="50px"
-                    height=""
-                    className="rounded-full w-10 h-10"
-                  />
-                </td>
-                <td className="px-6 ">
-                  { loan?.userInfos?.name }
-                </td>
-                <td className="px-6">{ loan?.userInfos?.email }</td>
-                <td className="px-6">{ loan?.durationMonth } Month</td>
-                <td className="px-6">{ loan?.userInfos?.phone }</td>
-                <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td className="px-6"><img src={ loan?.userInfos?.photoURL } width="50px" className="rounded-full w-10 h-10"/></td>
+                <td className="px-6">{ loan?.userInfos?.name }</td>
+                <td className="px-6">{ loan?.userInfos?.email}</td>
+                <td className="px-6">{ loan?.durationMonth} Month</td>
+                <td className="px-6">{ loan?.userInfos?.phone}</td>
+                <td className="px-6"> <span className='text-xl'>৳</span> { loan?.LoanAmount }</td>
                 <td className="px-6">
                   { loan?.loan === "accepted" ? <span className='text-green-600 font-bold mx-2 text-center text-sm px-2 py-1'>Accepted</span> :
                     loan?.loan === "rejected" ? <span className='text-red-600 font-bold mx-2 text-center text-sm px-2 py-1'>Rejected</span> :
