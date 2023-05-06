@@ -42,6 +42,41 @@ const LoanApplication = () => {
     return <div className='text-black'> <Loader></Loader> </div>;
   }
 
+
+
+  // const handleReject = async () => {
+  //   try {
+  //     await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         loanId: loan?._id,
+  //         loanStatus: 'accepted',
+  //         countdownEndDate: Date.now() + loan?.durationMonth * 30 * 24 * 60 * 60 * 1000,
+  //       }),
+  //     }).then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.acknowledged) {
+  //         refetch()
+  //         toast.error("Loan Accepted");
+  //       }
+  //     })
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+
+
+
+
+
+
+
+
+
   const handleAccept = (id) => {
     fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
       method: "PUT",

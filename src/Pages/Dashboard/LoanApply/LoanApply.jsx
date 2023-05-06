@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import ConfirmationModal from './ConfirmationModal'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../../../context/AuthProvider'
-import axios from 'axios'
+
 
 
 const LoanApply = () => {
@@ -56,7 +56,9 @@ const LoanApply = () => {
       setSelectedBdt(event.target.value)
     }
     const onSubmit = (data) => {
-      const durationMonth = selectedMonth;
+      const durationMonth = parseFloat(selectedMonth);
+      const durationInMs = durationMonth * 30 * 24 * 60 * 60 * 1000;
+      const endDate = new Date(Date.now() + durationInMs);
       const LoanAmount = data.amount;
       const NidPhoto = data.nidPhoto[0];
       const userInfos = userInfo;
@@ -72,7 +74,7 @@ const LoanApply = () => {
         .then((res) => res.json())
         .then((imgData) => {
           const NidPhoto = imgData.data.url
-          const allLoanInformation = {NidPhoto,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
+          const allLoanInformation = {NidPhoto,endDate,userEmail,LoanAmount,Organizations, durationMonth,userInfos}
           fetch(
             'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
             {
@@ -104,7 +106,7 @@ const LoanApply = () => {
             <input
               id="threeM"
               type="radio"
-              value="3"
+              value={3}
               required
               { ...register('threeM') }
               name="default-radio"
@@ -122,7 +124,7 @@ const LoanApply = () => {
             <input
               id="fourM"
               type="radio"
-              value="4"
+              value={4}
               required
               { ...register('fourM') }
               onChange={handleDuration}
@@ -140,7 +142,7 @@ const LoanApply = () => {
             <input
               id="sixM"
               type="radio"
-              value="6"
+              value={6}
               { ...register('sixM') }
               onChange={handleDuration}
               name="default-radio"
@@ -157,7 +159,7 @@ const LoanApply = () => {
             <input
               id="nineM"
               type="radio"
-              value="9"
+              value={9}
               { ...register('nineM') }
               onChange={handleDuration}
               name="default-radio"

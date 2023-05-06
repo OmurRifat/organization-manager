@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import Loader from './Loader';
 import { useQuery } from '@tanstack/react-query';
+import Countdown from 'react-countdown';
 
 const MyLoan = () => {
   const { user,userInfo } = useContext(AuthContext)
+
   const { isLoading, isError, data: myLoan } = useQuery(
     ["myLoan", user?.email],
     async () => {
@@ -54,6 +56,9 @@ const MyLoan = () => {
               <th scope="col" className="px-6 py-3">
                 Action
               </th>
+              <th scope="col" className="px-6 py-3">
+               Loan Payment Due Time
+              </th>
             </tr>
           </thead>
 
@@ -86,7 +91,7 @@ const MyLoan = () => {
 
                       className="text-green-600 font-bold mx-2 text-center text-xs px-2 py-1 "
                     >
-                      You Loan is Accepted
+                      Loan Accepted
                     </span> :
                       loan?.loan === "rejected" ? <span className="text-red-600 font-bold mx-2 text-center text-xs px-2 py-1 "
                       >
@@ -98,6 +103,15 @@ const MyLoan = () => {
                           Application is Pending
                         </span></> }
                   </td>
+
+
+                  <td className="pl-6">
+                  {loan?.loan === 'accepted' ?  (
+    <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  ><Countdown date={new Date(loan?.endDate)} /></span>
+  ) : <span>Your Loan Not Accept by Admin</span> }
+</td>
+
+                  
                 </tr>
               </tbody>
             )) }</>
