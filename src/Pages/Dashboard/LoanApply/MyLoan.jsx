@@ -89,18 +89,18 @@ const MyLoan = () => {
 
                     { loan?.loan === "accepted" ? <span
 
-                      className="text-green-600 font-bold mx-2 text-center text-xs px-2 py-1 "
+                      className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
                     >
-                      Loan Accepted
+                      Accepted
                     </span> :
-                      loan?.loan === "rejected" ? <span className="text-red-600 font-bold mx-2 text-center text-xs px-2 py-1 "
+                      loan?.loan === "rejected" ? <span className="text-red-900 mx-2  bg-gradient-to-r font-medium  bg-red-200 text-center text-xs px-2 py-1 rounded"
                       >
-                        Your Loan is Rejected
+                        Rejected
                       </span> :
                         <><span
                           className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
                         >
-                          Application is Pending
+                          Pending
                         </span></> }
                   </td>
 

@@ -131,7 +131,6 @@ const LoanApplication = () => {
             </th>
           </tr>
         </thead>
-
         {
           loanApplied?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium' ><span>Loan Request Not Available</span> </caption> : <> { loanApplied.map((loan, index) => (
             <tbody>
