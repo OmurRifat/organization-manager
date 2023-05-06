@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const [count, setCount] = useState(0);
   const [userData, setUserData] = useState([]);
   const pages = Math.ceil(count / size);
- 
+
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
       const data = await res.json();
       setUserData(data.users)
       setCount(data.count)
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     fetchData()
       .catch(console.error)
 
-  }, [userInfo,page,size]);
+  }, [userInfo, page, size]);
 
 
   //total verifiedUsers
@@ -260,7 +260,7 @@ const AdminDashboard = () => {
         <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
           Showing{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">{verifiedUsers.length}</span> of
+          <span className="font-semibold text-gray-900 dark:text-white">{ verifiedUsers.length }</span> of
           List
         </span>
         <nav aria-label="Page navigation sm:mt-5 example">
