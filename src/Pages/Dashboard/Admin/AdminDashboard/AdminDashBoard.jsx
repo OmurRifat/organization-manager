@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 
 
   //total verifiedUsers
-  const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+  const verifiedUsers = userData?.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
   const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
