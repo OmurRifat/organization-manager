@@ -9,7 +9,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 
 const Signup = () => {
-  const {createUsersEmail,updateUser} = useContext(AuthContext)
+  const { createUsersEmail, updateUser } = useContext(AuthContext)
   const [foundation, setFoundation] = useState([])
   const [userImg, setUserImg] = useState('')
   const imageHostKey = '89cc63ae1dbb327bb7cace69ee36c9c1'
@@ -234,7 +234,7 @@ const Signup = () => {
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Full Name"
-                    required 
+                    required
                     autoComplete='off'
                   />
                   <p className=" error-message text-red-600">

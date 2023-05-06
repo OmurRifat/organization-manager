@@ -149,8 +149,8 @@ const MemberDashboard = () => {
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          <p>Donation History</p>
-          <div className="flex justify-between items-center">
+          <p className='text-black font-semibold'>Donation History</p>
+          {/* <div className="flex justify-between items-center">
             <p className="mx-2 text-black">Show</p>
             <button
               id="dropdownActionButton"
@@ -196,7 +196,7 @@ const MemberDashboard = () => {
               </ul>
             </div>
             <p className="mx-2 text-black">List</p>
-          </div>
+          </div> */}
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
@@ -270,7 +270,7 @@ const MemberDashboard = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-between items-center  mx-5">
+      {/* <div className="flex justify-between items-center  mx-5">
         <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
           Showing{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">1</span>{ ' ' }
@@ -341,7 +341,7 @@ const MemberDashboard = () => {
             </li>
           </ul>
         </nav>
-      </div>
+      </div> */}
       <div
         id="authentication-modal"
         tabIndex="-1"

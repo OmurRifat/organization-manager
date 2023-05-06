@@ -44,7 +44,7 @@ const About = () => {
       <div className=" flex justify-center items-center pb-4 md:pb-0 bg-white  sm:flex ">
         <img className="h-36" src="https://i.ibb.co/QHjcc5v/Screenshot-2023-03-31-100804-removebg-preview.png" alt="" />
         <div className="font-medium text-gray-800">
-          <div className="text-2xl">{organizations.length}+</div>
+          <div className="text-2xl">{ organizations.length }+</div>
           <div className="text-sm text-gray-500 dark:text-gray-400">Active Organization</div>
         </div>
         <br></br>
@@ -99,26 +99,26 @@ const About = () => {
                 <h1 className="text-3xl md:text-4xl pr-2 font-semibold text-gray-700 mb-6">
                   We Will Manage Your Man-Power Carefully
                 </h1>
-               
+
                 <div style={ styleObject.bgcolor } className="flex justify-between items-center bg-white sm:flex">
                   <div className="font-medium text-gray-800">
-                    <div className="text-2xl text-gray-700">{users.length}+</div>
+                    <div className="text-2xl text-gray-700">{ users.length }+</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Members</div>
                   </div>
                   <div className="font-medium text-gray-700 mr-9">
-                    <div className="text-2xl">{organizations.length}+</div>
+                    <div className="text-2xl">{ organizations.length }+</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Organization</div>
                   </div>
                   <br></br>
                 </div>
                 <br></br>
                 <p className="text-base font-normal text-gray-500 mb-5 dark:text-gray-400">
-                  15.3 billion trees are cut down every year in the 
-                  <br></br>world and 14.7 hectares of forest land is lost in 
-                  <br></br>Indonesia. This causes the earth to become  
+                  15.3 billion trees are cut down every year in the
+                  <br></br>world and 14.7 hectares of forest land is lost in
+                  <br></br>Indonesia. This causes the earth to become
                   <br></br> unstable and we invite you to join us and achieve a common goal
                 </p>
-                
+
                 <Link
                   to='/show-organizations'
                   style={ styleObject.button }

@@ -8,7 +8,7 @@ import TransactionInfo from './TransactionInfo'
 
 const AllTransaction = () => {
   const [allTransaction, setAllTransaction] = useState([]);
-  const { user,userInfo } = useContext(AuthContext);
+  const { user, userInfo } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -18,7 +18,7 @@ const AllTransaction = () => {
 
 
   const organizationTransactions = allTransaction.filter((transaction) => transaction.organization === userInfo?.organization)
-  
+
   return (
     <div>
       <p className="text-xl font-bold text-[#ff8000] py-3">All Transaction</p>
@@ -38,24 +38,24 @@ const AllTransaction = () => {
               Amount
             </th>
             <th scope="col" className="px-6 py-3">
-              Payment Method
+              {/* Payment Method */}
             </th>
 
             <th scope="col" className="px-6 py-3"></th>
           </tr>
         </thead>
         <tbody>
-        { organizationTransactions &&
-          organizationTransactions?.map((transaction, i) => (
-            <TransactionInfo
-              i={ i }
-              key={ transaction._id }
-              transaction={ transaction }
-            ></TransactionInfo>
-          )) }
-      </tbody>
+          { organizationTransactions &&
+            organizationTransactions?.map((transaction, i) => (
+              <TransactionInfo
+                i={ i }
+                key={ transaction._id }
+                transaction={ transaction }
+              ></TransactionInfo>
+            )) }
+        </tbody>
       </table>
-      
+
     </div>
   )
 }

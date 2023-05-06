@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   
   const { user,userInfo } = useContext(AuthContext);
- 
+  
   return (
     <div className="flex justify-center m-3">
       <div className="rounded-3xl overflow-hidden  shadow-2xl w-2/3  my-15 ">
@@ -19,7 +19,7 @@ const Profile = () => {
           />
         </div>
         <div className="text-right">
-          <Link to='/editprofile' type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit
+          <Link to='/dashboard/editprofile' type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit
           </Link>
 
         </div>
@@ -33,7 +33,7 @@ const Profile = () => {
                 Full Name:
               </th>
 
-              <td className="px-8 py-4"> { user?.displayName }</td>
+              <td className="px-8 py-4"> { userInfo?.name}</td>
             </tr>
             <tr className="border-b border-gray-200 dark:border-gray-700">
               <th
@@ -53,7 +53,7 @@ const Profile = () => {
                 Mobile No:
               </th>
 
-              <td className="px-8 py-4">{ userInfo?.phone ? userInfo.phone : "N/A" }</td>
+              <td className="px-8 py-4">{ userInfo?.phone }</td>
             </tr>
             <tr className="border-b border-gray-200 dark:border-gray-700">
               <th

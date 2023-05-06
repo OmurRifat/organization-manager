@@ -14,8 +14,8 @@ const AllEvents = () => {
             <div className="p-5">
                 <h2 className="text-4xl text-black mt-5 mb-10 text-center">All Events</h2>
                 <div className="grid lg:grid-cols-3 md:gap-10 px-5 md:grid-cols-2 grid-cols-1 ">
-                    {events &&
-                        events?.map(singleEvents => <SingleEvents key={singleEvents.id} singleEvents={singleEvents}></SingleEvents>)
+                    { events &&
+                        events?.map(singleEvents => <SingleEvents key={ singleEvents.id } singleEvents={ singleEvents }></SingleEvents>)
                     }
                 </div>
             </div>

@@ -21,7 +21,7 @@ const MyLoan = () => {
     },
     { enabled: !!user?.email }
   );
-  
+
   if (isLoading) {
     return <div> <Loader></Loader>  </div>;
   }
@@ -64,30 +64,30 @@ const MyLoan = () => {
 
           {
             myLoan?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium w-full' >You Have Not Applied For Any Loan</caption> :
-             <>{ myLoan.map((loan, index) => (
-              <tbody key={index}>
-                <tr
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                >
-                  <td className="px-6 ">
-                    <img
-                      src={ loan?.userInfos?.photoURL }
-                      alt=""
-                      width="50px"
-                      height=""
-                      className="rounded-full w-10 h-10"
-                    />
-                  </td>
-                  <td className="px-6 ">
-                    { loan?.userInfos?.name }
-                  </td>
-                  <td className="px-6">{ loan?.userInfos?.email }</td>
-                  <td className="px-6">{ loan?.durationMonth } Month</td>
-                  <td className="px-6">{ loan?.Organizations }</td>
-                  <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
-                  <td className="px-6">
+              <>{ myLoan.map((loan, index) => (
+                <tbody key={ index }>
+                  <tr
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td className="px-6 ">
+                      <img
+                        src={ loan?.userInfos?.photoURL }
+                        alt=""
+                        width="50px"
+                        height=""
+                        className="rounded-full w-10 h-10"
+                      />
+                    </td>
+                    <td className="px-6 ">
+                      { loan?.userInfos?.name }
+                    </td>
+                    <td className="px-6">{ loan?.userInfos?.email }</td>
+                    <td className="px-6">{ loan?.durationMonth } Month</td>
+                    <td className="px-6">{ loan?.Organizations }</td>
+                    <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
+                    <td className="px-6">
 
-                    { loan?.loan === "accepted" ? <span
+                      { loan?.loan === "accepted" ? <span
 
                       className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
                     >
@@ -97,24 +97,24 @@ const MyLoan = () => {
                       >
                         Rejected
                       </span> :
-                        <><span
-                          className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
+                        loan?.loan === "rejected" ? <span className="text-red-600 font-bold mx-2 text-center text-xs px-2 py-1 "
                         >
-                          Pending
-                        </span></> }
-                  </td>
-
-
-                  <td className="pl-6">
+                          Your Loan is Rejected
+                        </span> :
+                          <><span
+                            className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
+                          >
+                            Pending
+                          </span></> }
+                    </td>
+                    <td className="pl-6">
                   {loan?.loan === 'accepted' ?  (
     <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  ><Countdown date={new Date(loan?.endDate)} /></span>
   ) : <span>Your Loan Not Accept by Admin</span> }
 </td>
-
-                  
-                </tr>
-              </tbody>
-            )) }</>
+                  </tr>
+                </tbody>
+              )) }</>
           }
 
         </table>
