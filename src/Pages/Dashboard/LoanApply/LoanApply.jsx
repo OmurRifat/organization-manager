@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import ConfirmationModal from './ConfirmationModal'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../../../context/AuthProvider'
-import axios from 'axios'
+
 
 
 const LoanApply = () => {
@@ -57,6 +57,8 @@ const LoanApply = () => {
   }
   const onSubmit = (data) => {
     const durationMonth = selectedMonth;
+    const durationInMs = durationMonth * 30 * 24 * 60 * 60 * 1000;
+    const endDate = new Date(Date.now() + durationInMs);
     const LoanAmount = data.amount;
     const NidPhoto = data.nidPhoto[0];
     const userInfos = userInfo;
@@ -72,7 +74,7 @@ const LoanApply = () => {
       .then((res) => res.json())
       .then((imgData) => {
         const NidPhoto = imgData.data.url
-        const allLoanInformation = { NidPhoto, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
+        const allLoanInformation = { NidPhoto,endDate, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
         fetch(
           'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
           {
@@ -95,84 +97,84 @@ const LoanApply = () => {
       <p className="text-2xl text-[#2A9D8F] text-center">
         Apply for an Interest Free Loan
       </p>
-      <form onSubmit={ handleSubmit(onSubmit) }>
-        <div className="grid lg:grid-cols-2  grid-cols-1">
-          <div className="m-5">
-            <p className="text-base m-3 text-[#2A9D8F] font-medium">Duration</p>
-            <div>
-              <div className="flex items-center m-4 mb-4">
-                <input
-                  id="threeM"
-                  type="radio"
-                  value="3"
-                  required
-                  { ...register('threeM') }
-                  name="default-radio"
-                  onChange={ handleDuration }
-                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                />
-                <label
-                  htmlFor="threeM"
-                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  3 Months
-                </label>
-              </div>
-              <div className="flex m-4 items-center">
-                <input
-                  id="fourM"
-                  type="radio"
-                  value="4"
-                  required
-                  { ...register('fourM') }
-                  onChange={ handleDuration }
-                  name="default-radio"
-                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                />
-                <label
-                  htmlFor="fourM"
-                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  4 Months
-                </label>
-              </div>
-              <div className="flex items-center m-4 mb-4">
-                <input
-                  id="sixM"
-                  type="radio"
-                  value="6"
-                  { ...register('sixM') }
-                  onChange={ handleDuration }
-                  name="default-radio"
-                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                />
-                <label
-                  htmlFor="sixM"
-                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  6 Months
-                </label>
-              </div>
-              <div className="flex items-center m-4 mb-4">
-                <input
-                  id="nineM"
-                  type="radio"
-                  value="9"
-                  { ...register('nineM') }
-                  onChange={ handleDuration }
-                  name="default-radio"
-                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b]dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                />
-                <label
-                  htmlFor="nineM"
-                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  9 Month
-                </label>
-              </div>
-            </div>
-            <div>
-              {/* <div className='my-5'>
+     <form onSubmit={ handleSubmit(onSubmit) }>
+     <div className="grid lg:grid-cols-2  grid-cols-1">
+        <div className="m-5">
+          <p className="text-base m-3 text-[#2A9D8F] font-medium">Duration</p>
+          <div>
+          <div className="flex items-center m-4 mb-4">
+            <input
+              id="threeM"
+              type="radio"
+              value={3}
+              required
+              { ...register('threeM') }
+              name="default-radio"
+              onChange={handleDuration}
+              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="threeM"
+              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              3 Months
+            </label>
+          </div>
+          <div className="flex m-4 items-center">
+            <input
+              id="fourM"
+              type="radio"
+              value={4}
+              required
+              { ...register('fourM') }
+              onChange={handleDuration}
+              name="default-radio"
+              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="fourM"
+              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              4 Months
+            </label>
+          </div>
+          <div className="flex items-center m-4 mb-4">
+            <input
+              id="sixM"
+              type="radio"
+              value={6}
+              { ...register('sixM') }
+              onChange={handleDuration}
+              name="default-radio"
+              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="sixM"
+              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              6 Months
+            </label>
+          </div>
+          <div className="flex items-center m-4 mb-4">
+            <input
+              id="nineM"
+              type="radio"
+              value={9}
+              { ...register('nineM') }
+              onChange={handleDuration}
+              name="default-radio"
+              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b]dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="nineM"
+              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              9 Month
+            </label>
+          </div>
+          </div>
+          <div>
+         {/* <div className='my-5'>
          <span className='text-[#2A9D8F] text-base mb-32 font-semibold' >Type 16 Digit or 10 digit NID No</span>
           <input
               id="threeM"
