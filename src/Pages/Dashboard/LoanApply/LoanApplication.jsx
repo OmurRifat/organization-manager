@@ -42,61 +42,30 @@ const LoanApplication = () => {
     return <div className='text-black'> <Loader></Loader> </div>;
   }
 
-
-
-  // const handleReject = async () => {
-  //   try {
-  //     await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-    // const durationInMs = durationMonth * 30 * 24 * 60 * 60 * 1000;
-    // const endDate = new Date(Date.now() + durationInMs);
-  //       }),
-  //     }).then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.acknowledged) {
-  //         refetch()
-  //         toast.error("Loan Accepted");
-  //       }
-  //     })
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-
-
-
-
-
-  const durationInMs = loanApplied?.durationMonth * 30 * 24 * 60 * 60 * 1000;
-    const endDate = new Date(Date.now() + durationInMs);
-const all = {
-  durationInMs, endDate
-}
-
-
   const handleAccept = (id) => {
+    const durationInMs = loanApplied.find(obj => obj._id === id).durationMonth * 30 * 24 * 60 * 60 * 1000;
+    const endDate = new Date(Date.now() + durationInMs);
+  
     fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
       method: "PUT",
-              headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          all
-        }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        endDate: endDate.toISOString() // convert to ISO string format
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.acknowledged) {
-          refetch()
+        console.log(data);
+        if (data.acknowledged && data.modifiedCount === 1) {
+          refetch();
           toast.success("Loan Accepted");
         }
       });
   };
+  
+  
   const handleReject = (id) => {
     fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
       method: "PUT",
@@ -117,7 +86,6 @@ const all = {
         <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
-
             </th>
             <th scope="col" className="px-6 py-3">
               Member Name
@@ -139,15 +107,11 @@ const all = {
             </th>
           </tr>
         </thead>
-
-        {
-          loanApplied?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium' ><span>Loan Request Not Available</span> </caption> : <> { loanApplied.map((loan, index) => (
-            <tbody>
-
+        {loanApplied?.length === 0 ? <caption className='flex my-5 mx-auto justify-center font-medium' ><span>Loan Request Not Available</span> </caption> : <> { loanApplied.map((loan, index) => (
+            <tbody key={index}>
               <tr
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-              >
-                <td className="px-6 ">
+              ><td className="px-6 ">
                   <img
                     src={ loan?.userInfos?.photoURL }
                     alt=""
@@ -159,7 +123,7 @@ const all = {
                 <td className="px-6 ">
                   { loan?.userInfos?.name }
                 </td>
-                <td className="px-6">{ loan?.userInfos?.email }</td>
+                <td className="px-6">{ loan?.userInfos?.email }  </td>
                 <td className="px-6">{ loan?.durationMonth } Month</td>
                 <td className="px-6">{ loan?.userInfos?.phone }</td>
                 <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
@@ -179,17 +143,11 @@ const all = {
                           className="text-white mx-2 bg-gradient-to-r via-red-500 font-medium hover:bg-red-600 bg-red-500 text-center text-xs px-2 py-1 rounded"
                         >
                           Reject
-                        </button></> }
-
-
-                </td>
-              </tr>
+                        </button></>}
+                </td></tr>
             </tbody>
-          )) }</>
-        }
-
+          )) }</>}
       </table>
-
     </div>
   );
 };

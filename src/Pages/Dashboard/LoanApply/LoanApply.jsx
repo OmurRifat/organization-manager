@@ -57,8 +57,7 @@ const LoanApply = () => {
   }
   const onSubmit = (data) => {
     const durationMonth = parseFloat(selectedMonth);
-    const durationInMs = durationMonth * 30 * 24 * 60 * 60 * 1000;
-    const endDate = new Date(Date.now() + durationInMs);
+ 
     const LoanAmount = data.amount;
     const NidPhoto = data.nidPhoto[0];
     const userInfos = userInfo;
@@ -74,7 +73,7 @@ const LoanApply = () => {
       .then((res) => res.json())
       .then((imgData) => {
         const NidPhoto = imgData.data.url
-        const allLoanInformation = { NidPhoto,endDate, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
+        const allLoanInformation = { NidPhoto, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
         fetch(
           'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
           {
