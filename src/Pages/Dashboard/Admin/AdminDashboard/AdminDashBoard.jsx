@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const [count, setCount] = useState(0);
   const [userData, setUserData] = useState([]);
   const pages = Math.ceil(count / size);
- 
+
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
@@ -28,21 +28,21 @@ const AdminDashboard = () => {
     },
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
-      const data = await res.json();
-      setUserData(data.users)
-      setCount(data.count)
-    }
-    fetchData()
-      .catch(console.error)
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch(`http://localhost:5000/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
+  //     const data = await res.json();
+  //     setUserData(data.users)
+  //     setCount(data.count)
+  //   }
+  //   fetchData()
+  //     .catch(console.error)
 
-  }, [userInfo,page,size]);
+  // }, [userInfo,page,size]);
 
 
   //total verifiedUsers
-  const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
+  // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
   const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
@@ -162,9 +162,9 @@ const AdminDashboard = () => {
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          <p>Donation History</p>
+          <p className='text-black font-bold'>Donation History</p>
           <div className="flex justify-between items-center">
-            <p className="mx-2 text-black">Show</p>
+            {/* <p className="mx-2 text-black">Show</p> */ }
             {/* <button
               id="dropdownActionButton"
               data-dropdown-toggle="dropdownAction"
@@ -173,11 +173,11 @@ const AdminDashboard = () => {
             > */}
             {/* <span className="sr-only text-black">Action button</span> */ }
             {/* 10 */ }
-            <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
+            {/* <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
               <option value='5'>5</option>
               <option value='10'>10</option>
               <option value='5'>15</option>
-            </select>
+            </select> */}
 
             {/* </button> */ }
 
@@ -199,7 +199,7 @@ const AdminDashboard = () => {
                 </li>
               </ul>
             </div>
-            <p className="mx-2 text-black">List</p>
+            {/* <p className="mx-2 text-black">List</p> */ }
           </div>
         </div>
         <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
@@ -222,7 +222,7 @@ const AdminDashboard = () => {
           <tbody>
             {/* organizationMembers */ }
 
-            { verifiedUsers && verifiedUsers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            { organizationMembers && organizationMembers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
@@ -257,12 +257,12 @@ const AdminDashboard = () => {
         </table>
       </div>
       <div className="flex justify-between items-center  mx-5">
-        <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
+        {/* <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
           Showing{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">{verifiedUsers.length}</span> of
+          <span className="font-semibold text-gray-900 dark:text-white">{ verifiedUsers.length }</span> of
           List
-        </span>
+        </span> */}
         <nav aria-label="Page navigation sm:mt-5 example">
           <ul className="inline-flex -space-x-px">
             {/* <li>
