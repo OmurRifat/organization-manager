@@ -24,13 +24,13 @@ const About = () => {
 
   const [organizations, setOrganizations] = useState([]);
   useEffect(() => {
-      fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
+      fetch('http://localhost:5000/organizations')
           .then(res => res.json())
           .then(data => setOrganizations(data));
   }, [])
   const [users, setUsers] = useState([]);
   useEffect(() => {
-      fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
+      fetch('http://localhost:5000/users')
           .then(res => res.json())
           .then(data => setUsers(data));
   }, [])
