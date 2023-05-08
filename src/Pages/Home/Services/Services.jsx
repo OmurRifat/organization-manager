@@ -8,7 +8,7 @@ const Services = () => {
           background: '#2A9D8F',
         },
         textcolor: {
-          color: '#2A9D8F',
+        //   color: '#2A9D8F',
         }
       };
 
@@ -16,9 +16,8 @@ const Services = () => {
     return (
         <div className='py-9'>
             <div>
-            <p style={styleObject.textcolor} className="text-center text-2xl text-gray-900 font-semibold">Our Services</p>
+            <p style={styleObject.textcolor} className="text-center text-2xl bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-semibold">Our Services</p>
             <h1  className="text-center px-3 md:px-0  text-3xl md:text-4xl font-semibold text-black mb-10">High Performance Services <br /> For All Industries. </h1>
-
             </div>
             {/* ------------Services Card------------- */}
             <div className='grid lg:grid-cols-4 px-4 md:grid-cols-2 place-items-center gap-y-14 grid-cols-1 p-9'>

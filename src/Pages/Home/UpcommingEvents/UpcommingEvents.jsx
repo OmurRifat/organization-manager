@@ -15,7 +15,7 @@ const UpcommingEvents = () => {
 
     return (
         <div className='py-9'>
-            <p className="text-[#2A9D8F] font-semibold pb-2 text-center" >Upcoming Events</p>
+            <p className="bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-semibold pb-2 text-center" >Upcoming Events</p>
             <h1 className='text-3xl mb-3 px-3  md:text-4xl font-semibold text-black text-center'>We Arrange Many Social <br /> Events For Charity Donations</h1>
 
             <div className='pt-9' >
