@@ -26,7 +26,7 @@ const Blog = () => {
   return (
     <>
       <div className="pt-24 pb-10 pl-10 pr-6 md:pr-0 md:pl-24 md:text-left text-center">
-        <h3 style={styles.primary} className="text-2xl mb-4 font-medium">
+        <h3 className="text-2xl mb-4 bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-medium">
         Explore the Events
         </h3>
         <h2 style={styles.secondary} className="font-semibold mb-5 text-3xl md:text-4xl">

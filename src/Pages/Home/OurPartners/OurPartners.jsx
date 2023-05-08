@@ -9,7 +9,7 @@ const OurPartners = () => {
           background: '#2A9D8F',
         },
         textcolor: {
-          color: '#2A9D8F',
+          // color: '#2A9D8F',
         },
         size: {
           width: '500px',
@@ -27,7 +27,7 @@ const OurPartners = () => {
             <div className="grid grid-cols-1 md:grid-cols-2">
             <div style={styleObject.bgcolor} className="sm:w-auto bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center">
             <div style={styleObject.bgcolor} className="text-left pb-8">
-            <p style={styleObject.textcolor} className="text-gray-900 font-semibold pb-2 text-left">Our Partners</p>
+            <p className="bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-semibold pb-2 text-left">Our Partners</p>
                     <h1  className="text-4xl mb-6 font-semibold text-black">We Work With The  <br></br> Best Partners </h1>
                     
                     <p className="mb-6 text-base max-w-xs md:max-w-sm font-normal text-gray-500 dark:text-gray-400 txt">GROW - Is a non-profit organization whose goal is to  protect, maintain, care for, and preserve the trees on the earth that we stand on now</p>

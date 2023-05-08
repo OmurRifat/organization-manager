@@ -30,7 +30,7 @@ const responsive = {
 const Review = () => {
   const styleObject = {
     h3: {
-      color: "#2A9D8F",
+      
       marginBottom: "10px",
     },
     h2: {
@@ -53,7 +53,7 @@ const Review = () => {
   return (
     <>
       <div className="text-center px-3 md:px-0 pt-20 pb-16">
-        <h3 style={styleObject.h3} className="text-2xl font-medium">
+        <h3 style={styleObject.h3} className="text-2xl bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-medium">
           Talk with our happy client
         </h3>
         <h2
