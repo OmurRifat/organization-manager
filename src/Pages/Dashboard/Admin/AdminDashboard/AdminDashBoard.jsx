@@ -164,7 +164,7 @@ const AdminDashboard = () => {
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <p className='text-black font-bold'>Donation History</p>
           <div className="flex justify-between items-center">
-            {/* <p className="mx-2 text-black">Show</p> */}
+            {/* <p className="mx-2 text-black">Show</p> */ }
             {/* <button
               id="dropdownActionButton"
               data-dropdown-toggle="dropdownAction"
@@ -199,7 +199,7 @@ const AdminDashboard = () => {
                 </li>
               </ul>
             </div>
-            {/* <p className="mx-2 text-black">List</p> */}
+            {/* <p className="mx-2 text-black">List</p> */ }
           </div>
         </div>
         <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
@@ -222,7 +222,7 @@ const AdminDashboard = () => {
           <tbody>
             {/* organizationMembers */ }
 
-            {  organizationMembers  &&  organizationMembers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            { organizationMembers && organizationMembers?.map(member => <tr key={ member._id } className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
               <th
                 scope="row"
                 className=" px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
