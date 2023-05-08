@@ -214,7 +214,7 @@ const Navbar = () => {
           ) }
         </Transition>
         <div className="flex justify-start">
-          <div className="text-black mx-10">
+          <div className="text-black ">
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <HashLink

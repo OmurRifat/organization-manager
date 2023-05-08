@@ -11,7 +11,7 @@ const FrequentQuestion = () => {
   return (
     <div style={styles.bg}  className="grid grid-cols-1 py-10 md:grid-cols-2 px-8 md:px-14 gap-y-10 md:gap-y-0 my-16">
       <div>
-        <h2 style={{ color: "#282938" }} className="font-semibold text-3xl mb-3">
+        <h2 style={{ color: "#282938" }} className="font-semibold md:text-4xl text-3xl mb-3">
           Frequently Asked Questions
         </h2>
         <p className="text-base font-normal fq1">

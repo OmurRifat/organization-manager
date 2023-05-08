@@ -17,7 +17,7 @@ const Blog = () => {
       color: "#2A9D8F",
     },
     secondary: {
-      color: "#4D4D4D",
+      color: "black",
     },
     paraColor: {
       color: "#656565",
