@@ -14,7 +14,7 @@ const Services = () => {
 
 
     return (
-        <div className='pt-9 pb-9'>
+        <div className='py-9'>
             <div>
             <p style={styleObject.textcolor} className="text-center text-gray-900 font-semibold">Our Services</p>
             <h1  className="text-center px-3 md:px-0  text-3xl md:text-4xl font-semibold text-gray-600 mb-10">High Performance Services <br /> For All Industries. </h1>

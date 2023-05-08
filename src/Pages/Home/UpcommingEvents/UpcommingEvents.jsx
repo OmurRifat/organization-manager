@@ -14,7 +14,7 @@ const UpcommingEvents = () => {
 
 
     return (
-        <div className='pb-9 pt-9' ><br />
+        <div className='py-9'><br />
             <p style={styleObject.textcolor} className="text-gray-900 font-semibold pb-2 text-center" >Upcoming Events</p>
             <h1 className='text-3xl mb-3 px-3 md:px-0 md:text-4xl font-semibold text-gray-600 text-center'>We Arrange Many Social <br /> Events For Charity Donations</h1>
 
