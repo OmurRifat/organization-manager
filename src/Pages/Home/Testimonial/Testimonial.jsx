@@ -34,7 +34,7 @@ const Review = () => {
       marginBottom: "10px",
     },
     h2: {
-      color: "#4D4D4D",
+      color: 'black',
       marginBottom: "20px",
     },
     gradient: {
@@ -53,7 +53,7 @@ const Review = () => {
   return (
     <>
       <div className="text-center px-3 md:px-0 pt-20 pb-16">
-        <h3 style={styleObject.h3} className="2xl font-medium">
+        <h3 style={styleObject.h3} className="text-2xl font-medium">
           Talk with our happy client
         </h3>
         <h2
