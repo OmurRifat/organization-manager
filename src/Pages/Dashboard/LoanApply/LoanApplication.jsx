@@ -70,9 +70,11 @@ const LoanApplication = () => {
               Member Email
             </th>
             <th scope="col" className="px-6 py-3">
+              Organization Name
+            </th>
+            <th scope="col" className="px-6 py-3">
               Loan Duration
             </th>
-            
             <th scope="col" className="px-6 py-3">
               Amount
             </th>
@@ -101,6 +103,7 @@ const LoanApplication = () => {
                   { loan?.userInfos?.name }
                 </td>
                 <td className="px-6">{ loan?.userInfos?.email }  </td>
+                <td className="px-6">{  loan?.Organizations  }  </td>
                 <td className="px-6">{ loan?.durationMonth } Month</td>
                 
                 <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>

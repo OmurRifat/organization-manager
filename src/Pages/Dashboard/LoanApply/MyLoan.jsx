@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import Loader from './Loader';
 import { useQuery } from '@tanstack/react-query';
 import Countdown from 'react-countdown';
+import MyLoanModal from './MyLoanModal';
 
 const MyLoan = () => {
   const { user,userInfo } = useContext(AuthContext)
-
+  const [details, setDetails] = useState(false)
+  const [detailsMember, setDetailsMember] = useState({})
   const { isLoading, isError, data: myLoan } = useQuery(
     ["myLoan", user?.email],
     async () => {
@@ -28,6 +30,11 @@ const MyLoan = () => {
 
   if (isError) {
     return <div>Error fetching data</div>;
+  }
+
+  const handleLoanDetails = (singleLoanData) => {
+    setDetails(true)
+    setDetailsMember(singleLoanData)
   }
   return (
     <div>
@@ -111,12 +118,20 @@ const MyLoan = () => {
 
 
                     <td className="pl-6">
-                  {loan?.loan === 'accepted' ?  (
+                    {
+                  loan &&  <button 
+                  onClick={ () =>  handleLoanDetails(loan) }
+                  className=' text-white bg-gradient-to-r from-green-400 via-green-500 font-semibold to-green-600 hover:bg-gradient-to-br  text-xs px-2 py-1 rounded'>Application Details</button>
+                 }
+                  {
+                    details && <MyLoanModal setDetails={ setDetails } loan={ detailsMember }  ></MyLoanModal>
+                  }
+                  {/* {loan?.loan === 'accepted' ?  (
     <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  >
       Day :  
       <Countdown date={new Date(loan?.endDate)} />
     </span>
-  ) : <span>Your Loan Not Accept by Admin</span> }
+  ) : <span>Your Loan Not Accept by Admin</span> } */}
 </td>
                   </tr>
                 </tbody>

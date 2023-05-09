@@ -23,6 +23,7 @@ const LoanApplicationModal = ({setDetails,loan, refetch, loanApplied}) => {
         console.log(data);
         if (data.acknowledged && data.modifiedCount === 1) {
           refetch();
+          setDetails(false)
           toast.success("Loan Accepted");
         }
       });
@@ -37,6 +38,7 @@ const LoanApplicationModal = ({setDetails,loan, refetch, loanApplied}) => {
       .then((data) => {
         if (data.acknowledged) {
           refetch()
+          setDetails(false)
           toast.error("Loan Rejected");
         }
       });
@@ -161,7 +163,7 @@ const LoanApplicationModal = ({setDetails,loan, refetch, loanApplied}) => {
                         >
                           Loan Amount:
                         </th>
-                        <td className="text-black px-8 py-4 "> { loan?.LoanAmount} <span className='text-2xl' >৳</span></td>
+                        <td className="text-black px-8 py-4 "> { loan?.LoanAmount} <span className='text-lg' >৳</span></td>
                       </tr>
                       {/* <tr className="border-b border-gray-200 dark:border-gray-700">
                         <th
