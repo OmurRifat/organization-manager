@@ -25,7 +25,7 @@ const Team = () => {
 				</div>
 			</div>
 			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://avatars.githubusercontent.com/u/108384746?v=4" />
+				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/hfs2qxn/pr-1-removebg-preview3.png" />
 				<p className="text-xl font-semibold leading-tight">Dibbo Das</p>
 				<p className="dark:text-gray-400">Full Stack Developer</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>
