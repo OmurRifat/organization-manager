@@ -50,7 +50,7 @@ const MyLoanModal = ({loan, setDetails}) => {
             <Countdown date={new Date(loan?.endDate)} />
           </span>
                    </div>
-        ) : <span className='-mt-32 text-3xl text-white'>You Will Not Accept Loan</span> }
+        ) : <span className='-mt-32 text-3xl text-white'>Your Loan Not Accepte</span> }
                   </div>
               </div>
     </div>
