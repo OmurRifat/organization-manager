@@ -13,9 +13,9 @@ import CounterUp from '../CounterUp/CounterUp';
 import GoToTop from '../GoToTop/GoToTop';
 const Home = () => {
     return (
-        <div className='mx-2 mt-4'>
+        <div className='mt-4'>
             <HeroSection />
-            <About />
+            {/* <About /> */}
             <Services/>
             <Testimonial />
             <Blog />

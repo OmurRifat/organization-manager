@@ -14,18 +14,18 @@ const UpcommingEvents = () => {
 
 
     return (
-        <div className='pb-9 pt-9' ><br />
-            <p style={styleObject.textcolor} className="text-gray-900 font-semibold pb-2 text-center" >Upcoming Events</p>
-            <h1 className='text-3xl mb-3 px-3 md:px-0 md:text-4xl font-semibold text-gray-600 text-center'>We Arrange Many Social <br /> Events For Charity Donations</h1>
+        <div className='py-9'>
+            <p className="bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-semibold pb-2 text-center" >Upcoming Events</p>
+            <h1 className='text-3xl mb-3 px-3  md:text-4xl font-semibold text-black text-center'>We Arrange Many Social <br /> Events For Charity Donations</h1>
 
-            <div className='pl-7 pt-9' >
-                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10   md:px-24">
+            <div className='pt-9' >
+                    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 md:px-24">
                        
                         <div className="blogs">
                         {/* event--->1 */}
-                            <div className="flex mb-10 items-center flex-col md:flex-row  drop-shadow-lg text-gray-700">
+                            <div className="flex  mb-10 items-center flex-col md:flex-row lg:flex-row  drop-shadow-lg text-gray-700">
                                 <div>
-                                <img className='rounded imgSize ' src='https://i.ibb.co/wJxs9fQ/event-1-jpg.webp' alt='tree image 1'/>
+                                <img className='rounded imgSize' src='https://i.ibb.co/wJxs9fQ/event-1-jpg.webp' alt='tree image 1'/>
                                 </div>
                                 <div className="pt-3 md:pt-0 pb-5 max-w-xs text-center md:text-left md:pb-0 md:pl-4">
                                 <h3 className="text-xl mb-2 font-medium">It may be our eternal hope, that with whom</h3>

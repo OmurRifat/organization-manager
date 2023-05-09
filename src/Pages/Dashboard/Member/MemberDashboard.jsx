@@ -9,6 +9,8 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([]);
   const [allTransaction, setAllTransaction] = useState([]);
 
+  
+
   const handlePayment = (item) => {
     const paymentInfo = {
       amount: item?.amount,
@@ -65,7 +67,14 @@ const MemberDashboard = () => {
     fetchData()
       .catch(console.error)
 
-  }, [user?.email])
+  }, [user?.email]);
+
+ 
+
+
+    // if(donation.verified === false){
+      // const verified = donation.donation.map(d => d.amount === 0)
+    // }
 
   const dueCalculation = () => {
     donation?.map((d) => {
@@ -100,7 +109,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Want to take Loan?</p>
-          <Link to="/dashboard/apply-loan">
+         {userInfo?.verified === true &&  <Link to="/dashboard/apply-loan">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -109,7 +118,7 @@ const MemberDashboard = () => {
             >
               Apply
             </button>
-          </Link>
+          </Link>}
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
           <img
@@ -119,7 +128,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Due</p>
-          <button
+          {userInfo?.verified === true && <button
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
             onClick={ () => setPayModal(true) }
@@ -127,7 +136,7 @@ const MemberDashboard = () => {
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             { totalDue } BDT
-          </button>
+          </button>}
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
           <img
@@ -137,69 +146,22 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Donation</p>
-          <button
+          {userInfo?.verified === true && <button
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             { totalDonations } BDT
-          </button>
+          </button>}
         </div>
       </div>
 
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          <p className='text-black font-semibold'>Donation History</p>
-          {/* <div className="flex justify-between items-center">
-            <p className="mx-2 text-black">Show</p>
-            <button
-              id="dropdownActionButton"
-              data-dropdown-toggle="dropdownAction"
-              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              type="button"
-            >
-              <span className="sr-only text-black">Action button</span>
-              10
-              <svg
-                className="w-3 h-3 ml-2"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-
-            <div
-              id="dropdownAction"
-              className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-            >
-              <ul
-                className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownActionButton"
-              >
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Reward
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <p className="mx-2 text-black">List</p>
-          </div> */}
+          {userInfo?.verified === true && <p className='text-black font-semibold'>Donation History</p>}
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
+          {userInfo?.verified === true && <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Month
@@ -218,9 +180,9 @@ const MemberDashboard = () => {
               </th>
               <th scope="col" className="px-6 py-3"></th>
             </tr>
-          </thead>
+          </thead>}
           <tbody>
-            { userInfo &&
+            { userInfo?.verified === true ?
               userInfo?.donation?.map((item) => (
                 <tr
                   key={ item.month }
@@ -266,7 +228,7 @@ const MemberDashboard = () => {
                     </button>
                   </td> }
                 </tr>
-              )) }
+              )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with {userInfo?.organization} under review, you will be notified soon</td></tr>}
           </tbody>
         </table>
       </div>
