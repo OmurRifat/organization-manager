@@ -24,6 +24,8 @@ import AllEvents from './../../Pages/Home/UpcommingEvents/AllEvents';
 import OrganizationDetails from '../../Pages/Home/All_Organizations/OrganizationDetails'
 import LoanApplication from '../../Pages/Dashboard/LoanApply/LoanApplication'
 import MyLoan from '../../Pages/Dashboard/LoanApply/MyLoan'
+import EditProfile from '../../Pages/Dashboard/Profile/EditProfile'
+import AddReview from '../../Pages/Dashboard/Member/AddReview'
 
 const router = createBrowserRouter([
   {
@@ -84,6 +86,12 @@ const router = createBrowserRouter([
         </PrivetRoute>,
       },
       {
+        path: '/dashboard/editprofile',
+        element: <PrivetRoute>
+          <EditProfile></EditProfile>
+        </PrivetRoute>,
+      },
+      {
         path: '/dashboard/admin',
         element: <AdminRoute>
           <AdminDashboard></AdminDashboard>
@@ -121,6 +129,12 @@ const router = createBrowserRouter([
         path: '/dashboard/member/myLoan',
         element: <MemberRoute>
           <MyLoan></MyLoan>
+        </MemberRoute>,
+      },
+      {
+        path: '/dashboard/member/addreview',
+        element: <MemberRoute>
+          <AddReview></AddReview>
         </MemberRoute>,
       },
       {

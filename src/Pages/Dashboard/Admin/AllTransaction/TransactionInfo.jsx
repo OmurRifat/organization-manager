@@ -17,9 +17,9 @@ const TransactionInfo = ({ transaction, i }) => {
       <td className=" px-6 text-center text-gray-900 whitespace-nowrap dark:text-white">
         { transaction.userName }
       </td>
-      <td className="px-6  text-green-500">{ transaction.transactionId }</td>
-      <td className="px-6  text-[red]">{ transaction.amount }</td>
-      <td className="px-6  text-[red]">{ txdInfo.card_type }</td>
+      <td className="px-6  text-green-500">{transaction.transactionId}</td>
+      <td className="px-6  text-[red]">{transaction.amount}</td>
+      {/* <td className="px-6  text-[red]">{txdInfo.card_type}</td> */}
 
       <td className="px-6 ">
         <button

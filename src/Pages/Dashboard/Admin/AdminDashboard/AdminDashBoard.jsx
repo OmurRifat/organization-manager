@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import PayMethodModal from '../../Member/PayMethodModal'
 import ConfirmationModal from '../../LoanApply/ConfirmationModal'
 import ReminderModal from '../../ReminderModal/ReminderModal'
+import { Button, Modal } from 'antd';
 import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../../../context/AuthProvider'
 import axios from 'axios'
 import './AdminDashboard.css'
+import ChangePassword from '../../../LogIn/ChangePassword'
+import AddMonth from './AddMonth'
 
 const AdminDashboard = () => {
 
@@ -22,20 +25,23 @@ const AdminDashboard = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data
     },
   });
 
-  // useEffect(()=>{
-  //   axios
-  //   .get(`http://localhost:5000/users/${userInfo?.organization}?page=${page}&size=${size}`)
-  //   .then((data) =>{
-  //           setUserData(data.data.users)
-  //           setCount(data.data.count)
-  //   })
-  // },[userInfo,page,size]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
+  //     const data = await res.json();
+  //     setUserData(data.users)
+  //     setCount(data.count)
+  //   }
+  //   fetchData()
+  //     .catch(console.error)
+
+  // }, [userInfo,page,size]);
 
 
   //total verifiedUsers
@@ -56,6 +62,10 @@ const AdminDashboard = () => {
     setModal(true);
     setSpecificMember(data);
   }
+  const handleMonth = (data) => {
+    setModal(true);
+    setSpecificMember(data);
+  }
 
   let total = 0;
   let totalDue = 0;
@@ -69,7 +79,7 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +102,19 @@ const AdminDashboard = () => {
   //   }
   // }
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -159,24 +181,16 @@ const AdminDashboard = () => {
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          <p>Donation History</p>
-          <div className="flex justify-between items-center">
-            <p className="mx-2 text-black">Show</p>
-            {/* <button
-              id="dropdownActionButton"
-              data-dropdown-toggle="dropdownAction"
-              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              type="button"
-            > */}
-            {/* <span className="sr-only text-black">Action button</span> */ }
-            {/* 10 */ }
-            <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-            </select>
+          <p className='flex justify-start text-black font-bold'>Donation History</p>
 
-            {/* </button> */ }
+          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={showModal}>
+     Add Donation
+      </Button>
+      <Modal className='' title="Please Enter  Month for adding !!!!" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <AddMonth></AddMonth>
+      </Modal>
+          <div className="flex justify-between items-center">
+            
 
             <div
               id="dropdownAction"
@@ -196,7 +210,7 @@ const AdminDashboard = () => {
                 </li>
               </ul>
             </div>
-            <p className="mx-2 text-black">List</p>
+            {/* <p className="mx-2 text-black">List</p> */ }
           </div>
         </div>
         <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
@@ -242,7 +256,7 @@ const AdminDashboard = () => {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
                   member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
                     <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
-                      className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                      className="text-white bg-gradient-to-r from-green-500 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-3 py-2 text-center mr-2 mb-2">
                       Send Remainder
                     </button> :
                     <p className="text-green-500">Paid </p>
@@ -254,12 +268,12 @@ const AdminDashboard = () => {
         </table>
       </div>
       <div className="flex justify-between items-center  mx-5">
-        <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
+        {/* <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
           Showing{ ' ' }
           <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">30</span> of
+          <span className="font-semibold text-gray-900 dark:text-white">{ verifiedUsers.length }</span> of
           List
-        </span>
+        </span> */}
         <nav aria-label="Page navigation sm:mt-5 example">
           <ul className="inline-flex -space-x-px">
             {/* <li>
@@ -269,16 +283,16 @@ const AdminDashboard = () => {
                 Previous
               </button>
             </li> */}
-            { [...Array(pages ? pages : 0).keys()].map(number => <li className='paginate' >
+            {/* { [...Array(pages).keys()].map(number => <li key={ number } className='paginate' >
 
               <button onClick={ () => setPage(number) }
-                key={ number }
+                
                 className={ page === number && 'selected' }
               >
                 { number + 1 }
               </button>
             </li>)
-            }
+            } */}
             {/* <li>
               <button
                 className="px-3 py-2 leading-tight text-gray-500 bg-white border border-black rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"

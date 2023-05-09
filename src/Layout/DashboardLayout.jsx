@@ -175,6 +175,24 @@ const DashboardLayout = () => {
       </li>
       <li>
         <Link
+          to="/dashboard/member/myLoan"
+          className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
+          <MdOutlineSettingsApplications className='w-6 h-6'  ></MdOutlineSettingsApplications>
+          <span className="flex-1 ml-3 whitespace-nowrap">My Loan</span>
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/dashboard/member/addreview"
+          className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
+          <MdOutlineSettingsApplications className='w-6 h-6'  ></MdOutlineSettingsApplications>
+          <span className="flex-1 ml-1 whitespace-nowrap">Add Review</span>
+        </Link>
+      </li>
+      <li>
+        <Link
           to="/dashboard/member/settings"
           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
         >
@@ -188,15 +206,6 @@ const DashboardLayout = () => {
             <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
           </svg>
           <span className="flex-1 ml-3 whitespace-nowrap">Settings</span>
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/dashboard/member/myLoan"
-          className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-        >
-          <MdOutlineSettingsApplications className='w-6 h-6'  ></MdOutlineSettingsApplications>
-          <span className="flex-1 ml-3 whitespace-nowrap">My Loan</span>
         </Link>
       </li>
     </>

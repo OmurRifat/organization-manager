@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import Loader from './Loader';
 import { useQuery } from '@tanstack/react-query';
+import Countdown from 'react-countdown';
 
 const MyLoan = () => {
-  const { user, userInfo } = useContext(AuthContext)
+  const { user,userInfo } = useContext(AuthContext)
+
   const { isLoading, isError, data: myLoan } = useQuery(
     ["myLoan", user?.email],
     async () => {
@@ -54,6 +56,9 @@ const MyLoan = () => {
               <th scope="col" className="px-6 py-3">
                 Action
               </th>
+              <th scope="col" className="px-6 py-3">
+               Loan Payment Due Time
+              </th>
             </tr>
           </thead>
 
@@ -80,24 +85,36 @@ const MyLoan = () => {
                     <td className="px-6">{ loan?.durationMonth } Month</td>
                     <td className="px-6">{ loan?.Organizations }</td>
                     <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
+
+
                     <td className="px-6">
 
-                      { loan?.loan === "accepted" ? <span
+{ loan?.loan === "accepted" ? <span
 
-                        className="text-green-600 font-bold mx-2 text-center text-xs px-2 py-1 "
-                      >
-                        You Loan is Accepted
-                      </span> :
-                        loan?.loan === "rejected" ? <span className="text-red-600 font-bold mx-2 text-center text-xs px-2 py-1 "
-                        >
-                          Your Loan is Rejected
-                        </span> :
-                          <><span
-                            className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
-                          >
-                            Application is Pending
-                          </span></> }
-                    </td>
+  className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
+>
+  Accepted
+</span> :
+  loan?.loan === "rejected" ? <span className="text-red-900 mx-2  bg-gradient-to-r font-medium  bg-red-200 text-center text-xs px-2 py-1 rounded "
+  >
+    Rejected
+  </span> :
+    <><span
+      className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
+    >
+      Pending
+    </span></> }
+</td>
+
+
+
+
+
+                    <td className="pl-6">
+                  {loan?.loan === 'accepted' ?  (
+    <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  ><Countdown date={new Date(loan?.endDate)} /></span>
+  ) : <span>Your Loan Not Accept by Admin</span> }
+</td>
                   </tr>
                 </tbody>
               )) }</>

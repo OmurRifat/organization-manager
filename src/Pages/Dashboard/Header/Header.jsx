@@ -8,7 +8,7 @@ import useAdmin from '../../../hooks/useAdmin';
 import useMember from '../../../hooks/useMember';
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext)
+  const {user,userInfo, logOut}= useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(false);
   const [isAdmin] = useAdmin(user?.email)
   const [isMember] = useMember(user?.email)
@@ -24,8 +24,8 @@ const Header = () => {
     <div className="flex justify-end">
       <div className="flex  justify-end items-center lg:m-4 w-100">
         <RiNotification3Line className='mx-2 text-black text-2xl' />
-        <p className="mx-2 font-semibold text-[#185448ec]">{ user?.displayName }</p>
-        {/* dropdown */ }
+        <p className="mx-2 font-semibold text-[#185448ec]">{userInfo?.name}</p>
+        {/* dropdown */}
         <div className="relative mr-14">
           <button
             id="dropdownInformationButton"
