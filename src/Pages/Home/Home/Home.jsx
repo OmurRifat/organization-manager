@@ -11,7 +11,6 @@ import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 import Services from './../Services/Services';
 import CounterUp from '../CounterUp/CounterUp';
 import GoToTop from '../GoToTop/GoToTop';
-
 const Home = () => {
     return (
         <div className='mt-4'>

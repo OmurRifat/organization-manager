@@ -3,7 +3,6 @@ import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../../context/AuthProvider'
-import axios from 'axios'
 import DetailsModal from '../../DetailsModal/DetailsModal'
 
 const AllMember = () => {
@@ -96,7 +95,8 @@ const AllMember = () => {
                   >
                     View Details
                   </button> }
-                  { details && <DetailsModal setDetails={ setDetails } member={ detailsMember } /> }
+                  { details && 
+                  <DetailsModal setDetails={ setDetails } member={ detailsMember } /> }
                 </td>
               </tr>
             )) }
