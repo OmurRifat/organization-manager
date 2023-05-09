@@ -108,7 +108,7 @@ const LogIn = () => {
                   </label>
                   <input
                   name='password'
-                    { ...register("password", { required: "Password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 120, message: "Password cannot exceed more than 12 characters" } }) }
+                    { ...register("password", { required: "Password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 12, message: "Password cannot exceed more than 12 characters" } }) }
                     type="password"
                     id="password"
                     placeholder="Enter Password"
