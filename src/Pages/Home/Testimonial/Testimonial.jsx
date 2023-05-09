@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import donate from "../../../assets/donate.png";
 import people from "../../../assets/people.png";
 import cap from "../../../assets/cap.png";
-import { useReviewGetQuery } from "../../../features/reviews/reviewApi";
 
 const responsive = {
   superLargeDesktop: {
@@ -28,17 +27,14 @@ const responsive = {
   },
 };
 
-const Review = ({singleReview}) => {
-
-  const {name} = singleReview;
- 
+const Review = () => {
   const styleObject = {
     h3: {
-      
+      color: "#2A9D8F",
       marginBottom: "10px",
     },
     h2: {
-      color: 'black',
+      color: "#4D4D4D",
       marginBottom: "20px",
     },
     gradient: {
@@ -57,7 +53,7 @@ const Review = ({singleReview}) => {
   return (
     <>
       <div className="text-center px-3 md:px-0 pt-20 pb-16">
-        <h3 style={styleObject.h3} className="text-2xl bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-medium">
+        <h3 style={styleObject.h3} className="2xl font-medium">
           Talk with our happy client
         </h3>
         <h2
@@ -105,10 +101,49 @@ const Review = ({singleReview}) => {
             </div>
 
             <p className=" font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
-             {name}
+              You can help by donating for planting, maintenance, seeds and
+              other operational
             </p>
           </div>
-         
+          {/* card----->2 */}
+          <div className="pl-4 mr-4 pt-4 h-72   bg-white border border-gray-200 rounded-lg shadow ">
+            <div
+              style={{ backgroundColor: "#2A9D8F", marginBottom: "20px" }}
+              className="w-16 h-16 flex justify-center items-center "
+            >
+              <img
+                src={people}
+                width={20}
+                height={20}
+                alt="picture of the client"
+              />
+            </div>
+
+            <p className="  font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
+              You can help grow by becoming our volunteer. You can directly
+              plant trees, help with gardening, do outreach and other
+              interesting programs
+            </p>
+          </div>
+          {/* card----->3 */}
+          <div className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
+            <div
+              style={{ backgroundColor: "#2A9D8F", marginBottom: "20px" }}
+              className="w-16 h-16 flex justify-center items-center "
+            >
+              <img
+                src={cap}
+                width={20}
+                height={20}
+                alt="picture of the client"
+              />
+            </div>
+
+            <p className="font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
+              You will learn about how to plant trees, care for trees and other
+              things by joining as a farmer
+            </p>
+          </div>
         </Carousel>
       </div>
     </>

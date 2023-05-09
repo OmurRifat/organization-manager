@@ -23,12 +23,12 @@ const Services = () => {
             <div className='grid lg:grid-cols-4 px-4 md:grid-cols-2 place-items-center gap-y-14 grid-cols-1 p-9'>
 
                 {/* ------services-1------ */}
-                    <div className="cursor-pointer hover:shadow-xl  bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="cursor-pointer hover:shadow-xl  bg-white drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize pt-1 hover:scale-110 ease-in duration-80 overflow-hidden">
                             <div className='flex justify-center'>
                             <img className="rounded" src="https://i.ibb.co/n1MDrhC/4288628701679911528-128.png" alt="ss" />
                             </div>
                         <div className="text-center p-6">
-                            <h5 className=" text-2xl font-bold tracking-tight text-gray-900 mb-3 dark:text-white"> 
+                            <h5 className=" text-xl font-bold tracking-tight text-gray-900 mb-3 dark:text-white"> 
                             Social Impact Loans
                             </h5>
                         <p className="mb-3 font-normal text-justify text-gray-700 dark:text-gray-400">
@@ -39,12 +39,12 @@ const Services = () => {
                     </div>
 
                 {/*------services-2------*/}
-                    <div className=" bg-white cursor-pointer hover:shadow-xl drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className=" bg-white cursor-pointer hover:shadow-xl drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize pt-1 hover:scale-110 ease-in duration-80 overflow-hidden">
                         <div className='flex justify-center'>
                         <img className="rounded" src="https://i.ibb.co/tmFWVFY/402647201679419879-128.png" alt="" />
                         </div>
                         <div className="text-center p-6">
-                            <h5 className=" text-2xl font-bold mb-3 tracking-tight text-gray-900 dark:text-white"> 
+                            <h5 className=" text-xl font-bold mb-3 tracking-tight text-gray-900 dark:text-white"> 
                             Housing Loans
                             </h5>
                         <p className="mb-3 font-normal text-justify text-gray-700 dark:text-gray-400">
@@ -55,12 +55,12 @@ const Services = () => {
                     </div>
 
                 {/*------services-3------*/}
-                    <div className="bg-white cursor-pointer hover:shadow-xl drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="bg-white cursor-pointer hover:shadow-xl drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize pt-1 hover:scale-110 ease-in duration-80 overflow-hidden">
                             <div className='flex justify-center'>
                             <img className="rounded" src="https://i.ibb.co/m5HkxzZ/2796120701610058221-128.png" alt="" />
                             </div>
                         <div className="text-center p-6">
-                            <h5 className=" text-2xl font-bold tracking-tight mb-3 text-gray-900 dark:text-white"> 
+                            <h5 className=" text-xl font-bold tracking-tight mb-3 text-gray-900 dark:text-white"> 
                             Education Loans
                             </h5>
                         <p className="mb-3 font-normal text-justify text-gray-700 dark:text-gray-400">
@@ -70,12 +70,12 @@ const Services = () => {
                         </div>
                     </div>
                 {/*------services-4------*/}
-                    <div className="bg-white cursor-pointer hover:shadow-xl drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize">
+                    <div className="bg-white cursor-pointer hover:shadow-xl drop-shadow-lg rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 photosize pt-1 hover:scale-110 ease-in duration-80 overflow-hidden">
                             <div className='flex justify-center'>
                             <img className="rounded" src="https://i.ibb.co/pXHB1zr/prevention.png" alt="" />
                             </div>
                         <div className="text-center p-6">
-                            <h5 className=" text-2xl font-bold mb-3 tracking-tight text-gray-900 dark:text-white"> 
+                            <h5 className=" text-xl font-bold mb-3 tracking-tight text-gray-900 dark:text-white"> 
                             Disaster Relief Loans
                             </h5>
                         <p className="mb-3 text-justify font-normal text-gray-700 dark:text-gray-400">

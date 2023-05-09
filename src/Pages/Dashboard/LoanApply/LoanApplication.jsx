@@ -16,7 +16,7 @@ const LoanApplication = () => {
     ["loanApplied", userInfo?.organization],
     async () => {
       const response = await fetch(
-        `http://localhost:5000/loanApplication?Organizations=${userInfo.organization}`
+        `https://organization-manager-server-main-jsarafath.vercel.app/loanApplication?Organizations=${userInfo.organization}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -43,44 +43,6 @@ const LoanApplication = () => {
     return <div className='text-black'> <Loader></Loader> </div>;
   }
 
-<<<<<<< HEAD
-  const handleAccept = (id) => {
-    const durationInMs = loanApplied.find(obj => obj._id === id).durationMonth * 30 * 24 * 60 * 60 * 1000;
-    const endDate = new Date(Date.now() + durationInMs);
-  
-    fetch(`http://localhost:5000/accept/${id}`, {
-      method: "PUT",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        endDate: endDate.toISOString() // convert to ISO string format
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged && data.modifiedCount === 1) {
-          refetch();
-          toast.success("Loan Accepted");
-        }
-      });
-  };
-  
-  
-  const handleReject = (id) => {
-    fetch(`http://localhost:5000/reject/${id}`, {
-      method: "PUT",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          refetch()
-          toast.error("Loan Rejected");
-        }
-      });
-  };
-=======
 
   
   
@@ -92,7 +54,6 @@ const LoanApplication = () => {
   }
 
 
->>>>>>> aae5470e27426101593b24eebc7372f887305789
 
   return (
     <div>
