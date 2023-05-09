@@ -60,9 +60,6 @@ const AdminDashboard = () => {
     setSpecificMember(data);
   }
 
-  let total = 0;
-  let totalDue = 0;
-
   const handlePayment = () => {
     console.log('click')
 
