@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div className='mt-4'>
             <HeroSection />
-            {/* <About /> */}
+            <About />
             <Services/>
             <Testimonial />
             <Blog />
