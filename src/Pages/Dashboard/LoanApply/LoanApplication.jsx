@@ -1,16 +1,17 @@
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
-import { toast } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 
 import Loader from './Loader';
+import LoanApplicationModal from './LoanApplicationModal';
 
 const LoanApplication = () => {
   
   const { user,userInfo } = useContext(AuthContext);
   const [loanApplied, setLoanApplied] = useState([]);
-
+  console.log(loanApplied);
+  const [details, setDetails] = useState(false)
+  const [detailsMember, setDetailsMember] = useState({})
   const { isLoading, isError, refetch, data } = useQuery(
     ["loanApplied", userInfo?.organization],
     async () => {
@@ -42,42 +43,17 @@ const LoanApplication = () => {
     return <div className='text-black'> <Loader></Loader> </div>;
   }
 
-  const handleAccept = (id) => {
-    const durationInMs = loanApplied.find(obj => obj._id === id).durationMonth * 30 * 24 * 60 * 60 * 1000;
-    const endDate = new Date(Date.now() + durationInMs);
-  
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
-      method: "PUT",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        endDate: endDate.toISOString() // convert to ISO string format
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged && data.modifiedCount === 1) {
-          refetch();
-          toast.success("Loan Accepted");
-        }
-      });
-  };
+
   
   
-  const handleReject = (id) => {
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
-      method: "PUT",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          refetch()
-          toast.error("Loan Rejected");
-        }
-      });
-  };
+
+
+  const handleLoanDetails = (singleLoanData) => {
+    setDetails(true)
+    setDetailsMember(singleLoanData)
+  }
+
+
 
   return (
     <div>
@@ -96,14 +72,15 @@ const LoanApplication = () => {
             <th scope="col" className="px-6 py-3">
               Loan Duration
             </th>
-            <th scope="col" className="px-6 py-3">
-              Phone Number
-            </th>
+            
             <th scope="col" className="px-6 py-3">
               Amount
             </th>
             <th scope="col" className="px-6 py-3">
               Action
+            </th>
+            <th scope="col" className="px-6 py-3">
+            Details
             </th>
           </tr>
         </thead>
@@ -125,26 +102,30 @@ const LoanApplication = () => {
                 </td>
                 <td className="px-6">{ loan?.userInfos?.email }  </td>
                 <td className="px-6">{ loan?.durationMonth } Month</td>
-                <td className="px-6">{ loan?.userInfos?.phone }</td>
+                
                 <td className="px-6"> <span className='text-xl' >৳</span> { loan?.LoanAmount }</td>
                 <td className="px-6">
                   { loan?.loan === "accepted" ? <span className='text-green-600 font-bold mx-2 text-center text-sm px-2 py-1'>Accepted</span> :
                     loan?.loan === "rejected" ? <span className='text-red-600 font-bold mx-2 text-center text-sm px-2 py-1'>Rejected</span> :
                       <><button
-                        onClick={ () => handleAccept(loan._id) }
                         type="button"
                         className="text-white mx-2 bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
                       >
-                        Accept
+                        Pending
                       </button>
-                        <button
-                          onClick={ () => handleReject(loan._id) }
-                          type="button"
-                          className="text-white mx-2 bg-gradient-to-r via-red-500 font-medium hover:bg-red-600 bg-red-500 text-center text-xs px-2 py-1 rounded"
-                        >
-                          Reject
-                        </button></>}
-                </td></tr>
+                        </>}
+                </td>
+                <td>
+                 {
+                  loan &&  <button 
+                  onClick={ () =>  handleLoanDetails(loan) }
+                  className=' text-white bg-gradient-to-r from-green-400 via-green-500 font-semibold to-green-600 hover:bg-gradient-to-br  text-xs px-2 py-1 rounded'>Application Details</button>
+                 }
+                  {
+                    details && <LoanApplicationModal loanApplied={loanApplied} refetch={refetch} setDetails={ setDetails } loan={ detailsMember }  ></LoanApplicationModal>
+                  }
+                </td>
+                </tr>
             </tbody>
           )) }</>}
       </table>

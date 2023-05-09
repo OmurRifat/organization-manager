@@ -112,7 +112,10 @@ const MyLoan = () => {
 
                     <td className="pl-6">
                   {loan?.loan === 'accepted' ?  (
-    <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  ><Countdown date={new Date(loan?.endDate)} /></span>
+    <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  >
+      Day :  
+      <Countdown date={new Date(loan?.endDate)} />
+    </span>
   ) : <span>Your Loan Not Accept by Admin</span> }
 </td>
                   </tr>

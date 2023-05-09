@@ -97,6 +97,8 @@ const DetailsModal = ({setDetails,member}) => {
               
             </div>
           </div>
+
+          
         </div>
       </div>
     </div>
