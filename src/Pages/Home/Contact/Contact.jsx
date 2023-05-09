@@ -34,7 +34,6 @@ const Contact = () => {
 
   const styleObject = {
     h3: {
-      color: "#2A9D8F",
       marginBottom: "10px",
     },
     h2: {
@@ -49,7 +48,7 @@ const Contact = () => {
   return (
     <div id='contact' className="mb-24 pb-10 md:px-10 px-3 grid grid-cols-1 md:grid-cols-2 place-items-center">
       <div>
-        <h3 className="font-semibold" style={styleObject.h3}>
+        <h3 className="font-semibold bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600" style={styleObject.h3}>
           Contact Us
         </h3>
         <h2 style={styleObject.h2} className="text-4xl font-semibold">

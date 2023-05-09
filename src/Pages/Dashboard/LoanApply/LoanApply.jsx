@@ -3,6 +3,8 @@ import ConfirmationModal from './ConfirmationModal'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../../../context/AuthProvider'
 
+import { DatePicker } from 'antd'
+
 
 
 const LoanApply = () => {
@@ -14,6 +16,7 @@ const LoanApply = () => {
   } = useForm()
 
   const [showModal, setShowModal] = useState(false)
+
   const [imageUrl, setImageUrl] = useState("https://gumlet.assettype.com/bdnews24-english%2Fimport%2Fmedia%2F2015%2F06%2F01%2Fsmart-card.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=768");
   const { user,userInfo } = useContext(AuthContext);
   
@@ -47,7 +50,8 @@ const LoanApply = () => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedBdt, setSelectedBdt] = useState('');
   const [successs, setSuccesss] = useState(false)
-
+  const [startDate, setStartDate] = useState(new Date());
+  const dateOfBirth = startDate?.$d;
   // const onSubmit = (data) => {}
   const handleDuration = (event) => {
     setSelectedMonth(event.target.value);
@@ -57,7 +61,7 @@ const LoanApply = () => {
   }
   const onSubmit = (data) => {
     const durationMonth = parseFloat(selectedMonth);
- 
+    const nidNo = data.nidNo;
     const LoanAmount = data.amount;
     const NidPhoto = data.nidPhoto[0];
     const userInfos = userInfo;
@@ -73,7 +77,7 @@ const LoanApply = () => {
       .then((res) => res.json())
       .then((imgData) => {
         const NidPhoto = imgData.data.url
-        const allLoanInformation = { NidPhoto, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
+        const allLoanInformation = { NidPhoto,nidNo,dateOfBirth, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
         fetch(
           'http://localhost:5000/loanSystem',
           {
@@ -173,18 +177,23 @@ const LoanApply = () => {
           </div>
           </div>
           <div>
-         {/* <div className='my-5'>
-         <span className='text-[#2A9D8F] text-base mb-32 font-semibold' >Type 16 Digit or 10 digit NID No</span>
+         <div className='my-5'>
+         <span className='text-[#2A9D8F] text-base font-semibold' >Type 17 Digit or 10 digit NID No</span>
+         <p className='alerts mt-3 text-red-600'>{ errors.nidNo?.message }</p>
           <input
-              id="threeM"
               type="number"
-             
-              { ...register('threeM') }
-              name="default-radio"
-              onChange={handleDuration}
-              className="w-full h-full text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-         </div> */}
+              id="nidNo"
+              { ...register("nidNo") }
+              name="nidNo"
+              required
+              className="w-full h-7 text-black bg-white rounded-md focus:no-underline ring-0 focus:ring-white"
+            />                  
+         </div>
+         <div className='my-5 text-black'>
+         <span className='text-[#2A9D8F] text-base  font-semibold' >Date Of Birth</span>
+         <DatePicker className='w-full mt-3' selected={startDate} onChange={(date) => setStartDate(date)} />
+
+         </div>
             </div>
             {/* Nid */ }
             <div>

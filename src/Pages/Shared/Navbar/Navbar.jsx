@@ -36,7 +36,7 @@ const Navbar = () => {
     <div style={ { zIndex: '999' } } className='bg-nav bg-opacity-50 backdrop-filter sticky top-0 backdrop-blur-xl'>
       {/* firstblock */ }
       <nav
-        className="md:block z-50 hidden shadow-sm w-full "
+        className="md:block z-50 hidden shadow-sm w-full"
       >
         <div className="w-full">
           <div className="flex items-center h-20 w-full">
@@ -214,7 +214,7 @@ const Navbar = () => {
           ) }
         </Transition>
         <div className="flex justify-start">
-          <div className="text-black mx-10">
+          <div className="text-black ">
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <HashLink
