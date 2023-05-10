@@ -7,7 +7,7 @@ const ReminderModal = ({ setModal, modal, member }) => {
   //particular member details information loaded in member props
   console.log(member, "from reminder modal")
   //get the total amount of due from the member
-  const totalDue = member?.donation?.map((donation) => donation.status === false ? parseInt(donation.amount) : 0).reduce((a, b) => a + b, 0);
+  const totalDue = member?.donation?.map((donation) => donation?.status === false ? parseInt(donation.amount) : 0).reduce((a, b) => a + b, 0);
 
   const sendEmail = () => {
     const templateParams = {
