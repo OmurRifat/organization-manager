@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { useDonationPostMutation } from '../../../../features/donation/donationApi';
+import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../../../context/AuthProvider';
 
 const AddMonth = () => {
   const { handleSubmit, register } = useForm();
-const [donationHistory , {isLoading,isError}] = useDonationPostMutation();
-
-  const handleAddMonth = (data) => {
-console.log(data);
-donationHistory(data);
-if(data) {
-  toast("Added Successfully !!!!")
-}
+const { user, userInfo } = useContext(AuthContext);
+  const handleAddMonth = (data) => {       
+  axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}` , data)
+  .then(res => {
+  if(res.data){
+    toast("Added Successfully")
+  }
+  })
+  .catch(err => console.log(err))
   }
   return (
     <div>
@@ -70,6 +72,19 @@ if(data) {
             type="number"
             placeholder="Type amount"
             className="input input-bordered w-full max-w-lg"
+          />
+        </div>
+        <div className="form-control">
+          <label>
+            <span className="label-text text-xl">Status</span>
+          </label>
+          <input
+            {...register("status")}
+            type="text"
+            placeholder="Type amount"
+            className="input input-bordered w-full max-w-lg"
+           defaultValue='false'
+           disabled={true}
           />
         </div>
         <button

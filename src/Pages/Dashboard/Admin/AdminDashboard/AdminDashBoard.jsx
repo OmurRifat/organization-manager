@@ -10,10 +10,13 @@ import axios from 'axios'
 import './AdminDashboard.css'
 import ChangePassword from '../../../LogIn/ChangePassword'
 import AddMonth from './AddMonth'
+import { data } from 'autoprefixer'
+import { toast } from 'react-hot-toast'
 
 const AdminDashboard = () => {
 
   const { user, userInfo } = useContext(AuthContext)
+  console.log(userInfo?.email);
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
   const [page, setPage] = useState(0);
@@ -27,7 +30,7 @@ const AdminDashboard = () => {
     queryFn: async () => {
       const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
-      return data
+      return data;
     },
   });
 
@@ -42,8 +45,10 @@ const AdminDashboard = () => {
   //     .catch(console.error)
 
   // }, [userInfo,page,size]);
+  
 
 
+    
   //total verifiedUsers
   // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
 

@@ -5,7 +5,7 @@ import { useReviewGetQuery } from "../../../features/reviews/reviewApi";
 const AllNews = () => {
   const [news, setNews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/news")
+    fetch("https://organization-manager-server-main-jsarafath.vercel.app/news")
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);

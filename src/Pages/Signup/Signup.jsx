@@ -21,7 +21,7 @@ const Signup = () => {
     formState: { errors },
   } = useForm()
   useEffect(() => {
-    fetch('http://localhost:5000/organizations')
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
       .then((res) => res.json())
       .then((data) => setFoundation(data))
   }, [])
@@ -98,7 +98,7 @@ const Signup = () => {
               updateUser(updateUserInfo)
                 .then(() => {
                   fetch(
-                    'http://localhost:5000/users',
+                    'https://organization-manager-server-main-jsarafath.vercel.app/users',
                     {
                       method: 'POST',
                       headers: {
