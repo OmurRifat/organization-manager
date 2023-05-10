@@ -52,12 +52,13 @@ const Review = () => {
       backgroundColor: "#2A9D8F",
     },
   };
-
+// https://organization-manager-server-main-jsarafath.vercel.app
+// http://localhost:5000
 
   useEffect(() => {
     fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
       .then(res => res.json())
-      .then(data => setReviews(data))
+      .then(data => console.log(data))
   }, [reviews])
 
 
