@@ -27,12 +27,12 @@ const responsive = {
 
 const Review = () => {
 
-  const [reviews,setReviews] = useState([])
+  const [reviews, setReviews] = useState([])
 
 
   const styleObject = {
     h3: {
-      
+
       marginBottom: "10px",
     },
     h2: {
@@ -54,27 +54,27 @@ const Review = () => {
   };
 
 
-  useEffect(()=>{
-    fetch('http://localhost:5000/reviews')
-    .then(res => res.json())
-    .then(data => setReviews(data))
-  },[reviews])
+  useEffect(() => {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
+      .then(res => res.json())
+      .then(data => setReviews(data))
+  }, [reviews])
 
 
   return (
     <>
       <div className="text-center px-3 md:px-0 pt-20 pb-16">
-        <h3 style={styleObject.h3} className="text-2xl bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-medium">
+        <h3 style={ styleObject.h3 } className="text-2xl bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-medium">
           Talk with our happy client
         </h3>
         <h2
-          style={styleObject.h2}
+          style={ styleObject.h2 }
           className="text-3xl md:text-4xl font-semibold text-center  px-6"
         >
           Let's Learn What Our Client Says
         </h2>
         <p
-          style={styleObject.pColor}
+          style={ styleObject.pColor }
           className="font-normal text-xl max-w-xl mx-auto"
         >
           Our Client is much more happy and confident about work,their reviews
@@ -83,42 +83,42 @@ const Review = () => {
       </div>
 
       <div
-        style={styleObject.gradient}
+        style={ styleObject.gradient }
         className="pt-16 pb-16 pl-3 text-center"
       >
         <Carousel
-          responsive={responsive}
-          infinite={true}
-          showDots={true}
-          arrows={false}
-          swipeable={false}
-          autoPlaySpeed={2000}
-          autoPlay={true}
-         
+          responsive={ responsive }
+          infinite={ true }
+          showDots={ true }
+          arrows={ false }
+          swipeable={ false }
+          autoPlaySpeed={ 2000 }
+          autoPlay={ true }
+
           className="mb-10 pb-12 mx-auto"
         >
 
 
 
 
-          {/* card----->1 */}
-          {reviews?.map(review => <div key={review._id} className="pl-4 mr-4 pt-4 h-96 mx-auto bg-white border border-gray-200 rounded-lg shadow ">
+          {/* card----->1 */ }
+          { reviews?.map(review => <div key={ review._id } className="pl-4 mr-4 pt-4 h-96 mx-auto bg-white border border-gray-200 rounded-lg shadow ">
             <div
               className="w-15 pt-8 mb-4 h-15 flex justify-center items-center "
             >
               <img
-                src={review.image}
-                width={60}
-                height={60}
+                src={ review.image }
+                width={ 60 }
+                height={ 60 }
                 className="rounded-full"
                 alt="picture of the client"
               />
             </div>
 
             <p className="font-normal mx-auto text-gray-500 dark:text-gray-400 text-justify max-w-[300px]">
-              {review.review}
+              { review.review }
             </p>
-          </div>)}
+          </div>) }
         </Carousel>
       </div>
     </>
