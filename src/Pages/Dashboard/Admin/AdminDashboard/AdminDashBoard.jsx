@@ -3,14 +3,20 @@ import { Link } from 'react-router-dom'
 import PayMethodModal from '../../Member/PayMethodModal'
 import ConfirmationModal from '../../LoanApply/ConfirmationModal'
 import ReminderModal from '../../ReminderModal/ReminderModal'
+import { Button, Modal } from 'antd';
 import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../../../context/AuthProvider'
 import axios from 'axios'
 import './AdminDashboard.css'
+import ChangePassword from '../../../LogIn/ChangePassword'
+import AddMonth from './AddMonth'
+import { data } from 'autoprefixer'
+import { toast } from 'react-hot-toast'
 
 const AdminDashboard = () => {
 
   const { user, userInfo } = useContext(AuthContext)
+  console.log(userInfo?.email);
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
 
@@ -18,9 +24,9 @@ const AdminDashboard = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
+      const res = await fetch('http://localhost:5000/users')
       const data = await res.json()
-      return data
+      return data;
     },
   });
 
@@ -39,6 +45,10 @@ const AdminDashboard = () => {
     setModal(true);
     setSpecificMember(data);
   }
+  const handleMonth = (data) => {
+    setModal(true);
+    setSpecificMember(data);
+  }
 
   const handlePayment = () => {
     console.log('click')
@@ -49,7 +59,7 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
+    fetch('http://localhost:5000/due-payment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,6 +73,19 @@ const AdminDashboard = () => {
   }
 
  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -129,24 +152,16 @@ const AdminDashboard = () => {
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          <p className='text-black font-bold'>Donation History</p>
-          <div className="flex justify-between items-center">
-            {/* <p className="mx-2 text-black">Show</p> */ }
-            {/* <button
-              id="dropdownActionButton"
-              data-dropdown-toggle="dropdownAction"
-              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              type="button"
-            > */}
-            {/* <span className="sr-only text-black">Action button</span> */ }
-            {/* 10 */ }
-            {/* <select className="font-semibold text-black" onChange={ (e) => setSize(e.target.value) }>
-              <option value='5'>5</option>
-              <option value='10'>10</option>
-              <option value='5'>15</option>
-            </select> */}
+          <p className='flex justify-start text-black font-bold'>Donation History</p>
 
-            {/* </button> */ }
+          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={showModal}>
+     Add Donation
+      </Button>
+      <Modal className='' title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <AddMonth></AddMonth>
+      </Modal>
+          <div className="flex justify-between items-center">
+            
 
             <div
               id="dropdownAction"

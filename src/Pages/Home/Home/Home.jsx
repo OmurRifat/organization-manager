@@ -11,12 +11,14 @@ import UpcommingEvents from '../UpcommingEvents/UpcommingEvents';
 import Services from './../Services/Services';
 import CounterUp from '../CounterUp/CounterUp';
 import GoToTop from '../GoToTop/GoToTop';
+import ManPower from '../ManPower/ManPower';
 import Team from '../Team/Team';
 const Home = () => {
     return (
-        <div className='mt-4'>
+        <div className='mx-2 mt-4'>
             <HeroSection />
             <About />
+            <ManPower/>
             <Services/>
             <Team/>
             <Testimonial />

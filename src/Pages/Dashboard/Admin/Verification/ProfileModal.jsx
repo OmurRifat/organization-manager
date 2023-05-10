@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const ProfileModal = ({ profile, setProfileModal }) => {
   const navigate = useNavigate()
   const handleApproval = (id) => {
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${id}`, {
+    fetch(`http://localhost:5000/users/${id}`, {
       method: 'PUT',
     })
       .then((res) => res.json())

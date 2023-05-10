@@ -25,6 +25,7 @@ import OrganizationDetails from '../../Pages/Home/All_Organizations/Organization
 import LoanApplication from '../../Pages/Dashboard/LoanApply/LoanApplication'
 import MyLoan from '../../Pages/Dashboard/LoanApply/MyLoan'
 import EditProfile from '../../Pages/Dashboard/Profile/EditProfile'
+import AddReview from '../../Pages/Dashboard/Member/AddReview'
 
 const router = createBrowserRouter([
   {
@@ -128,6 +129,12 @@ const router = createBrowserRouter([
         path: '/dashboard/member/myLoan',
         element: <MemberRoute>
           <MyLoan></MyLoan>
+        </MemberRoute>,
+      },
+      {
+        path: '/dashboard/member/addreview',
+        element: <MemberRoute>
+          <AddReview></AddReview>
         </MemberRoute>,
       },
       {
