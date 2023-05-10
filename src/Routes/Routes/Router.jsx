@@ -80,7 +80,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/dashboard',
+        path: '/dashboard/admin/profile',
         element: <PrivetRoute>
           <Profile></Profile>
         </PrivetRoute>,

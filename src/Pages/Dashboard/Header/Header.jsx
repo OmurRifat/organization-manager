@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../../../context/AuthProvider'
 import { Link } from 'react-router-dom';
 import { RiNotification3Line } from 'react-icons/ri';
@@ -9,7 +9,6 @@ import useMember from '../../../hooks/useMember';
 
 const Header = () => {
   const {user,userInfo, logOut}= useContext(AuthContext)
-  const [isOpen, setIsOpen] = useState(false);
   const [isAdmin] = useAdmin(user?.email)
   const [isMember] = useMember(user?.email)
   const handleLogOut = () => {
@@ -17,33 +16,50 @@ const Header = () => {
       const user = res.user;
     })
   }
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
   const toggleDropdown = () => {
-    setIsOpen(!isOpen)
+    setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
   return (
     <div className="flex justify-end">
-      <div className="flex  justify-end items-center lg:m-4 w-100">
-        <RiNotification3Line className='mx-2 text-black text-2xl' />
+      <div className="flex justify-end items-center lg:m-4 md:-mt-10 -mt-10 w-100">
+        <RiNotification3Line className="mx-2 text-black text-2xl" />
         <p className="mx-2 font-semibold text-[#185448ec]">{userInfo?.name}</p>
         {/* dropdown */}
-        <div className="relative mr-14">
+        <div className="relative mr-2" ref={dropdownRef}>
           <button
             id="dropdownInformationButton"
             data-dropdown-toggle="dropdownInformation"
             className="text-black text-center inline-flex items-center"
             type="button"
-            onClick={ toggleDropdown }
+            onClick={toggleDropdown}
           >
-            {
-              user?.photoURL ? <img src={ user?.photoURL } className='rounded-full' width="40px" height="40px" alt="" /> : <img
-
+            {user?.photoURL ? (
+              <img src={user?.photoURL} className="rounded-full" width="40px" height="40px" alt="" />
+            ) : (
+              <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOH2aZnIHWjMQj2lQUOWIL2f4Hljgab0ecZQ&usqp=CAU"
-                width="40px" height="40px"
+                width="40px"
+                height="40px"
                 className=" m-auto rounded-full shadow"
               />
-            }
+            )}
             <svg
-              className={ `w-4 h-4 ml-2 transform ${isOpen ? 'rotate-180' : ''}` }
+              className={`w-4 h-4 ml-2 transform ${isOpen ? 'rotate-180' : ''}`}
               aria-hidden="true"
               fill="none"
               stroke="currentColor"
@@ -54,11 +70,13 @@ const Header = () => {
             </svg>
           </button>
 
-          <div
+          {isOpen && (
+            <div className="absolute right-0 mt-2 py-2 w-48 rounded-md shadow-xl z-20">
+              <div
             id="dropdownInformation"
-            className={ `absolute z-10 bg-[#2A9D8F] text-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 ${isOpen ? 'block' : 'hidden'}` }
+            className={ `absolute z-10 bg-[#2A9D8F] text-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 ` }
           >
-            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+            <div className="px-4 py-3 text-sm text-gray-900 ">
               <div className='text-white'>{ user?.displayName }</div>
               <div className="font-medium truncate text-white">{ user?.email }</div>
             </div>
@@ -80,7 +98,7 @@ const Header = () => {
                 </li> </>)
               }
               <li>
-                <Link to="/dashboard" className="flex items-center px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-black">
+                <Link to="/dashboard/admin/profile" className="flex items-center px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-black">
                   <AiTwotoneSetting className='text-xl mx-2' /> Profile Setting
                 </Link>
               </li>
@@ -91,9 +109,10 @@ const Header = () => {
               </button>
             </div>
           </div>
+            </div>
+          )}
         </div>
-
-        {/* dropdown */ }
+        {/* dropdown */}
       </div>
     </div>
   )

@@ -42,7 +42,7 @@ const EditProfile = () => {
           />
         </div>
 
-        <Button type="submit">Update Info</Button>
+        <Button className="text-white font-semibold bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-3 py-1 text-center" type="submit">Update Info</Button>
       </form>
     </div>
   );

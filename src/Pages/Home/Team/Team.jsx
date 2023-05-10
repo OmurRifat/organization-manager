@@ -17,15 +17,15 @@ const Team = () => {
 </p>
 		<div className="flex flex-row flex-wrap-reverse justify-center">
 			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/tJkDBHS/rsz-rifat-3-12-removebg-preview.png" />
+				<img alt="" className="self-center  bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/tJkDBHS/rsz-rifat-3-12-removebg-preview.png" />
 				<p className="text-xl font-semibold leading-tight">H. M. Jabed Omur Rifat </p>
 				<p className="dark:text-gray-400">UI UX & Team Manager</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>
 				<a target="_blank" href="https://www.linkedin.com/in/omurrifat/"> <BsLinkedin/> </a>	<a target="_blank" href="https://github.com/OmurRifat"><BsGithub/></a>  <a target="_blank" href="https://omur-rifat-portfolio.netlify.app/"><GiEarthAmerica/> </a>
 				</div>
 			</div>
-			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/hfs2qxn/pr-1-removebg-preview3.png" />
+			<div className="flex flex-col justify-center m-8 text-center">  
+				<img alt="" className="self-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/8Nz0323/professional-photo-dibbo-22.png" />
 				<p className="text-xl font-semibold leading-tight">Dibbo Das</p>
 				<p className="dark:text-gray-400">Full Stack Developer</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>
@@ -33,7 +33,7 @@ const Team = () => {
 				</div>
 			</div>
 			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/yPFqDHJ/profile-1.jpg" />
+				<img alt="" className="self-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/yPFqDHJ/profile-1.jpg" />
 				<p className="text-xl font-semibold leading-tight">Md Abdur Rouf Likhon</p>
 				<p className="dark:text-gray-400">Full Stack Developer</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>
@@ -41,7 +41,7 @@ const Team = () => {
 				</div>
 			</div>
 			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/tb1t30x/portfolio-removebg-preview.png" />
+				<img alt="" className="self-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/tb1t30x/portfolio-removebg-preview.png" />
 				<p className="text-xl font-semibold leading-tight">MD EMON HOSSAIN</p>
 				<p className="dark:text-gray-400">Full Stack Developer</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>
@@ -49,7 +49,7 @@ const Team = () => {
 				</div>
 			</div>
 			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/x7xnh9d/346100833-1623505491446830-2180982770906955503-n-removebg-preview-1.png" />
+				<img alt="" className="self-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/x7xnh9d/346100833-1623505491446830-2180982770906955503-n-removebg-preview-1.png" />
 				<p className="text-xl font-semibold leading-tight">MD Mohaiminul Islam</p>
 				<p className="dark:text-gray-400">Full Stack Developer</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>

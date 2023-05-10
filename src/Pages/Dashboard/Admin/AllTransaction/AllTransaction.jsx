@@ -12,7 +12,7 @@ const AllTransaction = () => {
 
   useEffect(() => {
     axios
-      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
+      .get(`http://localhost:5000/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -20,7 +20,7 @@ const AllTransaction = () => {
   const organizationTransactions = allTransaction.filter((transaction) => transaction.organization === userInfo?.organization)
 
   return (
-    <div>
+    <div className='overflow-x-auto'>
       <p className="text-xl font-bold text-[#ff8000] py-3">All Transaction</p>
       <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">

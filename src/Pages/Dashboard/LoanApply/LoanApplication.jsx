@@ -6,8 +6,7 @@ import Loader from './Loader';
 import LoanApplicationModal from './LoanApplicationModal';
 
 const LoanApplication = () => {
-  
-  const { user,userInfo } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const [loanApplied, setLoanApplied] = useState([]);
   console.log(loanApplied);
   const [details, setDetails] = useState(false)
@@ -16,7 +15,7 @@ const LoanApplication = () => {
     ["loanApplied", userInfo?.organization],
     async () => {
       const response = await fetch(
-        `https://organization-manager-server-main-jsarafath.vercel.app/loanApplication?Organizations=${userInfo.organization}`
+        `http://localhost:5000/loanApplication?Organizations=${userInfo.organization}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -42,21 +41,12 @@ const LoanApplication = () => {
   if (isLoading) {
     return <div className='text-black'> <Loader></Loader> </div>;
   }
-
-
-  
-  
-
-
-  const handleLoanDetails = (singleLoanData) => {
+const handleLoanDetails = (singleLoanData) => {
     setDetails(true)
     setDetailsMember(singleLoanData)
   }
-
-
-
   return (
-    <div>
+    <div className='overflow-x-auto'>
       <p className="text-xl  font-bold text-[#ff8000] py-3">All Loan Application</p>
       <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">

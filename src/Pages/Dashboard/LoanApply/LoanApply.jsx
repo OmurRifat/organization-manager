@@ -79,7 +79,7 @@ const LoanApply = () => {
         const NidPhoto = imgData.data.url
         const allLoanInformation = { NidPhoto,nidNo,dateOfBirth, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
         fetch(
-          'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
+          'http://localhost:5000/loanSystem',
           {
             method: 'POST',
             headers: {
@@ -232,7 +232,7 @@ const LoanApply = () => {
                       <p className="m-0">Drag your files here or click in this area Upload File Only .Png .Jpg .Jpeg </p>
                     </div>
                   </div>
-                  { imageUrl && <img src={ imageUrl } alt="Preview" className='h-64' /> }
+                  { imageUrl && <img src={ imageUrl } alt="Preview" className='md:h-64' /> }
                 </div>
               </div>
             </div>

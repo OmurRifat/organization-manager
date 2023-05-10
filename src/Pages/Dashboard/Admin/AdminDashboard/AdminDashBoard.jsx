@@ -19,38 +19,16 @@ const AdminDashboard = () => {
   console.log(userInfo?.email);
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
-  const [page, setPage] = useState(0);
-  const [size, setSize] = useState(5);
-  const [count, setCount] = useState(0);
-  const [userData, setUserData] = useState([]);
-  const pages = Math.ceil(count / size);
+
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
+      const res = await fetch('http://localhost:5000/users')
       const data = await res.json()
       return data;
     },
   });
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
-  //     const data = await res.json();
-  //     setUserData(data.users)
-  //     setCount(data.count)
-  //   }
-  //   fetchData()
-  //     .catch(console.error)
-
-  // }, [userInfo,page,size]);
-  
-
-
-    
-  //total verifiedUsers
-  // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
   const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
@@ -81,7 +59,7 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
+    fetch('http://localhost:5000/due-payment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,16 +72,7 @@ const AdminDashboard = () => {
       })
   }
 
-  // const styles = {
-  //   pageButton:{
-  //     padding: '8px 12px',
-  //     color: 'black',
-  //     background : 'white',
-  //     border : '1px solid gray'
-  //     // text-black bg-white border border-gray-300" 
-  //   }
-  // }
-
+ 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -188,7 +157,7 @@ const AdminDashboard = () => {
           <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={showModal}>
      Add Donation
       </Button>
-      <Modal className='' title="Please Enter  Month for adding !!!!" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal className='' title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
       <AddMonth></AddMonth>
       </Modal>
           <div className="flex justify-between items-center">

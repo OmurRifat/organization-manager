@@ -8,7 +8,7 @@ const AddMonth = () => {
   const { handleSubmit, register } = useForm();
 const { user, userInfo } = useContext(AuthContext);
   const handleAddMonth = (data) => {       
-  axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}` , data)
+  axios.post(`http://localhost:5000/add-donation?orgName=${userInfo?.organization}` , data)
   .then(res => {
   if(res.data){
     toast("Added Successfully")
@@ -20,7 +20,7 @@ const { user, userInfo } = useContext(AuthContext);
     <div>
      <form
         onSubmit={handleSubmit(handleAddMonth)}
-        className="shadow-lg p-10 rounded-2xl  gap-3 w-[85%] justify-between ml-[13%] bg-blue-100"
+        className=" p-10 rounded-2xl  gap-3 w-[85%] justify-between ml-[8%] "
       >
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
@@ -84,11 +84,11 @@ const { user, userInfo } = useContext(AuthContext);
             placeholder="Type amount"
             className="input input-bordered w-full max-w-lg"
            defaultValue='false'
-           disabled={true}
+         
           />
         </div>
         <button
-          className="btn lg:btn-success btn-primary"
+          className="btn lg:btn bg-green-300 pt-2 pb-2 rounded-md text-lg"
           type="submit"
         >
           Submit 

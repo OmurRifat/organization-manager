@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Header from "../Pages/Dashboard/Header/Header";
 import { FaUserCog } from "react-icons/fa";
 import { MdOutlineSettingsApplications } from "react-icons/md";
-
+import icon from '../assets/analytics.png'
 import { AuthContext } from "../context/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import useMember from "../hooks/useMember";
@@ -18,11 +18,27 @@ const DashboardLayout = () => {
     !(isAdmin || isMember) &&
     (window.location.pathname.includes("/dashboard/admin") ||
       window.location.pathname.includes("/dashboard/member"));
-
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleSideNav = () => setIsOpen((prevState) => !prevState);
+      const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+      const sidebarRef = useRef(null);
+    
+      useEffect(() => {
+        function handleClickOutside(event) {
+          if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+            setIsSideNavOpen(false);
+          }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, [sidebarRef]);
+    
+      function toggleSideNav() {
+        setIsSideNavOpen(!isSideNavOpen);
+      }
   return (
-    <div className="mx-10 ">
+    <div className="md:mx-10 mx-5">
+      <div>
       <button
         onClick={toggleSideNav}
         data-drawer-target="cta-button-sidebar"
@@ -46,10 +62,12 @@ const DashboardLayout = () => {
           ></path>
         </svg>
       </button>
-
       <aside
+        ref={sidebarRef}
         id="cta-button-sidebar"
-        className="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full  sm:translate-x-0"
+        className={`fixed top-0 left-0 z-40 w-72 h-screen transition-transform ${
+          isSideNavOpen ? 'translate-x-0' : '-translate-x-full'
+        } sm:translate-x-0`}
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-[#D7E9E7] dark:bg-gray-800">
@@ -77,6 +95,7 @@ const DashboardLayout = () => {
                     <>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -93,8 +112,10 @@ const DashboardLayout = () => {
                           <span className="ml-3">Dashboard</span>
                         </Link>
                       </li>
+                      
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/all-member"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -119,6 +140,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/verification"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -144,6 +166,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/transactions"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -169,6 +192,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/LoanApplication"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -181,6 +205,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/settings"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -217,6 +242,7 @@ const DashboardLayout = () => {
                   <>
                     <li>
                       <Link
+                      onClick={() => setIsSideNavOpen(false)}
                         to="/dashboard/member"
                         className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
@@ -235,6 +261,7 @@ const DashboardLayout = () => {
                     </li>
                     <li>
                       <Link
+                      onClick={() => setIsSideNavOpen(false)}
                         to="/dashboard/member/settings"
                         className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
@@ -254,6 +281,7 @@ const DashboardLayout = () => {
                     </li>
                     <li>
                       <Link
+                      onClick={() => setIsSideNavOpen(false)}
                         to="/dashboard/member/myLoan"
                         className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
@@ -269,6 +297,7 @@ const DashboardLayout = () => {
             </>
           )}
         </div>
+
       </aside>
       <div className=" sm:ml-64">
         <Header></Header>
@@ -276,6 +305,12 @@ const DashboardLayout = () => {
           <Outlet></Outlet>
         </div>
       </div>
+    </div>
+     
+    
+        
+     
+      
     </div>
   );
 };

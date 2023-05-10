@@ -15,7 +15,7 @@ const Verification = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['foodItems'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
+      const res = await fetch('http://localhost:5000/users')
       const data = await res.json()
       return data
     },
@@ -29,7 +29,7 @@ const Verification = () => {
   }
 
   return (
-    <div>
+    <div className='overflow-x-auto'>
       <p className="text-xl font-bold text-[#ff8000] py-3">Member Request</p>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         { organizationMembers.length > 0 ? (

@@ -14,7 +14,7 @@ const AllMember = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
+      const res = await fetch('http://localhost:5000/users')
       const data = await res.json()
       return data
     },
@@ -28,8 +28,8 @@ const AllMember = () => {
   const organizationMembers = members.filter(member => member.organization === userInfo?.organization && member.verified === true)
 
   return (
-    <div>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div className='overflow-x-auto'>
+      <table className="w-full text-sm text-left overflow-x-auto text-gray-500 dark:text-gray-400">
         { organizationMembers.length > 0 ? (
           <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
