@@ -38,7 +38,7 @@ const MyLoan = () => {
   }
   return (
     <div>
-      <div>
+      <div className='overflow-y-auto'>
         <p className="text-xl font-bold text-[#ff8000] py-3">My Loan Application</p>
         <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
