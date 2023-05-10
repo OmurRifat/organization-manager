@@ -18,9 +18,8 @@ const Profile = () => {
           />
         </div>
         <div className="text-right">
-          <Link to='/dashboard/editprofile' type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-8">Edit
+          <Link to='/dashboard/editprofile' type="button" className="text-white bg-gradient-to-r from-gray-500 via-gray-600 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-8">Edit
           </Link>
-
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <tbody>
