@@ -84,7 +84,7 @@ const UpcommingEvents = () => {
                   type="button"
                   className="text-white bg-gray-600 hover:text-white focus:ring-4  font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 "
                 >
-                  View Organizations
+                  View ALL Events
 
                 </Link>
             </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SingleNews from "./SingleNews";
+import { useReviewGetQuery } from "../../../features/reviews/reviewApi";
 
 const AllNews = () => {
   const [news, setNews] = useState([]);

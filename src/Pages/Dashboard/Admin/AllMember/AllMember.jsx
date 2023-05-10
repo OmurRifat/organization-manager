@@ -95,8 +95,8 @@ const AllMember = () => {
                   >
                     View Details
                   </button> }
-                  { details && 
-                  <DetailsModal setDetails={ setDetails } member={ detailsMember } /> }
+                  { details &&
+                    <DetailsModal setDetails={ setDetails } member={ detailsMember } /> }
                 </td>
               </tr>
             )) }

@@ -8,13 +8,14 @@ import { DatePicker } from 'antd'
 
 
 const LoanApply = () => {
+ 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
 
   const [showModal, setShowModal] = useState(false)
 
   const [imageUrl, setImageUrl] = useState("https://gumlet.assettype.com/bdnews24-english%2Fimport%2Fmedia%2F2015%2F06%2F01%2Fsmart-card.jpg?auto=format%2Ccompress&fmt=webp&format=webp&w=768");
-  const { user,userInfo } = useContext(AuthContext);
-  
+  const { user, userInfo } = useContext(AuthContext);
+
   function handleImageUpload(event) {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -72,7 +73,7 @@ const LoanApply = () => {
       .then((res) => res.json())
       .then((imgData) => {
         const NidPhoto = imgData.data.url
-        const allLoanInformation = { NidPhoto,nidNo,dateOfBirth, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
+        const allLoanInformation = { NidPhoto, nidNo, dateOfBirth, userEmail, LoanAmount, Organizations, durationMonth, userInfos }
         fetch(
           'https://organization-manager-server-main-jsarafath.vercel.app/loanSystem',
           {
@@ -95,100 +96,100 @@ const LoanApply = () => {
       <p className="text-2xl text-[#2A9D8F] text-center">
         Apply for an Interest Free Loan
       </p>
-     <form onSubmit={ handleSubmit(onSubmit) }>
-     <div className="grid lg:grid-cols-2  grid-cols-1">
-        <div className="m-5">
-          <p className="text-base m-3 text-[#2A9D8F] font-medium">Duration</p>
-          <div>
-          <div className="flex items-center m-4 mb-4">
-            <input
-              id="threeM"
-              type="radio"
-              value={3}
-              required
-              { ...register('threeM') }
-              name="default-radio"
-              onChange={handleDuration}
-              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              htmlFor="threeM"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              3 Months
-            </label>
-          </div>
-          <div className="flex m-4 items-center">
-            <input
-              id="fourM"
-              type="radio"
-              value={4}
-              required
-              { ...register('fourM') }
-              onChange={handleDuration}
-              name="default-radio"
-              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              htmlFor="fourM"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              4 Months
-            </label>
-          </div>
-          <div className="flex items-center m-4 mb-4">
-            <input
-              id="sixM"
-              type="radio"
-              value={6}
-              { ...register('sixM') }
-              onChange={handleDuration}
-              name="default-radio"
-              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              htmlFor="sixM"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              6 Months
-            </label>
-          </div>
-          <div className="flex items-center m-4 mb-4">
-            <input
-              id="nineM"
-              type="radio"
-              value={9}
-              { ...register('nineM') }
-              onChange={handleDuration}
-              name="default-radio"
-              className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b]dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              htmlFor="nineM"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              9 Month
-            </label>
-          </div>
-          </div>
-          <div>
-         <div className='my-5'>
-         <span className='text-[#2A9D8F] text-base font-semibold' >Type 17 Digit or 10 digit NID No</span>
-         <p className='alerts mt-3 text-red-600'>{ errors.nidNo?.message }</p>
-          <input
-              type="number"
-              id="nidNo"
-              {...register("nidNo", { required: "NID No is required", minLength: { value: 10, message: "Smart Nid No Will 10 character" }, maxLength: { value: 17, message: "Nid No Cannot be Exist 17 " } })}
-              name="nidNo"
-              required
-              className="w-full h-7 text-black bg-white rounded-md focus:no-underline ring-0 focus:ring-white"
-            />                  
-         </div>
-         <div className='my-5 text-black'>
-         <span className='text-[#2A9D8F] text-base  font-semibold' >Date Of Birth</span>
-         <DatePicker
-         className='w-full mt-3' selected={startDate} onChange={(date) => setStartDate(date)} />
-         </div>
+      <form onSubmit={ handleSubmit(onSubmit) }>
+        <div className="grid lg:grid-cols-2  grid-cols-1">
+          <div className="m-5">
+            <p className="text-base m-3 text-[#2A9D8F] font-medium">Duration</p>
+            <div>
+              <div className="flex items-center m-4 mb-4">
+                <input
+                  id="threeM"
+                  type="radio"
+                  value={ 3 }
+                  required
+                  { ...register('threeM') }
+                  name="default-radio"
+                  onChange={ handleDuration }
+                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="threeM"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  3 Months
+                </label>
+              </div>
+              <div className="flex m-4 items-center">
+                <input
+                  id="fourM"
+                  type="radio"
+                  value={ 4 }
+                  required
+                  { ...register('fourM') }
+                  onChange={ handleDuration }
+                  name="default-radio"
+                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="fourM"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  4 Months
+                </label>
+              </div>
+              <div className="flex items-center m-4 mb-4">
+                <input
+                  id="sixM"
+                  type="radio"
+                  value={ 6 }
+                  { ...register('sixM') }
+                  onChange={ handleDuration }
+                  name="default-radio"
+                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="sixM"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  6 Months
+                </label>
+              </div>
+              <div className="flex items-center m-4 mb-4">
+                <input
+                  id="nineM"
+                  type="radio"
+                  value={ 9 }
+                  { ...register('nineM') }
+                  onChange={ handleDuration }
+                  name="default-radio"
+                  className="w-4 h-4 text-[#54928b] bg-gray-100 border-gray-300 focus:ring-[#54928b] dark:focus:ring-[#54928b]dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  htmlFor="nineM"
+                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  9 Month
+                </label>
+              </div>
+            </div>
+            <div>
+              <div className='my-5'>
+                <span className='text-[#2A9D8F] text-base font-semibold' >Type 17 Digit or 10 digit NID No</span>
+                <p className='alerts mt-3 text-red-600'>{ errors.nidNo?.message }</p>
+                <input
+                  type="number"
+                  id="nidNo"
+                  {...register("nidNo", { required: "NID No is required", minLength: { value: 10, message: "Smart Nid No Will 10 character" }, maxLength: { value: 17, message: "Nid No Cannot be Exist 17 " } })}
+                  name="nidNo"
+                  required
+                  className="w-full h-7 text-black bg-white rounded-md focus:no-underline ring-0 focus:ring-white"
+                />
+              </div>
+              <div className='my-5 text-black'>
+                <span className='text-[#2A9D8F] text-base  font-semibold' >Date Of Birth</span>
+                <DatePicker className='w-full mt-3' selected={ startDate } onChange={ (date) => setStartDate(date) } />
+
+              </div>
             </div>
             {/* Nid */ }
             <div>
