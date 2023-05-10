@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import { Link } from "react-router-dom";
 
@@ -8,20 +7,19 @@ const Profile = () => {
   const { user,userInfo } = useContext(AuthContext);
   
   return (
-    <div className="flex justify-center m-3">
-      <div className="rounded-3xl overflow-hidden  shadow-2xl w-2/3  my-15 ">
+    <div className="flex justify-center ">
+      <div className="rounded-3xl overflow-hidden  shadow-2xl my-15 ">
         <img src="https://i.ibb.co/NFWqVcK/Frame-1171275325.png" className="w-full h-40" alt=""/>
         <div className="flex justify-center -mt-32">
           <img
             src={ user.photoURL }
-            className="rounded-full w-48 border-red-3 h-48 -mt-3"
+            className="rounded-full md:w-48 w-28 h-28 border-red-3 md:h-48 -mt-3"
             alt=""
           />
         </div>
         <div className="text-right">
-          <Link to='/dashboard/editprofile' type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit
+          <Link to='/dashboard/editprofile' type="button" className="text-white bg-gradient-to-r from-gray-500 via-gray-600 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-8">Edit
           </Link>
-
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <tbody>
