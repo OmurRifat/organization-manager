@@ -36,18 +36,9 @@ const About = () => {
   }, [])
 
   return (
-
-
-    <div id='organization'>
-
+    <div className='mx-10' id='organization'>
       {/* <---------------About Part-------------> */ }
       <div className=" flex justify-center items-center pb-4 md:pb-0 bg-white  sm:flex ">
-
-      
-
-
-
-
         <img className="h-36" src="https://i.ibb.co/QHjcc5v/Screenshot-2023-03-31-100804-removebg-preview.png" alt="" />
         <div className="font-medium text-gray-800">
           <div className="text-2xl">{ organizations.length }+</div>
