@@ -29,7 +29,7 @@ const GoToTop = () => {
     return (
         <>
             {visible &&
-            <div className='top-btn animate-bounce right-3 drop-shadow-2xl backdrop-blur-xl bottom-1 fixed flex items-center justify-center cursor-pointer mb-4 rounded-3xl w-12 h-12 bg-[#4f9f96]' onClick={goToBtn}>
+            <div className='top-btn animate-bounce right-3  drop-shadow-2xl backdrop-blur-xl bottom-1 fixed flex items-center justify-center cursor-pointer mb-4 md:mr-0 mr-10 rounded-3xl w-12 h-12 bg-[#4f9f96]' onClick={goToBtn}>
             <FaArrowUp className='text-xl'></FaArrowUp>
         </div>
         }

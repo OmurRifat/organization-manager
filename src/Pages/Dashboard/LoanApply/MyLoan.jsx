@@ -38,7 +38,7 @@ const MyLoan = () => {
   }
   return (
     <div>
-      <div>
+      <div className='overflow-y-auto'>
         <p className="text-xl font-bold text-[#ff8000] py-3">My Loan Application</p>
         <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
@@ -126,12 +126,7 @@ const MyLoan = () => {
                   {
                     details && <MyLoanModal setDetails={ setDetails } loan={ detailsMember }  ></MyLoanModal>
                   }
-                  {/* {loan?.loan === 'accepted' ?  (
-    <span className='bg-red-500 text-white p-3 my-80 rounded-lg text-base'  >
-      Day :  
-      <Countdown date={new Date(loan?.endDate)} />
-    </span>
-  ) : <span>Your Loan Not Accept by Admin</span> } */}
+                  
 </td>
                   </tr>
                 </tbody>
