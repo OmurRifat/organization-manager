@@ -8,12 +8,7 @@ import { DatePicker } from 'antd'
 
 
 const LoanApply = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
 
   const [showModal, setShowModal] = useState(false)
 
@@ -183,7 +178,7 @@ const LoanApply = () => {
           <input
               type="number"
               id="nidNo"
-              { ...register("nidNo") }
+              {...register("nidNo", { required: "NID No is required", minLength: { value: 10, message: "Smart Nid No Will 10 character" }, maxLength: { value: 17, message: "Nid No Cannot be Exist 17 " } })}
               name="nidNo"
               required
               className="w-full h-7 text-black bg-white rounded-md focus:no-underline ring-0 focus:ring-white"
@@ -191,8 +186,8 @@ const LoanApply = () => {
          </div>
          <div className='my-5 text-black'>
          <span className='text-[#2A9D8F] text-base  font-semibold' >Date Of Birth</span>
-         <DatePicker className='w-full mt-3' selected={startDate} onChange={(date) => setStartDate(date)} />
-
+         <DatePicker
+         className='w-full mt-3' selected={startDate} onChange={(date) => setStartDate(date)} />
          </div>
             </div>
             {/* Nid */ }

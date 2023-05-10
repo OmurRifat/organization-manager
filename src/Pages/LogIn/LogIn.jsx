@@ -12,7 +12,6 @@ import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'fir
 const LogIn = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
   const auth = getAuth();
-
   const styles = {
     bg: {
       background: "radial-gradient(50% 127.87% at 50% 50%, #65C4B8 0%, rgba(217, 217, 217, 0) 100%)"
@@ -24,14 +23,9 @@ const LogIn = () => {
   }
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
-
-
-  
-
   const onSubmit = data => {
     loginUser(data.email, data.password).then(res => {
       const user = res.user;
-      console.log(user);
       if (user.uid) {
         navigate(from, { replace: true });
         toast.success("You Have Successfully Signed In!")
@@ -73,26 +67,9 @@ const LogIn = () => {
                     >
                       Email
                     </label>
-                    {/* <input
-                      type="email"
-                      onBlur={handleonBlur}
-                      name='name'
-                      
-                      { ...register("email", {
-                        required: "Please Enter Your Email!",
-
-                      }) }
-                     
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Email address"
-                      required
-                    /> */}
                      <input  type="email"
-                       
                       { ...register("email", {
-                       
                         required: "Please Enter Your Email!",
-
                       }) }
                        name='email' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="Email Address"
                required />
