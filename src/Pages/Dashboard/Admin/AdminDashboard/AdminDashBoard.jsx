@@ -24,7 +24,7 @@ const AdminDashboard = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data;
     },
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
       })
   }
 
- 
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -154,14 +154,14 @@ const AdminDashboard = () => {
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <p className='flex justify-start text-black font-bold'>Donation History</p>
 
-          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={showModal}>
-     Add Donation
-      </Button>
-      <Modal className='' title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-      <AddMonth></AddMonth>
-      </Modal>
+          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={ showModal }>
+            Add Donation
+          </Button>
+          <Modal className='' title="" open={ isModalOpen } onOk={ handleOk } onCancel={ handleCancel }>
+            <AddMonth></AddMonth>
+          </Modal>
           <div className="flex justify-between items-center">
-            
+
 
             <div
               id="dropdownAction"

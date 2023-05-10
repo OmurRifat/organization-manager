@@ -6,14 +6,14 @@ import Countdown from 'react-countdown';
 import MyLoanModal from './MyLoanModal';
 
 const MyLoan = () => {
-  const { user,userInfo } = useContext(AuthContext)
+  const { user, userInfo } = useContext(AuthContext)
   const [details, setDetails] = useState(false)
   const [detailsMember, setDetailsMember] = useState({})
   const { isLoading, isError, data: myLoan } = useQuery(
     ["myLoan", user?.email],
     async () => {
       const response = await fetch(
-        `http://localhost:5000/myLoan?userEmail=${user?.email}`
+        `https://organization-manager-server-main-jsarafath.vercel.app/myLoan?userEmail=${user?.email}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -64,7 +64,7 @@ const MyLoan = () => {
                 Action
               </th>
               <th scope="col" className="px-6 py-3">
-               Loan Payment Due Time
+                Loan Payment Due Time
               </th>
             </tr>
           </thead>
@@ -96,38 +96,38 @@ const MyLoan = () => {
 
                     <td className="px-6">
 
-{ loan?.loan === "accepted" ? <span
+                      { loan?.loan === "accepted" ? <span
 
-  className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
->
-  Accepted
-</span> :
-  loan?.loan === "rejected" ? <span className="text-red-900 mx-2  bg-gradient-to-r font-medium  bg-red-200 text-center text-xs px-2 py-1 rounded "
-  >
-    Rejected
-  </span> :
-    <><span
-      className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
-    >
-      Pending
-    </span></> }
-</td>
+                        className="text-green-900 mx-2  bg-gradient-to-r font-medium  bg-green-200 text-center text-xs px-2 py-1 rounded"
+                      >
+                        Accepted
+                      </span> :
+                        loan?.loan === "rejected" ? <span className="text-red-900 mx-2  bg-gradient-to-r font-medium  bg-red-200 text-center text-xs px-2 py-1 rounded "
+                        >
+                          Rejected
+                        </span> :
+                          <><span
+                            className="text-white mx-2  bg-gradient-to-r font-medium hover:bg-green-600 bg-green-500 text-center text-xs px-2 py-1 rounded"
+                          >
+                            Pending
+                          </span></> }
+                    </td>
 
 
 
 
 
                     <td className="pl-6">
-                    {
-                  loan &&  <button 
-                  onClick={ () =>  handleLoanDetails(loan) }
-                  className=' text-white bg-gradient-to-r from-green-400 via-green-500 font-semibold to-green-600 hover:bg-gradient-to-br  text-xs px-2 py-1 rounded'>Application Details</button>
-                 }
-                  {
-                    details && <MyLoanModal setDetails={ setDetails } loan={ detailsMember }  ></MyLoanModal>
-                  }
-                  
-</td>
+                      {
+                        loan && <button
+                          onClick={ () => handleLoanDetails(loan) }
+                          className=' text-white bg-gradient-to-r from-green-400 via-green-500 font-semibold to-green-600 hover:bg-gradient-to-br  text-xs px-2 py-1 rounded'>Application Details</button>
+                      }
+                      {
+                        details && <MyLoanModal setDetails={ setDetails } loan={ detailsMember }  ></MyLoanModal>
+                      }
+
+                    </td>
                   </tr>
                 </tbody>
               )) }</>

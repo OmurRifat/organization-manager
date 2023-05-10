@@ -27,7 +27,7 @@
 //       month: item?.month,
 //     }
 
-//     fetch('http://localhost:5000/due-payment', {
+//     fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
 //       method: 'POST',
 //       headers: {
 //         'content-type': 'application/json',
@@ -37,7 +37,7 @@
 //       .then((res) => res.json())
 //       .then((data) => {
 //         fetch(
-//           `http://localhost:5000/update-donation?email=${user.email}&month=${item.month}`,
+//           `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
 //           {
 //             method: 'PUT',
 //           },
@@ -55,7 +55,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get(`http://localhost:5000/all-transaction`)
+//       .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
 //       .then((data) => setAllTransaction(data.data))
 //   }, [])
 
@@ -65,7 +65,7 @@
 
 //   useEffect(() => {
 //     const fetchData = async () => {
-//       const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+//       const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
 //       const data = await res.json();
 //       setDonation(data[0].donation);
 //     }
@@ -274,10 +274,10 @@
 //                   </td> }
 //                 </tr>
 
-                
+
 //               )) }
-         
-         
+
+
 //          { userInfo &&
 //               data?.map((item) => (
 //                 <tr
@@ -304,7 +304,7 @@
 //                       <span className='text-red-600 font-semibold'>Due</span>
 //                     ) }
 //                   </td>
-                 
+
 //                     <td className="px-6 ">
 //                       <button
 //                         onClick={ () => handlePayment(item) }
@@ -314,16 +314,16 @@
 //                         Pay
 //                       </button>
 //                     </td>
-                 
-                
+
+
 //                 </tr>
 
-                
+
 //               )) }
 
 //           </tbody>
-       
-          
+
+
 //         </table>
 //       </div>
 //       {/* <div className="flex justify-between items-center  mx-5">
@@ -538,7 +538,7 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([]);
   const [allTransaction, setAllTransaction] = useState([]);
 
-  
+
 
   const handlePayment = (item) => {
     const paymentInfo = {
@@ -551,7 +551,7 @@ const MemberDashboard = () => {
       month: item?.month,
     }
 
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -561,7 +561,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `http://localhost:5000/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
           {
             method: 'PUT',
           },
@@ -579,7 +579,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -589,7 +589,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
       const data = await res.json();
       setDonation(data[0].donation);
     }
@@ -598,12 +598,12 @@ const MemberDashboard = () => {
 
   }, [user?.email]);
 
- 
 
 
-    // if(donation.verified === false){
-      // const verified = donation.donation.map(d => d.amount === 0)
-    // }
+
+  // if(donation.verified === false){
+  // const verified = donation.donation.map(d => d.amount === 0)
+  // }
 
   const dueCalculation = () => {
     donation?.map((d) => {
@@ -638,7 +638,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Want to take Loan?</p>
-         {userInfo?.verified === true &&  <Link to="/dashboard/apply-loan">
+          { userInfo?.verified === true && <Link to="/dashboard/apply-loan">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -647,7 +647,7 @@ const MemberDashboard = () => {
             >
               Apply
             </button>
-          </Link>}
+          </Link> }
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
           <img
@@ -657,7 +657,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Due</p>
-          {userInfo?.verified === true && <button
+          { userInfo?.verified === true && <button
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
             onClick={ () => setPayModal(true) }
@@ -665,7 +665,7 @@ const MemberDashboard = () => {
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             { totalDue } BDT
-          </button>}
+          </button> }
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
           <img
@@ -675,22 +675,22 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Donation</p>
-          {userInfo?.verified === true && <button
+          { userInfo?.verified === true && <button
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             { totalDonations } BDT
-          </button>}
+          </button> }
         </div>
       </div>
 
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          {userInfo?.verified === true && <p className='text-black font-semibold'>Donation History</p>}
+          { userInfo?.verified === true && <p className='text-black font-semibold'>Donation History</p> }
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          {userInfo?.verified === true && <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
+          { userInfo?.verified === true && <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Month
@@ -709,7 +709,7 @@ const MemberDashboard = () => {
               </th>
               <th scope="col" className="px-6 py-3"></th>
             </tr>
-          </thead>}
+          </thead> }
           <tbody>
             { userInfo?.verified === true ?
               userInfo?.donation?.map((item) => (
@@ -737,7 +737,7 @@ const MemberDashboard = () => {
                       <span className='text-red-600 font-semibold'>Due</span>
                     ) }
                   </td>
-                  { item?.status ==='false' ? (
+                  { item?.status === 'false' ? (
                     <td className="px-6 ">
                       <button
                         onClick={ () => handlePayment(item) }
@@ -757,7 +757,7 @@ const MemberDashboard = () => {
                     </button>
                   </td> }
                 </tr>
-              )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with {userInfo?.organization} under review, you will be notified soon</td></tr>}
+              )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with { userInfo?.organization } under review, you will be notified soon</td></tr> }
           </tbody>
         </table>
       </div>
