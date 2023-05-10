@@ -33,7 +33,7 @@ const Team = () => {
 				</div>
 			</div>
 			<div className="flex flex-col justify-center m-8 text-center">
-				<img alt="" className="self-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.ibb.co/yPFqDHJ/profile-1.jpg" />
+				<img alt="" className="self-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex-shrink-0 w-24 h-24 mb-4 bg-center bg-cover rounded-full " src="https://i.ibb.co/Z8WrnLz/profile-1-removebg-preview.png" />
 				<p className="text-xl font-semibold leading-tight">Md Abdur Rouf Likhon</p>
 				<p className="dark:text-gray-400">Full Stack Developer</p>
 				<div className='flex justify-center gap-4 text-xl mt-2'>
