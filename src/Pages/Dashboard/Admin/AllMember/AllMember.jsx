@@ -86,7 +86,7 @@ const AllMember = () => {
                   { member?.name }
                 </td>
                 <td className="px-6 ">{ member?.phone }</td>
-                <td className="px-6  text-[orange]">{ member?.joiningDate }</td>
+                <td className="px-6  text-[orange]">{ member?.joiningDate.slice(0, 10) }</td>
                 <td className="px-6 ">
                   { member && <button
                     onClick={ () => handleDetails(member) }
