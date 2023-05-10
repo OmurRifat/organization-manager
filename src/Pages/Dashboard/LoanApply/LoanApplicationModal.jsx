@@ -9,7 +9,7 @@ const LoanApplicationModal = ({setDetails,loan, refetch, loanApplied}) => {
     const durationInMs = loanApplied.find(obj => obj._id === id).durationMonth * 30 * 24 * 60 * 60 * 1000;
     const endDate = new Date(Date.now() + durationInMs);
   console.log(endDate);
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/accept/${id}`, {
+    fetch(`http://localhost:5000/accept/${id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const LoanApplicationModal = ({setDetails,loan, refetch, loanApplied}) => {
   
   
   const handleReject = (id) => {
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/reject/${id}`, {
+    fetch(`http://localhost:5000/reject/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
