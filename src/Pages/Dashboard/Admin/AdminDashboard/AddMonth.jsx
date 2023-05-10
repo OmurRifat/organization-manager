@@ -34,18 +34,18 @@ const { user, userInfo } = useContext(AuthContext);
             className="select select-bordered w-full max-w-lg"
           >
             <option disabled>Select Month</option>
-            <option>January</option>
-            <option>February</option>
-            <option>March</option>
-            <option>April</option>
-            <option>May</option>
-            <option>June</option>
-            <option>July</option>
-            <option>August</option>
-            <option>September</option>
-            <option>October</option>
-            <option>November</option>
-            <option>December</option>
+            <option>January - 2023</option>
+            <option>February - 2023</option>
+            <option>March - 2023</option>
+            <option>April - 2023</option>
+            <option>May - 2023</option>
+            <option>June - 2023</option>
+            <option>July - 2023</option>
+            <option>August - 2023</option>
+            <option>September - 2023</option>
+            <option>October - 2023</option>
+            <option>November - 2023</option>
+            <option>December - 2023</option>
           </select>
         </div>
         <div className="form-control">
