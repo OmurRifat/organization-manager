@@ -12,6 +12,7 @@ const AddMonth = () => {
       .then(res => {
         if (res.data) {
           toast("Added Successfully")
+          console.log(res.data);
         }
       })
       .catch(err => console.log(err))
