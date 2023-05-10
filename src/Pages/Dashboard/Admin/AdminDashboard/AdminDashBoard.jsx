@@ -13,11 +13,7 @@ const AdminDashboard = () => {
   const { user, userInfo } = useContext(AuthContext)
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
-  const [page, setPage] = useState(0);
-  const [size, setSize] = useState(5);
-  const [count, setCount] = useState(0);
-  const [userData, setUserData] = useState([]);
-  const pages = Math.ceil(count / size);
+
 
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
@@ -27,22 +23,6 @@ const AdminDashboard = () => {
       return data
     },
   });
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(`http://localhost:5000/users/getpage/${userInfo?.organization}?page=${page}&size=${size}`);
-  //     const data = await res.json();
-  //     setUserData(data.users)
-  //     setCount(data.count)
-  //   }
-  //   fetchData()
-  //     .catch(console.error)
-
-  // }, [userInfo,page,size]);
-
-
-  //total verifiedUsers
-  // const verifiedUsers = userData.filter(u => u.organization === userInfo?.organization && u.verified === true);
 
   const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
@@ -82,17 +62,7 @@ const AdminDashboard = () => {
       })
   }
 
-  // const styles = {
-  //   pageButton:{
-  //     padding: '8px 12px',
-  //     color: 'black',
-  //     background : 'white',
-  //     border : '1px solid gray'
-  //     // text-black bg-white border border-gray-300" 
-  //   }
-  // }
-
-
+ 
 
   return (
     <>

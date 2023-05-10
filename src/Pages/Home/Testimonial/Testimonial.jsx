@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiDonateHeart } from "react-icons/bi";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Carousel from "react-multi-carousel";
-import { Link } from "react-router-dom";
-import donate from "../../../assets/donate.png";
-import people from "../../../assets/people.png";
-import cap from "../../../assets/cap.png";
+import axios from "axios";
 
 const responsive = {
+
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
@@ -28,6 +26,10 @@ const responsive = {
 };
 
 const Review = () => {
+
+  const [reviews,setReviews] = useState([])
+
+
   const styleObject = {
     h3: {
       
@@ -50,6 +52,15 @@ const Review = () => {
       backgroundColor: "#2A9D8F",
     },
   };
+
+
+  useEffect(()=>{
+    fetch('http://localhost:5000/reviews')
+    .then(res => res.json())
+    .then(data => setReviews(data))
+  },[reviews])
+
+
   return (
     <>
       <div className="text-center px-3 md:px-0 pt-20 pb-16">
@@ -86,64 +97,28 @@ const Review = () => {
          
           className="mb-10 pb-12 mx-auto"
         >
+
+
+
+
           {/* card----->1 */}
-          <div className=" pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
+          {reviews?.map(review => <div key={review._id} className="pl-4 mr-4 pt-4 h-96 mx-auto bg-white border border-gray-200 rounded-lg shadow ">
             <div
-              style={styleObject.secondary}
-              className="w-16 mb-5 h-16 flex justify-center items-center "
+              className="w-15 pt-8 mb-4 h-15 flex justify-center items-center "
             >
               <img
-                src={donate}
-                width={20}
-                height={20}
+                src={review.image}
+                width={60}
+                height={60}
+                className="rounded-full"
                 alt="picture of the client"
               />
             </div>
 
-            <p className=" font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
-              You can help by donating for planting, maintenance, seeds and
-              other operational
+            <p className="font-normal mx-auto text-gray-500 dark:text-gray-400 text-justify max-w-[300px]">
+              {review.review}
             </p>
-          </div>
-          {/* card----->2 */}
-          <div className="pl-4 mr-4 pt-4 h-72   bg-white border border-gray-200 rounded-lg shadow ">
-            <div
-              style={{ backgroundColor: "#2A9D8F", marginBottom: "20px" }}
-              className="w-16 h-16 flex justify-center items-center "
-            >
-              <img
-                src={people}
-                width={20}
-                height={20}
-                alt="picture of the client"
-              />
-            </div>
-
-            <p className="  font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
-              You can help grow by becoming our volunteer. You can directly
-              plant trees, help with gardening, do outreach and other
-              interesting programs
-            </p>
-          </div>
-          {/* card----->3 */}
-          <div className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
-            <div
-              style={{ backgroundColor: "#2A9D8F", marginBottom: "20px" }}
-              className="w-16 h-16 flex justify-center items-center "
-            >
-              <img
-                src={cap}
-                width={20}
-                height={20}
-                alt="picture of the client"
-              />
-            </div>
-
-            <p className="font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
-              You will learn about how to plant trees, care for trees and other
-              things by joining as a farmer
-            </p>
-          </div>
+          </div>)}
         </Carousel>
       </div>
     </>

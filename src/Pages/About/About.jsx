@@ -87,13 +87,13 @@ const About = () => {
               </div>
             </div>
           </div>
-          <br></br>
+          
         </div>
 
 
         {/* <------------------------------> */ }
         <div style={ styleObject.bgcolor } className=" sm:p-8 manPowerTxt rounded angle">
-          <div className="justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 p-5">
+          <div className="justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <div style={ styleObject.bgcolor } className="sm:w-auto pl-8  bg-white  focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center  manPowerTxt">
               <div className="text-left pr-5">
                 <p
@@ -106,7 +106,7 @@ const About = () => {
                   We Will Manage Your Man-Power Carefully
                 </h1>
 
-                <div style={ styleObject.bgcolor } className="flex justify-between items-center bg-white sm:flex">
+                <div style={ styleObject.bgcolor } className="flex justify-between items-center bg-white">
                   <div className="font-medium text-gray-800">
                     <div className="text-2xl text-gray-700">{ users.length }+</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Members</div>
@@ -117,12 +117,12 @@ const About = () => {
                   </div>
                   <br></br>
                 </div>
-                <br></br>
-                <p className="text-base font-normal text-gray-500 mb-5 dark:text-gray-400">
+                
+                <p className="text-base font-normal max-w-xs text-justify mt-3 text-gray-500 mb-5 dark:text-gray-400">
                   15.3 billion trees are cut down every year in the
-                  <br></br>world and 14.7 hectares of forest land is lost in
-                  <br></br>Indonesia. This causes the earth to become
-                  <br></br> unstable and we invite you to join us and achieve a common goal
+                  world and 14.7 hectares of forest land is lost in
+                  Indonesia. This causes the earth to become
+                   unstable and we invite you to join us and achieve a common goal
                 </p>
 
                 <Link

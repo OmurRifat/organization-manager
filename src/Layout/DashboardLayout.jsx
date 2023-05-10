@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import Header from "../Pages/Dashboard/Header/Header";
 import { FaUserCog } from "react-icons/fa";
 import { MdOutlineSettingsApplications } from "react-icons/md";
-
+import icon from '../assets/analytics.png'
 import { AuthContext } from "../context/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import useMember from "../hooks/useMember";
@@ -93,6 +93,7 @@ const DashboardLayout = () => {
                           <span className="ml-3">Dashboard</span>
                         </Link>
                       </li>
+                      
                       <li>
                         <Link
                           to="/dashboard/admin/all-member"
