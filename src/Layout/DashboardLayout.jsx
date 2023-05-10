@@ -95,7 +95,7 @@ const DashboardLayout = () => {
                     <>
                       <li>
                         <Link
-                        
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -114,6 +114,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/all-member"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -138,6 +139,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/verification"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -163,6 +165,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/transactions"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -188,6 +191,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/LoanApplication"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -200,6 +204,7 @@ const DashboardLayout = () => {
                       </li>
                       <li>
                         <Link
+                        onClick={() => setIsSideNavOpen(false)}
                           to="/dashboard/admin/settings"
                           className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
@@ -255,6 +260,7 @@ const DashboardLayout = () => {
                     </li>
                     <li>
                       <Link
+                      onClick={() => setIsSideNavOpen(false)}
                         to="/dashboard/member/settings"
                         className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
@@ -274,6 +280,7 @@ const DashboardLayout = () => {
                     </li>
                     <li>
                       <Link
+                      onClick={() => setIsSideNavOpen(false)}
                         to="/dashboard/member/myLoan"
                         className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
