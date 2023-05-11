@@ -291,6 +291,18 @@ const DashboardLayout = () => {
                         </span>
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                      onClick={() => setIsSideNavOpen(false)}
+                        to="/dashboard/member/add-review"
+                        className="flex items-center p-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <MdOutlineSettingsApplications className="w-6 h-6"></MdOutlineSettingsApplications>
+                        <span className="flex-1 ml-3 whitespace-nowrap">
+                         Add Review
+                        </span>
+                      </Link>
+                    </li>
                   </>
                 )}
               </ul>{" "}

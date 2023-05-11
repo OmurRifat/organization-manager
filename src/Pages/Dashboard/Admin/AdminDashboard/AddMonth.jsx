@@ -6,16 +6,15 @@ import { AuthContext } from '../../../../context/AuthProvider';
 
 const AddMonth = () => {
   const { handleSubmit, register } = useForm();
-  const { user, userInfo } = useContext(AuthContext);
-  const handleAddMonth = (data) => {
-    axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}`, data)
-      .then(res => {
-        if (res.data) {
-          toast("Added Successfully")
-          console.log(res.data);
-        }
-      })
-      .catch(err => console.log(err))
+const { user, userInfo } = useContext(AuthContext);
+  const handleAddMonth = (data) => {       
+  axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}` , data)
+  .then(res => {
+  if(res.data){
+    toast("Added Successfully")
+  }
+  })
+  .catch(err => console.log(err))
   }
   return (
     <div>

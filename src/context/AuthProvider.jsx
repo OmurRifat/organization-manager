@@ -66,22 +66,22 @@ const AuthProvider = ({ children }) => {
 
 
 
-  // const handleUpdateInfo = (e) => {
-  //   e.preventDefault();
-  //   fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${userInfo._id}`, {
-  //     method: 'PUT',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(updateUserInfo)
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (data.modifiedCount > 0) {
-  //         toast.success('updated User Successfully')
-  //         e.target.reset();
-  //       }
-  //     })
+  const handleUpdateInfo = (e) => {
+    e.preventDefault();
+    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${userInfo._id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updateUserInfo)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          toast.success('updated User Successfully')
+          e.target.reset();
+        }
+      })
 
-  // }
+  }
 
   // const handleInputChange = event => {
   //   const field = event.target.name;

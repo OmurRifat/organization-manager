@@ -160,6 +160,7 @@ const AdminDashboard = () => {
             <AddMonth></AddMonth>
           </Modal>
           <div className="flex justify-between items-center">
+            
 
 
             <div
@@ -236,42 +237,6 @@ const AdminDashboard = () => {
             </tr>) }
           </tbody>
         </table>
-      </div>
-      <div className="flex justify-between items-center  mx-5">
-        {/* <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
-          Showing{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">{ verifiedUsers.length }</span> of
-          List
-        </span> */}
-        <nav aria-label="Page navigation sm:mt-5 example">
-          <ul className="inline-flex -space-x-px">
-            {/* <li>
-              <button
-                className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-black rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </button>
-            </li> */}
-            {/* { [...Array(pages).keys()].map(number => <li key={ number } className='paginate' >
-
-              <button onClick={ () => setPage(number) }
-                
-                className={ page === number && 'selected' }
-              >
-                { number + 1 }
-              </button>
-            </li>)
-            } */}
-            {/* <li>
-              <button
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-black rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </button>
-            </li> */}
-          </ul>
-        </nav>
       </div>
     </>
   )
