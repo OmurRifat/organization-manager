@@ -9,7 +9,7 @@ const AddMonth = () => {
   const { user, userInfo } = useContext(AuthContext);
   const handleAddMonth = (data) => {
     data.status = false;
-    axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}`, data)
+    axios.post(`http://localhost:5000/add-donation?orgName=${userInfo?.organization}`, data)
       .then(res => {
         if (res.data) {
           toast.success("Added Successfully")

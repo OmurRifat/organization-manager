@@ -24,7 +24,7 @@ const responsive = {
 const Testimonial = () => {
   const [review, setReview] = useState([])
   useEffect(()=>{
-fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
+fetch('http://localhost:5000/reviews')
 .then(res => res.json())
 .then(data => setReview(data))
   },[])

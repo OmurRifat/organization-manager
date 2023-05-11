@@ -17,7 +17,7 @@ const AddReview = () => {
 
   const [  postReview, {isLoading, isError} ] = useReviewPostMutation();
   const handleReviewData = (data) => {
-    axios.post('https://organization-manager-server-main-jsarafath.vercel.app/reviews' , data)
+    axios.post('http://localhost:5000/reviews' , data)
     .then(res => {
     if(res.data){
       toast("Added Successfully")

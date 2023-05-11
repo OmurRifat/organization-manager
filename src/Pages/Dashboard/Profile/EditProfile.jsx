@@ -12,7 +12,7 @@ const EditProfile = () => {
   
   const handleUpdateInfo = (e) => {
     e.preventDefault();
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${userInfo._id}`, {
+    fetch(`http://localhost:5000/users/update/${userInfo._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateUserInfo)
