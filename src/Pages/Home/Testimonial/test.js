@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BiDonateHeart } from "react-icons/bi";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Carousel from "react-multi-carousel";
-import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import donate from "../../../assets/donate.png";
 import people from "../../../assets/people.png";
 import cap from "../../../assets/cap.png";
-import { AiFillStar } from 'react-icons/ai';
+import ReactStars from "react-rating-stars-component";
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -28,17 +28,11 @@ const responsive = {
   },
 };
 
-const Testimonial = () => {
-  const [review, setReview] = useState([])
-  useEffect(()=>{
-fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
-.then(res => res.json())
-.then(data => setReview(data))
-  },[])
-
+const Testimonial = ({singleReview}) => {
+const {name, ratings, description} = singleReview
   const firstExample = {
     size: 30,
-    value:[review.ratings],
+    value: [ratings],
     edit: false
   };
 
@@ -66,7 +60,7 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
   };
   return (
     <>
-      
+     
 
       <div
         style={styleObject.gradient}
@@ -83,33 +77,27 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
          
           className="mb-10 pb-12 mx-auto"
         >
-
-          {
-            review?.map(item => (
-              <div className=" pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
-              <div
-                style={styleObject.secondary}
-                className="w-16 mb-5 h-16 flex justify-center items-center "
-              >
-                <img
-                  src={donate}
-                  width={20}
-                  height={20}
-                  alt="picture of the client"
-                />
-              </div>
-           
-               
-  <h4 className="text-black font-bold text-left">{item.name}</h4>
-              <p className=" font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
-                "{item.description}"
-              </p>
-            </div>
-            ))
-          }
           {/* card----->1 */}
+          <div className=" pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
+            <div
+              style={styleObject.secondary}
+              className="w-16 mb-5 h-16 flex justify-center items-center "
+            >
+              <img
+                src={donate}
+                width={20}
+                height={20}
+                alt="picture of the client"
+              />
+            </div>
+           
+  {/* <ReactStars {...firstExample} classNames='text-red-200' />
+  <h3 className="text-black text-left mb-2 font-bold">{name}</h3> */}
+            <p className=" font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
+              "{description}""
+            </p>
+          </div>
         
-         
         </Carousel>
       </div>
     </>

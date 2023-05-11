@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import axios from 'axios'
 import { useQuery } from "@tanstack/react-query";
 import { useReviewPostMutation } from "../../../features/reviews/reviewApi";
 
@@ -16,12 +17,13 @@ const AddReview = () => {
 
   const [  postReview, {isLoading, isError} ] = useReviewPostMutation();
   const handleReviewData = (data) => {
-   
-   postReview(data);
-   console.log(data);
-   if(data){
-    toast("Added Your Valuable Review Successfully !!!!")
-   }
+    axios.post('https://organization-manager-server-main-jsarafath.vercel.app/reviews' , data)
+    .then(res => {
+    if(res.data){
+      toast("Added Successfully")
+    }
+    })
+    .catch(err => console.log(err))
   };
 
   return (
@@ -44,13 +46,13 @@ const AddReview = () => {
         </div>
         <div className="form-control">
           <label>
-            <span className="label-text text-xl text-gray-900">Email</span>
+            <span className="label-text text-xl text-gray-900">Ratings</span>
           </label>
           <input
-            {...register("email")}
-            type="text"
+            {...register("ratings")}
+            type="number"
             placeholder="Type here"
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full max-w-xs text-black"
           />
         </div>
         <div className="form-control">

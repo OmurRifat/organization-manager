@@ -1,20 +1,49 @@
 import { useState, useEffect } from "react";
-import SingleNews from "./SingleNews";
-import { useReviewGetQuery } from "../../../features/reviews/reviewApi";
-import Review from "./Testimonial";
+import Testimonial from "./Testimonial";
+
 
 const ReviewMain = () => {
-const {data} = useReviewGetQuery();
+  const styleObject = {
+    h3: {
+      color: "#2A9D8F",
+      marginBottom: "10px",
+    },
+    h2: {
+      color: "#4D4D4D",
+      marginBottom: "20px",
+    },
+    gradient: {
+      background: "rgba(42, 157, 143, 0.15)",
+    },
+    pColor: {
+      color: "#656565",
+    },
+    primary: {
+      color: "#2A9D8F",
+    },
+    secondary: {
+      backgroundColor: "#2A9D8F",
+    },
+  };
+  const [review, setReview] = useState([])
+  useEffect(()=>{
+fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
+.then(res => res.json())
+.then(data => setReview(data))
+  },[])
 
   return (
-    <div className="p-5">
-      <h2 className="text-4xl text-black mt-5 mb-10 text-center">All News</h2>
-      <div className="grid lg:grid-cols-3 md:gap-10 px-5 md:grid-cols-2 grid-cols-1 ">
-        {/* { 
-          data?.map(singleReview => <Review key={ singleReview._id } singleReview={singleReview}></Review>)
-        } */}
+    <>
+     <div className="p-5">
+      
+      <div className="">
+        { 
+          review?.map(singleReview => <Testimonial key={ singleReview._id } singleReview={singleReview}></Testimonial>)
+        }
       </div>
     </div>
+    </>
+   
   );
 };
 
