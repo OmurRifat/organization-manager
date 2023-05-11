@@ -22,7 +22,7 @@ const MemberDashboard = () => {
       donationName: item?.donationName,
       month: item?.month,
     }
-    
+
 
     fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
@@ -34,7 +34,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user?.email}&month=${item?.month}`,
           {
             method: 'PUT',
           },
@@ -43,7 +43,7 @@ const MemberDashboard = () => {
           .then((data) => {
             console.log(data)
             if (data.modifiedCount > 0) {
-            
+
               // navigate('/dashboard/member')
               toast.success('Successfully Paid Your Due')
             }
@@ -82,6 +82,7 @@ const MemberDashboard = () => {
 
   const dueCalculation = () => {
     donation?.map((d) => {
+      console.log(d)
       if (d?.status === false) {
         const amountString = d.amount
         const amount = parseInt(amountString)
@@ -113,7 +114,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Want to take Loan?</p>
-          { userInfo?.verified === true &&  <Link to="/dashboard/apply-loan">
+          { userInfo?.verified === true && (userInfo?.position === 'member' || userInfo?.position === 'admin') && <Link to="/dashboard/apply-loan">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -125,7 +126,7 @@ const MemberDashboard = () => {
           </Link> }
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
-          
+
           <img
             src="https://cdn-icons-png.flaticon.com/512/591/591796.png"
             width="30px"
@@ -133,7 +134,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Donation</p>
-          
+
           { userInfo?.verified === true && <button
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -142,14 +143,14 @@ const MemberDashboard = () => {
           </button> }
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
-        <img
+          <img
             src="https://cdn.iconscout.com/icon/premium/png-256-thumb/payment-due-2010170-1696699.png"
             width="30px"
             className="mx-auto"
             alt=""
           />
           <p className="text-xl text-white py-2">Total Due</p>
-          { userInfo?.verified === true &&<button
+          { userInfo?.verified === true && (userInfo?.position === 'member' || userInfo?.position === 'admin') && <button
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
             onClick={ () => setPayModal(true) }
@@ -214,7 +215,7 @@ const MemberDashboard = () => {
                       <span className='text-red-600 font-semibold'>Due</span>
                     ) }
                   </td>
-                  { item?.status === 'false' ? (
+                  { item?.status === false ? (
                     <td className="px-6 ">
                       <button
                         onClick={ () => handlePayment(item) }
@@ -225,7 +226,7 @@ const MemberDashboard = () => {
                       </button>
                     </td>
                   ) : <td className="px-6 ">
-                    
+
                   </td> }
                 </tr>
               )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with { userInfo?.organization } under review, you will be notified soon</td></tr> }
