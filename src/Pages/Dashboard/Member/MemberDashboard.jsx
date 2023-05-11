@@ -113,7 +113,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Want to take Loan?</p>
-          { userInfo?.verified === true && userInfo?.position === 'member' && <Link to="/dashboard/apply-loan">
+          { userInfo?.verified === true &&  <Link to="/dashboard/apply-loan">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -149,7 +149,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Due</p>
-          { userInfo?.verified === true && userInfo?.position === 'member' && <button
+          { userInfo?.verified === true &&<button
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
             onClick={ () => setPayModal(true) }
