@@ -81,7 +81,7 @@ const AuthProvider = ({ children }) => {
         }
       })
 
-  // }
+  }
 
   // const handleInputChange = event => {
   //   const field = event.target.name;
