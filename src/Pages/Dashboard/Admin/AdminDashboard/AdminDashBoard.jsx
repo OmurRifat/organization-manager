@@ -16,7 +16,6 @@ import { toast } from 'react-hot-toast'
 const AdminDashboard = () => {
 
   const { user, userInfo } = useContext(AuthContext)
-  console.log(userInfo?.email);
   const [modal, setModal] = useState(false)
   const [specificMember, setSpecificMember] = useState({});
 
@@ -32,10 +31,10 @@ const AdminDashboard = () => {
 
   const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
   //  total collected amount
-  const amount = organizationMembers?.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
+  const amount = organizationMembers?.map(member => member.donation.map(d => d?.status === true && +d.amount).reduce((a, b) => a + b, 0));
   const collected = amount.reduce((c, d) => c + d, 0);
   // total due amount
-  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
+  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d?.status === false && +d.amount).reduce((a, b) => a + b, 0));
   const due = dueAmount.reduce((c, d) => c + d, 0);
   // total members
   const totalMember = organizationMembers?.length;
@@ -72,7 +71,7 @@ const AdminDashboard = () => {
       })
   }
 
- 
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -80,7 +79,7 @@ const AdminDashboard = () => {
   };
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    // setIsModalOpen(false);
   };
 
   const handleCancel = () => {
@@ -154,14 +153,16 @@ const AdminDashboard = () => {
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <p className='flex justify-start text-black font-bold'>Donation History</p>
 
-          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={showModal}>
-     Add Donation
-      </Button>
-      <Modal className='' title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-      <AddMonth></AddMonth>
-      </Modal>
+          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={ showModal }>
+            Add Donation
+          </Button>
+          <Modal className='' title="" open={ isModalOpen } onOk={ handleOk } onCancel={ handleCancel }>
+            <AddMonth></AddMonth>
+          </Modal>
           <div className="flex justify-between items-center">
             
+
+
             <div
               id="dropdownAction"
               className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
@@ -216,7 +217,7 @@ const AdminDashboard = () => {
 
               <td className="px-6  text-[red]">{
                 // add all the due amount and show in this column
-                member.donation.map((d, i) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0)
+                member?.donation?.map((d, i) => d?.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0)
               }</td>
 
 
@@ -224,7 +225,7 @@ const AdminDashboard = () => {
               <td className="px-6 ">
                 {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
-                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
+                  member?.donation?.map((d) => d?.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
                     <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
                       className="text-white font-semibold bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-3 py-1 text-center">
                       Send Remainder
@@ -236,42 +237,6 @@ const AdminDashboard = () => {
             </tr>) }
           </tbody>
         </table>
-      </div>
-      <div className="flex justify-between items-center  mx-5">
-        {/* <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
-          Showing{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">1</span> -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">{ verifiedUsers.length }</span> of
-          List
-        </span> */}
-        <nav aria-label="Page navigation sm:mt-5 example">
-          <ul className="inline-flex -space-x-px">
-            {/* <li>
-              <button
-                className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-black rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </button>
-            </li> */}
-            {/* { [...Array(pages).keys()].map(number => <li key={ number } className='paginate' >
-
-              <button onClick={ () => setPage(number) }
-                
-                className={ page === number && 'selected' }
-              >
-                { number + 1 }
-              </button>
-            </li>)
-            } */}
-            {/* <li>
-              <button
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-black rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </button>
-            </li> */}
-          </ul>
-        </nav>
       </div>
     </>
   )

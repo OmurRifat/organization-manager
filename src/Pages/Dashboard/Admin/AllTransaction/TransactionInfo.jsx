@@ -17,16 +17,16 @@ const TransactionInfo = ({ transaction, i }) => {
       <td className=" px-6 text-center text-gray-900 whitespace-nowrap dark:text-white">
         { transaction.userName }
       </td>
-      <td className="px-6  text-green-500">{transaction.transactionId}</td>
-      <td className="px-6  text-[red]">{transaction.amount}</td>
-      {/* <td className="px-6  text-[red]">{txdInfo.card_type}</td> */}
+      <td className="px-6  text-green-500">{ transaction.transactionId }</td>
+      <td className="px-6  text-[red]">{ transaction.amount }</td>
+      {/* <td className="px-6  text-[red]">{txdInfo.card_type}</td> */ }
 
       <td className="px-6 ">
         <button
           type="button"
-          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 my-1 text-center"
+          className=" text-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 my-1 text-center"
         >
-          Pending
+          Paid
         </button>
       </td>
     </tr>

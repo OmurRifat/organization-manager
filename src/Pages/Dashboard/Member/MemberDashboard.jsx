@@ -10,7 +10,7 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([]);
   const [allTransaction, setAllTransaction] = useState([]);
 
-  
+
 
   const handlePayment = (item) => {
     const paymentInfo = {
@@ -22,6 +22,7 @@ const MemberDashboard = () => {
       donationName: item?.donationName,
       month: item?.month,
     }
+    
 
     fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
@@ -72,16 +73,16 @@ const MemberDashboard = () => {
 
   }, [user?.email]);
 
- 
 
 
-    // if(donation.verified === false){
-      // const verified = donation.donation.map(d => d.amount === 0)
-    // }
+
+  // if(donation.verified === false){
+  // const verified = donation.donation.map(d => d.amount === 0)
+  // }
 
   const dueCalculation = () => {
     donation?.map((d) => {
-      if (d.status === false) {
+      if (d?.status === false) {
         const amountString = d.amount
         const amount = parseInt(amountString)
         totalDue += amount
@@ -91,7 +92,7 @@ const MemberDashboard = () => {
   let totalDonations = 0
   const calculateDonation = () => {
     donation?.map((d) => {
-      if (d.status === true) {
+      if (d?.status === true) {
         const amountString = d.amount
         const amount = parseInt(amountString)
         totalDonations += amount
@@ -112,7 +113,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Want to take Loan?</p>
-         {userInfo?.verified === true &&  <Link to="/dashboard/apply-loan">
+          { userInfo?.verified === true && userInfo?.position === 'member' && <Link to="/dashboard/apply-loan">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -121,27 +122,10 @@ const MemberDashboard = () => {
             >
               Apply
             </button>
-          </Link>}
+          </Link> }
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
-          <img
-            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/payment-due-2010170-1696699.png"
-            width="30px"
-            className="mx-auto"
-            alt=""
-          />
-          <p className="text-xl text-white py-2">Total Due</p>
-          {userInfo?.verified === true && <button
-            data-modal-target="popup-modal"
-            data-modal-toggle="popup-modal"
-            onClick={ () => setPayModal(true) }
-            type="button"
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-          >
-            { totalDue } BDT
-          </button>}
-        </div>
-        <div className="text-center  flex-col border-r justify-center p-10 items-center ">
+          
           <img
             src="https://cdn-icons-png.flaticon.com/512/591/591796.png"
             width="30px"
@@ -149,22 +133,41 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Donation</p>
-          {userInfo?.verified === true && <button
+          
+          { userInfo?.verified === true && <button
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             { totalDonations } BDT
-          </button>}
+          </button> }
+        </div>
+        <div className="text-center  flex-col border-r justify-center p-10 items-center ">
+        <img
+            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/payment-due-2010170-1696699.png"
+            width="30px"
+            className="mx-auto"
+            alt=""
+          />
+          <p className="text-xl text-white py-2">Total Due</p>
+          { userInfo?.verified === true && userInfo?.position === 'member' && <button
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+            onClick={ () => setPayModal(true) }
+            type="button"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            { totalDue } BDT
+          </button> }
         </div>
       </div>
 
 
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-          {userInfo?.verified === true && <p className='text-black font-semibold'>Donation History</p>}
+          { userInfo?.verified === true && <p className='text-black font-semibold'>Donation History</p> }
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          {userInfo?.verified === true && <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
+          { userInfo?.verified === true && <thead className="text-xs text-gray-700 uppercase bg-[#D7E9E7] dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Month
@@ -183,12 +186,12 @@ const MemberDashboard = () => {
               </th>
               <th scope="col" className="px-6 py-3"></th>
             </tr>
-          </thead>}
+          </thead> }
           <tbody>
             { userInfo?.verified === true ?
               userInfo?.donation?.map((item) => (
                 <tr
-                  key={ item.month }
+                  key={ item?.month }
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
                   <td className="px-6 ">{ item?.month }</td>
@@ -211,7 +214,7 @@ const MemberDashboard = () => {
                       <span className='text-red-600 font-semibold'>Due</span>
                     ) }
                   </td>
-                  { item?.status ==='false' ? (
+                  { item?.status === 'false' ? (
                     <td className="px-6 ">
                       <button
                         onClick={ () => handlePayment(item) }
@@ -222,91 +225,13 @@ const MemberDashboard = () => {
                       </button>
                     </td>
                   ) : <td className="px-6 ">
-                    <button
-
-                      type="button"
-                      className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                    >
-                      Invoice
-                    </button>
+                    
                   </td> }
                 </tr>
-              )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with {userInfo?.organization} under review, you will be notified soon</td></tr>}
+              )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with { userInfo?.organization } under review, you will be notified soon</td></tr> }
           </tbody>
         </table>
       </div>
-      {/* <div className="flex justify-between items-center  mx-5">
-        <span className="text-sm text-gray-700 dark:text-gray-400 hidden lg:block">
-          Showing{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">1</span>{ ' ' }
-          -{ ' ' }
-          <span className="font-semibold text-gray-900 dark:text-white">
-            30
-          </span>{ ' ' }
-          of List
-        </span>
-        <nav aria-label="Page navigation sm:mt-5 example">
-          <ul className="inline-flex -space-x-px">
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                className="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
       <div
         id="authentication-modal"
         tabIndex="-1"

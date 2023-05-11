@@ -15,8 +15,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  const [updateUserInfo, setUpdateUserInfo] = useState(userInfo);
-  
+
 
   const provider = new GoogleAuthProvider();
 
@@ -82,15 +81,17 @@ const AuthProvider = ({ children }) => {
         }
       })
 
-  }
+  // }
 
-  const handleInputChange = event => {
-    const field = event.target.name;
-    const value = event.target.value;
-    const newUser = { ...updateUserInfo };
-    newUser[field] = value;
-    setUpdateUserInfo(newUser)
-  }
+  // const handleInputChange = event => {
+  //   const field = event.target.name;
+  //   const value = event.target.value;
+  //   console.log(field,value)
+  //   const newUser = {...updateUserInfo};
+  //   console.log(newUser);
+  //   newUser[field] = value;
+  //   setUpdateUserInfo(newUser)
+  // }
 
   const authInfo = {
     createUsersEmail,
@@ -102,10 +103,10 @@ const AuthProvider = ({ children }) => {
     user,
     userInfo,
     setUserInfo,
-    updateUserInfo,
-    setUpdateUserInfo,
-    handleUpdateInfo,
-    handleInputChange
+    // updateUserInfo,
+    // setUpdateUserInfo,
+    // handleUpdateInfo,
+    // handleInputChange
   };
   return (
     <AuthContext.Provider value={ authInfo }>
