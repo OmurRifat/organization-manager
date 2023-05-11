@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BiDonateHeart } from "react-icons/bi";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Carousel from "react-multi-carousel";
-import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
-import donate from "../../../assets/donate.png";
-import people from "../../../assets/people.png";
-import cap from "../../../assets/cap.png";
-import { AiFillStar } from 'react-icons/ai';
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -64,14 +57,7 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
       backgroundColor: "#2A9D8F",
     },
   };
-// https://organization-manager-server-main-jsarafath.vercel.app
-// http://localhost:5000
 
-  useEffect(() => {
-    fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
-      .then(res => res.json())
-      .then(data => console.log(data))
-  }, [reviews])
 
 
   return (
@@ -98,13 +84,13 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
             review?.map(item => (
               <div className=" pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
               <div
-                style={styleObject.secondary}
-                className="w-16 mb-5 h-16 flex justify-center items-center "
+               
+                className="w-20 mb-16 h-6 mt-8 rounded-xl flex justify-center items-center "
               >
                 <img
-                  src={donate}
-                  width={20}
-                  height={20}
+                  src={item.photo}
+                  
+                 className="rounded-md"
                   alt="picture of the client"
                 />
               </div>
