@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <div className="flex justify-end">
       <div className="flex justify-end items-center lg:m-4 md:-mt-10 -mt-10 w-100">
-        <RiNotification3Line className="mx-2 text-black text-2xl" />
+        {/* <RiNotification3Line className="mx-2 text-black text-2xl" /> */}
         <p className="mx-2 font-semibold text-[#185448ec]">{userInfo?.name}</p>
         {/* dropdown */}
         <div className="relative mr-2" ref={dropdownRef}>
@@ -77,8 +77,8 @@ const Header = () => {
             className={ `absolute z-10 bg-[#2A9D8F] text-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 ` }
           >
             <div className="px-4 py-3 text-sm text-gray-900 ">
-              <div className='text-white'>{ user?.displayName }</div>
-              <div className="font-medium truncate text-white">{ user?.email }</div>
+              {/* <div className='text-white'>{ userInfo?.name }</div> */}
+              <div className="font-medium truncate text-white">{ userInfo?.email }</div>
             </div>
             <ul className=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
               {
