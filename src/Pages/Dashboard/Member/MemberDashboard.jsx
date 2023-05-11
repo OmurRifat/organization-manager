@@ -41,7 +41,9 @@ const MemberDashboard = () => {
         )
           .then((res) => res.json())
           .then((data) => {
+            console.log(data)
             if (data.modifiedCount > 0) {
+            
               // navigate('/dashboard/member')
               toast.success('Successfully Paid Your Due')
             }
