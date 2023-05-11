@@ -109,15 +109,15 @@ const Signup = () => {
                   )
                     .then((res) => res.json())
                     .then((data) => {
-                      console.log(data);
-                      navigate('/dashboard')
+                      navigate('/dashboard/member')
                     })
                 })
                 .catch((error) => console.log(error))
-              toast('User Created Successfully.')
+              toast.success('User Created Successfully.')
             })
             .catch((error) => {
               console.log(error)
+              toast.error(error.message)
               setSignUPError(error.message)
             })
         }

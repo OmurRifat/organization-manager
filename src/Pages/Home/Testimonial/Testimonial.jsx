@@ -82,7 +82,7 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
 
           {
             review?.map(item => (
-              <div className=" pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
+              <div key={item._id} className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
               <div
                
                 className="w-20 mb-16 h-6 mt-8 rounded-xl flex justify-center items-center "
