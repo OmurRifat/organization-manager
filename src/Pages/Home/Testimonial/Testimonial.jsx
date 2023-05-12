@@ -22,26 +22,13 @@ const responsive = {
 };
 
 const Testimonial = () => {
-  const [review, setReview] = useState([])
-  useEffect(()=>{
-fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
-.then(res => res.json())
-.then(data => setReview(data))
-  },[])
-
-  const firstExample = {
-    size: 30,
-    value:[review.ratings],
-    edit: false
-  };
-
   const styleObject = {
     h3: {
       color: "#2A9D8F",
       marginBottom: "10px",
     },
     h2: {
-      color: "#4D4D4D",
+      color: "black",
       marginBottom: "20px",
     },
     gradient: {
@@ -58,12 +45,34 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
     },
   };
 
+  const [review, setReview] = useState([]);
 
+  useEffect(() => {
+    fetch(
+      "https://organization-manager-server-main-jsarafath.vercel.app/reviews"
+    )
+      .then((res) => res.json())
+      .then((data) => setReview(data));
+  }, []);
 
   return (
     <>
-      
+      <div className="pt-24 pb-10 text-center">
+        <h3 className="text-2xl mb-4 bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 font-medium">
+          Talk with our happy client
+        </h3>
+        <h2
+          style={styleObject.h2}
+          className=" text-3xl md:text-4xl font-semibold max-w-2xl mx-auto"
+        >
+          Let's Learn What Our Client Says
+        </h2>
 
+        <p className="mb-6 mx-auto text-base max-w-xs md:max-w-sm font-normal text-gray-500 dark:text-gray-400 text-center">
+          Our Client is much more happy and confident about work,their reviews
+          will give you a clear picture.
+        </p>
+      </div>
       <div
         style={styleObject.gradient}
         className="pt-16 pb-16 pl-3 text-center"
@@ -76,36 +85,29 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
           swipeable={false}
           autoPlaySpeed={2000}
           autoPlay={true}
-         
           className="mb-10 pb-12 mx-auto"
         >
-
-          {
-            review?.map(item => (
-              <div key={item._id} className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow ">
-              <div
-               
-                className="w-20 mb-16 h-6 mt-8 rounded-xl flex justify-center items-center "
-              >
+          {review?.map((singleReview) => (
+            <div
+              key={singleReview._id}
+              className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow "
+            >
+              <div className="w-14 mb-6 h-14 mx-auto mt-2 rounded-full flex justify-center items-center ">
                 <img
-                  src={item.photo}
-                  
-                 className="rounded-md"
+                  src={singleReview.photo}
+                  className="rounded-full w-16 h-16"
                   alt="picture of the client"
                 />
               </div>
-           
-               
-  <h4 className="text-black font-bold text-left">{item.name}</h4>
-              <p className=" font-normal text-gray-500 dark:text-gray-400 text-justify max-w-[260px]">
-                "{item.description}"
+
+              <h4 className="text-black font-bold text-center">
+                {singleReview.name}
+              </h4>
+              <p className="text-center font-normal text-gray-500 dark:text-gray-400 mx-auto  max-w-[260px]">
+                {singleReview.description}
               </p>
             </div>
-            ))
-          }
-          {/* card----->1 */}
-        
-         
+          ))}
         </Carousel>
       </div>
     </>

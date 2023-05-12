@@ -25,11 +25,12 @@ const ReviewMain = () => {
       backgroundColor: "#2A9D8F",
     },
   };
-  const [review, setReview] = useState([])
+  console.log(review);
+
   useEffect(()=>{
-fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
-.then(res => res.json())
-.then(data => setReview(data))
+      fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
+      .then(res => res.json())
+      .then(data => console.log(data))
   },[])
 
   return (
@@ -38,8 +39,9 @@ fetch('https://organization-manager-server-main-jsarafath.vercel.app/reviews')
       
       <div className="">
         { 
-          review?.map(singleReview => <Testimonial key={ singleReview._id } singleReview={singleReview}></Testimonial>)
+          review?.map(singleReview => console.log(singleReview))
         }
+        {/* <Testimonial key={ singleReview._id } singleReview={singleReview}></Testimonial> */}
       </div>
     </div>
     </>
