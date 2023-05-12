@@ -92,19 +92,19 @@ const Testimonial = () => {
               key={singleReview._id}
               className="pl-4 mr-4 pt-4 h-72 bg-white border border-gray-200 rounded-lg shadow "
             >
-              <div className="w-14 mb-6 h-14 mx-auto mt-2 rounded-full flex justify-center items-center ">
+              <div className="w-14 mb-6 h-14 mx-auto mt-3 rounded-full flex justify-center items-center ">
                 <img
-                  src={singleReview.photo}
+                  src={singleReview?.photo}
                   className="rounded-full w-16 h-16"
                   alt="picture of the client"
                 />
               </div>
 
               <h4 className="text-black font-bold text-center">
-                {singleReview.name}
+                {singleReview?.name}
               </h4>
               <p className="text-center font-normal text-gray-500 dark:text-gray-400 mx-auto  max-w-[260px]">
-                {singleReview.description}
+                {singleReview?.description}
               </p>
             </div>
           ))}

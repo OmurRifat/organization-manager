@@ -5,6 +5,7 @@ import hero from '../../../assets/hero.png'
 import { AuthContext } from "../../../context/AuthProvider";
 import useAdmin from "../../../hooks/useAdmin";
 import useMember from "../../../hooks/useMember";
+import { HashLink } from 'react-router-hash-link';
 
 const HeroSection = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +20,12 @@ const HeroSection = () => {
       background: "#2A9D8F",
     },
   };
+
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -100;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+  }
   return (
     <div
       id="home"
@@ -67,11 +74,11 @@ const HeroSection = () => {
                   </button>
                 </Link>
             }
-            <button
+            <HashLink smooth to='/#vision' scroll={ el => scrollWithOffset(el) }
               className="flex border font-medium border-[#2A9D8F] mt-2 md:px-4 py-[8px] text-[#515151] rounded p-1 items-center justify-center"
             >
               <BsFillPlayFill className="md:mr-2 text-xl text-[#2A9D8F]"></BsFillPlayFill> Explore Our Vision
-            </button>
+            </HashLink>
           </div>
         </div>
         <div className="max-w-lg">

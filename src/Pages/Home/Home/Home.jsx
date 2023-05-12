@@ -12,7 +12,6 @@ import CounterUp from '../CounterUp/CounterUp';
 import GoToTop from '../GoToTop/GoToTop';
 import ManPower from '../ManPower/ManPower';
 import Team from '../Team/Team';
-import ReviewMain from '../Testimonial/ReviewMain';
 import Testimonial from '../Testimonial/Testimonial';
 const Home = () => {
     return (
