@@ -236,7 +236,6 @@ const Navbar = () => {
                 >
                   Vision
                 </HashLink>
-
                 <HashLink smooth
                   to='/#contact' scroll={ el => scrollWithOffset(el) }
                   className="cursor-pointer text-black px-3 py-2 rounded-md text-sm font-medium"

@@ -40,7 +40,7 @@ const LogIn = () => {
   return (
     <div>
     {/* grid grid-cols-1 md:grid-cols-2 gap-x-6 */}
-      <div className="lg:block signup-container text-black mt-4">
+      <div className="lg:block signup-container text-black mt-4 mb-12">
         <div className="flex lg:flex-row-reverse md:flex-row-reverse flex-col justify-evenly items-start ">
           <div className="p-10">
             <h1 className="text-5xl text-center mb-7  text-[#2A9D8F] ">Sign in</h1>

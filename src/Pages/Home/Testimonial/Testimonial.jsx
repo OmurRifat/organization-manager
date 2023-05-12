@@ -46,18 +46,14 @@ const Testimonial = () => {
   };
 
   const [review, setReview] = useState([]);
- 
+
   useEffect(() => {
     fetch(
-      "http://localhost:5000/reviews"
+      "https://organization-manager-server-main-jsarafath.vercel.app/reviews"
     )
       .then((res) => res.json())
-      .then((data) => {
-        setReview(data)
-      });
+      .then((data) => setReview(data));
   }, []);
-
-
 
   return (
     <>
@@ -106,9 +102,6 @@ const Testimonial = () => {
 
               <h4 className="text-black font-bold text-center">
                 {singleReview?.name}
-              </h4>
-              <h4 className="text-black font-bold text-center">
-             
               </h4>
               <p className="text-center font-normal text-gray-500 dark:text-gray-400 mx-auto  max-w-[260px]">
                 {singleReview?.description}

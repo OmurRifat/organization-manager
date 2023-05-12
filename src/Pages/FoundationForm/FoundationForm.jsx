@@ -31,20 +31,18 @@ const FoundationForm = () => {
     },
   }
   return (
-    <div style={styles.bg} className="signup-container px-2 md:px-6">
-      <h1 className=" text-3xl  md:text-5xl text-black pt-6 text-center">
-        Organizational Manager
-      </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-        <div className="max-w-3xl">
+    <div  className="signup-container px-2 md:px-6">
+      
+      {/* grid grid-cols-1 md:grid-cols-2 gap-x-6 */}
+      <div className="flex flex-col lg:flex-row md:flex-row  justify-evenly items-center ">
+        <div className="max-w-md">
           <img src={foundation} alt="foundation form image" />
         </div>
         <div className="px-10 md:px-0 md:p-4 pt-10">
-          <h1 className=" text-2xl md:text-3xl my-2 mt-10 text-black font-semibold">
+          <h1 className="text-center md:text-4xl text-2xl bg-gradient-to-r text-transparent bg-clip-text from-green-400 via-green-500 to-green-600 my-2 mt-10 text-black font-semibold">
             Register For A Foundation
           </h1>
-          <p style={styles.paraColr} className="mb-8">
+          <p style={styles.paraColr} className="mb-8 text-center">
             MAKE YOUR DREAM COMES TRUE!
           </p>
           <div>
@@ -125,7 +123,7 @@ const FoundationForm = () => {
                     />
                   </div>
                 </div>
-                <div className="flex items-start mb-6">
+                <div className="flex items-start mb-2">
                   <div className="flex items-center h-5">
                     <input
                       {...register('agree')}
@@ -146,25 +144,21 @@ const FoundationForm = () => {
                 </div>
 
                 <button
-                  style={{ backgroundColor: '#2A9D8F' }}
+                  // style={{ backgroundColor: '#2A9D8F' }}
                   type="submit"
-                  className="my-5 w-16 h-16 text-white text-xl drop-shadow-xl   font-medium rounded-full px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="my-5 w-14 h-14 text-xl drop-shadow-xl bg-gradient-to-r text-white from-green-400 via-green-500 to-green-600   font-medium rounded-full px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   <AiOutlineArrowRight className="text-center mx-auto"></AiOutlineArrowRight>
                 </button>
               </form>
 
-              <p className="text-black">
+              <p className="text-black mb-4">
                 Already Registered ?{' '}
                 <Link to="/" className="text-[#2A9D8F]">
                   Back to Home
                 </Link>
               </p>
-              <p className="mt-24 text-[#8D8D8D] mb-8">
-                By Register you agree with{' '}
-                <span style={styles.colr}>terms and conditions</span> and{' '}
-                <span style={styles.colr}>privacy policy</span>
-              </p>
+              
             </div>
           </div>
         </div>
