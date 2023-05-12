@@ -4,9 +4,8 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 import { AuthContext } from '../../context/AuthProvider'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
-import signup from '../../assets/signup.png'
-import { FcGoogle } from 'react-icons/fc'
-import { FaFacebook } from 'react-icons/fa'
+import SignUp from "../../../signUp.json";
+import Lottie from "lottie-react";
 
 const Signup = () => {
   const { createUsersEmail, updateUser } = useContext(AuthContext)
@@ -334,7 +333,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="max-w-md px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
-          <img src={ signup } className='animate__animated  animate__zoomIn' alt="signup page image" />
+        <Lottie loop={true} animationData={SignUp} />
         </div>
       </div>
     </div>

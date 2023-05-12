@@ -6,8 +6,9 @@ import { AuthContext } from '../../context/AuthProvider';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { FcGoogle } from "react-icons/fc"
-import { FaFacebook } from "react-icons/fa"
+import login from "../../../Login.json";
+import Lottie from "lottie-react";
+
 import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 const LogIn = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
@@ -114,11 +115,7 @@ const LogIn = () => {
             </div>
           </div>
           <div className="max-w-md px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
-            <img
-              src="https://i.ibb.co/F0Tkjwt/Layer-13.png"
-              alt="Family-logo-template-removebg-preview"
-              className='animate__animated  animate__fadeInDown'
-            />
+          <Lottie loop={true} animationData={login} />
           </div>
         </div>
       </div>
