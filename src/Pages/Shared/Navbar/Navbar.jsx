@@ -195,13 +195,6 @@ const Navbar = () => {
                   Vision
                 </HashLink>
                 <HashLink smooth
-                  to="/#Team" scroll={ el => scrollWithOffset(el) }
-
-                  className="cursor-pointer  text-black  block px-3 py-2 rounded-md text-base font-medium"
-                >
-                 Our Team
-                </HashLink>
-                <HashLink smooth
                   to='/#contact' scroll={ el => scrollWithOffset(el) }
 
                   className="cursor-pointer  text-black   block px-3 py-2 rounded-md text-base font-medium"
@@ -243,14 +236,6 @@ const Navbar = () => {
                 >
                   Vision
                 </HashLink>
-                <HashLink smooth
-                  to="/#Team" scroll={ el => scrollWithOffset(el) }
-
-                  className="cursor-pointer text-black   px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Our Team
-                </HashLink>
-
                 <HashLink smooth
                   to='/#contact' scroll={ el => scrollWithOffset(el) }
                   className="cursor-pointer text-black px-3 py-2 rounded-md text-sm font-medium"
