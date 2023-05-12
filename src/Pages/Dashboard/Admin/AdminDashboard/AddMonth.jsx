@@ -6,16 +6,16 @@ import { AuthContext } from '../../../../context/AuthProvider';
 
 const AddMonth = () => {
   const { handleSubmit, register } = useForm();
-  const { user, userInfo } = useContext(AuthContext);
-  const handleAddMonth = (data) => {
-    data.status = false;
-    axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}`, data)
-      .then(res => {
-        if (res.data) {
-          toast.success("Added Successfully")
-        }
-      })
-      .catch(err => console.log(err))
+const { user, userInfo } = useContext(AuthContext);
+  const handleAddMonth = (data) => {   
+    data.status = false;    
+  axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}` , data)
+  .then(res => {
+   if (res.data){
+    toast.success("Added Successfully")
+  }
+  })
+  .catch(err => console.log(err))
   }
   return (
     <div>
@@ -73,6 +73,19 @@ const AddMonth = () => {
               type="number"
               placeholder="Type amount"
               className="input input-bordered w-full max-w-lg"
+            />
+          </div>
+          <div className="form-control">
+            <label>
+              <span className="label-text text-xl">Status</span>
+            </label>
+            <input
+              { ...register("status") }
+              type="text"
+              placeholder="Type amount"
+              className="input input-bordered w-full max-w-lg"
+              defaultValue='false'
+
             />
           </div>
           <button
