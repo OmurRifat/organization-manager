@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const { data: members = [], refetch, isLoading } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users')
+      const res = await fetch('https://organization-manager-server-main-jsarafath.vercel.app/users')
       const data = await res.json()
       return data;
     },
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
       userEmail: 'mdabdurrouf.likhon@mail.com',
       phone: '01743586381',
     }
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

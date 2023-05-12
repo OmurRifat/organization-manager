@@ -9,7 +9,7 @@ const AddMonth = ({ setIsModalOpen, refetch }) => {
   const { user, userInfo } = useContext(AuthContext);
   const handleAddMonth = (data, e) => {
     data.status = false;
-    axios.post(`http://localhost:5000/add-donation?orgName=${userInfo?.organization}`, data)
+    axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}`, data)
       .then(res => {
         if (res.data) {
           setIsModalOpen(false)
