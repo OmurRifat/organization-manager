@@ -1,21 +1,23 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../context/AuthProvider';
 
-const AddMonth = () => {
+const AddMonth = ({setIsModalOpen, refetch}) => {
   const { handleSubmit, register } = useForm();
-const { user, userInfo } = useContext(AuthContext);
-  const handleAddMonth = (data) => {   
-    data.status = false;    
-  axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}` , data)
-  .then(res => {
-   if (res.data){
-    toast.success("Added Successfully")
-  }
-  })
-  .catch(err => console.log(err))
+  const { user, userInfo } = useContext(AuthContext);
+  const handleAddMonth = (data, e) => {
+    data.status = false;
+    axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}`, data)
+      .then(res => {
+        if (res.data) {
+          setIsModalOpen(false)
+          refetch()
+          toast.success("Added Successfully")
+        }
+      })
+      .catch(err => console.log(err))
   }
   return (
     <div>
@@ -23,9 +25,7 @@ const { user, userInfo } = useContext(AuthContext);
         onSubmit={ handleSubmit(handleAddMonth) }
         className=" p-10 rounded-2xl  gap-3 w-[85%] justify-between ml-[8%] "
       >
-
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
-
           <div className="form-control">
             <label>
               <span className="label-text text-xl">Month</span>
@@ -60,10 +60,8 @@ const { user, userInfo } = useContext(AuthContext);
               <option disabled>Select Donation Name</option>
               <option>Regular Donation</option>
               <option>Special Donation</option>
-
             </select>
           </div>
-
           <div className="form-control">
             <label>
               <span className="label-text text-xl">Amount</span>
@@ -96,7 +94,6 @@ const { user, userInfo } = useContext(AuthContext);
           </button>
         </div>
       </form>
-
     </div>
 
   )

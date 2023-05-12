@@ -50,6 +50,9 @@ const MemberDashboard = () => {
       })
   }
 
+
+
+  
   useEffect(() => {
     axios
       .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
@@ -73,10 +76,6 @@ const MemberDashboard = () => {
 
 
 
-
-  // if(donation.verified === false){
-  // const verified = donation.donation.map(d => d.amount === 0)
-  // }
 
   const dueCalculation = () => {
     donation?.map((d) => {
@@ -159,8 +158,6 @@ const MemberDashboard = () => {
           </button> }
         </div>
       </div>
-
-
       <div className="m-5 relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           { userInfo?.verified === true && <p className='text-black font-semibold'>Donation History</p> }
