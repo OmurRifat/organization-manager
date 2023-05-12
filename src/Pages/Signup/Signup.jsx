@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 import { AuthContext } from '../../context/AuthProvider'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
-import SignUp from "../../../signUp.json";
+import SignUp from "../../../Signnup.json";
 import Lottie from "lottie-react";
 
 const Signup = () => {
