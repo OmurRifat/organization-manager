@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
 
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
       const data = await res.json();
       setUserInfo(data[0]);
 
@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
 
   const handleUpdateInfo = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/users/update/${userInfo._id}`, {
+    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${userInfo._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateUserInfo)

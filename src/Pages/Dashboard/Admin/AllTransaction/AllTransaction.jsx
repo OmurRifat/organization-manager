@@ -12,7 +12,7 @@ const AllTransaction = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 

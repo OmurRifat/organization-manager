@@ -21,7 +21,7 @@ const Signup = () => {
     formState: { errors },
   } = useForm()
   useEffect(() => {
-    fetch('http://localhost:5000/organizations')
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/organizations')
       .then((res) => res.json())
       .then((data) => setFoundation(data))
   }, [])
@@ -98,7 +98,7 @@ const Signup = () => {
               updateUser(updateUserInfo)
                 .then(() => {
                   fetch(
-                    'http://localhost:5000/users',
+                    'https://organization-manager-server-main-jsarafath.vercel.app/users',
                     {
                       method: 'POST',
                       headers: {
@@ -334,7 +334,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="max-w-md px-6 md:px-0 pb-10 md:pb-0 mt-5 md:mt-14">
-          <img src={ signup } alt="signup page image" />
+          <img src={ signup } className='animate__animated  animate__zoomIn' alt="signup page image" />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter, RouterProvider } from 'react-router-dom'
 import router from './Routes/Routes/Router'
+import 'animate.css';
 // import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Toaster } from 'react-hot-toast';

@@ -24,7 +24,7 @@ const MemberDashboard = () => {
     }
 
 
-    fetch('http://localhost:5000/due-payment', {
+    fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -34,7 +34,7 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `http://localhost:5000/update-donation?email=${user?.email}&month=${item?.month}`,
+          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user?.email}&month=${item?.month}`,
           {
             method: 'PUT',
           },
@@ -54,7 +54,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all-transaction`)
+      .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
       .then((data) => setAllTransaction(data.data))
   }, [])
 
@@ -64,7 +64,7 @@ const MemberDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://localhost:5000/users/${user?.email}`);
+      const res = await fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/${user?.email}`);
       const data = await res.json();
       setDonation(data[0].donation);
     }

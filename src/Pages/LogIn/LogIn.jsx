@@ -117,6 +117,7 @@ const LogIn = () => {
             <img
               src="https://i.ibb.co/F0Tkjwt/Layer-13.png"
               alt="Family-logo-template-removebg-preview"
+              className='animate__animated  animate__fadeInDown'
             />
           </div>
         </div>
