@@ -30,12 +30,12 @@ const AdminDashboard = () => {
     },
   });
 
-  const organizationMembers = members?.filter(member => member.organization === userInfo?.organization && member.verified === true);
+  const organizationMembers = members?.filter(member => member?.organization === userInfo?.organization && member?.verified === true);
   //  total collected amount
-  const amount = organizationMembers?.map(member => member.donation.map(d => d.status === true && +d.amount).reduce((a, b) => a + b, 0));
+  const amount = organizationMembers?.map(member => member.donation.map(d => d?.status === true && +d.amount).reduce((a, b) => a + b, 0));
   const collected = amount.reduce((c, d) => c + d, 0);
   // total due amount
-  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d.status === false && +d.amount).reduce((a, b) => a + b, 0));
+  const dueAmount = organizationMembers?.map(member => member.donation.map(d => d?.status === false && +d?.amount).reduce((a, b) => a + b, 0));
   const due = dueAmount.reduce((c, d) => c + d, 0);
   // total members
   const totalMember = organizationMembers?.length;
@@ -100,7 +100,7 @@ const AdminDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Collected Amount</p>
-          <Link to="/dashboard">
+          <Link to="/dashboard/admin/profile">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -217,7 +217,7 @@ const AdminDashboard = () => {
 
               <td className="px-6  text-[red]">{
                 // add all the due amount and show in this column
-                member.donation.map((d, i) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0)
+                member.donation.map((d, i) => d?.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0)
               }</td>
 
 
@@ -225,7 +225,7 @@ const AdminDashboard = () => {
               <td className="px-6 ">
                 {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
-                  member.donation.map((d) => d.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
+                  member.donation.map((d) => d?.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
                     <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
                       className="text-white font-semibold bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-3 py-1 text-center">
                       Send Remainder

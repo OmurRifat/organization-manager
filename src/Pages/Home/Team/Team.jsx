@@ -8,10 +8,10 @@ const Team = () => {
   .then(data => console.log(data))
   .catch(error => console.error(error));
     return (
-        <div>
+        <div id='Team'>
             <section className="py-6 dark:bg-gray-800 text-black">
 	<div className="container flex flex-col items-center justify-center p-4 mx-auto space-y-8 sm:p-10">
-		<h1 className="text-4xl font-bold leading-none text-center sm:text-5xl text-green-500">Our team</h1>
+		<h1 className="text-4xl font-bold leading-none text-center sm:text-5xl text-green-500">Our Enthusiast team</h1>
 		<p className="max-w-2xl text-center dark:text-gray-400">
         Our developer team is comprised of individuals who are honest, hardworking, and have strong decision-making skills. They are passionate about their work and constantly engage in research to improve their skills. Our team members are also continuous learners, always striving to enhance their knowledge and expertise in their respective areas of work.
 </p>

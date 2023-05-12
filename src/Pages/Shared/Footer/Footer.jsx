@@ -7,27 +7,32 @@ const Footer = () => {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className=" md:flex flex-col md:flex-row md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a  href="https://flowbite.com/" className="flex flex-col md:flex-row items-center">
+            <Link  to="/" className="flex flex-col md:flex-row items-center">
             <img src="https://i.ibb.co/Bw1TVQS/project-logo.png" alt="project-logo" width="100px" border="0"/>
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">
                 Organizational Manager
               </span>
-            </a>
+            </Link>
           </div>
           <div className="grid md:grid-cols-3 px-4 md:px-0 md:gap-8 gap-6 grid-cols-2">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
-                Posts
+                About Us
               </h2>
               <ul className="text-white font-medium">
                 <li className="mb-4">
-                  <Link>
-                  Brighter Tomorrow
+                  <Link to="/allevents">
+                  Up Coming Event
                   </Link>
                 </li>
                 <li>
-                  <Link>
-                    Tailwind CSS
+                  <Link to="/foundation-form" >
+                    Organization Registration
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/foundation-form" >
+                    Vision
                   </Link>
                 </li>
               </ul>
@@ -38,15 +43,15 @@ const Footer = () => {
               </h2>
               <ul className="text-white dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <Link
+                  <Link to="/allnews"
                   >
-                    Github
+                    All News
                   </Link>
                 </li>
                 <li>
-                  <Link
+                  <Link to="/show-organizations"
                   >
-                    Discord
+                    All Registration Foundation
                   </Link>
                 </li>
               </ul>
@@ -57,14 +62,14 @@ const Footer = () => {
               </h2>
               <ul className="text-white dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <Link>
-                    Privacy Policy
-                  </Link>
+                  
+                  Mirpur Cantonment, Mirpur-12
+                 
                 </li>
                 <li>
-                  <Link>
-                    Terms &amp; Conditions
-                  </Link>
+                  
+                   Dhaka, Bangladesh
+                 
                 </li>
               </ul>
             </div>

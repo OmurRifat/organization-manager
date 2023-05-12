@@ -22,9 +22,7 @@ const AddMonth = () => {
         onSubmit={ handleSubmit(handleAddMonth) }
         className=" p-10 rounded-2xl  gap-3 w-[85%] justify-between ml-[8%] "
       >
-
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
-
           <div className="form-control">
             <label>
               <span className="label-text text-xl">Month</span>
@@ -59,10 +57,8 @@ const AddMonth = () => {
               <option disabled>Select Donation Name</option>
               <option>Regular Donation</option>
               <option>Special Donation</option>
-
             </select>
           </div>
-
           <div className="form-control">
             <label>
               <span className="label-text text-xl">Amount</span>
@@ -83,7 +79,7 @@ const AddMonth = () => {
               type="text"
               placeholder="Type amount"
               className="input input-bordered w-full max-w-lg"
-              defaultValue='false'
+              defaultValue={false}
 
             />
           </div>
