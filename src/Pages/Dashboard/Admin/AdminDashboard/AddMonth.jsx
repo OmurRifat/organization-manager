@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../context/AuthProvider';
 
-const AddMonth = ({setIsModalOpen, refetch}) => {
+const AddMonth = ({ setIsModalOpen, refetch }) => {
   const { handleSubmit, register } = useForm();
   const { user, userInfo } = useContext(AuthContext);
   const handleAddMonth = (data, e) => {
@@ -71,19 +71,6 @@ const AddMonth = ({setIsModalOpen, refetch}) => {
               type="number"
               placeholder="Type amount"
               className="input input-bordered w-full max-w-lg"
-            />
-          </div>
-          <div className="form-control">
-            <label>
-              <span className="label-text text-xl">Status</span>
-            </label>
-            <input
-              { ...register("status") }
-              type="text"
-              placeholder="Type amount"
-              className="input input-bordered w-full max-w-lg"
-              defaultValue='false'
-
             />
           </div>
           <button
