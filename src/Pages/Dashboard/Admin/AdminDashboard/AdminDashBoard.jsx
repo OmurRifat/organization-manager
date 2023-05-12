@@ -153,7 +153,7 @@ const AdminDashboard = () => {
         <div className="lg:m-2 flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <p className='flex justify-start text-black font-bold'>Donation History</p>
 
-          <Button type="primary" className=" ml-[500px] text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={ showModal }>
+          <Button type="primary" className="ml-[560px] px-4 text-center  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm " onClick={ showModal }>
             Add Donation
           </Button>
           <Modal className='' title="" open={ isModalOpen } onOk={ handleOk } onCancel={ handleCancel }>
@@ -227,7 +227,7 @@ const AdminDashboard = () => {
                   // showing a send reminder btn if the total due is greater than 0 else show paid
                   member?.donation?.map((d) => d?.status === false ? (+d.amount) : 0).reduce((a, b) => a + b, 0) > 0 ?
                     <button key={ member._id } type="button" onClick={ () => handleReminder(member) }
-                      className="text-white font-semibold bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-3 py-1 text-center">
+                      className="text-white font-semibold bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  rounded-lg text-sm px-3 py-1.5 text-center">
                       Send Remainder
                     </button> :
                     <p className="text-green-500">Paid </p>

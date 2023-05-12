@@ -8,16 +8,17 @@ const EditProfile = () => {
   const {user,userInfo,setUserInfo} = useContext(AuthContext);
   const [updateUserInfo, setUpdateUserInfo] = useState(userInfo);
   const navigate = useNavigate();
+  console.log(updateUserInfo)
   
   
   const handleUpdateInfo = (e) => {
     e.preventDefault();
-    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${userInfo._id}`, {
+    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${updateUserInfo._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateUserInfo)
     })
-      .then(res => res.json())
+      .then(res =>  res.json())
       .then(data => {
         if (data.modifiedCount > 0) {
           toast.success('updated User Successfully')
@@ -25,6 +26,9 @@ const EditProfile = () => {
           setUserInfo(updateUserInfo)
           navigate('/dashboard/admin/profile')
 
+        }
+        else{
+          console.log(error)
         }
       })
 

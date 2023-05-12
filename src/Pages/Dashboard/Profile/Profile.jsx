@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   
   const { user,userInfo } = useContext(AuthContext);
-  console.log(userInfo);
+  
   return (
     <div className="flex justify-center ">
       <div className="rounded-3xl overflow-hidden  shadow-2xl my-15 ">
