@@ -73,6 +73,19 @@ const AddMonth = ({setIsModalOpen, refetch}) => {
               className="input input-bordered w-full max-w-lg"
             />
           </div>
+          <div className="form-control">
+            <label>
+              <span className="label-text text-xl">Status</span>
+            </label>
+            <input
+              { ...register("status") }
+              type="text"
+              placeholder="Type amount"
+              className="input input-bordered w-full max-w-lg"
+              defaultValue='false'
+
+            />
+          </div>
           <button
             className="btn lg:btn bg-green-300 pt-2 pb-2 rounded-md text-lg"
             type="submit"

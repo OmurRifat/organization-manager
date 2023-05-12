@@ -10,8 +10,6 @@ const MemberDashboard = () => {
   const [donation, setDonation] = useState([]);
   const [allTransaction, setAllTransaction] = useState([]);
 
-  console.log(userInfo);
-
   const handlePayment = (item) => {
     const paymentInfo = {
       amount: item?.amount,
