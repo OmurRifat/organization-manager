@@ -1,9 +1,46 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
-  const {handleUpdateInfo, handleInputChange} = useContext(AuthContext);
+  const {user,userInfo,setUserInfo} = useContext(AuthContext);
+  const [updateUserInfo, setUpdateUserInfo] = useState(userInfo);
+  const navigate = useNavigate();
+  console.log(updateUserInfo)
+  
+  
+  const handleUpdateInfo = (e) => {
+    e.preventDefault();
+    fetch(`https://organization-manager-server-main-jsarafath.vercel.app/users/update/${updateUserInfo._id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updateUserInfo)
+    })
+      .then(res =>  res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          toast.success('updated User Successfully')
+          e.target.reset();
+          setUserInfo(updateUserInfo)
+          navigate('/dashboard/admin/profile')
+
+        }
+        else{
+          console.log(error)
+        }
+      })
+
+  }
+
+  const handleInputChange = event => {
+    const field = event.target.name;
+    const value = event.target.value;
+    const newUser = {...updateUserInfo};
+    newUser[field] = value;
+    setUpdateUserInfo(newUser)
+  }
 
   return (
     <div>

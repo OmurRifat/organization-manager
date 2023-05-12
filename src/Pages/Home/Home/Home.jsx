@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import HeroSection from '../HeroSection/HeroSection';
 import About from './../../About/About';
-import Testimonial from '../Testimonial/Testimonial'
 import Blog from '../Blog/Blog';
 import OurPartners from '../OurPartners/OurPartners';
 import FrequentQuestion from '../FrequentQuestion/FrequentQuestion';
@@ -13,6 +12,8 @@ import CounterUp from '../CounterUp/CounterUp';
 import GoToTop from '../GoToTop/GoToTop';
 import ManPower from '../ManPower/ManPower';
 import Team from '../Team/Team';
+import ReviewMain from '../Testimonial/ReviewMain';
+import Testimonial from '../Testimonial/Testimonial';
 const Home = () => {
     return (
         <div className='mx-2 mt-4'>
@@ -21,7 +22,7 @@ const Home = () => {
             <ManPower/>
             <Services/>
             <Team/>
-            <Testimonial />
+            <Testimonial/>
             <Blog />
             <OurPartners />
             <UpcommingEvents />

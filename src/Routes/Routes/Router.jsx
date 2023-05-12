@@ -132,7 +132,7 @@ const router = createBrowserRouter([
         </MemberRoute>,
       },
       {
-        path: '/dashboard/member/addreview',
+        path: '/dashboard/member/add-review',
         element: <MemberRoute>
           <AddReview></AddReview>
         </MemberRoute>,

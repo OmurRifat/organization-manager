@@ -100,25 +100,6 @@ const LogIn = () => {
     onChange={onChange}
   />
            </div>
-                <div className="flex items-start mb-6">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="remember"
-                      type="checkbox"
-                      value=""
-                      className="w-4 h-4 border-[#2A9D8F] text-[#2A9D8F] rounded "
-                      required
-                    />
-                  </div>
-                 
-                  <label
-                    htmlFor="remember"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    I have read and agree with terms of service and our privacy
-                    policy
-                  </label>
-                </div>
                 <button className='bg-[#2A9D8F] text-white p-3 rounded-full text-3xl border-none' type="submit">
                   <AiOutlineArrowRight />
                 </button>

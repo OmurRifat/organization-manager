@@ -1,5 +1,4 @@
 
-
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PayMethodModal from './PayMethodModal'
@@ -24,6 +23,7 @@ const MemberDashboard = () => {
       month: item?.month,
     }
 
+
     fetch('https://organization-manager-server-main-jsarafath.vercel.app/due-payment', {
       method: 'POST',
       headers: {
@@ -34,14 +34,16 @@ const MemberDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         fetch(
-          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user.email}&month=${item.month}`,
+          `https://organization-manager-server-main-jsarafath.vercel.app/update-donation?email=${user?.email}&month=${item?.month}`,
           {
             method: 'PUT',
           },
         )
           .then((res) => res.json())
           .then((data) => {
+            console.log(data)
             if (data.modifiedCount > 0) {
+
               // navigate('/dashboard/member')
               toast.success('Successfully Paid Your Due')
             }
@@ -50,6 +52,9 @@ const MemberDashboard = () => {
       })
   }
 
+
+
+  
   useEffect(() => {
     axios
       .get(`https://organization-manager-server-main-jsarafath.vercel.app/all-transaction`)
@@ -76,7 +81,8 @@ const MemberDashboard = () => {
 
   const dueCalculation = () => {
     donation?.map((d) => {
-      if (d.status === false) {
+      console.log(d)
+      if (d?.status === false) {
         const amountString = d.amount
         const amount = parseInt(amountString)
         totalDue += amount
@@ -86,7 +92,7 @@ const MemberDashboard = () => {
   let totalDonations = 0
   const calculateDonation = () => {
     donation?.map((d) => {
-      if (d.status === true) {
+      if (d?.status === true) {
         const amountString = d.amount
         const amount = parseInt(amountString)
         totalDonations += amount
@@ -107,7 +113,7 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Want to take Loan?</p>
-          { userInfo?.verified === true && <Link to="/dashboard/apply-loan">
+          { userInfo?.verified === true && (userInfo?.position === 'member' || userInfo?.position === 'admin') && <Link to="/dashboard/apply-loan">
             <button
               data-modal-target="authentication-modal"
               data-modal-toggle="authentication-modal"
@@ -119,24 +125,7 @@ const MemberDashboard = () => {
           </Link> }
         </div>
         <div className="text-center  flex-col border-r justify-center p-10 items-center ">
-          <img
-            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/payment-due-2010170-1696699.png"
-            width="30px"
-            className="mx-auto"
-            alt=""
-          />
-          <p className="text-xl text-white py-2">Total Due</p>
-          { userInfo?.verified === true && <button
-            data-modal-target="popup-modal"
-            data-modal-toggle="popup-modal"
-            onClick={ () => setPayModal(true) }
-            type="button"
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-          >
-            { totalDue } BDT
-          </button> }
-        </div>
-        <div className="text-center  flex-col border-r justify-center p-10 items-center ">
+
           <img
             src="https://cdn-icons-png.flaticon.com/512/591/591796.png"
             width="30px"
@@ -144,11 +133,30 @@ const MemberDashboard = () => {
             alt=""
           />
           <p className="text-xl text-white py-2">Total Donation</p>
+
           { userInfo?.verified === true && <button
             type="button"
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
           >
             { totalDonations } BDT
+          </button> }
+        </div>
+        <div className="text-center  flex-col border-r justify-center p-10 items-center ">
+          <img
+            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/payment-due-2010170-1696699.png"
+            width="30px"
+            className="mx-auto"
+            alt=""
+          />
+          <p className="text-xl text-white py-2">Total Due</p>
+          { userInfo?.verified === true && (userInfo?.position === 'member' || userInfo?.position === 'admin') && <button
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+            onClick={ () => setPayModal(true) }
+            type="button"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            { totalDue } BDT
           </button> }
         </div>
       </div>
@@ -181,7 +189,7 @@ const MemberDashboard = () => {
             { userInfo?.verified === true ?
               userInfo?.donation?.map((item) => (
                 <tr
-                  key={ item.month }
+                  key={ item?.month }
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
                   <td className="px-6 ">{ item?.month }</td>
@@ -189,9 +197,9 @@ const MemberDashboard = () => {
                     scope="row"
                     className="flex items-center px-6 py-6 text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    { item?.donationName }fg
+                    { item?.donationName }
                   </th>
-                  <td className="px-6 ">{ item?.amount }fg Tk</td>
+                  <td className="px-6 ">{ item?.amount } Tk</td>
                   <td className="px-6 ">
                     { item?.status ? item?.transactionId : '' }
                   </td>
@@ -204,7 +212,7 @@ const MemberDashboard = () => {
                       <span className='text-red-600 font-semibold'>Due</span>
                     ) }
                   </td>
-                  { item?.status === 'false' ? (
+                  { item?.status === false ? (
                     <td className="px-6 ">
                       <button
                         onClick={ () => handlePayment(item) }
@@ -215,20 +223,13 @@ const MemberDashboard = () => {
                       </button>
                     </td>
                   ) : <td className="px-6 ">
-                    <button
 
-                      type="button"
-                      className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                    >
-                      Invoice
-                    </button>
                   </td> }
                 </tr>
               )) : <tr><td className='text-center mt-10 font-semibold text-[#2A9D8F] text-xl'>Your join application with { userInfo?.organization } under review, you will be notified soon</td></tr> }
           </tbody>
         </table>
       </div>
-      
       <div
         id="authentication-modal"
         tabIndex="-1"

@@ -1,17 +1,20 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../context/AuthProvider';
 
-const AddMonth = () => {
+const AddMonth = ({setIsModalOpen, refetch}) => {
   const { handleSubmit, register } = useForm();
   const { user, userInfo } = useContext(AuthContext);
-  const handleAddMonth = (data) => {
+  const handleAddMonth = (data, e) => {
+    data.status = false;
     axios.post(`https://organization-manager-server-main-jsarafath.vercel.app/add-donation?orgName=${userInfo?.organization}`, data)
       .then(res => {
         if (res.data) {
-          toast("Added Successfully")
+          setIsModalOpen(false)
+          refetch()
+          toast.success("Added Successfully")
         }
       })
       .catch(err => console.log(err))
@@ -70,19 +73,6 @@ const AddMonth = () => {
               className="input input-bordered w-full max-w-lg"
             />
           </div>
-          <div className="form-control">
-            <label>
-              <span className="label-text text-xl">Status</span>
-            </label>
-            <input
-              { ...register("status") }
-              type="text"
-              placeholder="Type amount"
-              className="input input-bordered w-full max-w-lg"
-              defaultValue={false}
-
-            />
-          </div>
           <button
             className="btn lg:btn bg-green-300 pt-2 pb-2 rounded-md text-lg"
             type="submit"
@@ -91,7 +81,6 @@ const AddMonth = () => {
           </button>
         </div>
       </form>
-
     </div>
 
   )

@@ -109,15 +109,15 @@ const Signup = () => {
                   )
                     .then((res) => res.json())
                     .then((data) => {
-                      console.log(data);
-                      navigate('/dashboard')
+                      navigate('/dashboard/member')
                     })
                 })
                 .catch((error) => console.log(error))
-              toast('User Created Successfully.')
+              toast.success('User Created Successfully.')
             })
             .catch((error) => {
               console.log(error)
+              toast.error(error.message)
               setSignUPError(error.message)
             })
         }
@@ -142,23 +142,6 @@ const Signup = () => {
       <div className="flex md:flex-row flex-col justify-evenly items-start">
         <div className=" p-10 py-5">
           <h1 className="md:text-5xl text-3xl text-[#2A9D8F]  mb-7 text-center ">Create Account</h1>
-          {/* <div className="flex  items-center m-5 mt-10">
-            <div className="bg-black h-1 w-24 mb-3 md:mb-10"></div>
-          </div> */}
-          {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 pt-8 md:pt-0 ">
-            <button className="flex pl-1 w-full md:w-72 mx-auto mb-4 md:mb-0 md:pl-2 justify-center cursor-pointer  items-center border py-2 rounded-lg">
-              <FcGoogle className="text-2xl mr-5 md:mr-3"></FcGoogle>
-              <span className="py-3 md:py-1  font-semibold">
-                Continue with Google
-              </span>
-            </button>
-            <button className="flex w-full mx-auto md:w-72  pl-4 md:pl-2 justify-center items-center border py-2 rounded-lg">
-              <FaFacebook className="text-2xl mr-5 md:mr-3 text-[#45619D]"></FaFacebook>
-              <span className="py-3 md:py-1 font-semibold">
-                Continue with Facebook
-              </span>
-            </button>
-          </div> */}
           <div className="px-2 md:px-0">
             <form onSubmit={ handleSubmit(onSubmit) }>
               <label

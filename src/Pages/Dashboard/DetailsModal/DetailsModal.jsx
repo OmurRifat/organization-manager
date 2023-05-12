@@ -1,7 +1,6 @@
 import React from "react";
 
 const DetailsModal = ({setDetails,member}) => {
-    console.log(member);
   return (
     
     <div

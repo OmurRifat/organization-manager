@@ -289,32 +289,8 @@ const LoanApply = () => {
                 <li>Interest rates: You will be required to pay interest on the loan amount you borrow. The interest rate may be fixed or variable, and can vary depending on the loan amount, the duration of the loan, and your credit score</li>
                 <li>Repayment schedule: You will need to repay the loan amount in installments over a certain period of time, as agreed upon in the loan agreement. Failure to make payments on time can result in penalties, including additional interest and late fees.</li>
                 <li>
-                <ul className="text-white font-medium">
-                <li className="mb-4">
-                  <Link to="/allevents">
-                  Up Coming Event
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/foundation-form" >
-                    Organization Registration
-                  </Link>
-                </li>
-              </ul>
-              <ul className="text-white dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <Link to="/allnews"
-                  >
-                    All News
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/show-organizations"
-                  >
-                    All Registration Foundation
-                  </Link>
-                </li>
-              </ul>
+                
+             
                   Collateral: In some cases, the lender may require you to provide collateral such as property or assets to secure the loan. If you default on the loan, the lender may seize the collateral to recover their losses.
                 </li>
                 <li>Fees and charges: In addition to interest, you may also be required to pay other fees and charges, such as loan processing fees, prepayment penalties, or other charges. These fees and charges should be disclosed in the loan agreement.
