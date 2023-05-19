@@ -32,14 +32,14 @@ const Team = () => {
                   target="_blank"
                   href="https://www.linkedin.com/in/dibbo-das/"
                 >
-                  {" "}
-                  <BsLinkedin />{" "}
-                </a>{" "}
+                  { " " }
+                  <BsLinkedin />{ " " }
+                </a>{ " " }
                 <a target="_blank" href="https://github.com/WebDevDibbo">
                   <BsGithub />
-                </a>{" "}
+                </a>{ " " }
                 <a target="_blank" href="https://portfolio-fd96a.web.app/">
-                  <GiEarthAmerica />{" "}
+                  <GiEarthAmerica />{ " " }
                 </a>
               </div>
             </div>
@@ -58,14 +58,14 @@ const Team = () => {
                   target="_blank"
                   href="https://www.linkedin.com/in/md-abdur-rouf-likhon-70a562257/"
                 >
-                  {" "}
-                  <BsLinkedin />{" "}
-                </a>{" "}
+                  { " " }
+                  <BsLinkedin />{ " " }
+                </a>{ " " }
                 <a target="_blank" href="https://github.com/likhon29">
                   <BsGithub />
-                </a>{" "}
+                </a>{ " " }
                 <a target="_blank" href="https://my-portfolio-b28f8.web.app/">
-                  <GiEarthAmerica />{" "}
+                  <GiEarthAmerica />{ " " }
                 </a>
               </div>
             </div>
@@ -84,17 +84,17 @@ const Team = () => {
                   target="_blank"
                   href="https://www.linkedin.com/in/md-emon343/"
                 >
-                  {" "}
-                  <BsLinkedin />{" "}
-                </a>{" "}
+                  { " " }
+                  <BsLinkedin />{ " " }
+                </a>{ " " }
                 <a target="_blank" href="https://github.com/emon097">
                   <BsGithub />
-                </a>{" "}
+                </a>{ " " }
                 <a
                   target="_blank"
                   href="https://md-emon-hossain-portfolio.netlify.app/"
                 >
-                  <GiEarthAmerica />{" "}
+                  <GiEarthAmerica />{ " " }
                 </a>
               </div>
             </div>
@@ -113,17 +113,17 @@ const Team = () => {
                   target="_blank"
                   href="https://www.linkedin.com/in/md-mohaiminul-islam-299442131/"
                 >
-                  {" "}
-                  <BsLinkedin />{" "}
-                </a>{" "}
+                  { " " }
+                  <BsLinkedin />{ " " }
+                </a>{ " " }
                 <a target="_blank" href="https://github.com/JsArafath">
                   <BsGithub />
-                </a>{" "}
+                </a>{ " " }
                 <a
                   target="_blank"
                   href="https://mohaiminul-islam-portfolio.netlify.app/"
                 >
-                  <GiEarthAmerica />{" "}
+                  <GiEarthAmerica />{ " " }
                 </a>
               </div>
             </div>
@@ -134,25 +134,25 @@ const Team = () => {
                 src="https://i.ibb.co/tJkDBHS/rsz-rifat-3-12-removebg-preview.png"
               />
               <p className="text-xl font-semibold leading-tight">
-                H. M. Jabed Omur Rifat{" "}
+                H. M. Jabed Omur Rifat{ " " }
               </p>
-              <p className="dark:text-gray-400">UI UX & Team Manager</p>
+              <p className="dark:text-gray-400">Team Manager & Full Stack Developer</p>
               <div className="flex justify-center gap-4 text-xl mt-2">
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/in/omurrifat/"
                 >
-                  {" "}
-                  <BsLinkedin />{" "}
-                </a>{" "}
+                  { " " }
+                  <BsLinkedin />{ " " }
+                </a>{ " " }
                 <a target="_blank" href="https://github.com/OmurRifat">
                   <BsGithub />
-                </a>{" "}
+                </a>{ " " }
                 <a
                   target="_blank"
                   href="https://omur-rifat-portfolio.netlify.app/"
                 >
-                  <GiEarthAmerica />{" "}
+                  <GiEarthAmerica />{ " " }
                 </a>
               </div>
             </div>
